@@ -1,175 +1,242 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_theme_showcase/l10n/l10n.dart';
-import 'package:flutter_theme_showcase/theme/theme_provider.dart';
-import 'package:flutter_theme_showcase/l10n/localization_provider.dart';
-import 'package:flutter_theme_showcase/widgets/theme_selector.dart';
-import 'package:flutter_theme_showcase/widgets/language_selector.dart';
 import 'package:provider/provider.dart';
+import '../l10n/app_localizations.dart';
+import '../providers/theme_provider.dart';
+import '../theme/base/app_theme.dart';
+import '../theme/themes/app_themes.dart';
+import '../providers/language_provider.dart';
 
 class ThemeShowcasePage extends StatelessWidget {
   const ThemeShowcasePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
+    final l10n = AppLocalizations.of(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final languageProvider = Provider.of<LanguageProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.counterAppBarTitle),
-        elevation: 0,
+        title: Text(l10n.appTitle),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildWelcomeSection(context),
-            const SizedBox(height: 24),
-            _buildThemeSection(context),
-            const SizedBox(height: 24),
-            _buildLanguageSection(context),
-            const SizedBox(height: 24),
-            _buildPreviewSection(context),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildWelcomeSection(BuildContext context) {
-    final l10n = context.l10n;
-
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              l10n.counterAppBarTitle,
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Chào mừng đến với Flutter Theme Showcase!',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildThemeSection(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Chọn Theme',
-              style: Theme.of(context).textTheme.titleLarge,
+            // Theme Mode Section
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.themeMode,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: RadioListTile<ThemeMode>(
+                            title: Text(l10n.lightTheme),
+                            value: ThemeMode.light,
+                            groupValue: themeProvider.themeMode,
+                            onChanged: (value) =>
+                                themeProvider.setThemeMode(value!),
+                          ),
+                        ),
+                        Expanded(
+                          child: RadioListTile<ThemeMode>(
+                            title: Text(l10n.darkTheme),
+                            value: ThemeMode.dark,
+                            groupValue: themeProvider.themeMode,
+                            onChanged: (value) =>
+                                themeProvider.setThemeMode(value!),
+                          ),
+                        ),
+                        Expanded(
+                          child: RadioListTile<ThemeMode>(
+                            title: Text(l10n.systemTheme),
+                            value: ThemeMode.system,
+                            groupValue: themeProvider.themeMode,
+                            onChanged: (value) =>
+                                themeProvider.setThemeMode(value!),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
             const SizedBox(height: 16),
-            const ThemeSelector(),
-          ],
-        ),
-      ),
-    );
-  }
 
-  Widget _buildLanguageSection(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Chọn Ngôn ngữ',
-              style: Theme.of(context).textTheme.titleLarge,
+            // Font Size Section
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.fontSize,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 16),
+                    Slider(
+                      value: themeProvider.fontSize,
+                      min: 12.0,
+                      max: 24.0,
+                      divisions: 12,
+                      label: '${themeProvider.fontSize.round()}',
+                      onChanged: (value) => themeProvider.setFontSize(value),
+                    ),
+                  ],
+                ),
+              ),
             ),
             const SizedBox(height: 16),
-            const LanguageSelector(),
-          ],
-        ),
-      ),
-    );
-  }
 
-  Widget _buildPreviewSection(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Preview Components',
-              style: Theme.of(context).textTheme.titleLarge,
+            // Font Family Section
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.fontFamily,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 16),
+                    DropdownButton<String>(
+                      value: themeProvider.fontFamily,
+                      isExpanded: true,
+                      items: const [
+                        DropdownMenuItem(
+                            value: 'Roboto', child: Text('Roboto')),
+                        DropdownMenuItem(
+                            value: 'Poppins', child: Text('Poppins')),
+                        DropdownMenuItem(
+                            value: 'Merriweather', child: Text('Merriweather')),
+                      ],
+                      onChanged: (value) => themeProvider.setFontFamily(value!),
+                    ),
+                  ],
+                ),
+              ),
             ),
             const SizedBox(height: 16),
-            _buildComponentPreview(context),
+
+            // App Theme Section
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'App Theme',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 16),
+                    DropdownButton<AppTheme>(
+                      value: themeProvider.currentAppTheme,
+                      isExpanded: true,
+                      items: AppThemes.all.map((AppTheme theme) {
+                        return DropdownMenuItem<AppTheme>(
+                          value: theme,
+                          child: Text(theme.name),
+                        );
+                      }).toList(),
+                      onChanged: (value) => themeProvider.setAppTheme(value!),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+
+            // Language Section
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.language,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: RadioListTile<String>(
+                            title: Text(l10n.english),
+                            value: 'en',
+                            groupValue: languageProvider.locale.languageCode,
+                            onChanged: (value) =>
+                                languageProvider.setLocale(Locale(value!)),
+                          ),
+                        ),
+                        Expanded(
+                          child: RadioListTile<String>(
+                            title: Text(l10n.vietnamese),
+                            value: 'vi',
+                            groupValue: languageProvider.locale.languageCode,
+                            onChanged: (value) =>
+                                languageProvider.setLocale(Locale(value!)),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+
+            // Preview Section
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Preview',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      l10n.sampleText,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    const SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text(l10n.sampleButton),
+                    ),
+                    const SizedBox(height: 16),
+                    const LinearProgressIndicator(value: 0.7),
+                    const SizedBox(height: 16),
+                    ListTile(
+                      leading: const Icon(Icons.star),
+                      title: const Text('Sample ListTile'),
+                      subtitle: const Text('This is a subtitle'),
+                      trailing: const Icon(Icons.arrow_forward_ios),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildComponentPreview(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: ElevatedButton(
-                onPressed: () {},
-                child: const Text('Elevated Button'),
-              ),
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: OutlinedButton(
-                onPressed: () {},
-                child: const Text('Outlined Button'),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 16),
-        Row(
-          children: [
-            Expanded(
-              child: TextButton(
-                onPressed: () {},
-                child: const Text('Text Button'),
-              ),
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: FilledButton(
-                onPressed: () {},
-                child: const Text('Filled Button'),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 16),
-        const LinearProgressIndicator(value: 0.7),
-        const SizedBox(height: 16),
-        ListTile(
-          leading: const Icon(Icons.palette),
-          title: const Text('Theme Showcase'),
-          subtitle: const Text('Customize your app appearance'),
-          trailing: Switch(
-            value: Theme.of(context).brightness == Brightness.dark,
-            onChanged: (value) {
-              context.read<ThemeProvider>().toggleThemeMode();
-            },
-          ),
-        ),
-      ],
     );
   }
 }

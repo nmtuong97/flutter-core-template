@@ -54,10 +54,7 @@ class NightSkyTheme extends AppTheme {
   static const Color textDisabledLightColor = Color(0xFFB3C2E0);
 
   @override
-  ThemeData getLightTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get lightThemeData {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
@@ -80,8 +77,8 @@ class NightSkyTheme extends AppTheme {
         foregroundColor: Colors.white,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: (fontSize + 4).sp,
+          fontFamily: defaultFontFamily,
+          fontSize: (normalFontSize + 4).sp,
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
@@ -90,8 +87,8 @@ class NightSkyTheme extends AppTheme {
 
       // Text Theme
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryLightColor,
         textSecondaryLightColor,
       ),
@@ -102,8 +99,8 @@ class NightSkyTheme extends AppTheme {
           backgroundColor: primaryLightColor,
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
@@ -141,10 +138,7 @@ class NightSkyTheme extends AppTheme {
   }
 
   @override
-  ThemeData getDarkTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get darkThemeData {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
@@ -168,8 +162,8 @@ class NightSkyTheme extends AppTheme {
         foregroundColor: textPrimaryDarkColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: (fontSize + 4).sp,
+          fontFamily: defaultFontFamily,
+          fontSize: (normalFontSize + 4).sp,
           fontWeight: FontWeight.bold,
           color: textPrimaryDarkColor,
         ),
@@ -178,8 +172,8 @@ class NightSkyTheme extends AppTheme {
 
       // Text Theme
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryDarkColor,
         textSecondaryDarkColor,
       ),
@@ -190,8 +184,8 @@ class NightSkyTheme extends AppTheme {
           backgroundColor: primaryDarkColor,
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -54,10 +55,7 @@ class DefaultTheme extends AppTheme {
   static const Color dividerDarkColor = Color(0x1FFFFFFF); // 12% opacity
 
   @override
-  ThemeData getLightTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get lightThemeData {
     // Tạo AppThemeExtension cho light theme
     final appThemeExtension = AppThemeExtension.light();
 
@@ -82,8 +80,8 @@ class DefaultTheme extends AppTheme {
         foregroundColor: textPrimaryLightColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: (fontSize + 4).sp,
+          fontFamily: defaultFontFamily,
+          fontSize: (normalFontSize + 4).sp,
           fontWeight: FontWeight.bold,
           color: textPrimaryLightColor,
         ),
@@ -97,8 +95,8 @@ class DefaultTheme extends AppTheme {
       ),
       // Text Theme
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryLightColor,
         textSecondaryLightColor,
       ),
@@ -108,12 +106,13 @@ class DefaultTheme extends AppTheme {
           backgroundColor: primaryLightColor,
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           elevation: 2,
           shadowColor: primaryLightColor.withOpacity(0.2),
         ),
@@ -123,20 +122,21 @@ class DefaultTheme extends AppTheme {
           foregroundColor: primaryLightColor,
           side: const BorderSide(color: primaryLightColor),
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
         ),
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: primaryLightColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -167,10 +167,7 @@ class DefaultTheme extends AppTheme {
   }
 
   @override
-  ThemeData getDarkTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get darkThemeData {
     // Tạo AppThemeExtension cho dark theme
     final appThemeExtension = AppThemeExtension.dark();
 
@@ -197,8 +194,8 @@ class DefaultTheme extends AppTheme {
         foregroundColor: textPrimaryDarkColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: (fontSize + 4).sp,
+          fontFamily: defaultFontFamily,
+          fontSize: (normalFontSize + 4).sp,
           fontWeight: FontWeight.bold,
           color: textPrimaryDarkColor,
         ),
@@ -212,8 +209,8 @@ class DefaultTheme extends AppTheme {
       ),
       // Text Theme
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryDarkColor,
         textSecondaryDarkColor,
       ),
@@ -223,13 +220,14 @@ class DefaultTheme extends AppTheme {
           backgroundColor: primaryDarkColor,
           foregroundColor: backgroundDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
             color: backgroundDarkColor,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           elevation: 2,
           shadowColor: primaryDarkColor.withOpacity(0.3),
         ),
@@ -239,20 +237,21 @@ class DefaultTheme extends AppTheme {
           foregroundColor: primaryDarkColor,
           side: const BorderSide(color: primaryDarkColor),
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
         ),
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: primaryDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -375,8 +374,8 @@ class DefaultTheme extends AppTheme {
         color: primaryTextColor,
       ),
       titleSmall: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize,
+        fontFamily: defaultFontFamily,
+        fontSize: normalFontSize,
         fontWeight: FontWeight.w600,
         color: primaryTextColor,
       ),
@@ -386,8 +385,8 @@ class DefaultTheme extends AppTheme {
         color: primaryTextColor,
       ),
       bodyMedium: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize,
+        fontFamily: defaultFontFamily,
+        fontSize: normalFontSize,
         color: primaryTextColor,
       ),
       bodySmall: _getTextStyle(
@@ -396,8 +395,8 @@ class DefaultTheme extends AppTheme {
         color: secondaryTextColor,
       ),
       labelLarge: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize,
+        fontFamily: defaultFontFamily,
+        fontSize: normalFontSize,
         fontWeight: FontWeight.w500,
         color: primaryTextColor,
       ),

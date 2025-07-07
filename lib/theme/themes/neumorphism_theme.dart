@@ -56,10 +56,7 @@ class NeumorphismTheme extends AppTheme {
   static const Color textDisabledDarkColor = Color(0xFF718096);
 
   @override
-  ThemeData getLightTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get lightThemeData {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
@@ -83,8 +80,8 @@ class NeumorphismTheme extends AppTheme {
         foregroundColor: textPrimaryLightColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize + 4,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryLightColor,
         ),
@@ -95,8 +92,8 @@ class NeumorphismTheme extends AppTheme {
 
       // Text Theme
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryLightColor,
         textSecondaryLightColor,
       ),
@@ -107,8 +104,8 @@ class NeumorphismTheme extends AppTheme {
           backgroundColor: surfaceLightColor,
           foregroundColor: primaryLightColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -140,8 +137,8 @@ class NeumorphismTheme extends AppTheme {
           foregroundColor: primaryLightColor,
           side: BorderSide.none,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -162,8 +159,8 @@ class NeumorphismTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryLightColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -200,7 +197,7 @@ class NeumorphismTheme extends AppTheme {
         thickness: 1,
         space: 16,
       ),
-      
+
       // Input Decoration
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -222,8 +219,8 @@ class NeumorphismTheme extends AppTheme {
           vertical: 16.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize,
           color: textSecondaryLightColor,
         ),
       ),
@@ -231,10 +228,7 @@ class NeumorphismTheme extends AppTheme {
   }
 
   @override
-  ThemeData getDarkTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get darkThemeData {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
@@ -258,8 +252,8 @@ class NeumorphismTheme extends AppTheme {
         foregroundColor: textPrimaryDarkColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize + 4,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryDarkColor,
         ),
@@ -270,8 +264,8 @@ class NeumorphismTheme extends AppTheme {
 
       // Text Theme
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryDarkColor,
         textSecondaryDarkColor,
       ),
@@ -282,8 +276,8 @@ class NeumorphismTheme extends AppTheme {
           backgroundColor: surfaceDarkColor,
           foregroundColor: primaryDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -315,8 +309,8 @@ class NeumorphismTheme extends AppTheme {
           foregroundColor: primaryDarkColor,
           side: BorderSide.none,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -337,8 +331,8 @@ class NeumorphismTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -375,7 +369,7 @@ class NeumorphismTheme extends AppTheme {
         thickness: 1,
         space: 16,
       ),
-      
+
       // Input Decoration
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -397,8 +391,8 @@ class NeumorphismTheme extends AppTheme {
           vertical: 16.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize,
           color: textSecondaryDarkColor,
         ),
       ),

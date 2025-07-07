@@ -54,13 +54,10 @@ class ExaggeratedMinimalismTheme extends AppTheme {
   static const Color textDisabledDarkColor = Color(0xFF666666);
 
   @override
-  ThemeData getLightTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get lightThemeData {
     // Tăng kích thước font lên 1.5 lần để phù hợp với Exaggerated Minimalism
-    final adjustedFontSize = fontSize * 1.5;
-    
+    final adjustedFontSize = normalFontSize * 1.5;
+
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
@@ -84,7 +81,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         foregroundColor: textPrimaryLightColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
+          fontFamily: defaultFontFamily,
           fontSize: (adjustedFontSize + 8).sp,
           fontWeight: FontWeight.bold,
           color: textPrimaryLightColor,
@@ -98,7 +95,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
 
       // Text Theme - kích thước lớn, khoảng cách dòng rộng
       textTheme: _getTextTheme(
-        fontFamily,
+        defaultFontFamily,
         adjustedFontSize,
         textPrimaryLightColor,
         textSecondaryLightColor,
@@ -110,7 +107,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
           backgroundColor: primaryLightColor,
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
+            fontFamily: defaultFontFamily,
             fontSize: adjustedFontSize + 4,
             fontWeight: FontWeight.bold,
           ),
@@ -128,9 +125,10 @@ class ExaggeratedMinimalismTheme extends AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: primaryLightColor,
-          side: const BorderSide(color: primaryLightColor, width: 2), // Viền đậm
+          side:
+              const BorderSide(color: primaryLightColor, width: 2), // Viền đậm
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
+            fontFamily: defaultFontFamily,
             fontSize: adjustedFontSize + 4,
             fontWeight: FontWeight.bold,
           ),
@@ -148,7 +146,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryLightColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
+            fontFamily: defaultFontFamily,
             fontSize: adjustedFontSize + 4,
             fontWeight: FontWeight.bold,
           ),
@@ -186,7 +184,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         thickness: 1,
         space: 32, // Khoảng cách lớn
       ),
-      
+
       // Input Decoration - input lớn, tối giản
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -208,8 +206,8 @@ class ExaggeratedMinimalismTheme extends AppTheme {
           vertical: 20.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: adjustedFontSize,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize,
           color: textSecondaryLightColor,
         ),
       ),
@@ -217,13 +215,10 @@ class ExaggeratedMinimalismTheme extends AppTheme {
   }
 
   @override
-  ThemeData getDarkTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get darkThemeData {
     // Tăng kích thước font lên 1.5 lần để phù hợp với Exaggerated Minimalism
-    final adjustedFontSize = fontSize * 1.5;
-    
+    final adjustedFontSize = normalFontSize * 1.5;
+
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
@@ -247,7 +242,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         foregroundColor: textPrimaryDarkColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
+          fontFamily: defaultFontFamily,
           fontSize: (adjustedFontSize + 8).sp,
           fontWeight: FontWeight.bold,
           color: textPrimaryDarkColor,
@@ -261,7 +256,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
 
       // Text Theme - kích thước lớn, khoảng cách dòng rộng
       textTheme: _getTextTheme(
-        fontFamily,
+        defaultFontFamily,
         adjustedFontSize,
         textPrimaryDarkColor,
         textSecondaryDarkColor,
@@ -273,10 +268,9 @@ class ExaggeratedMinimalismTheme extends AppTheme {
           backgroundColor: primaryDarkColor,
           foregroundColor: Colors.black,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
+            fontFamily: defaultFontFamily,
             fontSize: adjustedFontSize + 4,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
           ),
           padding: EdgeInsets.symmetric(
             horizontal: 32.w,
@@ -294,7 +288,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
           foregroundColor: primaryDarkColor,
           side: const BorderSide(color: primaryDarkColor, width: 2), // Viền đậm
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
+            fontFamily: defaultFontFamily,
             fontSize: adjustedFontSize + 4,
             fontWeight: FontWeight.bold,
           ),
@@ -312,7 +306,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
+            fontFamily: defaultFontFamily,
             fontSize: adjustedFontSize + 4,
             fontWeight: FontWeight.bold,
           ),
@@ -350,7 +344,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         thickness: 1,
         space: 32, // Khoảng cách lớn
       ),
-      
+
       // Input Decoration - input lớn, tối giản
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -372,8 +366,8 @@ class ExaggeratedMinimalismTheme extends AppTheme {
           vertical: 20.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: adjustedFontSize,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize,
           color: textSecondaryDarkColor,
         ),
       ),
@@ -495,8 +489,8 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         color: primaryTextColor,
       ),
       bodySmall: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize,
+        fontFamily: defaultFontFamily,
+        fontSize: normalFontSize,
         color: secondaryTextColor,
       ),
       labelLarge: _getTextStyle(
@@ -506,8 +500,8 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         color: primaryTextColor,
       ),
       labelMedium: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize,
+        fontFamily: defaultFontFamily,
+        fontSize: normalFontSize,
         fontWeight: FontWeight.w500,
         color: secondaryTextColor,
       ),

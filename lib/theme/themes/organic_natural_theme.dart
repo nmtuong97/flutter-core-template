@@ -13,7 +13,8 @@ class OrganicNaturalTheme extends AppTheme {
   String get name => 'Organic/Natural';
 
   @override
-  String get description => 'Phong cách tự nhiên với màu sắc và hình dạng hữu cơ';
+  String get description =>
+      'Phong cách tự nhiên với màu sắc và hình dạng hữu cơ';
 
   // Font sizes
   static const double smallFontSize = 12;
@@ -28,7 +29,8 @@ class OrganicNaturalTheme extends AppTheme {
   static const String serifFontFamily = 'Cormorant';
 
   // Base Colors - Light Mode (màu tự nhiên)
-  static const Color backgroundLightColor = Color(0xFFF7F9F4); // Trắng xanh nhạt
+  static const Color backgroundLightColor =
+      Color(0xFFF7F9F4); // Trắng xanh nhạt
   static const Color primaryLightColor = Color(0xFF4CAF50); // Xanh lá
   static const Color secondaryLightColor = Color(0xFF8BC34A); // Xanh lá nhạt
   static const Color accentLightColor = Color(0xFFFF9800); // Cam
@@ -54,10 +56,7 @@ class OrganicNaturalTheme extends AppTheme {
   static const Color textDisabledDarkColor = Color(0xFF8A9A8C);
 
   @override
-  ThemeData getLightTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get lightThemeData {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
@@ -81,8 +80,8 @@ class OrganicNaturalTheme extends AppTheme {
         foregroundColor: textPrimaryLightColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize + 4,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryLightColor,
         ),
@@ -93,8 +92,8 @@ class OrganicNaturalTheme extends AppTheme {
 
       // Text Theme - font chữ tự nhiên
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryLightColor,
         textSecondaryLightColor,
       ),
@@ -105,8 +104,8 @@ class OrganicNaturalTheme extends AppTheme {
           backgroundColor: primaryLightColor,
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -127,8 +126,8 @@ class OrganicNaturalTheme extends AppTheme {
             width: 1.5,
           ),
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -144,8 +143,8 @@ class OrganicNaturalTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryLightColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -182,7 +181,7 @@ class OrganicNaturalTheme extends AppTheme {
         thickness: 1,
         space: 16,
       ),
-      
+
       // Input Decoration - phong cách tự nhiên, bo tròn
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -213,8 +212,8 @@ class OrganicNaturalTheme extends AppTheme {
           vertical: 16.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize,
           color: textSecondaryLightColor,
         ),
       ),
@@ -222,10 +221,7 @@ class OrganicNaturalTheme extends AppTheme {
   }
 
   @override
-  ThemeData getDarkTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get darkThemeData {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
@@ -249,8 +245,8 @@ class OrganicNaturalTheme extends AppTheme {
         foregroundColor: textPrimaryDarkColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize + 4,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryDarkColor,
         ),
@@ -261,8 +257,8 @@ class OrganicNaturalTheme extends AppTheme {
 
       // Text Theme - font chữ tự nhiên
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryDarkColor,
         textSecondaryDarkColor,
       ),
@@ -273,8 +269,8 @@ class OrganicNaturalTheme extends AppTheme {
           backgroundColor: primaryDarkColor,
           foregroundColor: Color(0xFF1E2A20), // Xanh đậm
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
             color: Color(0xFF1E2A20), // Xanh đậm
           ),
@@ -296,8 +292,8 @@ class OrganicNaturalTheme extends AppTheme {
             width: 1.5,
           ),
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -313,8 +309,8 @@ class OrganicNaturalTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -351,7 +347,7 @@ class OrganicNaturalTheme extends AppTheme {
         thickness: 1,
         space: 16,
       ),
-      
+
       // Input Decoration - phong cách tự nhiên, bo tròn
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -382,8 +378,8 @@ class OrganicNaturalTheme extends AppTheme {
           vertical: 16.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize,
           color: textSecondaryDarkColor,
         ),
       ),
@@ -438,19 +434,22 @@ class OrganicNaturalTheme extends AppTheme {
   ) {
     return TextTheme(
       displayLarge: _getTextStyle(
-        fontFamily: alternateFontFamily, // Sử dụng font viết tay cho tiêu đề lớn
+        fontFamily:
+            alternateFontFamily, // Sử dụng font viết tay cho tiêu đề lớn
         fontSize: fontSize + 12,
         fontWeight: FontWeight.w600,
         color: primaryTextColor,
       ),
       displayMedium: _getTextStyle(
-        fontFamily: alternateFontFamily, // Sử dụng font viết tay cho tiêu đề lớn
+        fontFamily:
+            alternateFontFamily, // Sử dụng font viết tay cho tiêu đề lớn
         fontSize: fontSize + 10,
         fontWeight: FontWeight.w600,
         color: primaryTextColor,
       ),
       displaySmall: _getTextStyle(
-        fontFamily: alternateFontFamily, // Sử dụng font viết tay cho tiêu đề lớn
+        fontFamily:
+            alternateFontFamily, // Sử dụng font viết tay cho tiêu đề lớn
         fontSize: fontSize + 8,
         fontWeight: FontWeight.w600,
         color: primaryTextColor,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -60,10 +61,7 @@ class CyberpunkTheme extends AppTheme {
   static const Color seekBarInactiveLightColor = Color(0xFFB3B3C2);
 
   @override
-  ThemeData getLightTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get lightThemeData {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
@@ -86,8 +84,8 @@ class CyberpunkTheme extends AppTheme {
         foregroundColor: textPrimaryLightColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: (fontSize + 4).sp,
+          fontFamily: defaultFontFamily,
+          fontSize: (normalFontSize + 4).sp,
           fontWeight: FontWeight.bold,
           color: textPrimaryLightColor,
           hasShadow: true,
@@ -98,8 +96,8 @@ class CyberpunkTheme extends AppTheme {
 
       // Text Theme
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryLightColor,
         textSecondaryLightColor,
         primaryLightColor,
@@ -112,8 +110,8 @@ class CyberpunkTheme extends AppTheme {
           backgroundColor: primaryLightColor,
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
             hasShadow: true,
             shadowColor: primaryLightColor,
@@ -156,10 +154,7 @@ class CyberpunkTheme extends AppTheme {
   }
 
   @override
-  ThemeData getDarkTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get darkThemeData {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
@@ -183,8 +178,8 @@ class CyberpunkTheme extends AppTheme {
         foregroundColor: textPrimaryDarkColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: (fontSize + 4).sp,
+          fontFamily: defaultFontFamily,
+          fontSize: (normalFontSize + 4).sp,
           fontWeight: FontWeight.bold,
           color: textPrimaryDarkColor,
           hasShadow: true,
@@ -195,8 +190,8 @@ class CyberpunkTheme extends AppTheme {
 
       // Text Theme
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryDarkColor,
         textSecondaryDarkColor,
         primaryDarkColor,
@@ -209,8 +204,8 @@ class CyberpunkTheme extends AppTheme {
           backgroundColor: primaryDarkColor,
           foregroundColor: backgroundDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
             color: backgroundDarkColor,
             hasShadow: true,

@@ -13,7 +13,8 @@ class RetroVintageTheme extends AppTheme {
   String get name => 'Retro/Vintage';
 
   @override
-  String get description => 'Phong cách hoài cổ với màu sắc và font chữ cổ điển';
+  String get description =>
+      'Phong cách hoài cổ với màu sắc và font chữ cổ điển';
 
   // Font sizes
   static const double smallFontSize = 12;
@@ -54,10 +55,7 @@ class RetroVintageTheme extends AppTheme {
   static const Color textDisabledDarkColor = Color(0xFF8B7355);
 
   @override
-  ThemeData getLightTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get lightThemeData {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
@@ -81,8 +79,8 @@ class RetroVintageTheme extends AppTheme {
         foregroundColor: textPrimaryLightColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize + 4,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryLightColor,
         ),
@@ -93,8 +91,8 @@ class RetroVintageTheme extends AppTheme {
 
       // Text Theme - font chữ cổ điển
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryLightColor,
         textSecondaryLightColor,
       ),
@@ -105,8 +103,8 @@ class RetroVintageTheme extends AppTheme {
           backgroundColor: primaryLightColor,
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -132,8 +130,8 @@ class RetroVintageTheme extends AppTheme {
             width: 1,
           ),
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -149,8 +147,8 @@ class RetroVintageTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryLightColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -191,7 +189,7 @@ class RetroVintageTheme extends AppTheme {
         thickness: 1,
         space: 16,
       ),
-      
+
       // Input Decoration - phong cách cổ điển
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -222,8 +220,8 @@ class RetroVintageTheme extends AppTheme {
           vertical: 16.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize,
           color: textSecondaryLightColor,
         ),
       ),
@@ -231,10 +229,7 @@ class RetroVintageTheme extends AppTheme {
   }
 
   @override
-  ThemeData getDarkTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get darkThemeData {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
@@ -258,8 +253,8 @@ class RetroVintageTheme extends AppTheme {
         foregroundColor: textPrimaryDarkColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize + 4,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryDarkColor,
         ),
@@ -270,8 +265,8 @@ class RetroVintageTheme extends AppTheme {
 
       // Text Theme - font chữ cổ điển
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryDarkColor,
         textSecondaryDarkColor,
       ),
@@ -282,8 +277,8 @@ class RetroVintageTheme extends AppTheme {
           backgroundColor: primaryDarkColor,
           foregroundColor: Color(0xFF3C3022), // Nâu đậm
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
             color: Color(0xFF3C3022), // Nâu đậm
           ),
@@ -310,8 +305,8 @@ class RetroVintageTheme extends AppTheme {
             width: 1,
           ),
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -327,8 +322,8 @@ class RetroVintageTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -369,7 +364,7 @@ class RetroVintageTheme extends AppTheme {
         thickness: 1,
         space: 16,
       ),
-      
+
       // Input Decoration - phong cách cổ điển
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -400,8 +395,8 @@ class RetroVintageTheme extends AppTheme {
           vertical: 16.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize,
           color: textSecondaryDarkColor,
         ),
       ),

@@ -56,10 +56,7 @@ class GlassmorphismTheme extends AppTheme {
   static const Color textDisabledDarkColor = Color(0xFF718096);
 
   @override
-  ThemeData getLightTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get lightThemeData {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
@@ -83,8 +80,8 @@ class GlassmorphismTheme extends AppTheme {
         foregroundColor: textPrimaryLightColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize + 4,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryLightColor,
         ),
@@ -95,8 +92,8 @@ class GlassmorphismTheme extends AppTheme {
 
       // Text Theme
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryLightColor,
         textSecondaryLightColor,
       ),
@@ -107,8 +104,8 @@ class GlassmorphismTheme extends AppTheme {
           backgroundColor: primaryLightColor.withOpacity(0.7),
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -135,8 +132,8 @@ class GlassmorphismTheme extends AppTheme {
             width: 1.5,
           ),
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -152,8 +149,8 @@ class GlassmorphismTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryLightColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -194,7 +191,7 @@ class GlassmorphismTheme extends AppTheme {
         thickness: 1,
         space: 16,
       ),
-      
+
       // Input Decoration
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -225,8 +222,8 @@ class GlassmorphismTheme extends AppTheme {
           vertical: 16.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize,
           color: textSecondaryLightColor,
         ),
       ),
@@ -234,10 +231,7 @@ class GlassmorphismTheme extends AppTheme {
   }
 
   @override
-  ThemeData getDarkTheme({
-    required double fontSize,
-    required String fontFamily,
-  }) {
+  ThemeData get darkThemeData {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
@@ -261,8 +255,8 @@ class GlassmorphismTheme extends AppTheme {
         foregroundColor: textPrimaryDarkColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize + 4,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryDarkColor,
         ),
@@ -273,8 +267,8 @@ class GlassmorphismTheme extends AppTheme {
 
       // Text Theme
       textTheme: _getTextTheme(
-        fontFamily,
-        fontSize,
+        defaultFontFamily,
+        normalFontSize,
         textPrimaryDarkColor,
         textSecondaryDarkColor,
       ),
@@ -285,8 +279,8 @@ class GlassmorphismTheme extends AppTheme {
           backgroundColor: primaryDarkColor.withOpacity(0.7),
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -313,8 +307,8 @@ class GlassmorphismTheme extends AppTheme {
             width: 1.5,
           ),
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -330,8 +324,8 @@ class GlassmorphismTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: fontFamily,
-            fontSize: fontSize,
+            fontFamily: defaultFontFamily,
+            fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -372,7 +366,7 @@ class GlassmorphismTheme extends AppTheme {
         thickness: 1,
         space: 16,
       ),
-      
+
       // Input Decoration
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -403,8 +397,8 @@ class GlassmorphismTheme extends AppTheme {
           vertical: 16.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: fontFamily,
-          fontSize: fontSize,
+          fontFamily: defaultFontFamily,
+          fontSize: normalFontSize,
           color: textSecondaryDarkColor,
         ),
       ),
