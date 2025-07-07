@@ -29,6 +29,16 @@ class AppLocalizations {
       : 'This is sample text to preview theme and font.';
   String get sampleButton =>
       locale.languageCode == 'vi' ? 'Nút mẫu' : 'Sample Button';
+  String get textComponents =>
+      locale.languageCode == 'vi' ? 'Văn bản' : 'Text';
+  String get buttonComponents =>
+      locale.languageCode == 'vi' ? 'Nút bấm' : 'Button';
+  String get inputComponents =>
+      locale.languageCode == 'vi' ? 'Nhập liệu' : 'Input';
+  String get layoutComponents =>
+      locale.languageCode == 'vi' ? 'Bố cục' : 'Layout';
+  String get listComponents =>
+      locale.languageCode == 'vi' ? 'Danh sách' : 'List';
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
