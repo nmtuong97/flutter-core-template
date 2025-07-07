@@ -75,24 +75,7 @@ android {
         }
     }
 
-    flavorDimensions "default"
-    productFlavors { 
-        production {
-            dimension "default"
-            applicationIdSuffix ""
-            manifestPlaceholders = [appName: "Flutter Theme Showcase"]
-        }
-        staging {
-            dimension "default"
-            applicationIdSuffix ".stg"
-            manifestPlaceholders = [appName: "[STG] Flutter Theme Showcase"]
-        }
-        development {
-            dimension "default"
-            applicationIdSuffix ".dev"
-            manifestPlaceholders = [appName: "[DEV] Flutter Theme Showcase"]
-        }
-    }
+
 
     buildTypes {
         release {

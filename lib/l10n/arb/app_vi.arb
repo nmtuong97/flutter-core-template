@@ -1,11 +1,4 @@
 {
-  "@@locale": "vi",
-  "counterAppBarTitle": "Bộ đếm",
-  "@counterAppBarTitle": {
-    "description": "Văn bản hiển thị trên AppBar của trang Bộ đếm"
-  },
-  "helloWorld": "Xin chào thế giới!",
-  "@helloWorld": {
-    "description": "Thông điệp chào hỏi thông thường"
-  }
+    "@@locale": "vi",
+    "appTitle": "Mẫu ứng dụng Flutter"
 }

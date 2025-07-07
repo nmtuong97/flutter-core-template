@@ -9,5 +9,5 @@ class AppLocalizationsVi extends AppLocalizations {
   AppLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
-  String get counterAppBarTitle => 'Bộ đếm';
+  String get appTitle => 'Mẫu ứng dụng Flutter';
 }

@@ -462,17 +462,7 @@ class AppStrings {
       'Unexpected error generating thumbnail';
   static const String files = 'files';
 
-  // BLoC Observer Messages
-  static const String onCreatePrefix = 'onCreate --';
-  static const String onChangePrefix = 'onChange --';
-  static const String onErrorPrefix = 'onError --';
-  static const String onClosePrefix = 'onClose --';
 
-  // BLoC Observer Debug Messages
-  static const String debugBlocOnCreate = 'onCreate';
-  static const String debugBlocOnChange = 'onChange';
-  static const String debugBlocOnError = 'onError';
-  static const String debugBlocOnClose = 'onClose';
 
   // Debug Messages - Cache
   static const String debugCacheLRUEviction = 'LRU Eviction: Removed';

@@ -9,9 +9,9 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleName</key>
-	<string>$(FLAVOR_APP_NAME)</string>
+	<string>Flutter Theme Showcase</string>
 	<key>CFBundleDisplayName</key>
-	<string>$(FLAVOR_APP_NAME)</string>
+	<string>Flutter Theme Showcase</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
