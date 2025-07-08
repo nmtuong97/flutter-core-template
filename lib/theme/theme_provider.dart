@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
-import 'package:flutter_theme_showcase/theme/base/theme_factory.dart';
-import 'package:flutter_theme_showcase/theme/theme_preferences.dart';
-import 'package:flutter_theme_showcase/theme/themes/default_theme.dart';
+import 'base/app_theme.dart';
+import 'base/theme_factory.dart';
+import 'theme_preferences.dart';
+import 'themes/default_theme.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeProvider() {

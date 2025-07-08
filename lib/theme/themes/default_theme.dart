@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
-import 'package:flutter_theme_showcase/theme/extensions/app_theme_extension.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../base/app_theme.dart';
+import '../extensions/app_theme_extension.dart';
 
 /// Theme mặc định của ứng dụng
 class DefaultTheme extends AppTheme {

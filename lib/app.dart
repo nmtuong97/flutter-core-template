@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_theme_showcase/l10n/app_localizations.dart';
-import 'package:flutter_theme_showcase/pages/theme_showcase_page.dart';
-import 'package:flutter_theme_showcase/providers/language_provider.dart';
-import 'package:flutter_theme_showcase/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
+
+import 'l10n/app_localizations.dart';
+import 'pages/theme_showcase_page.dart';
+import 'providers/language_provider.dart';
+import 'providers/theme_provider.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

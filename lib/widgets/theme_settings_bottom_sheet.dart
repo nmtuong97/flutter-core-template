@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_theme_showcase/l10n/app_localizations.dart';
-import 'package:flutter_theme_showcase/providers/language_provider.dart';
-import 'package:flutter_theme_showcase/providers/theme_provider.dart';
-import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
-import 'package:flutter_theme_showcase/theme/themes/app_themes.dart';
 import 'package:provider/provider.dart';
+import '../l10n/app_localizations.dart';
+import '../providers/language_provider.dart';
+import '../providers/theme_provider.dart';
+import '../theme/base/app_theme.dart';
+import '../theme/themes/app_themes.dart';
 
 class ThemeSettingsBottomSheet extends StatelessWidget {
   const ThemeSettingsBottomSheet({super.key});

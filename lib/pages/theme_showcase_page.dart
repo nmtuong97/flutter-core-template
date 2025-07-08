@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_theme_showcase/l10n/app_localizations.dart';
-import 'package:flutter_theme_showcase/pages/component_showcase/button_component_page.dart';
-import 'package:flutter_theme_showcase/pages/component_showcase/input_component_page.dart';
-import 'package:flutter_theme_showcase/pages/component_showcase/layout_component_page.dart';
-import 'package:flutter_theme_showcase/pages/component_showcase/list_component_page.dart';
-import 'package:flutter_theme_showcase/pages/component_showcase/text_component_page.dart';
-import 'package:flutter_theme_showcase/widgets/theme_settings_bottom_sheet.dart';
+
+import '../l10n/app_localizations.dart';
+import '../widgets/theme_settings_bottom_sheet.dart';
+import 'component_showcase/button_component_page.dart';
+import 'component_showcase/input_component_page.dart';
+import 'component_showcase/layout_component_page.dart';
+import 'component_showcase/list_component_page.dart';
+import 'component_showcase/text_component_page.dart';
 
 class ThemeShowcasePage extends StatelessWidget {
   const ThemeShowcasePage({super.key});

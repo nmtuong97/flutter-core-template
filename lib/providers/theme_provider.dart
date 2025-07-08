@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
-import 'package:flutter_theme_showcase/theme/themes/app_themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../theme/base/app_theme.dart';
+import '../theme/themes/app_themes.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.system;

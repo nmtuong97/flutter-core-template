@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_theme_showcase/l10n/localization_provider.dart';
 import 'package:provider/provider.dart';
+import '../l10n/app_localizations.dart';
+import '../providers/language_provider.dart';
 
 class LanguageSelector extends StatelessWidget {
   const LanguageSelector({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<LocalizationProvider>(
+    return Consumer<LanguageProvider>(
       builder: (context, localizationProvider, child) {
         return Row(
           children: [
@@ -17,8 +18,8 @@ class LanguageSelector extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             DropdownButton<Locale>(
-              value: localizationProvider.currentLocale,
-              items: LocalizationProvider.supportedLocales.map((locale) {
+              value: localizationProvider.locale,
+              items: AppLocalizations.supportedLocales.map((locale) {
                 return DropdownMenuItem<Locale>(
                   value: locale,
                   child: Row(
@@ -33,7 +34,7 @@ class LanguageSelector extends StatelessWidget {
               }).toList(),
               onChanged: (Locale? newLocale) {
                 if (newLocale != null) {
-                  localizationProvider.setLocale(newLocale.languageCode);
+                  localizationProvider.setLocale(newLocale);
                 }
               },
             ),

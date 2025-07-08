@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_theme_showcase/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
+import '../theme/theme_provider.dart';
 
 class ThemeSelector extends StatelessWidget {
   const ThemeSelector({super.key});

@@ -7,4 +7,4 @@ linter:
     always_use_package_imports: false
     public_member_api_docs: false
     require_trailing_commas: true
-    
+  

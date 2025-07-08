@@ -146,8 +146,8 @@ class CyberpunkTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
           side: BorderSide(
-             color: primaryDarkColor.withAlpha((255 * 0.3).round()),
-           ),
+            color: primaryDarkColor.withAlpha((255 * 0.3).round()),
+          ),
         ),
         margin: const EdgeInsets.all(4),
       ),
@@ -223,8 +223,8 @@ class CyberpunkTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
           side: BorderSide(
-             color: primaryDarkColor.withAlpha((255 * 0.3).round()),
-           ),
+            color: primaryDarkColor.withAlpha((255 * 0.3).round()),
+          ),
         ),
         titleTextStyle: _getTextStyle(
           fontFamily: fontFamily,
@@ -387,8 +387,8 @@ class CyberpunkTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
           side: BorderSide(
-             color: primaryLightColor.withAlpha((255 * 0.3).round()),
-           ),
+            color: primaryLightColor.withAlpha((255 * 0.3).round()),
+          ),
         ),
         margin: const EdgeInsets.all(4),
       ),
@@ -464,8 +464,8 @@ class CyberpunkTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
           side: BorderSide(
-             color: primaryLightColor.withAlpha((255 * 0.3).round()),
-           ),
+            color: primaryLightColor.withAlpha((255 * 0.3).round()),
+          ),
         ),
         titleTextStyle: _getTextStyle(
           fontFamily: fontFamily,
@@ -561,9 +561,9 @@ class CyberpunkTheme {
         shadows: [
           Shadow(color: shadowColor, blurRadius: 8),
           Shadow(
-             color: shadowColor.withAlpha((255 * 0.5).round()),
-             blurRadius: 16,
-           ),
+            color: shadowColor.withAlpha((255 * 0.5).round()),
+            blurRadius: 16,
+          ),
         ],
       );
     }
