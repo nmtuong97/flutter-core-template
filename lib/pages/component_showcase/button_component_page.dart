@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../l10n/app_localizations.dart';
+import 'package:flutter_theme_showcase/l10n/app_localizations.dart';
 
 class ButtonComponentPage extends StatelessWidget {
   const ButtonComponentPage({super.key});
@@ -9,7 +9,7 @@ class ButtonComponentPage extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

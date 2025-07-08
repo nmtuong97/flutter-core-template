@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
+import 'package:flutter_theme_showcase/theme/extensions/app_theme_extension.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../base/app_theme.dart';
-import '../extensions/app_theme_extension.dart';
 
 /// Theme mặc định của ứng dụng
 class DefaultTheme extends AppTheme {
@@ -66,7 +64,7 @@ class DefaultTheme extends AppTheme {
       colorScheme: const ColorScheme.light(
         primary: primaryLightColor,
         secondary: secondaryLightColor,
-        background: backgroundLightColor,
+        surface: backgroundLightColor,
         error: errorLightColor,
         onSecondary: textPrimaryLightColor,
         onSurface: textPrimaryLightColor,
@@ -91,7 +89,7 @@ class DefaultTheme extends AppTheme {
           size: 24.r,
         ),
         centerTitle: false,
-        shadowColor: Colors.black.withOpacity(0.1),
+        shadowColor: Colors.black.withAlpha((255 * 0.1).round()),
       ),
       // Text Theme
       textTheme: _getTextTheme(
@@ -114,7 +112,7 @@ class DefaultTheme extends AppTheme {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           elevation: 2,
-          shadowColor: primaryLightColor.withOpacity(0.2),
+          shadowColor: primaryLightColor.withAlpha((255 * 0.2).round()),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -147,7 +145,7 @@ class DefaultTheme extends AppTheme {
       cardTheme: CardTheme(
         color: surfaceLightColor,
         elevation: 1,
-        shadowColor: Colors.black.withOpacity(0.1),
+        shadowColor: Colors.black.withAlpha((255 * 0.1).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         margin: EdgeInsets.zero,
       ),
@@ -178,7 +176,6 @@ class DefaultTheme extends AppTheme {
       colorScheme: const ColorScheme.dark(
         primary: primaryDarkColor,
         secondary: secondaryDarkColor,
-        background: backgroundDarkColor,
         surface: surfaceDarkColor,
         error: errorDarkColor,
         onSecondary: textPrimaryDarkColor,
@@ -205,7 +202,7 @@ class DefaultTheme extends AppTheme {
           size: 24.r,
         ),
         centerTitle: false,
-        shadowColor: Colors.black.withOpacity(0.2),
+        shadowColor: Colors.black.withAlpha((255 * 0.2).round()),
       ),
       // Text Theme
       textTheme: _getTextTheme(
@@ -229,7 +226,7 @@ class DefaultTheme extends AppTheme {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           elevation: 2,
-          shadowColor: primaryDarkColor.withOpacity(0.3),
+          shadowColor: primaryDarkColor.withAlpha((255 * 0.3).round()),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -262,7 +259,7 @@ class DefaultTheme extends AppTheme {
       cardTheme: CardTheme(
         color: surfaceDarkColor,
         elevation: 1,
-        shadowColor: Colors.black.withOpacity(0.3),
+        shadowColor: Colors.black.withAlpha((255 * 0.3).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         margin: EdgeInsets.zero,
       ),

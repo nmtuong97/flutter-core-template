@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_theme_showcase/l10n/app_localizations.dart';
+import 'package:flutter_theme_showcase/pages/theme_showcase_page.dart';
+import 'package:flutter_theme_showcase/providers/language_provider.dart';
+import 'package:flutter_theme_showcase/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
-import 'l10n/app_localizations.dart';
-import 'providers/theme_provider.dart';
-import 'providers/language_provider.dart';
-import 'pages/theme_showcase_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LanguageProvider()),
       ],
       child: ScreenUtilInit(
-        designSize: const Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../base/app_theme.dart';
 
 /// Theme Cyberpunk với màu sắc neon và hiệu ứng đặc biệt
 class CyberpunkTheme extends AppTheme {
@@ -70,7 +68,7 @@ class CyberpunkTheme extends AppTheme {
         primary: primaryLightColor,
         secondary: secondaryLightColor,
         tertiary: accentLightColor,
-        background: backgroundLightColor,
+        surface: backgroundLightColor,
         error: Colors.red.shade600,
         onPrimary: backgroundLightColor,
         onSecondary: backgroundLightColor,
@@ -122,7 +120,9 @@ class CyberpunkTheme extends AppTheme {
             side: const BorderSide(color: primaryLightColor, width: 2),
           ),
           elevation: 4,
-          shadowColor: primaryLightColor.withOpacity(0.5),
+          shadowColor: primaryLightColor.withAlpha(
+            (255 * 0.5).round(),
+          ),
         ),
       ),
 
@@ -130,10 +130,12 @@ class CyberpunkTheme extends AppTheme {
       cardTheme: CardTheme(
         color: surfaceLightColor,
         elevation: 4,
-        shadowColor: primaryLightColor.withOpacity(0.2),
+        shadowColor: primaryLightColor.withAlpha((255 * 0.2).round()),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.r),
-          side: BorderSide(color: primaryLightColor.withOpacity(0.3), width: 1),
+          side: BorderSide(
+            color: primaryLightColor.withAlpha((255 * 0.3).round()),
+          ),
         ),
       ),
 
@@ -146,7 +148,7 @@ class CyberpunkTheme extends AppTheme {
 
       // Divider Theme
       dividerTheme: DividerThemeData(
-        color: inactiveIconLightColor.withOpacity(0.3),
+        color: inactiveIconLightColor.withAlpha((255 * 0.3).round()),
         thickness: 1,
         space: 1,
       ),
@@ -163,7 +165,6 @@ class CyberpunkTheme extends AppTheme {
         primary: primaryDarkColor,
         secondary: secondaryDarkColor,
         tertiary: accentDarkColor,
-        background: backgroundDarkColor,
         surface: surfaceDarkColor,
         error: Colors.red.shade400,
         onPrimary: backgroundDarkColor,
@@ -217,7 +218,9 @@ class CyberpunkTheme extends AppTheme {
             side: const BorderSide(color: primaryDarkColor, width: 2),
           ),
           elevation: 4,
-          shadowColor: primaryDarkColor.withOpacity(0.5),
+          shadowColor: primaryDarkColor.withAlpha(
+            (255 * 0.5).round(),
+          ),
         ),
       ),
 
@@ -225,10 +228,12 @@ class CyberpunkTheme extends AppTheme {
       cardTheme: CardTheme(
         color: surfaceDarkColor,
         elevation: 4,
-        shadowColor: primaryDarkColor.withOpacity(0.3),
+        shadowColor: primaryDarkColor.withAlpha((255 * 0.3).round()),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.r),
-          side: BorderSide(color: primaryDarkColor.withOpacity(0.3), width: 1),
+          side: BorderSide(
+            color: primaryDarkColor.withAlpha((255 * 0.3).round()),
+          ),
         ),
       ),
 
@@ -241,7 +246,7 @@ class CyberpunkTheme extends AppTheme {
 
       // Divider Theme
       dividerTheme: DividerThemeData(
-        color: inactiveIconDarkColor.withOpacity(0.3),
+        color: inactiveIconDarkColor.withAlpha((255 * 0.3).round()),
         thickness: 1,
         space: 1,
       ),
@@ -287,9 +292,8 @@ class CyberpunkTheme extends AppTheme {
       textStyle = textStyle.copyWith(
         shadows: [
           Shadow(
-            color: shadowColor.withOpacity(0.7),
+            color: shadowColor.withAlpha((255 * 0.7).round()),
             blurRadius: 4,
-            offset: Offset.zero,
           ),
         ],
       );

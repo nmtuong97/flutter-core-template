@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_theme_showcase/app.dart';
+import 'package:flutter_theme_showcase/providers/language_provider.dart';
+import 'package:flutter_theme_showcase/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
-import 'app.dart';
-import 'providers/theme_provider.dart';
-import 'providers/language_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../l10n/app_localizations.dart';
-import '../../providers/theme_provider.dart';
+import 'package:flutter_theme_showcase/l10n/app_localizations.dart';
 
 class TextComponentPage extends StatelessWidget {
   const TextComponentPage({super.key});
@@ -9,10 +7,9 @@ class TextComponentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final themeProvider = Provider.of<ThemeProvider>(context);
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../base/app_theme.dart';
 
 /// Theme Neumorphism với hiệu ứng nổi 3D mềm mại
 class NeumorphismTheme extends AppTheme {
@@ -65,10 +64,8 @@ class NeumorphismTheme extends AppTheme {
         primary: primaryLightColor,
         secondary: secondaryLightColor,
         tertiary: accentLightColor,
-        background: backgroundLightColor,
         surface: surfaceLightColor,
         error: Colors.red,
-        onPrimary: Colors.white,
         onSecondary: Colors.white,
         onSurface: textPrimaryLightColor,
       ),
@@ -119,17 +116,17 @@ class NeumorphismTheme extends AppTheme {
           shadowColor: Colors.transparent,
         ).copyWith(
           // Hiệu ứng neumorphic với BoxDecoration
-          backgroundColor: MaterialStateProperty.resolveWith<Color>(
-            (Set<MaterialState> states) {
-              if (states.contains(MaterialState.pressed)) {
+          backgroundColor: WidgetStateProperty.resolveWith<Color>(
+            (Set<WidgetState> states) {
+              if (states.contains(WidgetState.pressed)) {
                 return surfaceLightColor;
               }
               return surfaceLightColor;
             },
           ),
-          overlayColor: MaterialStateProperty.all(Colors.transparent),
-          shadowColor: MaterialStateProperty.all(Colors.transparent),
-          surfaceTintColor: MaterialStateProperty.all(Colors.transparent),
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          shadowColor: WidgetStateProperty.all(Colors.transparent),
+          surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -149,10 +146,10 @@ class NeumorphismTheme extends AppTheme {
             borderRadius: BorderRadius.circular(12.r),
           ),
         ).copyWith(
-          backgroundColor: MaterialStateProperty.all(surfaceLightColor),
-          overlayColor: MaterialStateProperty.all(Colors.transparent),
-          shadowColor: MaterialStateProperty.all(Colors.transparent),
-          surfaceTintColor: MaterialStateProperty.all(Colors.transparent),
+          backgroundColor: WidgetStateProperty.all(surfaceLightColor),
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          shadowColor: WidgetStateProperty.all(Colors.transparent),
+          surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
         ),
       ),
       textButtonTheme: TextButtonThemeData(
@@ -237,7 +234,6 @@ class NeumorphismTheme extends AppTheme {
         primary: primaryDarkColor,
         secondary: secondaryDarkColor,
         tertiary: accentDarkColor,
-        background: backgroundDarkColor,
         surface: surfaceDarkColor,
         error: Colors.red,
         onPrimary: Colors.white,
@@ -291,17 +287,17 @@ class NeumorphismTheme extends AppTheme {
           shadowColor: Colors.transparent,
         ).copyWith(
           // Hiệu ứng neumorphic với BoxDecoration
-          backgroundColor: MaterialStateProperty.resolveWith<Color>(
-            (Set<MaterialState> states) {
-              if (states.contains(MaterialState.pressed)) {
+          backgroundColor: WidgetStateProperty.resolveWith<Color>(
+            (Set<WidgetState> states) {
+              if (states.contains(WidgetState.pressed)) {
                 return surfaceDarkColor;
               }
               return surfaceDarkColor;
             },
           ),
-          overlayColor: MaterialStateProperty.all(Colors.transparent),
-          shadowColor: MaterialStateProperty.all(Colors.transparent),
-          surfaceTintColor: MaterialStateProperty.all(Colors.transparent),
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          shadowColor: WidgetStateProperty.all(Colors.transparent),
+          surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -321,10 +317,10 @@ class NeumorphismTheme extends AppTheme {
             borderRadius: BorderRadius.circular(12.r),
           ),
         ).copyWith(
-          backgroundColor: MaterialStateProperty.all(surfaceDarkColor),
-          overlayColor: MaterialStateProperty.all(Colors.transparent),
-          shadowColor: MaterialStateProperty.all(Colors.transparent),
-          surfaceTintColor: MaterialStateProperty.all(Colors.transparent),
+          backgroundColor: WidgetStateProperty.all(surfaceDarkColor),
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          shadowColor: WidgetStateProperty.all(Colors.transparent),
+          surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
         ),
       ),
       textButtonTheme: TextButtonThemeData(

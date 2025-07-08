@@ -6,7 +6,7 @@ class LayoutComponentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -14,10 +14,10 @@ class LayoutComponentPage extends StatelessWidget {
           const SizedBox(height: 8),
           Container(
             color: Colors.blue.shade100,
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
+            padding: const EdgeInsets.all(8),
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
+              children: [
                 Icon(Icons.star),
                 Text('Item 1'),
                 Icon(Icons.star),
@@ -29,10 +29,10 @@ class LayoutComponentPage extends StatelessWidget {
           const SizedBox(height: 8),
           Container(
             color: Colors.green.shade100,
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
+            padding: const EdgeInsets.all(8),
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text('Item A'),
                 SizedBox(height: 4),
                 Text('Item B'),
@@ -70,7 +70,7 @@ class LayoutComponentPage extends StatelessWidget {
           const SizedBox(height: 8),
           Container(
             color: Colors.purple.shade100,
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: Row(
               children: [
                 Container(
@@ -98,10 +98,10 @@ class LayoutComponentPage extends StatelessWidget {
           const SizedBox(height: 16),
           const Text('Padding Example:'),
           const SizedBox(height: 8),
-          Container(
+          ColoredBox(
             color: Colors.orange.shade100,
             child: const Padding(
-              padding: EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(20),
               child: Text('Padded Content'),
             ),
           ),

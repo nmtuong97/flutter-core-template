@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../base/app_theme.dart';
 
 /// Theme Retro/Vintage với phong cách hoài cổ
 class RetroVintageTheme extends AppTheme {
@@ -64,10 +63,8 @@ class RetroVintageTheme extends AppTheme {
         primary: primaryLightColor,
         secondary: secondaryLightColor,
         tertiary: accentLightColor,
-        background: backgroundLightColor,
         surface: surfaceLightColor,
         error: Color(0xFFCD5C5C), // Đỏ gạch
-        onPrimary: Colors.white,
         onSecondary: Colors.white,
         onSurface: textPrimaryLightColor,
       ),
@@ -115,11 +112,10 @@ class RetroVintageTheme extends AppTheme {
             borderRadius: BorderRadius.circular(8.r),
             side: const BorderSide(
               color: borderLightColor,
-              width: 1,
             ),
           ),
           elevation: 2,
-          shadowColor: Colors.black.withOpacity(0.2),
+          shadowColor: Colors.black.withAlpha((255 * 0.2).round()),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -127,7 +123,6 @@ class RetroVintageTheme extends AppTheme {
           foregroundColor: primaryLightColor,
           side: const BorderSide(
             color: primaryLightColor,
-            width: 1,
           ),
           textStyle: _getTextStyle(
             fontFamily: defaultFontFamily,
@@ -169,11 +164,10 @@ class RetroVintageTheme extends AppTheme {
           borderRadius: BorderRadius.circular(8.r),
           side: const BorderSide(
             color: borderLightColor,
-            width: 1,
           ),
         ),
         margin: EdgeInsets.all(8.r),
-        shadowColor: Colors.black.withOpacity(0.1),
+        shadowColor: Colors.black.withAlpha((255 * 0.1).round()),
       ),
 
       // Icon Theme
@@ -198,21 +192,18 @@ class RetroVintageTheme extends AppTheme {
           borderRadius: BorderRadius.circular(8.r),
           borderSide: const BorderSide(
             color: borderLightColor,
-            width: 1,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
           borderSide: const BorderSide(
             color: borderLightColor,
-            width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
           borderSide: const BorderSide(
             color: primaryLightColor,
-            width: 1,
           ),
         ),
         contentPadding: EdgeInsets.symmetric(
@@ -238,7 +229,6 @@ class RetroVintageTheme extends AppTheme {
         primary: primaryDarkColor,
         secondary: secondaryDarkColor,
         tertiary: accentDarkColor,
-        background: backgroundDarkColor,
         surface: surfaceDarkColor,
         error: Color(0xFFCD5C5C), // Đỏ gạch
         onPrimary: Color(0xFF3C3022), // Nâu đậm
@@ -275,12 +265,12 @@ class RetroVintageTheme extends AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryDarkColor,
-          foregroundColor: Color(0xFF3C3022), // Nâu đậm
+          foregroundColor: const Color(0xFF3C3022), // Nâu đậm
           textStyle: _getTextStyle(
             fontFamily: defaultFontFamily,
             fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF3C3022), // Nâu đậm
+            color: const Color(0xFF3C3022), // Nâu đậm
           ),
           padding: EdgeInsets.symmetric(
             horizontal: 24.w,
@@ -290,11 +280,10 @@ class RetroVintageTheme extends AppTheme {
             borderRadius: BorderRadius.circular(8.r),
             side: const BorderSide(
               color: borderDarkColor,
-              width: 1,
             ),
           ),
           elevation: 2,
-          shadowColor: Colors.black.withOpacity(0.3),
+          shadowColor: Colors.black.withAlpha((255 * 0.3).round()),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -302,7 +291,6 @@ class RetroVintageTheme extends AppTheme {
           foregroundColor: primaryDarkColor,
           side: const BorderSide(
             color: primaryDarkColor,
-            width: 1,
           ),
           textStyle: _getTextStyle(
             fontFamily: defaultFontFamily,
@@ -344,11 +332,10 @@ class RetroVintageTheme extends AppTheme {
           borderRadius: BorderRadius.circular(8.r),
           side: const BorderSide(
             color: borderDarkColor,
-            width: 1,
           ),
         ),
         margin: EdgeInsets.all(8.r),
-        shadowColor: Colors.black.withOpacity(0.2),
+        shadowColor: Colors.black.withAlpha((255 * 0.2).round()),
       ),
 
       // Icon Theme
@@ -373,21 +360,18 @@ class RetroVintageTheme extends AppTheme {
           borderRadius: BorderRadius.circular(8.r),
           borderSide: const BorderSide(
             color: borderDarkColor,
-            width: 1,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
           borderSide: const BorderSide(
             color: borderDarkColor,
-            width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
           borderSide: const BorderSide(
             color: primaryDarkColor,
-            width: 1,
           ),
         ),
         contentPadding: EdgeInsets.symmetric(

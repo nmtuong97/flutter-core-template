@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../base/app_theme.dart';
 
 /// Theme Night Sky với màu sắc tối và xanh dương
 class NightSkyTheme extends AppTheme {
@@ -63,9 +62,8 @@ class NightSkyTheme extends AppTheme {
         primary: primaryLightColor,
         secondary: secondaryLightColor,
         tertiary: accentLightColor,
-        background: backgroundLightColor,
+        surface: backgroundLightColor,
         error: Colors.red.shade600,
-        onPrimary: Colors.white,
         onSecondary: Colors.white,
         onSurface: textPrimaryLightColor,
       ),
@@ -115,7 +113,7 @@ class NightSkyTheme extends AppTheme {
       cardTheme: CardTheme(
         color: surfaceLightColor,
         elevation: 2,
-        shadowColor: Colors.black.withOpacity(0.1),
+        shadowColor: Colors.black.withAlpha((255 * 0.1).round()),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.r),
         ),
@@ -130,7 +128,7 @@ class NightSkyTheme extends AppTheme {
 
       // Divider Theme
       dividerTheme: DividerThemeData(
-        color: inactiveIconLightColor.withOpacity(0.3),
+        color: inactiveIconLightColor.withAlpha((255 * 0.3).round()),
         thickness: 1,
         space: 1,
       ),
@@ -147,7 +145,6 @@ class NightSkyTheme extends AppTheme {
         primary: primaryDarkColor,
         secondary: secondaryDarkColor,
         tertiary: accentDarkColor,
-        background: backgroundDarkColor,
         surface: surfaceDarkColor,
         error: Colors.red.shade400,
         onPrimary: Colors.white,
@@ -193,7 +190,7 @@ class NightSkyTheme extends AppTheme {
             borderRadius: BorderRadius.circular(8.r),
           ),
           elevation: 4,
-          shadowColor: primaryDarkColor.withOpacity(0.5),
+          shadowColor: primaryDarkColor.withAlpha((255 * 0.5).round()),
         ),
       ),
 
@@ -201,7 +198,7 @@ class NightSkyTheme extends AppTheme {
       cardTheme: CardTheme(
         color: surfaceDarkColor,
         elevation: 4,
-        shadowColor: Colors.black.withOpacity(0.3),
+        shadowColor: Colors.black.withAlpha((255 * 0.3).round()),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.r),
         ),
@@ -216,7 +213,7 @@ class NightSkyTheme extends AppTheme {
 
       // Divider Theme
       dividerTheme: DividerThemeData(
-        color: inactiveIconDarkColor.withOpacity(0.3),
+        color: inactiveIconDarkColor.withAlpha((255 * 0.3).round()),
         thickness: 1,
         space: 1,
       ),

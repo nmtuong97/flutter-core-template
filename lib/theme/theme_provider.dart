@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'base/app_theme.dart';
-import 'base/theme_factory.dart';
-import 'theme_preferences.dart';
-import 'themes/default_theme.dart';
+import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
+import 'package:flutter_theme_showcase/theme/base/theme_factory.dart';
+import 'package:flutter_theme_showcase/theme/theme_preferences.dart';
+import 'package:flutter_theme_showcase/theme/themes/default_theme.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeProvider() {
@@ -26,14 +26,18 @@ class ThemeProvider extends ChangeNotifier {
   List<AppTheme> get availableThemes => ThemeFactory.availableThemes;
 
   // Get current theme data
-  ThemeData get lightTheme => _currentTheme.getLightTheme(
-        fontSize: _fontSize,
-        fontFamily: _fontFamily,
+  ThemeData get lightTheme => _currentTheme.lightThemeData.copyWith(
+        textTheme: _currentTheme.lightThemeData.textTheme.apply(
+          fontSizeFactor: _fontSize / DefaultTheme.normalFontSize,
+          fontFamily: _fontFamily,
+        ),
       );
 
-  ThemeData get darkTheme => _currentTheme.getDarkTheme(
-        fontSize: _fontSize,
-        fontFamily: _fontFamily,
+  ThemeData get darkTheme => _currentTheme.darkThemeData.copyWith(
+        textTheme: _currentTheme.darkThemeData.textTheme.apply(
+          fontSizeFactor: _fontSize / DefaultTheme.normalFontSize,
+          fontFamily: _fontFamily,
+        ),
       );
 
   // Load saved preferences

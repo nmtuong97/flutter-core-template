@@ -404,7 +404,9 @@ class AppStrings {
   static const String addedDebugVideosCount = 'Added debug videos';
   static const String videoCount = 'videos';
   static const String permissionRequestMessage =
-      'Playdo cần quyền "Quản lý tất cả tệp" để phát video từ thiết bị của bạn. Vui lòng bật quyền này trong cài đặt.';
+      'Playdo cần quyền "Quản lý tất cả tệp" để phát video từ '
+      'thiết bị của bạn. '
+      'Vui lòng bật quyền này trong cài đặt.';
   static const String permissionInstructionMessage =
       'Sau khi cấp quyền, hãy quay lại ứng dụng và nhấn "Kiểm tra quyền"';
   static const String pleaseGrantManageAllFilesPermission =
@@ -461,8 +463,6 @@ class AppStrings {
   static const String unexpectedErrorGeneratingThumbnail =
       'Unexpected error generating thumbnail';
   static const String files = 'files';
-
-
 
   // Debug Messages - Cache
   static const String debugCacheLRUEviction = 'LRU Eviction: Removed';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_theme_showcase/theme/theme_provider.dart';
-import 'package:flutter_theme_showcase/theme/app_themes.dart';
 import 'package:provider/provider.dart';
 
 class ThemeSelector extends StatelessWidget {
@@ -22,7 +21,9 @@ class ThemeSelector extends StatelessWidget {
   }
 
   Widget _buildThemeModeSelector(
-      BuildContext context, ThemeProvider themeProvider) {
+    BuildContext context,
+    ThemeProvider themeProvider,
+  ) {
     return Row(
       children: [
         Text(
@@ -58,7 +59,9 @@ class ThemeSelector extends StatelessWidget {
   }
 
   Widget _buildThemeStyleSelector(
-      BuildContext context, ThemeProvider themeProvider) {
+    BuildContext context,
+    ThemeProvider themeProvider,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

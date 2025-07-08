@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../base/app_theme.dart';
 
 /// Theme Organic/Natural với phong cách tự nhiên
 class OrganicNaturalTheme extends AppTheme {
@@ -65,10 +64,7 @@ class OrganicNaturalTheme extends AppTheme {
         primary: primaryLightColor,
         secondary: secondaryLightColor,
         tertiary: accentLightColor,
-        background: backgroundLightColor,
-        surface: surfaceLightColor,
         error: Colors.redAccent,
-        onPrimary: Colors.white,
         onSecondary: Colors.white,
         onSurface: textPrimaryLightColor,
       ),
@@ -165,7 +161,7 @@ class OrganicNaturalTheme extends AppTheme {
           borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
         ),
         margin: EdgeInsets.all(8.r),
-        shadowColor: Colors.black.withOpacity(0.05),
+        shadowColor: Colors.black.withAlpha((255 * 0.05).round()),
       ),
 
       // Icon Theme
@@ -190,14 +186,12 @@ class OrganicNaturalTheme extends AppTheme {
           borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
           borderSide: const BorderSide(
             color: borderLightColor,
-            width: 1,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
           borderSide: const BorderSide(
             color: borderLightColor,
-            width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
@@ -230,7 +224,6 @@ class OrganicNaturalTheme extends AppTheme {
         primary: primaryDarkColor,
         secondary: secondaryDarkColor,
         tertiary: accentDarkColor,
-        background: backgroundDarkColor,
         surface: surfaceDarkColor,
         error: Colors.redAccent,
         onPrimary: Color(0xFF1E2A20), // Xanh đậm
@@ -267,12 +260,12 @@ class OrganicNaturalTheme extends AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryDarkColor,
-          foregroundColor: Color(0xFF1E2A20), // Xanh đậm
+          foregroundColor: const Color(0xFF1E2A20), // Xanh đậm
           textStyle: _getTextStyle(
             fontFamily: defaultFontFamily,
             fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF1E2A20), // Xanh đậm
+            color: const Color(0xFF1E2A20), // Xanh đậm
           ),
           padding: EdgeInsets.symmetric(
             horizontal: 24.w,
@@ -331,7 +324,7 @@ class OrganicNaturalTheme extends AppTheme {
           borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
         ),
         margin: EdgeInsets.all(8.r),
-        shadowColor: Colors.black.withOpacity(0.1),
+        shadowColor: Colors.black.withAlpha((255 * 0.1).round()),
       ),
 
       // Icon Theme
@@ -356,14 +349,12 @@ class OrganicNaturalTheme extends AppTheme {
           borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
           borderSide: const BorderSide(
             color: borderDarkColor,
-            width: 1,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
           borderSide: const BorderSide(
             color: borderDarkColor,
-            width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppLocalizations {
+  AppLocalizations(this.locale);
   static const delegate = AppLocalizationsDelegate();
   static const supportedLocales = [Locale('en'), Locale('vi')];
 
@@ -9,7 +10,6 @@ class AppLocalizations {
   }
 
   final Locale locale;
-  AppLocalizations(this.locale);
 
   String get appTitle =>
       locale.languageCode == 'vi' ? 'Trình diễn Theme' : 'Theme Showcase';
@@ -29,8 +29,7 @@ class AppLocalizations {
       : 'This is sample text to preview theme and font.';
   String get sampleButton =>
       locale.languageCode == 'vi' ? 'Nút mẫu' : 'Sample Button';
-  String get textComponents =>
-      locale.languageCode == 'vi' ? 'Văn bản' : 'Text';
+  String get textComponents => locale.languageCode == 'vi' ? 'Văn bản' : 'Text';
   String get buttonComponents =>
       locale.languageCode == 'vi' ? 'Nút bấm' : 'Button';
   String get inputComponents =>

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
+import 'package:flutter_theme_showcase/theme/themes/app_themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../theme/base/app_theme.dart';
-import '../theme/themes/app_themes.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.system;
-  double _fontSize = 16.0;
+  double _fontSize = 16;
   String _fontFamily = 'Roboto';
   AppTheme _currentAppTheme = AppThemes.all.firstWhere(
-      (theme) => theme.isDefault,
-      orElse: () => AppThemes.all.first);
+    (theme) => theme.isDefault,
+    orElse: () => AppThemes.all.first,
+  );
 
   ThemeMode get themeMode => _themeMode;
   double get fontSize => _fontSize;
@@ -85,18 +85,18 @@ class ThemeProvider extends ChangeNotifier {
     if (appThemeId != null) {
       _currentAppTheme = AppThemes.all.firstWhere(
         (theme) => theme.id == appThemeId,
-        orElse: () => AppThemes.all.firstWhere((theme) => theme.isDefault,
-            orElse: () => AppThemes.all.first),
+        orElse: () => AppThemes.all.firstWhere(
+          (theme) => theme.isDefault,
+          orElse: () => AppThemes.all.first,
+        ),
       );
     }
 
     switch (themeModeString) {
       case 'ThemeMode.light':
         _themeMode = ThemeMode.light;
-        break;
       case 'ThemeMode.dark':
         _themeMode = ThemeMode.dark;
-        break;
       default:
         _themeMode = ThemeMode.system;
     }

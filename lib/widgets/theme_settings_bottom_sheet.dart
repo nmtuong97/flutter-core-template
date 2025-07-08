@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_theme_showcase/l10n/app_localizations.dart';
+import 'package:flutter_theme_showcase/providers/language_provider.dart';
+import 'package:flutter_theme_showcase/providers/theme_provider.dart';
+import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
+import 'package:flutter_theme_showcase/theme/themes/app_themes.dart';
 import 'package:provider/provider.dart';
-import '../l10n/app_localizations.dart';
-import '../providers/theme_provider.dart';
-import '../theme/base/app_theme.dart';
-import '../theme/themes/app_themes.dart';
-import '../providers/language_provider.dart';
 
 class ThemeSettingsBottomSheet extends StatelessWidget {
   const ThemeSettingsBottomSheet({super.key});
@@ -16,7 +16,7 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
     final languageProvider = Provider.of<LanguageProvider>(context);
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -24,7 +24,7 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
           // Theme Mode Section
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -67,7 +67,7 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
           // Font Size Section
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -78,11 +78,11 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                   const SizedBox(height: 16),
                   Slider(
                     value: themeProvider.fontSize,
-                    min: 12.0,
-                    max: 24.0,
+                    min: 12,
+                    max: 24,
                     divisions: 12,
                     label: '${themeProvider.fontSize.round()}',
-                    onChanged: (value) => themeProvider.setFontSize(value),
+                    onChanged: themeProvider.setFontSize,
                   ),
                 ],
               ),
@@ -93,7 +93,7 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
           // Font Family Section
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -136,7 +136,7 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
           // App Theme Section
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -151,8 +151,7 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                         title: Text(theme.name),
                         value: theme,
                         groupValue: themeProvider.currentAppTheme,
-                        onChanged: (value) =>
-                            themeProvider.setAppTheme(value!),
+                        onChanged: (value) => themeProvider.setAppTheme(value!),
                       );
                     }).toList(),
                   ),
@@ -165,7 +164,7 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
           // Language Section
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -201,7 +200,7 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
           // Preview Section
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -222,11 +221,11 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                   const SizedBox(height: 16),
                   const LinearProgressIndicator(value: 0.7),
                   const SizedBox(height: 16),
-                  ListTile(
-                    leading: const Icon(Icons.star),
-                    title: const Text('Sample ListTile'),
-                    subtitle: const Text('This is a subtitle'),
-                    trailing: const Icon(Icons.arrow_forward_ios),
+                  const ListTile(
+                    leading: Icon(Icons.star),
+                    title: Text('Sample ListTile'),
+                    subtitle: Text('This is a subtitle'),
+                    trailing: Icon(Icons.arrow_forward_ios),
                   ),
                 ],
               ),

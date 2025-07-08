@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../base/app_theme.dart';
 
 /// Theme Exaggerated Minimalism với thiết kế tối giản nâng cấp
 class ExaggeratedMinimalismTheme extends AppTheme {
@@ -56,7 +55,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
   @override
   ThemeData get lightThemeData {
     // Tăng kích thước font lên 1.5 lần để phù hợp với Exaggerated Minimalism
-    final adjustedFontSize = normalFontSize * 1.5;
+    const adjustedFontSize = normalFontSize * 1.5;
 
     return ThemeData(
       useMaterial3: true,
@@ -66,12 +65,9 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         primary: primaryLightColor,
         secondary: secondaryLightColor,
         tertiary: accentLightColor,
-        background: backgroundLightColor,
         surface: surfaceLightColor,
         error: Colors.red,
-        onPrimary: Colors.white,
         onSecondary: Colors.white,
-        onSurface: textPrimaryLightColor,
       ),
       scaffoldBackgroundColor: backgroundLightColor,
 
@@ -125,8 +121,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: primaryLightColor,
-          side:
-              const BorderSide(color: primaryLightColor, width: 2), // Viền đậm
+          side: const BorderSide(width: 2), // Viền đậm
           textStyle: _getTextStyle(
             fontFamily: defaultFontFamily,
             fontSize: adjustedFontSize + 4,
@@ -217,7 +212,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
   @override
   ThemeData get darkThemeData {
     // Tăng kích thước font lên 1.5 lần để phù hợp với Exaggerated Minimalism
-    final adjustedFontSize = normalFontSize * 1.5;
+    const adjustedFontSize = normalFontSize * 1.5;
 
     return ThemeData(
       useMaterial3: true,
@@ -227,12 +222,8 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         primary: primaryDarkColor,
         secondary: secondaryDarkColor,
         tertiary: accentDarkColor,
-        background: backgroundDarkColor,
         surface: surfaceDarkColor,
         error: Colors.red,
-        onPrimary: Colors.black,
-        onSecondary: Colors.black,
-        onSurface: textPrimaryDarkColor,
       ),
       scaffoldBackgroundColor: backgroundDarkColor,
 

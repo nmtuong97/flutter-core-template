@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Abstract class định nghĩa cấu trúc cơ bản cho tất cả các theme
+@immutable
 abstract class AppTheme {
   /// ID duy nhất của theme, dùng để lưu trữ và nhận dạng
   String get id;

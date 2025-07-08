@@ -54,7 +54,6 @@ class CyberpunkTheme {
         primary: primaryDarkColor,
         secondary: secondaryDarkColor,
         tertiary: accentDarkColor,
-        background: backgroundDarkColor,
         surface: surfaceDarkColor,
         error: Colors.red.shade400,
         onPrimary: backgroundDarkColor,
@@ -103,7 +102,7 @@ class CyberpunkTheme {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 8,
-          shadowColor: primaryDarkColor.withOpacity(0.4),
+          shadowColor: primaryDarkColor.withAlpha((255 * 0.4).round()),
         ),
       ),
 
@@ -143,10 +142,12 @@ class CyberpunkTheme {
       cardTheme: CardTheme(
         color: surfaceDarkColor,
         elevation: 8,
-        shadowColor: primaryDarkColor.withOpacity(0.2),
+        shadowColor: primaryDarkColor.withAlpha((255 * 0.2).round()),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
-          side: BorderSide(color: primaryDarkColor.withOpacity(0.3)),
+          side: BorderSide(
+             color: primaryDarkColor.withAlpha((255 * 0.3).round()),
+           ),
         ),
         margin: const EdgeInsets.all(4),
       ),
@@ -178,7 +179,7 @@ class CyberpunkTheme {
         backgroundColor: primaryDarkColor,
         foregroundColor: backgroundDarkColor,
         elevation: 8,
-        splashColor: secondaryDarkColor.withOpacity(0.3),
+        splashColor: secondaryDarkColor.withAlpha((255 * 0.3).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         enableFeedback: true,
         iconSize: 24,
@@ -210,7 +211,7 @@ class CyberpunkTheme {
           fontSize: fontSize,
           color: secondaryDarkColor,
           hasShadow: true,
-          shadowColor: secondaryDarkColor.withOpacity(0.5),
+          shadowColor: secondaryDarkColor.withAlpha((255 * 0.5).round()),
         ),
       ),
 
@@ -218,10 +219,12 @@ class CyberpunkTheme {
       dialogTheme: DialogTheme(
         backgroundColor: surfaceDarkColor,
         elevation: 24,
-        shadowColor: primaryDarkColor.withOpacity(0.3),
+        shadowColor: primaryDarkColor.withAlpha((255 * 0.3).round()),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: primaryDarkColor.withOpacity(0.3)),
+          side: BorderSide(
+             color: primaryDarkColor.withAlpha((255 * 0.3).round()),
+           ),
         ),
         titleTextStyle: _getTextStyle(
           fontFamily: fontFamily,
@@ -243,7 +246,7 @@ class CyberpunkTheme {
         activeTrackColor: primaryDarkColor,
         inactiveTrackColor: inactiveIconDarkColor,
         thumbColor: secondaryDarkColor,
-        overlayColor: primaryDarkColor.withOpacity(0.2),
+        overlayColor: primaryDarkColor.withAlpha((255 * 0.2).round()),
         valueIndicatorColor: primaryDarkColor,
         valueIndicatorTextStyle: _getTextStyle(
           fontFamily: fontFamily,
@@ -272,7 +275,7 @@ class CyberpunkTheme {
 
       // Divider Theme
       dividerTheme: DividerThemeData(
-        color: inactiveIconDarkColor.withOpacity(0.3),
+        color: inactiveIconDarkColor.withAlpha((255 * 0.3).round()),
         thickness: 1,
         space: 1,
       ),
@@ -292,7 +295,7 @@ class CyberpunkTheme {
         primary: primaryLightColor,
         secondary: secondaryLightColor,
         tertiary: accentLightColor,
-        background: backgroundLightColor,
+        surface: backgroundLightColor,
         error: Colors.red.shade600,
         onPrimary: backgroundLightColor,
         onSecondary: backgroundLightColor,
@@ -340,7 +343,7 @@ class CyberpunkTheme {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 8,
-          shadowColor: primaryLightColor.withOpacity(0.3),
+          shadowColor: primaryLightColor.withAlpha((255 * 0.3).round()),
         ),
       ),
 
@@ -380,10 +383,12 @@ class CyberpunkTheme {
       cardTheme: CardTheme(
         color: surfaceLightColor,
         elevation: 8,
-        shadowColor: primaryLightColor.withOpacity(0.2),
+        shadowColor: primaryLightColor.withAlpha((255 * 0.2).round()),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
-          side: BorderSide(color: primaryLightColor.withOpacity(0.3)),
+          side: BorderSide(
+             color: primaryLightColor.withAlpha((255 * 0.3).round()),
+           ),
         ),
         margin: const EdgeInsets.all(4),
       ),
@@ -415,7 +420,7 @@ class CyberpunkTheme {
         backgroundColor: primaryLightColor,
         foregroundColor: backgroundLightColor,
         elevation: 8,
-        splashColor: secondaryLightColor.withOpacity(0.3),
+        splashColor: secondaryLightColor.withAlpha((255 * 0.3).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         enableFeedback: true,
         iconSize: 24,
@@ -447,7 +452,7 @@ class CyberpunkTheme {
           fontSize: fontSize,
           color: secondaryLightColor,
           hasShadow: true,
-          shadowColor: secondaryLightColor.withOpacity(0.5),
+          shadowColor: secondaryLightColor.withAlpha((255 * 0.5).round()),
         ),
       ),
 
@@ -455,10 +460,12 @@ class CyberpunkTheme {
       dialogTheme: DialogTheme(
         backgroundColor: surfaceLightColor,
         elevation: 24,
-        shadowColor: primaryLightColor.withOpacity(0.3),
+        shadowColor: primaryLightColor.withAlpha((255 * 0.3).round()),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: primaryLightColor.withOpacity(0.3)),
+          side: BorderSide(
+             color: primaryLightColor.withAlpha((255 * 0.3).round()),
+           ),
         ),
         titleTextStyle: _getTextStyle(
           fontFamily: fontFamily,
@@ -480,7 +487,7 @@ class CyberpunkTheme {
         activeTrackColor: primaryLightColor,
         inactiveTrackColor: inactiveIconLightColor,
         thumbColor: secondaryLightColor,
-        overlayColor: primaryLightColor.withOpacity(0.2),
+        overlayColor: primaryLightColor.withAlpha((255 * 0.2).round()),
         valueIndicatorColor: primaryLightColor,
         valueIndicatorTextStyle: _getTextStyle(
           fontFamily: fontFamily,
@@ -509,7 +516,7 @@ class CyberpunkTheme {
 
       // Divider Theme
       dividerTheme: DividerThemeData(
-        color: inactiveIconLightColor.withOpacity(0.3),
+        color: inactiveIconLightColor.withAlpha((255 * 0.3).round()),
         thickness: 1,
         space: 1,
       ),
@@ -553,7 +560,10 @@ class CyberpunkTheme {
       return textStyle.copyWith(
         shadows: [
           Shadow(color: shadowColor, blurRadius: 8),
-          Shadow(color: shadowColor.withOpacity(0.5), blurRadius: 16),
+          Shadow(
+             color: shadowColor.withAlpha((255 * 0.5).round()),
+             blurRadius: 16,
+           ),
         ],
       );
     }
@@ -686,18 +696,16 @@ class CyberpunkTheme {
       gradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        colors:
-            isDarkMode
-                ? [primaryDarkColor, accentDarkColor]
-                : [primaryLightColor, accentLightColor],
+        colors: isDarkMode
+            ? [primaryDarkColor, accentDarkColor]
+            : [primaryLightColor, accentLightColor],
       ),
       borderRadius: BorderRadius.circular(borderRadius),
       boxShadow: [
         BoxShadow(
-          color:
-              isDarkMode
-                  ? primaryDarkColor.withOpacity(0.4)
-                  : primaryLightColor.withOpacity(0.3),
+          color: isDarkMode
+              ? primaryDarkColor.withAlpha((255 * 0.4).round())
+              : primaryLightColor.withAlpha((255 * 0.3).round()),
           blurRadius: 8,
           offset: const Offset(0, 4),
         ),

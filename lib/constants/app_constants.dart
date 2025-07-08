@@ -8,7 +8,7 @@ class AppConstants {
   // Video Constants
   static const double landscapeVideoAspectRatio = 16 / 9;
   static const double portraitVideoAspectRatio = 9 / 16;
-  static const double squareAspectRatio = 1.0;
+  static const double squareAspectRatio = 1;
   static const double landscapeAspectRatioThreshold = 1.2;
   static const double portraitAspectRatioThreshold = 0.8;
   static const int videoSeekSeconds = 10;
@@ -35,28 +35,28 @@ class AppConstants {
   static const double progressBufferedOpacity = 0.6;
 
   // Video Player UI Constants
-  static const double playButtonSize = 80.0;
-  static const double controlButtonSize = 40.0;
+  static const double playButtonSize = 80;
+  static const double controlButtonSize = 40;
   static const double playButtonOpacity = 0.8;
   static const double controlButtonOpacity = 0.8;
   static const double overlayOpacity = 0.7;
   static const double subtitleOpacity = 0.7;
 
   // Slider Constants
-  static const double sliderThumbRadius = 8.0;
-  static const double sliderOverlayRadius = 16.0;
-  static const double sliderTrackHeight = 4.0;
+  static const double sliderThumbRadius = 8;
+  static const double sliderOverlayRadius = 16;
+  static const double sliderTrackHeight = 4;
   static const double sliderInactiveOpacity = 0.3;
   static const double sliderOverlayOpacity = 0.2;
 
   // Volume Control Constants
-  static const double volumeSliderHeight = 200.0;
-  static const double volumeSliderWidth = 60.0;
-  static const double volumeSliderHiddenOffset = 200.0;
+  static const double volumeSliderHeight = 200;
+  static const double volumeSliderWidth = 60;
+  static const double volumeSliderHiddenOffset = 200;
   static const double volumeSliderTopRatio = 0.3;
   static const double volumeSliderBackgroundOpacity = 0.8;
-  static const double volumeSliderBorderRadius = 30.0;
-  static const double volumeControlHeight = 40.0;
+  static const double volumeSliderBorderRadius = 30;
+  static const double volumeControlHeight = 40;
 
   // Large Video Handler Constants
   static const int largeVideoSizeMB = 100;
@@ -67,30 +67,30 @@ class AppConstants {
   static const int maxStackTraceLines = 10;
 
   // UI Constants
-  static const double defaultButtonHeight = 48.0;
-  static const double defaultBorderRadius = 12.0;
-  static const double borderRadiusSmall = 8.0;
-  static const double defaultIconSize = 24.0;
-  static const double largeIconSize = 40.0;
-  static const double smallIconSize = 16.0;
-  static const double iconSizeSmall = 16.0;
-  static const double errorIconSize = 48.0;
+  static const double defaultButtonHeight = 48;
+  static const double defaultBorderRadius = 12;
+  static const double borderRadiusSmall = 8;
+  static const double defaultIconSize = 24;
+  static const double largeIconSize = 40;
+  static const double smallIconSize = 16;
+  static const double iconSizeSmall = 16;
+  static const double errorIconSize = 48;
 
   // Font Size Constants
-  static const double fontSizeSmall = 12.0;
-  static const double fontSizeMedium = 16.0;
-  static const double fontSizeLarge = 18.0;
+  static const double fontSizeSmall = 12;
+  static const double fontSizeMedium = 16;
+  static const double fontSizeLarge = 18;
 
   // Padding and Spacing
-  static const double defaultPadding = 16.0;
-  static const double smallPadding = 8.0;
-  static const double largePadding = 24.0;
-  static const double paddingMedium = 16.0;
-  static const double paddingSmall = 8.0;
-  static const double paddingTiny = 4.0;
-  static const double paddingLarge = 24.0;
-  static const double defaultSpacing = 16.0;
-  static const double smallSpacing = 8.0;
+  static const double defaultPadding = 16;
+  static const double smallPadding = 8;
+  static const double largePadding = 24;
+  static const double paddingMedium = 16;
+  static const double paddingSmall = 8;
+  static const double paddingTiny = 4;
+  static const double paddingLarge = 24;
+  static const double defaultSpacing = 16;
+  static const double smallSpacing = 8;
 
   // Font Weights
   static const FontWeight normalFontWeight = FontWeight.w500;
@@ -121,20 +121,20 @@ class AppConstants {
   static const int timeFormatWidth = 2;
 
   // Screen Size Breakpoints
-  static const double tabletBreakpoint = 600.0;
-  static const double smallScreenBreakpoint = 400.0;
+  static const double tabletBreakpoint = 600;
+  static const double smallScreenBreakpoint = 400;
 
   // Volume Control
-  static const double defaultVolume = 1.0;
-  static const double minVolume = 0.0;
-  static const double maxVolume = 1.0;
-  static const double volumeControlSliderHeight = 120.0;
+  static const double defaultVolume = 1;
+  static const double minVolume = 0;
+  static const double maxVolume = 1;
+  static const double volumeControlSliderHeight = 120;
 
   // Grid and List Constants
-  static const double defaultCrossAxisSpacing = 16.0;
-  static const double defaultMainAxisSpacing = 16.0;
-  static const double cardHeight = 160.0;
-  static const double cardWidth = 240.0;
+  static const double defaultCrossAxisSpacing = 16;
+  static const double defaultMainAxisSpacing = 16;
+  static const double cardHeight = 160;
+  static const double cardWidth = 240;
 
   // Permission and Error Handling
   static const int permissionCheckTimeoutSeconds = 5;

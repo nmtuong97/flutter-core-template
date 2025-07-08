@@ -89,7 +89,7 @@ class AppThemes {
       colorScheme: const ColorScheme.light(
         primary: primaryLightColor,
         secondary: secondaryLightColor,
-        background: backgroundLightColor,
+        surface: backgroundLightColor,
         error: errorLightColor,
         onSecondary: textPrimaryLightColor,
         onSurface: textPrimaryLightColor,
@@ -112,7 +112,7 @@ class AppThemes {
           size: 24.r,
         ),
         centerTitle: false,
-        shadowColor: Colors.black.withOpacity(0.1),
+        shadowColor: Colors.black.withAlpha((255 * 0.1).round()),
       ),
       // Text Theme
       textTheme: _getTextTheme(
@@ -136,7 +136,7 @@ class AppThemes {
             borderRadius: BorderRadius.circular(8.r),
           ),
           elevation: 2,
-          shadowColor: primaryLightColor.withOpacity(0.2),
+          shadowColor: primaryLightColor.withAlpha((255 * 0.2).round()),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -169,7 +169,7 @@ class AppThemes {
       cardTheme: CardTheme(
         color: surfaceLightColor,
         elevation: 2,
-        shadowColor: Colors.black.withOpacity(0.1),
+        shadowColor: Colors.black.withAlpha((255 * 0.1).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         margin: const EdgeInsets.all(4),
       ),
@@ -195,7 +195,7 @@ class AppThemes {
         color: bottomNavBgLightColor,
         elevation: 8,
         height: 56,
-        shadowColor: Colors.black.withOpacity(0.1),
+        shadowColor: Colors.black.withAlpha((255 * 0.1).round()),
         surfaceTintColor: Colors.transparent,
       ),
       // Floating Action Button Theme
@@ -205,7 +205,7 @@ class AppThemes {
         elevation: 6,
         focusElevation: 8,
         hoverElevation: 8,
-        splashColor: Colors.white.withOpacity(0.2),
+        splashColor: Colors.white.withAlpha((255 * 0.2).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         enableFeedback: true,
         iconSize: 24,
@@ -225,13 +225,13 @@ class AppThemes {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
-            color: textSecondaryLightColor.withOpacity(0.5),
+            color: textSecondaryLightColor.withAlpha((255 * 0.5).round()),
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
-            color: textSecondaryLightColor.withOpacity(0.5),
+            color: textSecondaryLightColor.withAlpha((255 * 0.5).round()),
           ),
         ),
         focusedBorder: OutlineInputBorder(
@@ -289,7 +289,7 @@ class AppThemes {
       dialogTheme: DialogTheme(
         backgroundColor: surfaceLightColor,
         elevation: 24,
-        shadowColor: Colors.black.withOpacity(0.2),
+        shadowColor: Colors.black.withAlpha((255 * 0.2).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         alignment: Alignment.center,
         titleTextStyle: _getTextStyle(
@@ -349,26 +349,26 @@ class AppThemes {
       ),
       // Checkbox Theme
       checkboxTheme: CheckboxThemeData(
-        fillColor: MaterialStateColor.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
+        fillColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.disabled)) {
             return textDisabledLightColor;
           }
-          if (states.contains(MaterialState.selected)) {
+          if (states.contains(WidgetState.selected)) {
             return primaryLightColor;
           }
           return textSecondaryLightColor;
         }),
-        checkColor: MaterialStateColor.resolveWith((_) => Colors.white),
+        checkColor: WidgetStateColor.resolveWith((_) => Colors.white),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         side: const BorderSide(color: textSecondaryLightColor, width: 1.5),
       ),
       // Radio Theme
       radioTheme: RadioThemeData(
-        fillColor: MaterialStateColor.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
+        fillColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.disabled)) {
             return textDisabledLightColor;
           }
-          if (states.contains(MaterialState.selected)) {
+          if (states.contains(WidgetState.selected)) {
             return primaryLightColor;
           }
           return textSecondaryLightColor;
@@ -376,34 +376,36 @@ class AppThemes {
       ),
       // Switch Theme
       switchTheme: SwitchThemeData(
-        thumbColor: MaterialStateColor.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
+        thumbColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.disabled)) {
             return textDisabledLightColor;
           }
-          if (states.contains(MaterialState.selected)) {
+          if (states.contains(WidgetState.selected)) {
             return primaryLightColor;
           }
           return Colors.white;
         }),
-        trackColor: MaterialStateColor.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
-            return textDisabledLightColor.withOpacity(0.5);
+        trackColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.disabled)) {
+            return textDisabledLightColor.withAlpha((255 * 0.5).round());
           }
-          if (states.contains(MaterialState.selected)) {
-            return primaryLightColor.withOpacity(0.5);
+          if (states.contains(WidgetState.selected)) {
+            return primaryLightColor.withAlpha((255 * 0.5).round());
           }
-          return textSecondaryLightColor.withOpacity(0.3);
+          return textSecondaryLightColor.withAlpha((255 * 0.3).round());
         }),
-        trackOutlineColor: MaterialStateColor.resolveWith(
+        trackOutlineColor: WidgetStateColor.resolveWith(
           (_) => Colors.transparent,
         ),
       ),
       // Slider Theme
       sliderTheme: SliderThemeData(
         activeTrackColor: primaryLightColor,
-        inactiveTrackColor: textSecondaryLightColor.withOpacity(0.3),
+        inactiveTrackColor: textSecondaryLightColor.withAlpha(
+          (255 * 0.3).round(),
+        ),
         thumbColor: primaryLightColor,
-        overlayColor: primaryLightColor.withOpacity(0.2),
+        overlayColor: primaryLightColor.withAlpha((255 * 0.2).round()),
         valueIndicatorColor: primaryLightColor,
         valueIndicatorTextStyle: _getTextStyle(
           fontFamily: fontFamily,
@@ -417,14 +419,18 @@ class AppThemes {
       // Progress Indicator Theme
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: primaryLightColor,
-        linearTrackColor: textSecondaryLightColor.withOpacity(0.3),
-        circularTrackColor: textSecondaryLightColor.withOpacity(0.3),
+        linearTrackColor: textSecondaryLightColor.withAlpha(
+          (255 * 0.3).round(),
+        ),
+        circularTrackColor: textSecondaryLightColor.withAlpha(
+          (255 * 0.3).round(),
+        ),
         refreshBackgroundColor: surfaceLightColor,
       ),
       // Tooltip Theme
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(
-          color: surfaceDarkColor.withOpacity(0.9),
+          color: surfaceDarkColor.withAlpha((255 * 0.9).round()),
           borderRadius: BorderRadius.circular(4),
         ),
         textStyle: _getTextStyle(
@@ -438,7 +444,7 @@ class AppThemes {
       popupMenuTheme: PopupMenuThemeData(
         color: surfaceLightColor,
         elevation: 8,
-        shadowColor: Colors.black.withOpacity(0.2),
+        shadowColor: Colors.black.withAlpha((255 * 0.2).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         textStyle: _getTextStyle(
           fontFamily: fontFamily,
@@ -450,7 +456,7 @@ class AppThemes {
       drawerTheme: DrawerThemeData(
         backgroundColor: surfaceLightColor,
         elevation: 16,
-        scrimColor: Colors.black.withOpacity(0.6),
+        scrimColor: Colors.black.withAlpha((255 * 0.6).round()),
         width: 280,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.horizontal(right: Radius.circular(16)),
@@ -480,14 +486,14 @@ class AppThemes {
           color: bottomNavUnselectedLightColor,
         ),
         useIndicator: true,
-        indicatorColor: primaryLightColor.withOpacity(0.2),
+        indicatorColor: primaryLightColor.withAlpha((255 * 0.2).round()),
         labelType: NavigationRailLabelType.selected,
       ),
       // Date Picker Theme
       datePickerTheme: DatePickerThemeData(
         backgroundColor: surfaceLightColor,
         elevation: 24,
-        shadowColor: Colors.black.withOpacity(0.2),
+        shadowColor: Colors.black.withAlpha((255 * 0.2).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         headerBackgroundColor: primaryLightColor,
         headerForegroundColor: Colors.white,
@@ -500,7 +506,7 @@ class AppThemes {
         headerHelpStyle: _getTextStyle(
           fontFamily: fontFamily,
           fontSize: fontSize,
-          color: Colors.white.withOpacity(0.8),
+          color: Colors.white.withAlpha((255 * 0.8).round()),
         ),
         dayStyle: _getTextStyle(
           fontFamily: fontFamily,
@@ -518,14 +524,14 @@ class AppThemes {
           color: textPrimaryLightColor,
         ),
         todayBorder: const BorderSide(color: primaryLightColor),
-        dayBackgroundColor: MaterialStateColor.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
+        dayBackgroundColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
             return primaryLightColor;
           }
           return Colors.transparent;
         }),
-        dayForegroundColor: MaterialStateColor.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
+        dayForegroundColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
             return Colors.white;
           }
           return textPrimaryLightColor;
@@ -539,7 +545,7 @@ class AppThemes {
         dayPeriodTextColor: textPrimaryLightColor,
         dayPeriodColor: surfaceLightColor,
         dialHandColor: primaryLightColor,
-        dialBackgroundColor: secondaryLightColor.withOpacity(0.3),
+        dialBackgroundColor: secondaryLightColor.withAlpha((255 * 0.3).round()),
         dialTextColor: textPrimaryLightColor,
         entryModeIconColor: primaryLightColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -548,9 +554,11 @@ class AppThemes {
       chipTheme: ChipThemeData(
         backgroundColor: secondaryLightColor,
         deleteIconColor: textSecondaryLightColor,
-        disabledColor: textDisabledLightColor.withOpacity(0.3),
+        disabledColor: textDisabledLightColor.withAlpha((255 * 0.3).round()),
         selectedColor: primaryLightColor,
-        secondarySelectedColor: primaryLightColor.withOpacity(0.2),
+        secondarySelectedColor: primaryLightColor.withAlpha(
+          (255 * 0.2).round(),
+        ),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         labelStyle: _getTextStyle(
           fontFamily: fontFamily,
@@ -594,7 +602,6 @@ class AppThemes {
       colorScheme: const ColorScheme.dark(
         primary: primaryDarkColor,
         secondary: secondaryDarkColor,
-        background: backgroundDarkColor,
         surface: surfaceDarkColor,
         error: errorDarkColor,
         onSecondary: textPrimaryDarkColor,
@@ -619,7 +626,7 @@ class AppThemes {
           size: 24,
         ),
         centerTitle: false,
-        shadowColor: Colors.black.withOpacity(0.3),
+        shadowColor: Colors.black.withAlpha((255 * 0.3).round()),
       ),
       // Text Theme
       textTheme: _getTextTheme(
@@ -641,7 +648,7 @@ class AppThemes {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 0,
-          shadowColor: primaryDarkColor.withOpacity(0.3),
+          shadowColor: primaryDarkColor.withAlpha((255 * 0.3).round()),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -672,7 +679,7 @@ class AppThemes {
       cardTheme: CardTheme(
         color: surfaceDarkColor,
         elevation: 0,
-        shadowColor: primaryDarkColor.withOpacity(0.1),
+        shadowColor: primaryDarkColor.withAlpha((255 * 0.1).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         margin: const EdgeInsets.all(4),
       ),
@@ -698,7 +705,7 @@ class AppThemes {
         color: bottomNavBgDarkColor,
         elevation: 8,
         height: 56,
-        shadowColor: Colors.black.withOpacity(0.3),
+        shadowColor: Colors.black.withAlpha((255 * 0.3).round()),
         surfaceTintColor: Colors.transparent,
       ),
       // Floating Action Button Theme
@@ -708,7 +715,7 @@ class AppThemes {
         elevation: 0,
         focusElevation: 0,
         hoverElevation: 0,
-        splashColor: Colors.black.withOpacity(0.2),
+        splashColor: Colors.black.withAlpha((255 * 0.2).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         enableFeedback: true,
         iconSize: 24,
@@ -729,13 +736,13 @@ class AppThemes {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
-            color: textSecondaryDarkColor.withOpacity(0.3),
+            color: textSecondaryDarkColor.withAlpha((255 * 0.3).round()),
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
-            color: textSecondaryDarkColor.withOpacity(0.3),
+            color: textSecondaryDarkColor.withAlpha((255 * 0.3).round()),
           ),
         ),
         focusedBorder: OutlineInputBorder(
@@ -793,7 +800,7 @@ class AppThemes {
       dialogTheme: DialogTheme(
         backgroundColor: surfaceDarkColor,
         elevation: 24,
-        shadowColor: Colors.black.withOpacity(0.5),
+        shadowColor: Colors.black.withAlpha((255 * 0.5).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         alignment: Alignment.center,
         titleTextStyle: _getTextStyle(
@@ -853,26 +860,26 @@ class AppThemes {
       ),
       // Checkbox Theme
       checkboxTheme: CheckboxThemeData(
-        fillColor: MaterialStateColor.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
+        fillColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.disabled)) {
             return textDisabledDarkColor;
           }
-          if (states.contains(MaterialState.selected)) {
+          if (states.contains(WidgetState.selected)) {
             return primaryDarkColor;
           }
           return textSecondaryDarkColor;
         }),
-        checkColor: MaterialStateColor.resolveWith((_) => Colors.black),
+        checkColor: WidgetStateColor.resolveWith((_) => Colors.black),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         side: const BorderSide(color: textSecondaryDarkColor, width: 1.5),
       ),
       // Radio Theme
       radioTheme: RadioThemeData(
-        fillColor: MaterialStateColor.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
+        fillColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.disabled)) {
             return textDisabledDarkColor;
           }
-          if (states.contains(MaterialState.selected)) {
+          if (states.contains(WidgetState.selected)) {
             return primaryDarkColor;
           }
           return textSecondaryDarkColor;
@@ -880,34 +887,36 @@ class AppThemes {
       ),
       // Switch Theme
       switchTheme: SwitchThemeData(
-        thumbColor: MaterialStateColor.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
+        thumbColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.disabled)) {
             return textDisabledDarkColor;
           }
-          if (states.contains(MaterialState.selected)) {
+          if (states.contains(WidgetState.selected)) {
             return primaryDarkColor;
           }
           return Colors.white;
         }),
-        trackColor: MaterialStateColor.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
-            return textDisabledDarkColor.withOpacity(0.5);
+        trackColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.disabled)) {
+            return textDisabledDarkColor.withAlpha((255 * 0.5).round());
           }
-          if (states.contains(MaterialState.selected)) {
-            return primaryDarkColor.withOpacity(0.5);
+          if (states.contains(WidgetState.selected)) {
+            return primaryDarkColor.withAlpha((255 * 0.5).round());
           }
-          return textSecondaryDarkColor.withOpacity(0.3);
+          return textSecondaryDarkColor.withAlpha((255 * 0.3).round());
         }),
-        trackOutlineColor: MaterialStateColor.resolveWith(
+        trackOutlineColor: WidgetStateColor.resolveWith(
           (_) => Colors.transparent,
         ),
       ),
       // Slider Theme
       sliderTheme: SliderThemeData(
         activeTrackColor: primaryDarkColor,
-        inactiveTrackColor: textSecondaryDarkColor.withOpacity(0.3),
+        inactiveTrackColor: textSecondaryDarkColor.withAlpha(
+          (255 * 0.3).round(),
+        ),
         thumbColor: primaryDarkColor,
-        overlayColor: primaryDarkColor.withOpacity(0.2),
+        overlayColor: primaryDarkColor.withAlpha((255 * 0.2).round()),
         valueIndicatorColor: primaryDarkColor,
         valueIndicatorTextStyle: _getTextStyle(
           fontFamily: fontFamily,
@@ -921,14 +930,18 @@ class AppThemes {
       // Progress Indicator Theme
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: primaryDarkColor,
-        linearTrackColor: textSecondaryDarkColor.withOpacity(0.3),
-        circularTrackColor: textSecondaryDarkColor.withOpacity(0.3),
+        linearTrackColor: textSecondaryDarkColor.withAlpha(
+          (255 * 0.3).round(),
+        ),
+        circularTrackColor: textSecondaryDarkColor.withAlpha(
+          (255 * 0.3).round(),
+        ),
         refreshBackgroundColor: surfaceDarkColor,
       ),
       // Tooltip Theme
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(
-          color: surfaceLightColor.withOpacity(0.9),
+          color: surfaceLightColor.withAlpha((255 * 0.9).round()),
           borderRadius: BorderRadius.circular(4),
         ),
         textStyle: _getTextStyle(
@@ -942,7 +955,7 @@ class AppThemes {
       popupMenuTheme: PopupMenuThemeData(
         color: surfaceDarkColor,
         elevation: 8,
-        shadowColor: Colors.black.withOpacity(0.5),
+        shadowColor: Colors.black.withAlpha((255 * 0.5).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         textStyle: _getTextStyle(
           fontFamily: fontFamily,
@@ -954,7 +967,7 @@ class AppThemes {
       drawerTheme: DrawerThemeData(
         backgroundColor: surfaceDarkColor,
         elevation: 16,
-        scrimColor: Colors.black.withOpacity(0.8),
+        scrimColor: Colors.black.withAlpha((255 * 0.8).round()),
         width: 280,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.horizontal(right: Radius.circular(16)),
@@ -984,14 +997,14 @@ class AppThemes {
           color: bottomNavUnselectedDarkColor,
         ),
         useIndicator: true,
-        indicatorColor: primaryDarkColor.withOpacity(0.2),
+        indicatorColor: primaryDarkColor.withAlpha((255 * 0.2).round()),
         labelType: NavigationRailLabelType.selected,
       ),
       // Date Picker Theme
       datePickerTheme: DatePickerThemeData(
         backgroundColor: surfaceDarkColor,
         elevation: 24,
-        shadowColor: Colors.black.withOpacity(0.5),
+        shadowColor: Colors.black.withAlpha((255 * 0.5).round()),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         headerBackgroundColor: primaryDarkColor,
         headerForegroundColor: Colors.black,
@@ -1004,7 +1017,7 @@ class AppThemes {
         headerHelpStyle: _getTextStyle(
           fontFamily: fontFamily,
           fontSize: fontSize,
-          color: Colors.black.withOpacity(0.8),
+          color: Colors.black.withAlpha((255 * 0.8).round()),
         ),
         dayStyle: _getTextStyle(
           fontFamily: fontFamily,
@@ -1022,14 +1035,14 @@ class AppThemes {
           color: textPrimaryDarkColor,
         ),
         todayBorder: const BorderSide(color: primaryDarkColor),
-        dayBackgroundColor: MaterialStateColor.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
+        dayBackgroundColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
             return primaryDarkColor;
           }
           return Colors.transparent;
         }),
-        dayForegroundColor: MaterialStateColor.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
+        dayForegroundColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
             return Colors.black;
           }
           return textPrimaryDarkColor;
@@ -1054,9 +1067,11 @@ class AppThemes {
       chipTheme: ChipThemeData(
         backgroundColor: secondaryDarkColor,
         deleteIconColor: textSecondaryDarkColor,
-        disabledColor: textDisabledDarkColor.withOpacity(0.3),
+        disabledColor: textDisabledDarkColor.withAlpha((255 * 0.3).round()),
         selectedColor: primaryDarkColor,
-        secondarySelectedColor: primaryDarkColor.withOpacity(0.2),
+        secondarySelectedColor: primaryDarkColor.withAlpha(
+          (255 * 0.2).round(),
+        ),
         padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
         labelStyle: _getTextStyle(
           fontFamily: fontFamily,

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_theme_showcase/theme/base/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../base/app_theme.dart';
 
 /// Theme Glassmorphism với hiệu ứng kính mờ
 class GlassmorphismTheme extends AppTheme {
@@ -65,10 +64,8 @@ class GlassmorphismTheme extends AppTheme {
         primary: primaryLightColor,
         secondary: secondaryLightColor,
         tertiary: accentLightColor,
-        background: backgroundLightColor1,
         surface: surfaceLightColor,
         error: Colors.red,
-        onPrimary: Colors.white,
         onSecondary: Colors.white,
         onSurface: textPrimaryLightColor,
       ),
@@ -101,7 +98,7 @@ class GlassmorphismTheme extends AppTheme {
       // Button Themes - với hiệu ứng glass
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: primaryLightColor.withOpacity(0.7),
+          backgroundColor: primaryLightColor.withAlpha((255 * 0.7).round()),
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
             fontFamily: defaultFontFamily,
@@ -114,7 +111,7 @@ class GlassmorphismTheme extends AppTheme {
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.r),
-            side: BorderSide(
+            side: const BorderSide(
               color: borderLightColor,
               width: 1.5,
             ),
@@ -127,7 +124,7 @@ class GlassmorphismTheme extends AppTheme {
         style: OutlinedButton.styleFrom(
           foregroundColor: primaryLightColor,
           backgroundColor: surfaceLightColor,
-          side: BorderSide(
+          side: const BorderSide(
             color: borderLightColor,
             width: 1.5,
           ),
@@ -169,7 +166,7 @@ class GlassmorphismTheme extends AppTheme {
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24.r),
-          side: BorderSide(
+          side: const BorderSide(
             color: borderLightColor,
             width: 1.5,
           ),
@@ -186,7 +183,7 @@ class GlassmorphismTheme extends AppTheme {
       ),
 
       // Divider Theme
-      dividerTheme: DividerThemeData(
+      dividerTheme: const DividerThemeData(
         color: borderLightColor,
         thickness: 1,
         space: 16,
@@ -198,14 +195,14 @@ class GlassmorphismTheme extends AppTheme {
         fillColor: surfaceLightColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: borderLightColor,
             width: 1.5,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: borderLightColor,
             width: 1.5,
           ),
@@ -213,7 +210,7 @@ class GlassmorphismTheme extends AppTheme {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
           borderSide: BorderSide(
-            color: primaryLightColor.withOpacity(0.7),
+            color: primaryLightColor.withAlpha((255 * 0.7).round()),
             width: 1.5,
           ),
         ),
@@ -240,7 +237,6 @@ class GlassmorphismTheme extends AppTheme {
         primary: primaryDarkColor,
         secondary: secondaryDarkColor,
         tertiary: accentDarkColor,
-        background: backgroundDarkColor1,
         surface: surfaceDarkColor,
         error: Colors.red,
         onPrimary: Colors.white,
@@ -276,7 +272,7 @@ class GlassmorphismTheme extends AppTheme {
       // Button Themes - với hiệu ứng glass
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: primaryDarkColor.withOpacity(0.7),
+          backgroundColor: primaryDarkColor.withAlpha((255 * 0.7).round()),
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
             fontFamily: defaultFontFamily,
@@ -289,7 +285,7 @@ class GlassmorphismTheme extends AppTheme {
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.r),
-            side: BorderSide(
+            side: const BorderSide(
               color: borderDarkColor,
               width: 1.5,
             ),
@@ -302,7 +298,7 @@ class GlassmorphismTheme extends AppTheme {
         style: OutlinedButton.styleFrom(
           foregroundColor: primaryDarkColor,
           backgroundColor: surfaceDarkColor,
-          side: BorderSide(
+          side: const BorderSide(
             color: borderDarkColor,
             width: 1.5,
           ),
@@ -344,7 +340,7 @@ class GlassmorphismTheme extends AppTheme {
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24.r),
-          side: BorderSide(
+          side: const BorderSide(
             color: borderDarkColor,
             width: 1.5,
           ),
@@ -361,7 +357,7 @@ class GlassmorphismTheme extends AppTheme {
       ),
 
       // Divider Theme
-      dividerTheme: DividerThemeData(
+      dividerTheme: const DividerThemeData(
         color: borderDarkColor,
         thickness: 1,
         space: 16,
@@ -373,14 +369,14 @@ class GlassmorphismTheme extends AppTheme {
         fillColor: surfaceDarkColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: borderDarkColor,
             width: 1.5,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: borderDarkColor,
             width: 1.5,
           ),
@@ -388,7 +384,7 @@ class GlassmorphismTheme extends AppTheme {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
           borderSide: BorderSide(
-            color: primaryDarkColor.withOpacity(0.7),
+            color: primaryDarkColor.withAlpha((255 * 0.7).round()),
             width: 1.5,
           ),
         ),
