@@ -4,7 +4,7 @@
 
 ## 1. Tổng quan dự án
 
--   **Mục đích**: Nền tảng khởi đầu cho các ứng dụng Flutter, tập trung vào cấu trúc module, khả năng mở rộng và các tính năng cốt lõi như quản lý chủ đề và quốc tế hóa.
+-   **Mục đích**: Nền tảng khởi đầu cho các ứng dụng Flutter, tập trung vào cấu trúc module, khả năng mở rộng và các tính năng cốt lõi như quản lý chủ đề và đa ngôn ngữ.
 -   **Công nghệ sử dụng**: Flutter, Dart.
 
 ## 2. Bắt đầu nhanh
@@ -20,7 +20,7 @@
 1.  Clone repository:
 
     ```bash
-    git clone <URL_REPOSITORY>
+    git clone https://github.com/nmtuong97/flutter-core-template.git
     cd flutter-core-template
     ```
 
@@ -47,7 +47,7 @@ lib/
 ├── app/                  # Cấu hình ứng dụng chính
 ├── bootstrap.dart        # Khởi tạo ứng dụng
 ├── constants/            # Các hằng số và chuỗi cố định
-├── l10n/                 # Quốc tế hóa (Localization)
+├── l10n/                 # Đa ngôn ngữ (Localization)
 ├── pages/                # Các trang (màn hình) của ứng dụng
 ├── providers/            # Quản lý trạng thái và dữ liệu
 ├── theme/                # Quản lý chủ đề (Theming)
@@ -72,9 +72,9 @@ genhtml coverage/lcov.info -o coverage/
 open coverage/index.html
 ```
 
-## 5. Quốc tế hóa (Localization)
+## 5. Đa ngôn ngữ (Localization)
 
-Dự án sử dụng `flutter_localizations` và tuân theo hướng dẫn quốc tế hóa chính thức của Flutter.
+Dự án sử dụng `flutter_localizations` và tuân theo hướng dẫn đa ngôn ngữ chính thức của Flutter.
 
 ### 5.1. Thêm chuỗi dịch
 

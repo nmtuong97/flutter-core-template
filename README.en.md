@@ -157,6 +157,6 @@ Alternatively, run `flutter run` and code generation will take place automatical
 
 [coverage_badge]: coverage_badge.svg
 [flutter_localizations_link]: https://api.flutter.dev/flutter/flutter_localizations/flutter_localizations-library.html
-[internationalization_link]: https://flutter.dev/docs/development/accessibility-and-localization/internationalization
+[internationalization_link]: https://github.com/nmtuong97/flutter-core-template.git
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license_link]: https://opensource.org/licenses/MIT

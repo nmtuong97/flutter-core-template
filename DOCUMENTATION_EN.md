@@ -20,7 +20,7 @@ This is a comprehensive documentation for the Flutter Core Template project, pro
 1.  Clone the repository:
 
     ```bash
-    git clone <REPOSITORY_URL>
+    git clone https://github.com/nmtuong97/flutter-core-template.git
     cd flutter-core-template
     ```
 

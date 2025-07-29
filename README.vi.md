@@ -44,9 +44,11 @@ $ open coverage/index.html
 
 ---
 
-## Working with Translations 🌐
+## Làm việc với Đa ngôn ngữ 🌐
 
 This project relies on [flutter_localizations][flutter_localizations_link] and follows the [official internationalization guide for Flutter][internationalization_link].
+
+[internationalization_link]: https://github.com/nmtuong97/flutter-core-template.git
 
 ### Adding Strings
 
