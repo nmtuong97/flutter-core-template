@@ -161,7 +161,7 @@ class GlassmorphismTheme extends AppTheme {
       ),
 
       // Card Theme - với hiệu ứng glass
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceLightColor,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -195,17 +195,11 @@ class GlassmorphismTheme extends AppTheme {
         fillColor: surfaceLightColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: const BorderSide(
-            color: borderLightColor,
-            width: 1.5,
-          ),
+          borderSide: BorderSide.none,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: const BorderSide(
-            color: borderLightColor,
-            width: 1.5,
-          ),
+          borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
@@ -322,7 +316,7 @@ class GlassmorphismTheme extends AppTheme {
           textStyle: _getTextStyle(
             fontFamily: defaultFontFamily,
             fontSize: normalFontSize,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
           ),
           padding: EdgeInsets.symmetric(
             horizontal: 16.w,
@@ -335,7 +329,7 @@ class GlassmorphismTheme extends AppTheme {
       ),
 
       // Card Theme - với hiệu ứng glass
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceDarkColor,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -369,17 +363,11 @@ class GlassmorphismTheme extends AppTheme {
         fillColor: surfaceDarkColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: const BorderSide(
-            color: borderDarkColor,
-            width: 1.5,
-          ),
+          borderSide: BorderSide.none,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: const BorderSide(
-            color: borderDarkColor,
-            width: 1.5,
-          ),
+          borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),

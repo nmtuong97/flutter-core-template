@@ -1,3 +1,5 @@
+import 'dart:async' show unawaited;
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../theme/theme_provider.dart';
@@ -51,7 +53,7 @@ class ThemeSelector extends StatelessWidget {
           ],
           selected: {themeProvider.themeMode},
           onSelectionChanged: (Set<ThemeMode> selection) {
-            themeProvider.setThemeMode(selection.first);
+            unawaited(themeProvider.setThemeMode(selection.first));
           },
         ),
       ],
@@ -80,7 +82,7 @@ class ThemeSelector extends StatelessWidget {
               selected: isSelected,
               onSelected: (selected) {
                 if (selected) {
-                  themeProvider.setThemeStyle(theme.id);
+                  unawaited(themeProvider.setThemeStyle(theme.id));
                 }
               },
               avatar: isSelected ? const Icon(Icons.check) : null,

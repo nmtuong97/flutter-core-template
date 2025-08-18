@@ -127,7 +127,7 @@ class CyberpunkTheme extends AppTheme {
       ),
 
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceLightColor,
         elevation: 4,
         shadowColor: primaryLightColor.withAlpha((255 * 0.2).round()),
@@ -225,7 +225,7 @@ class CyberpunkTheme extends AppTheme {
       ),
 
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceDarkColor,
         elevation: 4,
         shadowColor: primaryDarkColor.withAlpha((255 * 0.3).round()),
@@ -409,7 +409,7 @@ class CyberpunkTheme extends AppTheme {
         fontFamily: fontFamily,
         fontSize: fontSize - 2,
         fontWeight: FontWeight.w500,
-        color: secondaryTextColor,
+        color: secondaryColor,
       ),
     );
   }

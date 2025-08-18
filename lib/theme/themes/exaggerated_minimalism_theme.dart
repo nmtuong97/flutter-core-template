@@ -59,15 +59,12 @@ class ExaggeratedMinimalismTheme extends AppTheme {
 
     return ThemeData(
       useMaterial3: true,
-      brightness: Brightness.light,
       primaryColor: primaryLightColor,
       colorScheme: const ColorScheme.light(
         primary: primaryLightColor,
         secondary: secondaryLightColor,
         tertiary: accentLightColor,
         surface: surfaceLightColor,
-        error: Colors.red,
-        onSecondary: Colors.white,
       ),
       scaffoldBackgroundColor: backgroundLightColor,
 
@@ -157,7 +154,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
       ),
 
       // Card Theme - viền tròn lớn, không đổ bóng
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceLightColor,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -313,7 +310,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
       ),
 
       // Card Theme - viền tròn lớn, không đổ bóng
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceDarkColor,
         elevation: 0,
         shape: RoundedRectangleBorder(

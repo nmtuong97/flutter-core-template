@@ -154,7 +154,7 @@ class OrganicNaturalTheme extends AppTheme {
       ),
 
       // Card Theme - phong cách tự nhiên, bo tròn
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceLightColor,
         elevation: 1,
         shape: RoundedRectangleBorder(
@@ -304,7 +304,7 @@ class OrganicNaturalTheme extends AppTheme {
           textStyle: _getTextStyle(
             fontFamily: defaultFontFamily,
             fontSize: normalFontSize,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
           ),
           padding: EdgeInsets.symmetric(
             horizontal: 16.w,
@@ -317,7 +317,7 @@ class OrganicNaturalTheme extends AppTheme {
       ),
 
       // Card Theme - phong cách tự nhiên, bo tròn
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceDarkColor,
         elevation: 1,
         shape: RoundedRectangleBorder(

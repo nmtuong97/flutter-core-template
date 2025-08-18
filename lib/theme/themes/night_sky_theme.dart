@@ -110,7 +110,7 @@ class NightSkyTheme extends AppTheme {
       ),
 
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceLightColor,
         elevation: 2,
         shadowColor: Colors.black.withAlpha((255 * 0.1).round()),
@@ -195,7 +195,7 @@ class NightSkyTheme extends AppTheme {
       ),
 
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceDarkColor,
         elevation: 4,
         shadowColor: Colors.black.withAlpha((255 * 0.3).round()),

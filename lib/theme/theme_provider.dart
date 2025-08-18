@@ -1,3 +1,5 @@
+import 'dart:async' show unawaited;
+
 import 'package:flutter/material.dart';
 import 'base/app_theme.dart';
 import 'base/theme_factory.dart';
@@ -6,7 +8,7 @@ import 'themes/default_theme.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeProvider() {
-    _loadPreferences();
+    unawaited(_loadPreferences());
   }
   ThemeMode _themeMode = ThemeMode.system;
   double _fontSize = DefaultTheme.normalFontSize;

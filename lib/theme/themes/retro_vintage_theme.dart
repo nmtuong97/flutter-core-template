@@ -157,7 +157,7 @@ class RetroVintageTheme extends AppTheme {
       ),
 
       // Card Theme - phong cách cổ điển
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceLightColor,
         elevation: 2,
         shape: RoundedRectangleBorder(
@@ -325,7 +325,7 @@ class RetroVintageTheme extends AppTheme {
       ),
 
       // Card Theme - phong cách cổ điển
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceDarkColor,
         elevation: 2,
         shape: RoundedRectangleBorder(

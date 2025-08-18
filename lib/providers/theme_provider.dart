@@ -1,3 +1,5 @@
+import 'dart:async' show unawaited;
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../theme/base/app_theme.dart';
@@ -46,25 +48,25 @@ class ThemeProvider extends ChangeNotifier {
   void setThemeMode(ThemeMode mode) {
     _themeMode = mode;
     notifyListeners();
-    _savePreferences();
+    unawaited(_savePreferences());
   }
 
   void setFontSize(double size) {
     _fontSize = size;
     notifyListeners();
-    _savePreferences();
+    unawaited(_savePreferences());
   }
 
   void setFontFamily(String family) {
     _fontFamily = family;
     notifyListeners();
-    _savePreferences();
+    unawaited(_savePreferences());
   }
 
   void setAppTheme(AppTheme theme) {
     _currentAppTheme = theme;
     notifyListeners();
-    _savePreferences();
+    unawaited(_savePreferences());
   }
 
   Future<void> _savePreferences() async {

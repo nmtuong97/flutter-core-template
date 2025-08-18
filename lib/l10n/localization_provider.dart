@@ -1,9 +1,11 @@
+import 'dart:async' show unawaited;
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalizationProvider extends ChangeNotifier {
   LocalizationProvider() {
-    _loadSavedLanguage();
+    unawaited(_loadSavedLanguage());
   }
   static const String languageKey = 'language_code';
   static const String defaultLanguage = 'en';

@@ -139,7 +139,7 @@ class CyberpunkTheme {
       ),
 
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceDarkColor,
         elevation: 8,
         shadowColor: primaryDarkColor.withAlpha((255 * 0.2).round()),
@@ -216,7 +216,7 @@ class CyberpunkTheme {
       ),
 
       // Dialog Theme
-      dialogTheme: DialogTheme(
+      dialogTheme: DialogThemeData(
         backgroundColor: surfaceDarkColor,
         elevation: 24,
         shadowColor: primaryDarkColor.withAlpha((255 * 0.3).round()),
@@ -380,7 +380,7 @@ class CyberpunkTheme {
       ),
 
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceLightColor,
         elevation: 8,
         shadowColor: primaryLightColor.withAlpha((255 * 0.2).round()),
@@ -457,7 +457,7 @@ class CyberpunkTheme {
       ),
 
       // Dialog Theme
-      dialogTheme: DialogTheme(
+      dialogTheme: DialogThemeData(
         backgroundColor: surfaceLightColor,
         elevation: 24,
         shadowColor: primaryLightColor.withAlpha((255 * 0.3).round()),
@@ -633,23 +633,19 @@ class CyberpunkTheme {
         fontFamily: fontFamily,
         fontSize: fontSize + 4,
         fontWeight: FontWeight.w600,
-        color: primaryColor,
-        hasShadow: true,
-        shadowColor: primaryColor,
+        color: primaryTextColor,
       ),
       titleMedium: _getTextStyle(
         fontFamily: fontFamily,
         fontSize: fontSize + 2,
         fontWeight: FontWeight.w600,
-        color: primaryColor,
-        hasShadow: true,
-        shadowColor: primaryColor,
+        color: primaryTextColor,
       ),
       titleSmall: _getTextStyle(
         fontFamily: fontFamily,
         fontSize: fontSize,
         fontWeight: FontWeight.w600,
-        color: primaryColor,
+        color: primaryTextColor,
       ),
       bodyLarge: _getTextStyle(
         fontFamily: fontFamily,
@@ -670,7 +666,7 @@ class CyberpunkTheme {
         fontFamily: fontFamily,
         fontSize: fontSize,
         fontWeight: FontWeight.w500,
-        color: secondaryColor,
+        color: primaryColor,
       ),
       labelMedium: _getTextStyle(
         fontFamily: fontFamily,
@@ -682,51 +678,8 @@ class CyberpunkTheme {
         fontFamily: fontFamily,
         fontSize: fontSize - 2,
         fontWeight: FontWeight.w500,
-        color: secondaryColor,
+        color: secondaryTextColor,
       ),
-    );
-  }
-
-  /// Creates a gradient button decoration for cyberpunk style.
-  static BoxDecoration getGradientButtonDecoration({
-    required bool isDarkMode,
-    double borderRadius = 8.0,
-  }) {
-    return BoxDecoration(
-      gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: isDarkMode
-            ? [primaryDarkColor, accentDarkColor]
-            : [primaryLightColor, accentLightColor],
-      ),
-      borderRadius: BorderRadius.circular(borderRadius),
-      boxShadow: [
-        BoxShadow(
-          color: isDarkMode
-              ? primaryDarkColor.withAlpha((255 * 0.4).round())
-              : primaryLightColor.withAlpha((255 * 0.3).round()),
-          blurRadius: 8,
-          offset: const Offset(0, 4),
-        ),
-      ],
-    );
-  }
-
-  /// Creates a gradient text style for cyberpunk style.
-  static TextStyle getGradientTextStyle({
-    required bool isDarkMode,
-    required String fontFamily,
-    double fontSize = normalFontSize,
-    FontWeight fontWeight = FontWeight.bold,
-  }) {
-    return _getTextStyle(
-      fontFamily: fontFamily,
-      fontSize: fontSize,
-      fontWeight: fontWeight,
-      color: isDarkMode ? Colors.white : Colors.black,
-      hasShadow: true,
-      shadowColor: isDarkMode ? primaryDarkColor : primaryLightColor,
     );
   }
 }

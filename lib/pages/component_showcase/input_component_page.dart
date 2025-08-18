@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-class InputComponentPage extends StatelessWidget {
+class InputComponentPage extends StatefulWidget {
   const InputComponentPage({super.key});
+
+  @override
+  State<InputComponentPage> createState() => _InputComponentPageState();
+}
+
+class _InputComponentPageState extends State<InputComponentPage> {
+  int? _radioValue = 1;
+  bool _checkboxValue = true;
+  bool _switchValue = true;
 
   @override
   Widget build(BuildContext context) {
@@ -26,21 +35,43 @@ class InputComponentPage extends StatelessWidget {
           const SizedBox(height: 16),
           CheckboxListTile(
             title: const Text('Checkbox'),
-            value: true,
-            onChanged: (bool? value) {},
+            value: _checkboxValue,
+            onChanged: (bool? value) {
+              setState(() {
+                _checkboxValue = value ?? false;
+              });
+            },
           ),
           const SizedBox(height: 16),
-          RadioListTile<int>(
-            title: const Text('Radio Button'),
-            value: 1,
-            groupValue: 1,
-            onChanged: (int? value) {},
+          RadioGroup<int>(
+            groupValue: _radioValue,
+            onChanged: (int? value) {
+              setState(() {
+                _radioValue = value;
+              });
+            },
+            child: const Column(
+              children: [
+                RadioListTile<int>(
+                  title: Text('Radio Button 1'),
+                  value: 1,
+                ),
+                RadioListTile<int>(
+                  title: Text('Radio Button 2'),
+                  value: 2,
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: 16),
           SwitchListTile(
             title: const Text('Switch'),
-            value: true,
-            onChanged: (bool? value) {},
+            value: _switchValue,
+            onChanged: (bool value) {
+              setState(() {
+                _switchValue = value;
+              });
+            },
           ),
           const SizedBox(height: 16),
           const LinearProgressIndicator(value: 0.7),

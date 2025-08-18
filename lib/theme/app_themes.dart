@@ -166,7 +166,7 @@ class AppThemes {
         ),
       ),
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceLightColor,
         elevation: 2,
         shadowColor: Colors.black.withAlpha((255 * 0.1).round()),
@@ -191,7 +191,7 @@ class AppThemes {
         ),
       ),
       // Bottom App Bar Theme
-      bottomAppBarTheme: BottomAppBarTheme(
+      bottomAppBarTheme: BottomAppBarThemeData(
         color: bottomNavBgLightColor,
         elevation: 8,
         height: 56,
@@ -286,7 +286,7 @@ class AppThemes {
         ),
       ),
       // Dialog Theme
-      dialogTheme: DialogTheme(
+      dialogTheme: DialogThemeData(
         backgroundColor: surfaceLightColor,
         elevation: 24,
         shadowColor: Colors.black.withAlpha((255 * 0.2).round()),
@@ -331,7 +331,7 @@ class AppThemes {
         ),
       ),
       // Tab Bar Theme
-      tabBarTheme: TabBarTheme(
+      tabBarTheme: TabBarThemeData(
         labelColor: primaryLightColor,
         unselectedLabelColor: textSecondaryLightColor,
         indicatorColor: primaryLightColor,
@@ -676,7 +676,7 @@ class AppThemes {
         ),
       ),
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceDarkColor,
         elevation: 0,
         shadowColor: primaryDarkColor.withAlpha((255 * 0.1).round()),
@@ -701,7 +701,7 @@ class AppThemes {
         ),
       ),
       // Bottom App Bar Theme
-      bottomAppBarTheme: BottomAppBarTheme(
+      bottomAppBarTheme: BottomAppBarThemeData(
         color: bottomNavBgDarkColor,
         elevation: 8,
         height: 56,
@@ -797,7 +797,7 @@ class AppThemes {
         ),
       ),
       // Dialog Theme
-      dialogTheme: DialogTheme(
+      dialogTheme: DialogThemeData(
         backgroundColor: surfaceDarkColor,
         elevation: 24,
         shadowColor: Colors.black.withAlpha((255 * 0.5).round()),
@@ -842,7 +842,7 @@ class AppThemes {
         ),
       ),
       // Tab Bar Theme
-      tabBarTheme: TabBarTheme(
+      tabBarTheme: TabBarThemeData(
         labelColor: primaryDarkColor,
         unselectedLabelColor: textSecondaryDarkColor,
         indicatorColor: primaryDarkColor,

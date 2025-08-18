@@ -33,30 +33,29 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 16),
-                  Column(
-                    children: [
-                      RadioListTile<ThemeMode>(
-                        title: Text(l10n.lightTheme),
-                        value: ThemeMode.light,
-                        groupValue: themeProvider.themeMode,
-                        onChanged: (value) =>
-                            themeProvider.setThemeMode(value!),
-                      ),
-                      RadioListTile<ThemeMode>(
-                        title: Text(l10n.darkTheme),
-                        value: ThemeMode.dark,
-                        groupValue: themeProvider.themeMode,
-                        onChanged: (value) =>
-                            themeProvider.setThemeMode(value!),
-                      ),
-                      RadioListTile<ThemeMode>(
-                        title: Text(l10n.systemTheme),
-                        value: ThemeMode.system,
-                        groupValue: themeProvider.themeMode,
-                        onChanged: (value) =>
-                            themeProvider.setThemeMode(value!),
-                      ),
-                    ],
+                  RadioGroup<ThemeMode>(
+                    groupValue: themeProvider.themeMode,
+                    onChanged: (value) {
+                      if (value != null) {
+                        themeProvider.setThemeMode(value);
+                      }
+                    },
+                    child: const Column(
+                      children: [
+                        RadioListTile<ThemeMode>(
+                          title: Text('Light Theme'),
+                          value: ThemeMode.light,
+                        ),
+                        RadioListTile<ThemeMode>(
+                          title: Text('Dark Theme'),
+                          value: ThemeMode.dark,
+                        ),
+                        RadioListTile<ThemeMode>(
+                          title: Text('System Theme'),
+                          value: ThemeMode.system,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -102,30 +101,29 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 16),
-                  Column(
-                    children: [
-                      RadioListTile<String>(
-                        title: const Text('Roboto'),
-                        value: 'Roboto',
-                        groupValue: themeProvider.fontFamily,
-                        onChanged: (value) =>
-                            themeProvider.setFontFamily(value!),
-                      ),
-                      RadioListTile<String>(
-                        title: const Text('Poppins'),
-                        value: 'Poppins',
-                        groupValue: themeProvider.fontFamily,
-                        onChanged: (value) =>
-                            themeProvider.setFontFamily(value!),
-                      ),
-                      RadioListTile<String>(
-                        title: const Text('Merriweather'),
-                        value: 'Merriweather',
-                        groupValue: themeProvider.fontFamily,
-                        onChanged: (value) =>
-                            themeProvider.setFontFamily(value!),
-                      ),
-                    ],
+                  RadioGroup<String>(
+                    groupValue: themeProvider.fontFamily,
+                    onChanged: (value) {
+                      if (value != null) {
+                        themeProvider.setFontFamily(value);
+                      }
+                    },
+                    child: const Column(
+                       children: [
+                         RadioListTile<String>(
+                           title: Text('Roboto'),
+                           value: 'Roboto',
+                         ),
+                         RadioListTile<String>(
+                           title: Text('Poppins'),
+                           value: 'Poppins',
+                         ),
+                         RadioListTile<String>(
+                           title: Text('Merriweather'),
+                           value: 'Merriweather',
+                         ),
+                       ],
+                     ),
                   ),
                 ],
               ),
@@ -145,15 +143,21 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 16),
-                  Column(
-                    children: AppThemes.all.map((AppTheme theme) {
-                      return RadioListTile<AppTheme>(
-                        title: Text(theme.name),
-                        value: theme,
-                        groupValue: themeProvider.currentAppTheme,
-                        onChanged: (value) => themeProvider.setAppTheme(value!),
-                      );
-                    }).toList(),
+                  RadioGroup<AppTheme>(
+                    groupValue: themeProvider.currentAppTheme,
+                    onChanged: (value) {
+                      if (value != null) {
+                        themeProvider.setAppTheme(value);
+                      }
+                    },
+                    child: Column(
+                      children: AppThemes.all.map((AppTheme theme) {
+                        return RadioListTile<AppTheme>(
+                          title: Text(theme.name),
+                          value: theme,
+                        );
+                      }).toList(),
+                     ),
                   ),
                 ],
               ),
@@ -175,19 +179,25 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                   const SizedBox(height: 16),
                   Column(
                     children: [
-                      RadioListTile<String>(
-                        title: Text(l10n.english),
-                        value: 'en',
+                      RadioGroup<String>(
                         groupValue: languageProvider.locale.languageCode,
-                        onChanged: (value) =>
-                            languageProvider.setLocale(Locale(value!)),
-                      ),
-                      RadioListTile<String>(
-                        title: Text(l10n.vietnamese),
-                        value: 'vi',
-                        groupValue: languageProvider.locale.languageCode,
-                        onChanged: (value) =>
-                            languageProvider.setLocale(Locale(value!)),
+                        onChanged: (value) {
+                          if (value != null) {
+                            languageProvider.setLocale(Locale(value));
+                          }
+                        },
+                        child: const Column(
+                          children: [
+                            RadioListTile<String>(
+                              title: Text('English'),
+                              value: 'en',
+                            ),
+                            RadioListTile<String>(
+                              title: Text('Tiếng Việt'),
+                              value: 'vi',
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

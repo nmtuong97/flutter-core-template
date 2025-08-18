@@ -1,3 +1,5 @@
+import 'dart:async' show unawaited;
+
 import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
@@ -25,12 +27,14 @@ class ThemeShowcasePage extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.settings),
               onPressed: () {
-                showModalBottomSheet<void>(
-                  context: context,
-                  isScrollControlled: true,
-                  builder: (BuildContext context) {
-                    return const ThemeSettingsBottomSheet();
-                  },
+                unawaited(
+                  showModalBottomSheet<void>(
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (BuildContext context) {
+                      return const ThemeSettingsBottomSheet();
+                    },
+                  ),
                 );
               },
             ),

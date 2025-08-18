@@ -142,7 +142,7 @@ class DefaultTheme extends AppTheme {
         ),
       ),
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceLightColor,
         elevation: 1,
         shadowColor: Colors.black.withAlpha((255 * 0.1).round()),
@@ -215,12 +215,12 @@ class DefaultTheme extends AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryDarkColor,
-          foregroundColor: backgroundDarkColor,
+          foregroundColor: Colors.black,
           textStyle: _getTextStyle(
             fontFamily: defaultFontFamily,
             fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
-            color: backgroundDarkColor,
+            color: Colors.black,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
           shape:
@@ -256,7 +256,7 @@ class DefaultTheme extends AppTheme {
         ),
       ),
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceDarkColor,
         elevation: 1,
         shadowColor: Colors.black.withAlpha((255 * 0.3).round()),

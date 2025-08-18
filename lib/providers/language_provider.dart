@@ -1,3 +1,5 @@
+import 'dart:async' show unawaited;
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,7 +11,7 @@ class LanguageProvider extends ChangeNotifier {
   void setLocale(Locale locale) {
     _locale = locale;
     notifyListeners();
-    _saveLocale();
+    unawaited(_saveLocale());
   }
 
   Future<void> _saveLocale() async {

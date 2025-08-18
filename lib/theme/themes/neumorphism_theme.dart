@@ -171,7 +171,7 @@ class NeumorphismTheme extends AppTheme {
       ),
 
       // Card Theme - với hiệu ứng neumorphic
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceLightColor,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -342,7 +342,7 @@ class NeumorphismTheme extends AppTheme {
       ),
 
       // Card Theme - với hiệu ứng neumorphic
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceDarkColor,
         elevation: 0,
         shape: RoundedRectangleBorder(
