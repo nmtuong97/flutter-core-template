@@ -19,6 +19,14 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return Consumer2<ThemeProvider, LanguageProvider>(
           builder: (context, themeProvider, languageProvider, _) {
+            if (themeProvider.isLoading) {
+              return const MaterialApp(
+                debugShowCheckedModeBanner: false,
+                home: Scaffold(
+                  body: Center(child: CircularProgressIndicator()),
+                ),
+              );
+            }
             return MaterialApp(
               onGenerateTitle: (context) => 
                   AppLocalizations.of(context).appTitle,

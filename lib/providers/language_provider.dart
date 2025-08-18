@@ -2,6 +2,7 @@ import 'dart:async' show unawaited;
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../theme/theme_preferences.dart';
 
 class LanguageProvider extends ChangeNotifier {
   Locale _locale = const Locale('en');
@@ -16,12 +17,13 @@ class LanguageProvider extends ChangeNotifier {
 
   Future<void> _saveLocale() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('locale', _locale.languageCode);
+    await prefs.setString(ThemePreferences.languageKey, _locale.languageCode);
   }
 
   Future<void> loadLocale() async {
     final prefs = await SharedPreferences.getInstance();
-    final localeCode = prefs.getString('locale') ?? 'en';
+    final localeCode = prefs.getString(ThemePreferences.languageKey) ??
+        ThemePreferences.englishLanguage;
     _locale = Locale(localeCode);
     notifyListeners();
   }
