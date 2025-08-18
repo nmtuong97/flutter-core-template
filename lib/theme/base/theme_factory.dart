@@ -8,9 +8,9 @@ import '../themes/organic_natural_theme.dart';
 import '../themes/retro_vintage_theme.dart';
 import 'app_theme.dart';
 
-/// Factory class để tạo và quản lý các theme
+/// Factory class to create and manage themes
 class ThemeFactory {
-  // Danh sách tất cả các theme có sẵn
+  // List of all available themes
   static final List<AppTheme> _availableThemes = [
     DefaultTheme(),
     CyberpunkTheme(),
@@ -23,16 +23,16 @@ class ThemeFactory {
     // Thêm các theme mới ở đây
   ];
 
-  /// Lấy danh sách tất cả các theme có sẵn
+  /// Get list of all available themes
   static List<AppTheme> get availableThemes => _availableThemes;
 
-  /// Lấy theme mặc định
+  /// Get default theme
   static AppTheme get defaultTheme => _availableThemes.firstWhere(
         (theme) => theme.isDefault,
         orElse: () => _availableThemes.first,
       );
 
-  /// Lấy theme theo ID
+  /// Get theme by ID
   static AppTheme getThemeById(String id) {
     return _availableThemes.firstWhere(
       (theme) => theme.id == id,

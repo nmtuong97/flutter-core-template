@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
-/// Abstract class định nghĩa cấu trúc cơ bản cho tất cả các theme
+/// Abstract class defining the basic structure for all themes
 @immutable
 abstract class AppTheme {
-  /// ID duy nhất của theme, dùng để lưu trữ và nhận dạng
+  /// Unique ID of the theme, used for storage and identification
   String get id;
 
-  /// Tên hiển thị của theme
+  /// Display name of the theme
   String get name;
 
-  /// Mô tả ngắn về theme
+  /// Short description of the theme
   String get description;
 
-  /// Dữ liệu theme sáng
+  /// Light theme data
   ThemeData get lightThemeData;
 
-  /// Dữ liệu theme tối
+  /// Dark theme data
   ThemeData get darkThemeData;
 
-  /// Kiểm tra xem theme này có phải là theme mặc định không
+  /// Check if this theme is the default theme
   bool get isDefault => false;
 
   @override

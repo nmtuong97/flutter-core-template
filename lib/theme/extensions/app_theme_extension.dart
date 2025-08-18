@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-/// Extension cho Theme để thêm các thuộc tính tùy chỉnh
+/// Extension for Theme to add custom properties
 class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
   const AppThemeExtension({
     required this.cardBackgroundColor,
@@ -25,7 +25,7 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
     this.cardGradient,
   });
 
-  /// Tạo instance mặc định cho light theme
+  /// Create default instance for light theme
   factory AppThemeExtension.light() {
     return AppThemeExtension(
       cardBackgroundColor: Colors.white,
@@ -66,7 +66,7 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
     );
   }
 
-  /// Tạo instance mặc định cho dark theme
+  /// Create default instance for dark theme
   factory AppThemeExtension.dark() {
     return AppThemeExtension(
       cardBackgroundColor: const Color(0xFF1E1E1E),
@@ -107,61 +107,61 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
     );
   }
 
-  /// Màu nền của card
+  /// Background color of the card
   final Color cardBackgroundColor;
 
-  /// Màu nền của video controls
+  /// Background color of video controls
   final Color videoControlsBackground;
 
-  /// Màu nền của bottom navigation bar
+  /// Background color of the bottom navigation bar
   final Color bottomNavBarBackground;
 
-  /// Màu của icon không active trong bottom navigation bar
+  /// Color of inactive icon in bottom navigation bar
   final Color bottomNavBarInactiveColor;
 
-  /// Màu của icon active trong bottom navigation bar
+  /// Color of active icon in bottom navigation bar
   final Color bottomNavBarActiveColor;
 
-  /// Border radius mặc định
+  /// Default border radius
   final BorderRadius defaultBorderRadius;
 
-  /// Border radius cho card
+  /// Border radius for card
   final BorderRadius cardBorderRadius;
 
-  /// Border radius cho button
+  /// Border radius for button
   final BorderRadius buttonBorderRadius;
 
-  /// Border radius cho dialog
+  /// Border radius for dialog
   final BorderRadius dialogBorderRadius;
 
-  /// Shadow cho card
+  /// Shadow for card
   final List<BoxShadow>? cardShadow;
 
-  /// Shadow cho button
+  /// Shadow for button
   final List<BoxShadow>? buttonShadow;
 
-  /// Shadow cho dialog
+  /// Shadow for dialog
   final List<BoxShadow>? dialogShadow;
 
-  /// Padding mặc định
+  /// Default padding
   final EdgeInsetsGeometry defaultPadding;
 
-  /// Padding cho card
+  /// Padding for card
   final EdgeInsetsGeometry cardPadding;
 
-  /// Padding cho button
+  /// Padding for button
   final EdgeInsetsGeometry buttonPadding;
 
-  /// Padding cho dialog
+  /// Padding for dialog
   final EdgeInsetsGeometry dialogPadding;
 
-  /// Màu overlay cho video controls
+  /// Overlay color for video controls
   final Color videoOverlayColor;
 
-  /// Màu gradient cho button
+  /// Gradient color for button
   final Gradient? buttonGradient;
 
-  /// Màu gradient cho card
+  /// Gradient color for card
   final Gradient? cardGradient;
 
   @override

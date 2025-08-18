@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../base/app_theme.dart';
 
-/// Theme Neumorphism với hiệu ứng nổi 3D mềm mại
+/// Neumorphism Theme with soft 3D embossed effect
 class NeumorphismTheme extends AppTheme {
   @override
   String get id => 'neumorphism';
@@ -12,7 +12,7 @@ class NeumorphismTheme extends AppTheme {
   String get name => 'Neumorphism';
 
   @override
-  String get description => 'Hiệu ứng nổi 3D mềm mại';
+  String get description => 'Soft 3D embossed effect';
 
   // Font sizes
   static const double smallFontSize = 12;
@@ -27,32 +27,50 @@ class NeumorphismTheme extends AppTheme {
   static const String serifFontFamily = 'Merriweather';
 
   // Base Colors - Light Mode (màu nhẹ nhàng cho hiệu ứng nổi)
-  static const Color backgroundLightColor = Color(0xFFE0E5EC); // Xám nhạt
-  static const Color primaryLightColor = Color(0xFF4B70E2); // Xanh dương
-  static const Color secondaryLightColor = Color(0xFF8E9AAF); // Xám xanh
-  static const Color accentLightColor = Color(0xFF6C63FF); // Tím nhạt
-  static const Color surfaceLightColor = Color(0xFFE0E5EC); // Giống background
-  static const Color shadowDarkLightColor = Color(0xFFA3B1C6); // Bóng đậm
-  static const Color shadowLightLightColor = Color(0xFFFFFFFF); // Bóng sáng
+  static const Color backgroundLightColor = Color(0xFFE0E5EC); /// Main background color for light mode
+  static const Color primaryLightColor = Color(0xFF4B70E2); /// Primary color for light mode
+  static const Color secondaryLightColor = Color(0xFF8E9AAF); /// Secondary color for light mode
+  static const Color accentLightColor = Color(0xFF6C63FF); /// Accent color for light mode
+  static const Color surfaceLightColor = Color(0xFFE0E5EC); // Same as background
+  static const Color shadowDarkLightColor = Color(0xFFA3B1C6); // Dark shadow
+  static const Color shadowLightLightColor = Color(0xFFFFFFFF); // Light shadow
 
   // Base Colors - Dark Mode
-  static const Color backgroundDarkColor = Color(0xFF2D3748); // Xám đậm
-  static const Color primaryDarkColor = Color(0xFF6C63FF); // Tím nhạt
-  static const Color secondaryDarkColor = Color(0xFF718096); // Xám trung
-  static const Color accentDarkColor = Color(0xFF4B70E2); // Xanh dương
-  static const Color surfaceDarkColor = Color(0xFF2D3748); // Giống background
-  static const Color shadowDarkDarkColor = Color(0xFF1A202C); // Bóng đậm
-  static const Color shadowLightDarkColor = Color(0xFF4A5568); // Bóng sáng
+  static const Color backgroundDarkColor = Color(0xFF2D3748); /// Main background color for dark mode
+  static const Color primaryDarkColor = Color(0xFF6C63FF); /// Primary color for dark mode
+  static const Color secondaryDarkColor = Color(0xFF718096); /// Secondary color for dark mode
+  static const Color accentDarkColor = Color(0xFF4B70E2); /// Accent color for dark mode
+  static const Color surfaceDarkColor = Color(0xFF2D3748); // Same as background
+  static const Color shadowDarkDarkColor = Color(0xFF1A202C); // Dark shadow
+  static const Color shadowLightDarkColor = Color(0xFF4A5568); // Light shadow
 
   // Text Colors - Light Mode
+  /// Text color on light background
   static const Color textPrimaryLightColor = Color(0xFF2D3748);
+  /// Secondary text color on light background
   static const Color textSecondaryLightColor = Color(0xFF718096);
+  /// Disabled text color on light background
   static const Color textDisabledLightColor = Color(0xFFA0AEC0);
 
   // Text Colors - Dark Mode
+  /// Text color on dark background
   static const Color textPrimaryDarkColor = Color(0xFFE2E8F0);
+  /// Secondary text color on dark background
   static const Color textSecondaryDarkColor = Color(0xFFA0AEC0);
+  /// Disabled text color on dark background
   static const Color textDisabledDarkColor = Color(0xFF718096);
+
+  /// Info color
+  static const Color infoColor = Color(0xFF3B82F6);
+
+  /// Success color
+  static const Color successColor = Color(0xFF10B981);
+
+  /// Warning color
+  static const Color warningColor = Color(0xFFF59E0B);
+
+  /// Error color
+  static const Color errorColor = Color(0xFFEF4444);
 
   @override
   ThemeData get lightThemeData {
@@ -71,7 +89,7 @@ class NeumorphismTheme extends AppTheme {
       ),
       scaffoldBackgroundColor: backgroundLightColor,
 
-      // AppBar Theme
+      // AppBar Theme - Dark Mode
       appBarTheme: AppBarTheme(
         backgroundColor: backgroundLightColor,
         foregroundColor: textPrimaryLightColor,
@@ -87,7 +105,7 @@ class NeumorphismTheme extends AppTheme {
         ),
       ),
 
-      // Text Theme
+      // Text Theme - Dark Mode
       textTheme: _getTextTheme(
         defaultFontFamily,
         normalFontSize,
@@ -95,7 +113,7 @@ class NeumorphismTheme extends AppTheme {
         textSecondaryLightColor,
       ),
 
-      // Button Themes - với hiệu ứng neumorphic
+      // Button Themes - with neumorphic effect
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: surfaceLightColor,
@@ -115,7 +133,7 @@ class NeumorphismTheme extends AppTheme {
           elevation: 0,
           shadowColor: Colors.transparent,
         ).copyWith(
-          // Hiệu ứng neumorphic với BoxDecoration
+          // Neumorphic effect with BoxDecoration
           backgroundColor: WidgetStateProperty.resolveWith<Color>(
             (Set<WidgetState> states) {
               if (states.contains(WidgetState.pressed)) {
@@ -170,7 +188,7 @@ class NeumorphismTheme extends AppTheme {
         ),
       ),
 
-      // Card Theme - với hiệu ứng neumorphic
+      // Card Theme - with neumorphic effect
       cardTheme: CardThemeData(
         color: surfaceLightColor,
         elevation: 0,
@@ -266,7 +284,7 @@ class NeumorphismTheme extends AppTheme {
         textSecondaryDarkColor,
       ),
 
-      // Button Themes - với hiệu ứng neumorphic
+      // Button Themes - Dark Mode
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: surfaceDarkColor,
@@ -286,7 +304,7 @@ class NeumorphismTheme extends AppTheme {
           elevation: 0,
           shadowColor: Colors.transparent,
         ).copyWith(
-          // Hiệu ứng neumorphic với BoxDecoration
+          // Neumorphic effect with BoxDecoration
           backgroundColor: WidgetStateProperty.resolveWith<Color>(
             (Set<WidgetState> states) {
               if (states.contains(WidgetState.pressed)) {
@@ -341,7 +359,7 @@ class NeumorphismTheme extends AppTheme {
         ),
       ),
 
-      // Card Theme - với hiệu ứng neumorphic
+      // Card Theme - Dark Mode
       cardTheme: CardThemeData(
         color: surfaceDarkColor,
         elevation: 0,

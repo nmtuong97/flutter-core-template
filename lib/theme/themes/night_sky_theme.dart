@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../base/app_theme.dart';
 
-/// Theme Night Sky với màu sắc tối và xanh dương
+/// Night Sky Theme with dark and blue colors
 class NightSkyTheme extends AppTheme {
   @override
   String get id => 'night_sky';
@@ -27,19 +27,19 @@ class NightSkyTheme extends AppTheme {
   static const String serifFontFamily = 'Merriweather';
 
   // Base Colors - Dark Mode
-  static const Color backgroundDarkColor = Color(0xFF0A1128); // Xanh đêm sâu
-  static const Color primaryDarkColor = Color(0xFF00A8E8); // Xanh dương sáng
-  static const Color secondaryDarkColor = Color(0xFF7B68EE); // Tím nhạt
-  static const Color accentDarkColor = Color(0xFFFFD700); // Vàng sao
-  static const Color surfaceDarkColor = Color(0xFF1A2A52); // Xanh đêm nhạt
+  static const Color backgroundDarkColor = Color(0xFF0A1128); // Deep night blue
+  static const Color primaryDarkColor = Color(0xFF00A8E8); // Bright blue
+  static const Color secondaryDarkColor = Color(0xFF7B68EE); // Light purple
+  static const Color accentDarkColor = Color(0xFFFFD700); // Star yellow
+  static const Color surfaceDarkColor = Color(0xFF1A2A52); // Light night blue
   static const Color inactiveIconDarkColor = Color(0xFF4A5A8A);
 
   // Base Colors - Light Mode
-  static const Color backgroundLightColor = Color(0xFFF0F8FF); // Xanh nhạt
-  static const Color primaryLightColor = Color(0xFF1E88E5); // Xanh dương
-  static const Color secondaryLightColor = Color(0xFF7B68EE); // Tím nhạt
-  static const Color accentLightColor = Color(0xFFFFD700); // Vàng sao
-  static const Color surfaceLightColor = Color(0xFFFFFFFF); // Trắng
+  static const Color backgroundLightColor = Color(0xFFF0F8FF); // Light blue
+  static const Color primaryLightColor = Color(0xFF1E88E5); // Blue
+  static const Color secondaryLightColor = Color(0xFF7B68EE); // Light purple
+  static const Color accentLightColor = Color(0xFFFFD700); // Star yellow
+  static const Color surfaceLightColor = Color(0xFFFFFFFF); // White
   static const Color inactiveIconLightColor = Color(0xFFB3C2E0);
 
   // Text Colors - Dark Mode
@@ -69,7 +69,7 @@ class NightSkyTheme extends AppTheme {
       ),
       scaffoldBackgroundColor: backgroundLightColor,
 
-      // AppBar Theme
+      // AppBar Theme - Dark Mode - Light Mode
       appBarTheme: AppBarTheme(
         backgroundColor: primaryLightColor,
         foregroundColor: Colors.white,
@@ -83,7 +83,7 @@ class NightSkyTheme extends AppTheme {
         iconTheme: IconThemeData(color: Colors.white, size: 24.r),
       ),
 
-      // Text Theme
+      // Text Theme - Dark Mode - Light Mode
       textTheme: _getTextTheme(
         defaultFontFamily,
         normalFontSize,
@@ -91,7 +91,7 @@ class NightSkyTheme extends AppTheme {
         textSecondaryLightColor,
       ),
 
-      // Button Themes
+      // Button Themes - Dark Mode - Light Mode
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryLightColor,
@@ -109,7 +109,7 @@ class NightSkyTheme extends AppTheme {
         ),
       ),
 
-      // Card Theme
+      // Card Theme - Dark Mode - Light Mode
       cardTheme: CardThemeData(
         color: surfaceLightColor,
         elevation: 2,
@@ -119,14 +119,14 @@ class NightSkyTheme extends AppTheme {
         ),
       ),
 
-      // Icon Theme
+      // Icon Theme - Dark Mode - Light Mode
       iconTheme: IconThemeData(
         color: primaryLightColor,
         size: 24.r,
         opacity: 1,
       ),
 
-      // Divider Theme
+      // Divider Theme - Dark Mode - Light Mode
       dividerTheme: DividerThemeData(
         color: inactiveIconLightColor.withAlpha((255 * 0.3).round()),
         thickness: 1,

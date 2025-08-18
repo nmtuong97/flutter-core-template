@@ -24,7 +24,7 @@ class ThemeProvider extends ChangeNotifier {
   AppTheme get currentTheme => _currentTheme;
   bool get isLoading => _isLoading;
 
-  // Lấy danh sách tất cả các theme có sẵn
+  // Get list of all available themes
   List<AppTheme> get availableThemes => ThemeFactory.availableThemes;
 
   // Get current theme data

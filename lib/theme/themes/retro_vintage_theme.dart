@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../base/app_theme.dart';
 
-/// Theme Retro/Vintage với phong cách hoài cổ
+/// Retro/Vintage Theme with a nostalgic style
 class RetroVintageTheme extends AppTheme {
   @override
   String get id => 'retro_vintage';
@@ -28,20 +28,20 @@ class RetroVintageTheme extends AppTheme {
   static const String serifFontFamily = 'Lora';
 
   // Base Colors - Light Mode (màu vintage)
-  static const Color backgroundLightColor = Color(0xFFF8F3E6); // Màu giấy cũ
-  static const Color primaryLightColor = Color(0xFF8B4513); // Nâu đỏ
-  static const Color secondaryLightColor = Color(0xFF5F9EA0); // Xanh ngọc cổ
-  static const Color accentLightColor = Color(0xFFCD5C5C); // Đỏ gạch
-  static const Color surfaceLightColor = Color(0xFFF5EBD8); // Màu giấy nhạt
-  static const Color borderLightColor = Color(0xFFD2B48C); // Màu cát
+  static const Color backgroundLightColor = Color(0xFFF8F3E6); // Old paper color
+  static const Color primaryLightColor = Color(0xFF8B4513); // Reddish brown
+  static const Color secondaryLightColor = Color(0xFF5F9EA0); // Vintage teal
+  static const Color accentLightColor = Color(0xFFCD5C5C); // Brick red
+  static const Color surfaceLightColor = Color(0xFFF5EBD8); // Light paper color
+  static const Color borderLightColor = Color(0xFFD2B48C); // Sand color
 
   // Base Colors - Dark Mode
-  static const Color backgroundDarkColor = Color(0xFF2C2416); // Nâu đậm
-  static const Color primaryDarkColor = Color(0xFFD2B48C); // Màu cát
-  static const Color secondaryDarkColor = Color(0xFF5F9EA0); // Xanh ngọc cổ
-  static const Color accentDarkColor = Color(0xFFCD5C5C); // Đỏ gạch
-  static const Color surfaceDarkColor = Color(0xFF3C3022); // Nâu đậm hơn
-  static const Color borderDarkColor = Color(0xFF8B4513); // Nâu đỏ
+  static const Color backgroundDarkColor = Color(0xFF2C2416); // Dark brown
+  static const Color primaryDarkColor = Color(0xFFD2B48C); // Sand color
+  static const Color secondaryDarkColor = Color(0xFF5F9EA0); // Vintage teal
+  static const Color accentDarkColor = Color(0xFFCD5C5C); // Brick red
+  static const Color surfaceDarkColor = Color(0xFF3C3022); // Darker brown
+  static const Color borderDarkColor = Color(0xFF8B4513); // Reddish brown
 
   // Text Colors - Light Mode
   static const Color textPrimaryLightColor = Color(0xFF3C3022);
@@ -64,7 +64,7 @@ class RetroVintageTheme extends AppTheme {
         secondary: secondaryLightColor,
         tertiary: accentLightColor,
         surface: surfaceLightColor,
-        error: Color(0xFFCD5C5C), // Đỏ gạch
+        error: Color(0xFFCD5C5C), // Brick red
         onSecondary: Colors.white,
         onSurface: textPrimaryLightColor,
       ),
@@ -230,9 +230,9 @@ class RetroVintageTheme extends AppTheme {
         secondary: secondaryDarkColor,
         tertiary: accentDarkColor,
         surface: surfaceDarkColor,
-        error: Color(0xFFCD5C5C), // Đỏ gạch
-        onPrimary: Color(0xFF3C3022), // Nâu đậm
-        onSecondary: Color(0xFF3C3022), // Nâu đậm
+        error: Color(0xFFCD5C5C), // Brick red
+        onPrimary: Color(0xFF3C3022), // Dark brown
+        onSecondary: Color(0xFF3C3022), // Dark brown
         onSurface: textPrimaryDarkColor,
       ),
       scaffoldBackgroundColor: backgroundDarkColor,
@@ -265,12 +265,12 @@ class RetroVintageTheme extends AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryDarkColor,
-          foregroundColor: const Color(0xFF3C3022), // Nâu đậm
+          foregroundColor: const Color(0xFF3C3022), // Dark brown
           textStyle: _getTextStyle(
             fontFamily: defaultFontFamily,
             fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
-            color: const Color(0xFF3C3022), // Nâu đậm
+            color: const Color(0xFF3C3022), // Dark brown
           ),
           padding: EdgeInsets.symmetric(
             horizontal: 24.w,
@@ -394,7 +394,7 @@ class RetroVintageTheme extends AppTheme {
     FontWeight fontWeight = FontWeight.normal,
     Color? color,
   }) {
-    // Sử dụng ScreenUtil để responsive font size
+    // Use ScreenUtil for responsive font sizing
     final responsiveFontSize = fontSize.sp;
     TextStyle textStyle;
 
@@ -435,19 +435,19 @@ class RetroVintageTheme extends AppTheme {
   ) {
     return TextTheme(
       displayLarge: _getTextStyle(
-        fontFamily: alternateFontFamily, // Sử dụng font khác cho tiêu đề lớn
+        fontFamily: alternateFontFamily, // Use different font for large titles
         fontSize: fontSize + 12,
         fontWeight: FontWeight.w600,
         color: primaryTextColor,
       ),
       displayMedium: _getTextStyle(
-        fontFamily: alternateFontFamily, // Sử dụng font khác cho tiêu đề lớn
+        fontFamily: alternateFontFamily, // Use different font for large titles
         fontSize: fontSize + 10,
         fontWeight: FontWeight.w600,
         color: primaryTextColor,
       ),
       displaySmall: _getTextStyle(
-        fontFamily: alternateFontFamily, // Sử dụng font khác cho tiêu đề lớn
+        fontFamily: alternateFontFamily, // Use different font for large titles
         fontSize: fontSize + 8,
         fontWeight: FontWeight.w600,
         color: primaryTextColor,
@@ -489,17 +489,17 @@ class RetroVintageTheme extends AppTheme {
         color: primaryTextColor,
       ),
       bodyLarge: _getTextStyle(
-        fontFamily: serifFontFamily, // Sử dụng font serif cho nội dung
+        fontFamily: serifFontFamily, // Use serif font for content
         fontSize: fontSize + 2,
         color: primaryTextColor,
       ),
       bodyMedium: _getTextStyle(
-        fontFamily: serifFontFamily, // Sử dụng font serif cho nội dung
+        fontFamily: serifFontFamily, // Use serif font for content
         fontSize: fontSize,
         color: primaryTextColor,
       ),
       bodySmall: _getTextStyle(
-        fontFamily: serifFontFamily, // Sử dụng font serif cho nội dung
+        fontFamily: serifFontFamily, // Use serif font for content
         fontSize: fontSize - 2,
         color: secondaryTextColor,
       ),

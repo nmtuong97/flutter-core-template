@@ -15,7 +15,7 @@ class ThemePreferences {
   // Theme style
   static const String themeStyleKey = 'theme_style';
 
-  // Theme IDs - Không cần định nghĩa cứng ở đây nữa, sẽ lấy từ ThemeFactory
+  // Theme IDs - No longer hardcoded here, will be fetched from ThemeFactory
 
   // Font size
   static const String smallFont = 'small';

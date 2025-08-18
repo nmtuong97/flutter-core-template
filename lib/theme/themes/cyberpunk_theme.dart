@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../base/app_theme.dart';
 
-/// Theme Cyberpunk với màu sắc neon và hiệu ứng đặc biệt
+/// Cyberpunk Theme with neon colors and special effects
 class CyberpunkTheme extends AppTheme {
   @override
   String get id => 'cyberpunk';
@@ -27,19 +27,19 @@ class CyberpunkTheme extends AppTheme {
   static const String serifFontFamily = 'Merriweather';
 
   // Base Colors - Dark Mode
-  static const Color backgroundDarkColor = Color(0xFF0F0F13); // Xám không gian
-  static const Color primaryDarkColor = Color(0xFFFF3BFF); // Neon hồng
-  static const Color secondaryDarkColor = Color(0xFF00F0FF); // Xanh cyan
-  static const Color accentDarkColor = Color(0xFFFFD600); // Vàng chanh
-  static const Color surfaceDarkColor = Color(0xFF1A1A24); // Xám vũ trụ
+  static const Color backgroundDarkColor = Color(0xFF0F0F13); // Space gray
+  static const Color primaryDarkColor = Color(0xFFFF3BFF); // Neon pink
+  static const Color secondaryDarkColor = Color(0xFF00F0FF); // Cyan blue
+  static const Color accentDarkColor = Color(0xFFFFD600); // Lemon yellow
+  static const Color surfaceDarkColor = Color(0xFF1A1A24); // Cosmic gray
   static const Color inactiveIconDarkColor = Color(0xFF4A4A5A);
 
   // Base Colors - Light Mode
-  static const Color backgroundLightColor = Color(0xFFF8F9FF); // Trắng cosmic
-  static const Color primaryLightColor = Color(0xFF00F0FF); // Neon xanh điện
-  static const Color secondaryLightColor = Color(0xFFFF3BFF); // Hồng nhạt
-  static const Color accentLightColor = Color(0xFFFF6B35); // Cam neon
-  static const Color surfaceLightColor = Color(0xFFFFFFFF); // Trắng tinh
+  static const Color backgroundLightColor = Color(0xFFF8F9FF); // Cosmic white
+  static const Color primaryLightColor = Color(0xFF00F0FF); // Electric neon blue
+  static const Color secondaryLightColor = Color(0xFFFF3BFF); // Light pink
+  static const Color accentLightColor = Color(0xFFFF6B35); // Neon orange
+  static const Color surfaceLightColor = Color(0xFFFFFFFF); // Pure white
   static const Color inactiveIconLightColor = Color(0xFFB3B3C2);
 
   // Text Colors - Dark Mode

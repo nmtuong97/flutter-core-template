@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../base/app_theme.dart';
 
-/// Theme Organic/Natural với phong cách tự nhiên
+/// Organic/Natural Theme with a natural style
 class OrganicNaturalTheme extends AppTheme {
   @override
   String get id => 'organic_natural';
@@ -29,20 +29,20 @@ class OrganicNaturalTheme extends AppTheme {
 
   // Base Colors - Light Mode (màu tự nhiên)
   static const Color backgroundLightColor =
-      Color(0xFFF7F9F4); // Trắng xanh nhạt
-  static const Color primaryLightColor = Color(0xFF4CAF50); // Xanh lá
-  static const Color secondaryLightColor = Color(0xFF8BC34A); // Xanh lá nhạt
+      Color(0xFFF7F9F4); // Pale greenish white
+  static const Color primaryLightColor = Color(0xFF4CAF50); // Green
+  static const Color secondaryLightColor = Color(0xFF8BC34A); // Light green
   static const Color accentLightColor = Color(0xFFFF9800); // Cam
-  static const Color surfaceLightColor = Color(0xFFFFFFFF); // Trắng
-  static const Color borderLightColor = Color(0xFFE0E0E0); // Xám nhạt
+  static const Color surfaceLightColor = Color(0xFFFFFFFF); // White
+  static const Color borderLightColor = Color(0xFFE0E0E0); // Light gray
 
   // Base Colors - Dark Mode
-  static const Color backgroundDarkColor = Color(0xFF1E2A20); // Xanh đậm
-  static const Color primaryDarkColor = Color(0xFF81C784); // Xanh lá nhạt
-  static const Color secondaryDarkColor = Color(0xFFA5D6A7); // Xanh lá rất nhạt
-  static const Color accentDarkColor = Color(0xFFFFB74D); // Cam nhạt
-  static const Color surfaceDarkColor = Color(0xFF2E3B31); // Xanh đậm hơn
-  static const Color borderDarkColor = Color(0xFF3E4E40); // Xanh đậm hơn nữa
+  static const Color backgroundDarkColor = Color(0xFF1E2A20); // Dark green
+  static const Color primaryDarkColor = Color(0xFF81C784); // Light green
+  static const Color secondaryDarkColor = Color(0xFFA5D6A7); // Very light green
+  static const Color accentDarkColor = Color(0xFFFFB74D); // Light orange
+  static const Color surfaceDarkColor = Color(0xFF2E3B31); // Darker green
+  static const Color borderDarkColor = Color(0xFF3E4E40); // Even darker green
 
   // Text Colors - Light Mode
   static const Color textPrimaryLightColor = Color(0xFF2E3B31);
@@ -109,7 +109,7 @@ class OrganicNaturalTheme extends AppTheme {
             vertical: 16.h,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+            borderRadius: BorderRadius.circular(24.r), // Heavily rounded
           ),
           elevation: 0,
         ),
@@ -131,7 +131,7 @@ class OrganicNaturalTheme extends AppTheme {
             vertical: 16.h,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+            borderRadius: BorderRadius.circular(24.r), // Heavily rounded
           ),
         ),
       ),
@@ -148,7 +148,7 @@ class OrganicNaturalTheme extends AppTheme {
             vertical: 12.h,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+            borderRadius: BorderRadius.circular(24.r), // Heavily rounded
           ),
         ),
       ),
@@ -158,7 +158,7 @@ class OrganicNaturalTheme extends AppTheme {
         color: surfaceLightColor,
         elevation: 1,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+          borderRadius: BorderRadius.circular(24.r), // Heavily rounded
         ),
         margin: EdgeInsets.all(8.r),
         shadowColor: Colors.black.withAlpha((255 * 0.05).round()),
@@ -183,19 +183,19 @@ class OrganicNaturalTheme extends AppTheme {
         filled: true,
         fillColor: surfaceLightColor,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+          borderRadius: BorderRadius.circular(24.r), // Heavily rounded
           borderSide: const BorderSide(
             color: borderLightColor,
           ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+          borderRadius: BorderRadius.circular(24.r), // Heavily rounded
           borderSide: const BorderSide(
             color: borderLightColor,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+          borderRadius: BorderRadius.circular(24.r), // Heavily rounded
           borderSide: const BorderSide(
             color: primaryLightColor,
             width: 1.5,
@@ -226,8 +226,8 @@ class OrganicNaturalTheme extends AppTheme {
         tertiary: accentDarkColor,
         surface: surfaceDarkColor,
         error: Colors.redAccent,
-        onPrimary: Color(0xFF1E2A20), // Xanh đậm
-        onSecondary: Color(0xFF1E2A20), // Xanh đậm
+        onPrimary: Color(0xFF1E2A20), // Dark green
+        onSecondary: Color(0xFF1E2A20), // Dark green
         onSurface: textPrimaryDarkColor,
       ),
       scaffoldBackgroundColor: backgroundDarkColor,
@@ -260,19 +260,19 @@ class OrganicNaturalTheme extends AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryDarkColor,
-          foregroundColor: const Color(0xFF1E2A20), // Xanh đậm
+          foregroundColor: const Color(0xFF1E2A20), // Dark green
           textStyle: _getTextStyle(
             fontFamily: defaultFontFamily,
             fontSize: normalFontSize,
             fontWeight: FontWeight.bold,
-            color: const Color(0xFF1E2A20), // Xanh đậm
+            color: const Color(0xFF1E2A20), // Dark green
           ),
           padding: EdgeInsets.symmetric(
             horizontal: 24.w,
             vertical: 16.h,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+            borderRadius: BorderRadius.circular(24.r), // Heavily rounded
           ),
           elevation: 0,
         ),
@@ -294,7 +294,7 @@ class OrganicNaturalTheme extends AppTheme {
             vertical: 16.h,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+            borderRadius: BorderRadius.circular(24.r), // Heavily rounded
           ),
         ),
       ),
@@ -311,7 +311,7 @@ class OrganicNaturalTheme extends AppTheme {
             vertical: 12.h,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+            borderRadius: BorderRadius.circular(24.r), // Heavily rounded
           ),
         ),
       ),
@@ -321,7 +321,7 @@ class OrganicNaturalTheme extends AppTheme {
         color: surfaceDarkColor,
         elevation: 1,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+          borderRadius: BorderRadius.circular(24.r), // Heavily rounded
         ),
         margin: EdgeInsets.all(8.r),
         shadowColor: Colors.black.withAlpha((255 * 0.1).round()),
@@ -346,19 +346,19 @@ class OrganicNaturalTheme extends AppTheme {
         filled: true,
         fillColor: surfaceDarkColor,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+          borderRadius: BorderRadius.circular(24.r), // Heavily rounded
           borderSide: const BorderSide(
             color: borderDarkColor,
           ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+          borderRadius: BorderRadius.circular(24.r), // Heavily rounded
           borderSide: const BorderSide(
             color: borderDarkColor,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(24.r), // Bo tròn nhiều
+          borderRadius: BorderRadius.circular(24.r), // Heavily rounded
           borderSide: const BorderSide(
             color: primaryDarkColor,
             width: 1.5,
@@ -384,21 +384,21 @@ class OrganicNaturalTheme extends AppTheme {
     FontWeight fontWeight = FontWeight.normal,
     Color? color,
   }) {
-    // Sử dụng ScreenUtil để responsive font size
+    // Use ScreenUtil for responsive font sizing
     final responsiveFontSize = fontSize.sp;
     TextStyle textStyle;
 
     switch (fontFamily) {
       case alternateFontFamily:
         textStyle = GoogleFonts.caveat(
-          fontSize: responsiveFontSize + 4, // Font chữ viết tay thường nhỏ hơn
+          fontSize: responsiveFontSize + 4, // Handwriting font is usually smaller
           fontWeight: fontWeight,
           color: color,
           letterSpacing: 0.5,
         );
       case serifFontFamily:
         textStyle = GoogleFonts.cormorant(
-          fontSize: responsiveFontSize + 2, // Font serif thường nhỏ hơn
+          fontSize: responsiveFontSize + 2, // Serif font is usually smaller
           fontWeight: fontWeight,
           color: color,
           letterSpacing: 0.2,
@@ -426,21 +426,21 @@ class OrganicNaturalTheme extends AppTheme {
     return TextTheme(
       displayLarge: _getTextStyle(
         fontFamily:
-            alternateFontFamily, // Sử dụng font viết tay cho tiêu đề lớn
+            alternateFontFamily, // Use handwriting font for large titles
         fontSize: fontSize + 12,
         fontWeight: FontWeight.w600,
         color: primaryTextColor,
       ),
       displayMedium: _getTextStyle(
         fontFamily:
-            alternateFontFamily, // Sử dụng font viết tay cho tiêu đề lớn
+            alternateFontFamily, // Use handwriting font for large titles
         fontSize: fontSize + 10,
         fontWeight: FontWeight.w600,
         color: primaryTextColor,
       ),
       displaySmall: _getTextStyle(
         fontFamily:
-            alternateFontFamily, // Sử dụng font viết tay cho tiêu đề lớn
+            alternateFontFamily, // Use handwriting font for large titles
         fontSize: fontSize + 8,
         fontWeight: FontWeight.w600,
         color: primaryTextColor,

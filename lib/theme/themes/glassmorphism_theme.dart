@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../base/app_theme.dart';
 
-/// Theme Glassmorphism với hiệu ứng kính mờ
+/// Glassmorphism Theme with frosted glass effect
 class GlassmorphismTheme extends AppTheme {
   @override
   String get id => 'glassmorphism';
@@ -12,7 +12,7 @@ class GlassmorphismTheme extends AppTheme {
   String get name => 'Glassmorphism';
 
   @override
-  String get description => 'Hiệu ứng kính mờ với blur và transparency';
+  String get description => 'Frosted glass effect with blur and transparency';
 
   // Font sizes
   static const double smallFontSize = 12;
@@ -26,23 +26,23 @@ class GlassmorphismTheme extends AppTheme {
   static const String alternateFontFamily = 'Nunito';
   static const String serifFontFamily = 'Lora';
 
-  // Base Colors - Light Mode (màu gradient cho nền)
-  static const Color backgroundLightColor1 = Color(0xFFF0F4FF); // Xanh nhạt
-  static const Color backgroundLightColor2 = Color(0xFFF9F0FF); // Tím nhạt
-  static const Color primaryLightColor = Color(0xFF7B68EE); // Tím nhạt
-  static const Color secondaryLightColor = Color(0xFF64B5F6); // Xanh dương
-  static const Color accentLightColor = Color(0xFFFF6B95); // Hồng
-  static const Color surfaceLightColor = Color(0x80FFFFFF); // Trắng trong suốt
-  static const Color borderLightColor = Color(0x40FFFFFF); // Viền trắng mờ
+  // Base Colors - Light Mode (gradient colors for background)
+  static const Color backgroundLightColor1 = Color(0xFFF0F4FF); // Light blue
+  static const Color backgroundLightColor2 = Color(0xFFF9F0FF); // Light purple
+  static const Color primaryLightColor = Color(0xFF7B68EE); // Light purple
+  static const Color secondaryLightColor = Color(0xFF64B5F6); // Blue
+  static const Color accentLightColor = Color(0xFFFF6B95); // Pink
+  static const Color surfaceLightColor = Color(0x80FFFFFF); // Transparent white
+  static const Color borderLightColor = Color(0x40FFFFFF); // Frosted white border
 
   // Base Colors - Dark Mode
-  static const Color backgroundDarkColor1 = Color(0xFF0F1729); // Xanh đậm
-  static const Color backgroundDarkColor2 = Color(0xFF1A0F29); // Tím đậm
-  static const Color primaryDarkColor = Color(0xFF9D8DF1); // Tím nhạt
-  static const Color secondaryDarkColor = Color(0xFF64B5F6); // Xanh dương
-  static const Color accentDarkColor = Color(0xFFFF6B95); // Hồng
-  static const Color surfaceDarkColor = Color(0x40FFFFFF); // Trắng trong suốt
-  static const Color borderDarkColor = Color(0x40FFFFFF); // Viền trắng mờ
+  static const Color backgroundDarkColor1 = Color(0xFF0F1729); // Dark blue
+  static const Color backgroundDarkColor2 = Color(0xFF1A0F29); // Dark purple
+  static const Color primaryDarkColor = Color(0xFF9D8DF1); // Light purple
+  static const Color secondaryDarkColor = Color(0xFF64B5F6); // Blue
+  static const Color accentDarkColor = Color(0xFFFF6B95); // Pink
+  static const Color surfaceDarkColor = Color(0x40FFFFFF); // Transparent white
+  static const Color borderDarkColor = Color(0x40FFFFFF); // Frosted white border
 
   // Text Colors - Light Mode
   static const Color textPrimaryLightColor = Color(0xFF2D3748);
@@ -71,7 +71,7 @@ class GlassmorphismTheme extends AppTheme {
       ),
       scaffoldBackgroundColor: backgroundLightColor1,
 
-      // AppBar Theme - trong suốt với blur
+      // AppBar Theme - transparent with blur
       appBarTheme: AppBarTheme(
         backgroundColor: surfaceLightColor,
         foregroundColor: textPrimaryLightColor,
@@ -95,7 +95,7 @@ class GlassmorphismTheme extends AppTheme {
         textSecondaryLightColor,
       ),
 
-      // Button Themes - với hiệu ứng glass
+      // Button Themes - with glass effect
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryLightColor.withAlpha((255 * 0.7).round()),
@@ -160,7 +160,7 @@ class GlassmorphismTheme extends AppTheme {
         ),
       ),
 
-      // Card Theme - với hiệu ứng glass
+      // Card Theme - with glass effect
       cardTheme: CardThemeData(
         color: surfaceLightColor,
         elevation: 0,
@@ -239,7 +239,7 @@ class GlassmorphismTheme extends AppTheme {
       ),
       scaffoldBackgroundColor: backgroundDarkColor1,
 
-      // AppBar Theme - trong suốt với blur
+      // AppBar Theme - transparent with blur
       appBarTheme: AppBarTheme(
         backgroundColor: surfaceDarkColor,
         foregroundColor: textPrimaryDarkColor,
@@ -263,7 +263,7 @@ class GlassmorphismTheme extends AppTheme {
         textSecondaryDarkColor,
       ),
 
-      // Button Themes - với hiệu ứng glass
+      // Button Themes - with glass effect
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryDarkColor.withAlpha((255 * 0.7).round()),
@@ -328,7 +328,7 @@ class GlassmorphismTheme extends AppTheme {
         ),
       ),
 
-      // Card Theme - với hiệu ứng glass
+      // Card Theme - with glass effect
       cardTheme: CardThemeData(
         color: surfaceDarkColor,
         elevation: 0,
@@ -396,7 +396,7 @@ class GlassmorphismTheme extends AppTheme {
     FontWeight fontWeight = FontWeight.normal,
     Color? color,
   }) {
-    // Sử dụng ScreenUtil để responsive font size
+    // Use ScreenUtil for responsive font sizing
     final responsiveFontSize = fontSize.sp;
     TextStyle textStyle;
 
