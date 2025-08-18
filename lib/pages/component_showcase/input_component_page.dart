@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../l10n/l10n.dart';
 
 class InputComponentPage extends StatefulWidget {
   const InputComponentPage({super.key});
@@ -19,22 +20,22 @@ class _InputComponentPageState extends State<InputComponentPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const TextField(
+          TextField(
             decoration: InputDecoration(
-              labelText: 'Text Field',
-              border: OutlineInputBorder(),
+              labelText: context.l10n.textField,
+              border: const OutlineInputBorder(),
             ),
           ),
           const SizedBox(height: 16),
           TextFormField(
-            decoration: const InputDecoration(
-              labelText: 'Text Form Field',
-              border: OutlineInputBorder(),
+            decoration: InputDecoration(
+              labelText: context.l10n.textFormField,
+              border: const OutlineInputBorder(),
             ),
           ),
           const SizedBox(height: 16),
           CheckboxListTile(
-            title: const Text('Checkbox'),
+            title: Text(context.l10n.checkbox),
             value: _checkboxValue,
             onChanged: (bool? value) {
               setState(() {
@@ -50,14 +51,14 @@ class _InputComponentPageState extends State<InputComponentPage> {
                 _radioValue = value;
               });
             },
-            child: const Column(
+            child: Column(
               children: [
                 RadioListTile<int>(
-                  title: Text('Radio Button 1'),
+                  title: Text(context.l10n.radioButton1),
                   value: 1,
                 ),
                 RadioListTile<int>(
-                  title: Text('Radio Button 2'),
+                  title: Text(context.l10n.radioButton2),
                   value: 2,
                 ),
               ],
@@ -65,7 +66,7 @@ class _InputComponentPageState extends State<InputComponentPage> {
           ),
           const SizedBox(height: 16),
           SwitchListTile(
-            title: const Text('Switch'),
+            title: Text(context.l10n.switchWidget),
             value: _switchValue,
             onChanged: (bool value) {
               setState(() {

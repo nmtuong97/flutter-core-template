@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../l10n/app_localizations.dart';
+import '../../l10n/l10n.dart';
 
 class ButtonComponentPage extends StatelessWidget {
   const ButtonComponentPage({super.key});
@@ -41,10 +40,16 @@ class ButtonComponentPage extends StatelessWidget {
           const SizedBox(height: 16),
           DropdownButton<String>(
             value: 'Option 1',
-            items: const [
-              DropdownMenuItem(value: 'Option 1', child: Text('Option 1')),
-              DropdownMenuItem(value: 'Option 2', child: Text('Option 2')),
-            ],
+            items: [
+               DropdownMenuItem(
+                 value: 'Option 1', 
+                 child: Text(context.l10n.option1),
+               ),
+               DropdownMenuItem(
+                 value: 'Option 2', 
+                 child: Text(context.l10n.option2),
+               ),
+             ],
             onChanged: (value) {},
           ),
           const SizedBox(height: 16),

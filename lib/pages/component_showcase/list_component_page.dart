@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../l10n/l10n.dart';
 
 class ListComponentPage extends StatelessWidget {
   const ListComponentPage({super.key});
@@ -10,7 +11,7 @@ class ListComponentPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('ListView Example:'),
+          Text(context.l10n.listViewExample),
           const SizedBox(height: 8),
           SizedBox(
             height: 200,
@@ -19,14 +20,14 @@ class ListComponentPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: const Icon(Icons.list),
-                  title: Text('Item ${index + 1}'),
-                  subtitle: const Text('Description of item'),
+                  title: Text('${context.l10n.item} ${index + 1}'),
+                  subtitle: Text(context.l10n.descriptionOfItem),
                 );
               },
             ),
           ),
           const SizedBox(height: 16),
-          const Text('GridView Example:'),
+          Text(context.l10n.gridViewExample),
           const SizedBox(height: 8),
           SizedBox(
             height: 300,
@@ -41,7 +42,7 @@ class ListComponentPage extends StatelessWidget {
                 return Card(
                   color: Colors.teal.shade100,
                   child: Center(
-                    child: Text('Grid Item ${index + 1}'),
+                    child: Text('${context.l10n.gridItem} ${index + 1}'),
                   ),
                 );
               },

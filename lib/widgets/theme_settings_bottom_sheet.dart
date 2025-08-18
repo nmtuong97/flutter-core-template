@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../l10n/app_localizations.dart';
 import '../providers/language_provider.dart';
-import '../providers/theme_provider.dart';
 import '../theme/base/app_theme.dart';
+import '../theme/theme_provider.dart';
 import '../theme/themes/app_themes.dart';
 
 class ThemeSettingsBottomSheet extends StatelessWidget {
@@ -37,21 +40,21 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                     groupValue: themeProvider.themeMode,
                     onChanged: (value) {
                       if (value != null) {
-                        themeProvider.setThemeMode(value);
+                        unawaited(themeProvider.setThemeMode(value));
                       }
                     },
-                    child: const Column(
+                    child: Column(
                       children: [
                         RadioListTile<ThemeMode>(
-                          title: Text('Light Theme'),
+                          title: Text(l10n.lightTheme),
                           value: ThemeMode.light,
                         ),
                         RadioListTile<ThemeMode>(
-                          title: Text('Dark Theme'),
+                          title: Text(l10n.darkTheme),
                           value: ThemeMode.dark,
                         ),
                         RadioListTile<ThemeMode>(
-                          title: Text('System Theme'),
+                          title: Text(l10n.systemTheme),
                           value: ThemeMode.system,
                         ),
                       ],
@@ -81,7 +84,18 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                     max: 24,
                     divisions: 12,
                     label: '${themeProvider.fontSize.round()}',
-                    onChanged: themeProvider.setFontSize,
+                    onChanged: (value) {
+                      // Convert double to string for the new API
+                      String fontSizeString;
+                      if (value <= 14) {
+                        fontSizeString = 'small';
+                      } else if (value <= 18) {
+                        fontSizeString = 'normal';
+                      } else {
+                        fontSizeString = 'large';
+                      }
+                      unawaited(themeProvider.setFontSize(fontSizeString));
+                    },
                   ),
                 ],
               ),
@@ -105,25 +119,25 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                     groupValue: themeProvider.fontFamily,
                     onChanged: (value) {
                       if (value != null) {
-                        themeProvider.setFontFamily(value);
+                        unawaited(themeProvider.setFontFamily(value));
                       }
                     },
                     child: const Column(
-                       children: [
-                         RadioListTile<String>(
-                           title: Text('Roboto'),
-                           value: 'Roboto',
-                         ),
-                         RadioListTile<String>(
-                           title: Text('Poppins'),
-                           value: 'Poppins',
-                         ),
-                         RadioListTile<String>(
-                           title: Text('Merriweather'),
-                           value: 'Merriweather',
-                         ),
-                       ],
-                     ),
+                      children: [
+                        RadioListTile<String>(
+                          title: Text('Roboto'),
+                          value: 'Roboto',
+                        ),
+                        RadioListTile<String>(
+                          title: Text('Poppins'),
+                          value: 'Poppins',
+                        ),
+                        RadioListTile<String>(
+                          title: Text('Merriweather'),
+                          value: 'Merriweather',
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -139,15 +153,15 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'App Theme',
+                    l10n.appTheme,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 16),
                   RadioGroup<AppTheme>(
-                    groupValue: themeProvider.currentAppTheme,
+                    groupValue: themeProvider.currentTheme,
                     onChanged: (value) {
                       if (value != null) {
-                        themeProvider.setAppTheme(value);
+                        unawaited(themeProvider.setThemeStyle(value.id));
                       }
                     },
                     child: Column(
@@ -157,7 +171,7 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                           value: theme,
                         );
                       }).toList(),
-                     ),
+                    ),
                   ),
                 ],
               ),
@@ -186,14 +200,14 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                             languageProvider.setLocale(Locale(value));
                           }
                         },
-                        child: const Column(
+                        child: Column(
                           children: [
                             RadioListTile<String>(
-                              title: Text('English'),
+                              title: Text(l10n.english),
                               value: 'en',
                             ),
                             RadioListTile<String>(
-                              title: Text('Tiếng Việt'),
+                              title: Text(l10n.vietnamese),
                               value: 'vi',
                             ),
                           ],
@@ -215,7 +229,7 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Preview',
+                    l10n.preview,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 16),
@@ -231,11 +245,11 @@ class ThemeSettingsBottomSheet extends StatelessWidget {
                   const SizedBox(height: 16),
                   const LinearProgressIndicator(value: 0.7),
                   const SizedBox(height: 16),
-                  const ListTile(
-                    leading: Icon(Icons.star),
-                    title: Text('Sample ListTile'),
-                    subtitle: Text('This is a subtitle'),
-                    trailing: Icon(Icons.arrow_forward_ios),
+                  ListTile(
+                     leading: const Icon(Icons.star),
+                     title: Text(l10n.sampleListTile),
+                     subtitle: Text(l10n.sampleSubtitle),
+                    trailing: const Icon(Icons.arrow_forward_ios),
                   ),
                 ],
               ),
