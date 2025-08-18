@@ -120,3 +120,4 @@ app.*.symbols
 .DS_Store
 /.idea
 /android/app/.cxx
+/android/.idea
