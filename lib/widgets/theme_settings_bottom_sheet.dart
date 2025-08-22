@@ -130,9 +130,7 @@ class _FontSizeSection extends StatelessWidget {
                   fontSizeString = 'large';
                 }
                 unawaited(
-                  context
-                      .read<ThemeProvider>()
-                      .setFontSize(fontSizeString),
+                  context.read<ThemeProvider>().setFontSize(fontSizeString),
                 );
               },
             ),
@@ -227,9 +225,7 @@ class _AppThemeSection extends StatelessWidget {
                 if (isLoading) return;
                 if (value != null) {
                   unawaited(
-                    context
-                        .read<ThemeProvider>()
-                        .setThemeStyle(value.id),
+                    context.read<ThemeProvider>().setThemeStyle(value.id),
                   );
                 }
               },
@@ -276,9 +272,7 @@ class _LanguageSection extends StatelessWidget {
                   groupValue: languageCode,
                   onChanged: (value) {
                     if (value != null) {
-                      context
-                          .read<LanguageProvider>()
-                          .setLocale(Locale(value));
+                      context.read<LanguageProvider>().setLocale(Locale(value));
                     }
                   },
                   child: Column(

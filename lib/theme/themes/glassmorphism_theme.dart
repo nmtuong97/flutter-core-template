@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../base/app_theme.dart';
 
-/// Glassmorphism Theme with frosted glass effect
+import '../base/app_theme.dart';
+import '../typography/font_configuration.dart';
+import '../typography/font_sizes.dart';
+import '../typography/theme_typography.dart';
+
 class GlassmorphismTheme extends AppTheme {
+  @override
+  bool get supportsLightMode => true;
+
+  @override
+  bool get supportsDarkMode => true;
+
   @override
   String get id => 'glassmorphism';
 
@@ -14,17 +22,7 @@ class GlassmorphismTheme extends AppTheme {
   @override
   String get description => 'Frosted glass effect with blur and transparency';
 
-  // Font sizes
-  static const double smallFontSize = 12;
-  static const double normalFontSize = 14;
-  static const double mediumFontSize = 16;
-  static const double largeFontSize = 18;
-  static const double extraLargeFontSize = 22;
-
-  // Font families
-  static const String defaultFontFamily = 'Quicksand';
-  static const String alternateFontFamily = 'Nunito';
-  static const String serifFontFamily = 'Lora';
+  // Font configuration - using centralized configuration directly
 
   // Base Colors - Light Mode (gradient colors for background)
   static const Color backgroundLightColor1 = Color(0xFFF0F4FF); // Light blue
@@ -32,8 +30,8 @@ class GlassmorphismTheme extends AppTheme {
   static const Color primaryLightColor = Color(0xFF7B68EE); // Light purple
   static const Color secondaryLightColor = Color(0xFF64B5F6); // Blue
   static const Color accentLightColor = Color(0xFFFF6B95); // Pink
-  static const Color surfaceLightColor = Color(0x80FFFFFF); // Transparent white
-  static const Color borderLightColor = Color(0x40FFFFFF); // Frosted white border
+  static const Color surfaceLightColor = Color(0x80FFFFFF); // Trans white
+  static const Color borderLightColor = Color(0x40FFFFFF); // Frosted border
 
   // Base Colors - Dark Mode
   static const Color backgroundDarkColor1 = Color(0xFF0F1729); // Dark blue
@@ -41,8 +39,8 @@ class GlassmorphismTheme extends AppTheme {
   static const Color primaryDarkColor = Color(0xFF9D8DF1); // Light purple
   static const Color secondaryDarkColor = Color(0xFF64B5F6); // Blue
   static const Color accentDarkColor = Color(0xFFFF6B95); // Pink
-  static const Color surfaceDarkColor = Color(0x40FFFFFF); // Transparent white
-  static const Color borderDarkColor = Color(0x40FFFFFF); // Frosted white border
+  static const Color surfaceDarkColor = Color(0x40FFFFFF); // Trans white
+  static const Color borderDarkColor = Color(0x40FFFFFF); // Frosted border
 
   // Text Colors - Light Mode
   static const Color textPrimaryLightColor = Color(0xFF2D3748);
@@ -77,8 +75,8 @@ class GlassmorphismTheme extends AppTheme {
         foregroundColor: textPrimaryLightColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: normalFontSize + 4,
+          fontFamily: FontConfiguration.glassmorphismTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryLightColor,
         ),
@@ -89,8 +87,8 @@ class GlassmorphismTheme extends AppTheme {
 
       // Text Theme
       textTheme: _getTextTheme(
-        defaultFontFamily,
-        normalFontSize,
+        FontConfiguration.glassmorphismTheme.defaultFontFamily,
+        FontSizeConfiguration.normal,
         textPrimaryLightColor,
         textSecondaryLightColor,
       ),
@@ -101,8 +99,8 @@ class GlassmorphismTheme extends AppTheme {
           backgroundColor: primaryLightColor.withAlpha((255 * 0.7).round()),
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.glassmorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -129,8 +127,8 @@ class GlassmorphismTheme extends AppTheme {
             width: 1.5,
           ),
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.glassmorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -146,8 +144,8 @@ class GlassmorphismTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryLightColor,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.glassmorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -213,8 +211,8 @@ class GlassmorphismTheme extends AppTheme {
           vertical: 16.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: normalFontSize,
+          fontFamily: FontConfiguration.glassmorphismTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal,
           color: textSecondaryLightColor,
         ),
       ),
@@ -245,8 +243,8 @@ class GlassmorphismTheme extends AppTheme {
         foregroundColor: textPrimaryDarkColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: normalFontSize + 4,
+          fontFamily: FontConfiguration.glassmorphismTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryDarkColor,
         ),
@@ -257,8 +255,8 @@ class GlassmorphismTheme extends AppTheme {
 
       // Text Theme
       textTheme: _getTextTheme(
-        defaultFontFamily,
-        normalFontSize,
+        FontConfiguration.glassmorphismTheme.defaultFontFamily,
+        FontSizeConfiguration.normal,
         textPrimaryDarkColor,
         textSecondaryDarkColor,
       ),
@@ -269,8 +267,8 @@ class GlassmorphismTheme extends AppTheme {
           backgroundColor: primaryDarkColor.withAlpha((255 * 0.7).round()),
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.glassmorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -297,8 +295,8 @@ class GlassmorphismTheme extends AppTheme {
             width: 1.5,
           ),
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.glassmorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -314,8 +312,8 @@ class GlassmorphismTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.glassmorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.w600,
           ),
           padding: EdgeInsets.symmetric(
@@ -381,13 +379,16 @@ class GlassmorphismTheme extends AppTheme {
           vertical: 16.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: normalFontSize,
+          fontFamily: FontConfiguration.glassmorphismTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal,
           color: textSecondaryDarkColor,
         ),
       ),
     );
   }
+
+  static const ThemeTypography _typography =
+      ThemeTypography(FontConfiguration.glassmorphismTheme);
 
   // Helper method to get text style with Google Fonts
   static TextStyle _getTextStyle({
@@ -396,39 +397,21 @@ class GlassmorphismTheme extends AppTheme {
     FontWeight fontWeight = FontWeight.normal,
     Color? color,
   }) {
-    // Use ScreenUtil for responsive font sizing
-    final responsiveFontSize = fontSize.sp;
-    TextStyle textStyle;
-
-    switch (fontFamily) {
-      case alternateFontFamily:
-        textStyle = GoogleFonts.nunito(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-          letterSpacing: 0.2,
-        );
-      case serifFontFamily:
-        textStyle = GoogleFonts.lora(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-        );
-      case defaultFontFamily:
-      default:
-        textStyle = GoogleFonts.quicksand(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-          letterSpacing: 0.2,
-        );
-    }
-
-    return textStyle;
+    // Preserve letterSpacing nuance: 0.2 for default/alternate
+    final isDefaultOrAlt = fontFamily ==
+            FontConfiguration.glassmorphismTheme.defaultFontFamily ||
+        fontFamily == FontConfiguration.glassmorphismTheme.alternateFontFamily;
+    return _typography.getTextStyle(
+      fontFamily: fontFamily,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+      letterSpacing: isDefaultOrAlt ? 0.2 : null,
+    );
   }
 
   // Helper method to get text theme
-  static TextTheme _getTextTheme(
+  TextTheme _getTextTheme(
     String fontFamily,
     double fontSize,
     Color primaryTextColor,

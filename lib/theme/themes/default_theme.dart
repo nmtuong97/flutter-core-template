@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import '../base/app_theme.dart';
 import '../extensions/app_theme_extension.dart';
+import '../typography/font_configuration.dart';
+import '../typography/font_sizes.dart';
+import '../utilities/theme_standardization.dart';
 
 /// Theme mặc định của ứng dụng
 class DefaultTheme extends AppTheme {
@@ -18,17 +21,13 @@ class DefaultTheme extends AppTheme {
   @override
   bool get isDefault => true;
 
-  // Font sizes
-  static const double smallFontSize = 12;
-  static const double normalFontSize = 14;
-  static const double mediumFontSize = 16;
-  static const double largeFontSize = 18;
-  static const double extraLargeFontSize = 22;
+  @override
+  bool get supportsLightMode => true;
 
-  // Font families
-  static const String defaultFontFamily = 'Roboto';
-  static const String alternateFontFamily = 'Poppins';
-  static const String serifFontFamily = 'Merriweather';
+  @override
+  bool get supportsDarkMode => true;
+
+  // Font configuration - using centralized configuration directly
 
   // Light Theme Colors
   static const Color primaryLightColor = Color(0xFF00CC7A); // xanh đậm
@@ -78,8 +77,8 @@ class DefaultTheme extends AppTheme {
         foregroundColor: textPrimaryLightColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: (normalFontSize + 4).sp,
+          fontFamily: FontConfiguration.defaultTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryLightColor,
         ),
@@ -93,10 +92,10 @@ class DefaultTheme extends AppTheme {
       ),
       // Text Theme
       textTheme: _getTextTheme(
-        defaultFontFamily,
-        normalFontSize,
-        textPrimaryLightColor,
-        textSecondaryLightColor,
+        fontFamily: FontConfiguration.defaultTheme.defaultFontFamily,
+        baseFontSize: FontSizeConfiguration.normal,
+        primaryTextColor: textPrimaryLightColor,
+        secondaryTextColor: textSecondaryLightColor,
       ),
       // Button Themes
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -104,8 +103,8 @@ class DefaultTheme extends AppTheme {
           backgroundColor: primaryLightColor,
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.defaultTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
@@ -120,8 +119,8 @@ class DefaultTheme extends AppTheme {
           foregroundColor: primaryLightColor,
           side: const BorderSide(color: primaryLightColor),
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.defaultTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
@@ -133,8 +132,8 @@ class DefaultTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryLightColor,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.defaultTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -191,8 +190,8 @@ class DefaultTheme extends AppTheme {
         foregroundColor: textPrimaryDarkColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: (normalFontSize + 4).sp,
+          fontFamily: FontConfiguration.defaultTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryDarkColor,
         ),
@@ -206,10 +205,10 @@ class DefaultTheme extends AppTheme {
       ),
       // Text Theme
       textTheme: _getTextTheme(
-        defaultFontFamily,
-        normalFontSize,
-        textPrimaryDarkColor,
-        textSecondaryDarkColor,
+        fontFamily: FontConfiguration.defaultTheme.defaultFontFamily,
+        baseFontSize: FontSizeConfiguration.normal,
+        primaryTextColor: textPrimaryDarkColor,
+        secondaryTextColor: textSecondaryDarkColor,
       ),
       // Button Themes
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -217,8 +216,8 @@ class DefaultTheme extends AppTheme {
           backgroundColor: primaryDarkColor,
           foregroundColor: Colors.black,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.defaultTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
@@ -234,8 +233,8 @@ class DefaultTheme extends AppTheme {
           foregroundColor: primaryDarkColor,
           side: const BorderSide(color: primaryDarkColor),
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.defaultTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
@@ -247,8 +246,8 @@ class DefaultTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.defaultTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -279,136 +278,47 @@ class DefaultTheme extends AppTheme {
   }
 
   // Helper method to get text style with Google Fonts
+  /// Standardized text style method cho Default theme
   static TextStyle _getTextStyle({
     required String fontFamily,
     required double fontSize,
     FontWeight fontWeight = FontWeight.normal,
     Color? color,
+    bool hasShadow = false,
+    Color? shadowColor,
+    double? letterSpacing,
   }) {
-    // Sử dụng ScreenUtil để responsive font size
-    final responsiveFontSize = fontSize.sp;
-    TextStyle textStyle;
-
-    switch (fontFamily) {
-      case alternateFontFamily:
-        textStyle = GoogleFonts.poppins(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-        );
-      case serifFontFamily:
-        textStyle = GoogleFonts.merriweather(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-        );
-      case defaultFontFamily:
-      default:
-        textStyle = GoogleFonts.roboto(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-        );
-    }
-
-    return textStyle;
+    return ThemeStandardization.standardTextStyle(
+      fontFamily: fontFamily,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+      hasShadow: hasShadow,
+      shadowColor: shadowColor,
+      letterSpacing: letterSpacing,
+    );
   }
 
-  // Helper method to get text theme
-  static TextTheme _getTextTheme(
-    String fontFamily,
-    double fontSize,
-    Color primaryTextColor,
-    Color secondaryTextColor,
-  ) {
-    return TextTheme(
-      displayLarge: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize + 12,
-        fontWeight: FontWeight.w600,
-        color: primaryTextColor,
-      ),
-      displayMedium: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize + 10,
-        fontWeight: FontWeight.w600,
-        color: primaryTextColor,
-      ),
-      displaySmall: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize + 8,
-        fontWeight: FontWeight.w600,
-        color: primaryTextColor,
-      ),
-      headlineLarge: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize + 6,
-        fontWeight: FontWeight.w600,
-        color: primaryTextColor,
-      ),
-      headlineMedium: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize + 5,
-        fontWeight: FontWeight.w600,
-        color: primaryTextColor,
-      ),
-      headlineSmall: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize + 4,
-        fontWeight: FontWeight.w600,
-        color: primaryTextColor,
-      ),
-      titleLarge: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize + 4,
-        fontWeight: FontWeight.w600,
-        color: primaryTextColor,
-      ),
-      titleMedium: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize + 2,
-        fontWeight: FontWeight.w600,
-        color: primaryTextColor,
-      ),
-      titleSmall: _getTextStyle(
-        fontFamily: defaultFontFamily,
-        fontSize: normalFontSize,
-        fontWeight: FontWeight.w600,
-        color: primaryTextColor,
-      ),
-      bodyLarge: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize + 2,
-        color: primaryTextColor,
-      ),
-      bodyMedium: _getTextStyle(
-        fontFamily: defaultFontFamily,
-        fontSize: normalFontSize,
-        color: primaryTextColor,
-      ),
-      bodySmall: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize - 2,
-        color: secondaryTextColor,
-      ),
-      labelLarge: _getTextStyle(
-        fontFamily: defaultFontFamily,
-        fontSize: normalFontSize,
-        fontWeight: FontWeight.w500,
-        color: primaryTextColor,
-      ),
-      labelMedium: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize - 1,
-        fontWeight: FontWeight.w500,
-        color: secondaryTextColor,
-      ),
-      labelSmall: _getTextStyle(
-        fontFamily: fontFamily,
-        fontSize: fontSize - 2,
-        fontWeight: FontWeight.w500,
-        color: secondaryTextColor,
-      ),
+  /// Standardized text theme method cho Default theme
+  static TextTheme _getTextTheme({
+    required String fontFamily,
+    required double baseFontSize,
+    required Color primaryTextColor,
+    required Color secondaryTextColor,
+    Color? accentColor,
+    bool hasTextShadow = false,
+    Color? shadowColor,
+    double? letterSpacing,
+  }) {
+    return ThemeStandardization.standardTextTheme(
+      fontFamily: fontFamily,
+      baseFontSize: baseFontSize,
+      primaryTextColor: primaryTextColor,
+      secondaryTextColor: secondaryTextColor,
+      accentColor: accentColor,
+      hasTextShadow: hasTextShadow,
+      shadowColor: shadowColor,
+      letterSpacing: letterSpacing,
     );
   }
 }

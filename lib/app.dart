@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
               );
             }
             return MaterialApp(
-              onGenerateTitle: (context) => 
+              onGenerateTitle: (context) =>
                   AppLocalizations.of(context).appTitle,
               theme: themeProvider.lightTheme,
               darkTheme: themeProvider.darkTheme,

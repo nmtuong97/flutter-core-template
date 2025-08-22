@@ -5,14 +5,16 @@ import 'base/app_theme.dart';
 import 'base/theme_factory.dart';
 import 'theme_preferences.dart';
 import 'themes/default_theme.dart';
+import 'typography/font_configuration.dart';
+import 'typography/font_sizes.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeProvider() {
     unawaited(_loadPreferences());
   }
   ThemeMode _themeMode = ThemeMode.system;
-  double _fontSize = DefaultTheme.normalFontSize;
-  String _fontFamily = DefaultTheme.defaultFontFamily;
+  double _fontSize = FontSizeConfiguration.normal;
+  String _fontFamily = FontConfiguration.defaultTheme.defaultFontFamily;
   AppTheme _currentTheme = DefaultTheme();
 
   bool _isLoading = true;
@@ -30,14 +32,14 @@ class ThemeProvider extends ChangeNotifier {
   // Get current theme data
   ThemeData get lightTheme => _currentTheme.lightThemeData.copyWith(
         textTheme: _currentTheme.lightThemeData.textTheme.apply(
-          fontSizeFactor: _fontSize / DefaultTheme.normalFontSize,
+          fontSizeFactor: _fontSize / FontSizeConfiguration.normal,
           fontFamily: _fontFamily,
         ),
       );
 
   ThemeData get darkTheme => _currentTheme.darkThemeData.copyWith(
         textTheme: _currentTheme.darkThemeData.textTheme.apply(
-          fontSizeFactor: _fontSize / DefaultTheme.normalFontSize,
+          fontSizeFactor: _fontSize / FontSizeConfiguration.normal,
           fontFamily: _fontFamily,
         ),
       );

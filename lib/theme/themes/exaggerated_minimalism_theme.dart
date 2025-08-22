@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import '../base/app_theme.dart';
+import '../typography/font_configuration.dart';
+import '../typography/font_sizes.dart';
+import '../typography/theme_typography.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 /// Theme Exaggerated Minimalism với thiết kế tối giản nâng cấp
 class ExaggeratedMinimalismTheme extends AppTheme {
+  @override
+  bool get supportsLightMode => true;
+
+  @override
+  bool get supportsDarkMode => true;
+  static const ThemeTypography _typography =
+      ThemeTypography(FontConfiguration.exaggeratedMinimalismTheme);
   @override
   String get id => 'exaggerated_minimalism';
 
@@ -14,17 +25,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
   @override
   String get description => 'Minimalism phá cách với tỷ lệ phóng đại';
 
-  // Font sizes - phóng đại hơn so với theme thông thường
-  static const double smallFontSize = 14;
-  static const double normalFontSize = 18;
-  static const double mediumFontSize = 24;
-  static const double largeFontSize = 32;
-  static const double extraLargeFontSize = 48;
-
-  // Font families - sử dụng font geometric
-  static const String defaultFontFamily = 'Inter';
-  static const String alternateFontFamily = 'Space Grotesk';
-  static const String serifFontFamily = 'Merriweather';
+  // Font configuration - using centralized configuration directly
 
   // Base Colors - Light Mode (tối giản với tương phản cao)
   static const Color backgroundLightColor = Colors.white;
@@ -55,7 +56,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
   @override
   ThemeData get lightThemeData {
     // Tăng kích thước font lên 1.5 lần để phù hợp với Exaggerated Minimalism
-    const adjustedFontSize = normalFontSize * 1.5;
+    const adjustedFontSize = FontSizeConfiguration.normal * 1.5;
 
     return ThemeData(
       useMaterial3: true,
@@ -74,8 +75,9 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         foregroundColor: textPrimaryLightColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: (adjustedFontSize + 8).sp,
+          fontFamily:
+              FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
+          fontSize: adjustedFontSize + 8,
           fontWeight: FontWeight.bold,
           color: textPrimaryLightColor,
         ),
@@ -88,7 +90,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
 
       // Text Theme - kích thước lớn, khoảng cách dòng rộng
       textTheme: _getTextTheme(
-        defaultFontFamily,
+        FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
         adjustedFontSize,
         textPrimaryLightColor,
         textSecondaryLightColor,
@@ -100,7 +102,8 @@ class ExaggeratedMinimalismTheme extends AppTheme {
           backgroundColor: primaryLightColor,
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
+            fontFamily:
+                FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
             fontSize: adjustedFontSize + 4,
             fontWeight: FontWeight.bold,
           ),
@@ -120,7 +123,8 @@ class ExaggeratedMinimalismTheme extends AppTheme {
           foregroundColor: primaryLightColor,
           side: const BorderSide(width: 2), // Viền đậm
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
+            fontFamily:
+                FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
             fontSize: adjustedFontSize + 4,
             fontWeight: FontWeight.bold,
           ),
@@ -138,7 +142,8 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryLightColor,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
+            fontFamily:
+                FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
             fontSize: adjustedFontSize + 4,
             fontWeight: FontWeight.bold,
           ),
@@ -198,8 +203,9 @@ class ExaggeratedMinimalismTheme extends AppTheme {
           vertical: 20.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: normalFontSize,
+          fontFamily:
+              FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal,
           color: textSecondaryLightColor,
         ),
       ),
@@ -209,7 +215,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
   @override
   ThemeData get darkThemeData {
     // Tăng kích thước font lên 1.5 lần để phù hợp với Exaggerated Minimalism
-    const adjustedFontSize = normalFontSize * 1.5;
+    const adjustedFontSize = FontSizeConfiguration.normal * 1.5;
 
     return ThemeData(
       useMaterial3: true,
@@ -230,8 +236,9 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         foregroundColor: textPrimaryDarkColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: (adjustedFontSize + 8).sp,
+          fontFamily:
+              FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
+          fontSize: adjustedFontSize + 8,
           fontWeight: FontWeight.bold,
           color: textPrimaryDarkColor,
         ),
@@ -244,7 +251,7 @@ class ExaggeratedMinimalismTheme extends AppTheme {
 
       // Text Theme - kích thước lớn, khoảng cách dòng rộng
       textTheme: _getTextTheme(
-        defaultFontFamily,
+        FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
         adjustedFontSize,
         textPrimaryDarkColor,
         textSecondaryDarkColor,
@@ -256,7 +263,8 @@ class ExaggeratedMinimalismTheme extends AppTheme {
           backgroundColor: primaryDarkColor,
           foregroundColor: Colors.black,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
+            fontFamily:
+                FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
             fontSize: adjustedFontSize + 4,
             fontWeight: FontWeight.bold,
           ),
@@ -276,7 +284,8 @@ class ExaggeratedMinimalismTheme extends AppTheme {
           foregroundColor: primaryDarkColor,
           side: const BorderSide(color: primaryDarkColor, width: 2), // Viền đậm
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
+            fontFamily:
+                FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
             fontSize: adjustedFontSize + 4,
             fontWeight: FontWeight.bold,
           ),
@@ -294,7 +303,8 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
+            fontFamily:
+                FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
             fontSize: adjustedFontSize + 4,
             fontWeight: FontWeight.bold,
           ),
@@ -354,8 +364,9 @@ class ExaggeratedMinimalismTheme extends AppTheme {
           vertical: 20.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: normalFontSize,
+          fontFamily:
+              FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal,
           color: textSecondaryDarkColor,
         ),
       ),
@@ -369,43 +380,18 @@ class ExaggeratedMinimalismTheme extends AppTheme {
     FontWeight fontWeight = FontWeight.normal,
     Color? color,
   }) {
-    // Sử dụng ScreenUtil để responsive font size
-    final responsiveFontSize = fontSize.sp;
-    TextStyle textStyle;
-
-    switch (fontFamily) {
-      case alternateFontFamily:
-        textStyle = GoogleFonts.spaceGrotesk(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-          height: 1.5, // Khoảng cách dòng lớn hơn
-          letterSpacing: 0.5, // Khoảng cách chữ rộng hơn
-        );
-      case serifFontFamily:
-        textStyle = GoogleFonts.merriweather(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-          height: 1.5,
-          letterSpacing: 0.5,
-        );
-      case defaultFontFamily:
-      default:
-        textStyle = GoogleFonts.inter(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-          height: 1.5,
-          letterSpacing: 0.5,
-        );
-    }
-
-    return textStyle;
+    final style = _typography.getTextStyle(
+      fontFamily: fontFamily,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+      letterSpacing: 0.5,
+    );
+    return style.copyWith(height: 1.5);
   }
 
   // Helper method to get text theme
-  static TextTheme _getTextTheme(
+  TextTheme _getTextTheme(
     String fontFamily,
     double fontSize,
     Color primaryTextColor,
@@ -477,8 +463,9 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         color: primaryTextColor,
       ),
       bodySmall: _getTextStyle(
-        fontFamily: defaultFontFamily,
-        fontSize: normalFontSize,
+        fontFamily:
+            FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
+        fontSize: FontSizeConfiguration.normal,
         color: secondaryTextColor,
       ),
       labelLarge: _getTextStyle(
@@ -488,8 +475,9 @@ class ExaggeratedMinimalismTheme extends AppTheme {
         color: primaryTextColor,
       ),
       labelMedium: _getTextStyle(
-        fontFamily: defaultFontFamily,
-        fontSize: normalFontSize,
+        fontFamily:
+            FontConfiguration.exaggeratedMinimalismTheme.defaultFontFamily,
+        fontSize: FontSizeConfiguration.normal,
         fontWeight: FontWeight.w500,
         color: secondaryTextColor,
       ),

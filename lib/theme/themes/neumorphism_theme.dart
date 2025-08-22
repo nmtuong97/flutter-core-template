@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import '../base/app_theme.dart';
+import '../typography/font_configuration.dart';
+import '../typography/font_sizes.dart';
+import '../typography/theme_typography.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 /// Neumorphism Theme with soft 3D embossed effect
 class NeumorphismTheme extends AppTheme {
+  @override
+  bool get supportsLightMode => true;
+
+  @override
+  bool get supportsDarkMode => true;
+  static const ThemeTypography _typography =
+      ThemeTypography(FontConfiguration.neumorphismTheme);
+
   @override
   String get id => 'neumorphism';
 
@@ -14,49 +26,59 @@ class NeumorphismTheme extends AppTheme {
   @override
   String get description => 'Soft 3D embossed effect';
 
-  // Font sizes
-  static const double smallFontSize = 12;
-  static const double normalFontSize = 14;
-  static const double mediumFontSize = 16;
-  static const double largeFontSize = 18;
-  static const double extraLargeFontSize = 22;
+  // Font configuration - using centralized configuration directly
 
-  // Font families
-  static const String defaultFontFamily = 'Poppins';
-  static const String alternateFontFamily = 'Montserrat';
-  static const String serifFontFamily = 'Merriweather';
+  // Base Colors - Light Mode (màu nhẹ nhàng cho hiệu ứng)
+  static const Color backgroundLightColor = Color(0xFFE0E5EC);
 
-  // Base Colors - Light Mode (màu nhẹ nhàng cho hiệu ứng nổi)
-  static const Color backgroundLightColor = Color(0xFFE0E5EC); /// Main background color for light mode
-  static const Color primaryLightColor = Color(0xFF4B70E2); /// Primary color for light mode
-  static const Color secondaryLightColor = Color(0xFF8E9AAF); /// Secondary color for light mode
-  static const Color accentLightColor = Color(0xFF6C63FF); /// Accent color for light mode
-  static const Color surfaceLightColor = Color(0xFFE0E5EC); // Same as background
-  static const Color shadowDarkLightColor = Color(0xFFA3B1C6); // Dark shadow
-  static const Color shadowLightLightColor = Color(0xFFFFFFFF); // Light shadow
+  /// Main bg
+  static const Color primaryLightColor = Color(0xFF4B70E2);
+
+  /// Primary color
+  static const Color secondaryLightColor = Color(0xFF8E9AAF);
+
+  /// Secondary
+  static const Color accentLightColor = Color(0xFF6C63FF);
+
+  /// Accent color
+  static const Color surfaceLightColor = Color(0xFFE0E5EC); // Same as bg
+  static const Color shadowDarkLightColor = Color(0xFFA3B1C6); // Dark
+  static const Color shadowLightLightColor = Color(0xFFFFFFFF); // Light
 
   // Base Colors - Dark Mode
-  static const Color backgroundDarkColor = Color(0xFF2D3748); /// Main background color for dark mode
-  static const Color primaryDarkColor = Color(0xFF6C63FF); /// Primary color for dark mode
-  static const Color secondaryDarkColor = Color(0xFF718096); /// Secondary color for dark mode
-  static const Color accentDarkColor = Color(0xFF4B70E2); /// Accent color for dark mode
-  static const Color surfaceDarkColor = Color(0xFF2D3748); // Same as background
+  static const Color backgroundDarkColor = Color(0xFF2D3748);
+
+  /// Main bg
+  static const Color primaryDarkColor = Color(0xFF6C63FF);
+
+  /// Primary color
+  static const Color secondaryDarkColor = Color(0xFF718096);
+
+  /// Secondary color
+  static const Color accentDarkColor = Color(0xFF4B70E2);
+
+  /// Accent color
+  static const Color surfaceDarkColor = Color(0xFF2D3748); // Same as bg
   static const Color shadowDarkDarkColor = Color(0xFF1A202C); // Dark shadow
   static const Color shadowLightDarkColor = Color(0xFF4A5568); // Light shadow
 
   // Text Colors - Light Mode
   /// Text color on light background
   static const Color textPrimaryLightColor = Color(0xFF2D3748);
+
   /// Secondary text color on light background
   static const Color textSecondaryLightColor = Color(0xFF718096);
+
   /// Disabled text color on light background
   static const Color textDisabledLightColor = Color(0xFFA0AEC0);
 
   // Text Colors - Dark Mode
   /// Text color on dark background
   static const Color textPrimaryDarkColor = Color(0xFFE2E8F0);
+
   /// Secondary text color on dark background
   static const Color textSecondaryDarkColor = Color(0xFFA0AEC0);
+
   /// Disabled text color on dark background
   static const Color textDisabledDarkColor = Color(0xFF718096);
 
@@ -95,8 +117,8 @@ class NeumorphismTheme extends AppTheme {
         foregroundColor: textPrimaryLightColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: normalFontSize + 4,
+          fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryLightColor,
         ),
@@ -107,8 +129,8 @@ class NeumorphismTheme extends AppTheme {
 
       // Text Theme - Dark Mode
       textTheme: _getTextTheme(
-        defaultFontFamily,
-        normalFontSize,
+        FontConfiguration.neumorphismTheme.defaultFontFamily,
+        FontSizeConfiguration.normal,
         textPrimaryLightColor,
         textSecondaryLightColor,
       ),
@@ -119,8 +141,8 @@ class NeumorphismTheme extends AppTheme {
           backgroundColor: surfaceLightColor,
           foregroundColor: primaryLightColor,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -152,8 +174,8 @@ class NeumorphismTheme extends AppTheme {
           foregroundColor: primaryLightColor,
           side: BorderSide.none,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -174,8 +196,8 @@ class NeumorphismTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryLightColor,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -234,8 +256,8 @@ class NeumorphismTheme extends AppTheme {
           vertical: 16.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: normalFontSize,
+          fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal,
           color: textSecondaryLightColor,
         ),
       ),
@@ -266,8 +288,8 @@ class NeumorphismTheme extends AppTheme {
         foregroundColor: textPrimaryDarkColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: normalFontSize + 4,
+          fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryDarkColor,
         ),
@@ -278,8 +300,8 @@ class NeumorphismTheme extends AppTheme {
 
       // Text Theme
       textTheme: _getTextTheme(
-        defaultFontFamily,
-        normalFontSize,
+        FontConfiguration.neumorphismTheme.defaultFontFamily,
+        FontSizeConfiguration.normal,
         textPrimaryDarkColor,
         textSecondaryDarkColor,
       ),
@@ -290,8 +312,8 @@ class NeumorphismTheme extends AppTheme {
           backgroundColor: surfaceDarkColor,
           foregroundColor: primaryDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -323,8 +345,8 @@ class NeumorphismTheme extends AppTheme {
           foregroundColor: primaryDarkColor,
           side: BorderSide.none,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -345,8 +367,8 @@ class NeumorphismTheme extends AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: primaryDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(
@@ -405,8 +427,8 @@ class NeumorphismTheme extends AppTheme {
           vertical: 16.h,
         ),
         hintStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: normalFontSize,
+          fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal,
           color: textSecondaryDarkColor,
         ),
       ),
@@ -420,35 +442,19 @@ class NeumorphismTheme extends AppTheme {
     FontWeight fontWeight = FontWeight.normal,
     Color? color,
   }) {
-    // Sử dụng ScreenUtil để responsive font size
-    final responsiveFontSize = fontSize.sp;
-    TextStyle textStyle;
-
-    switch (fontFamily) {
-      case alternateFontFamily:
-        textStyle = GoogleFonts.montserrat(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-          letterSpacing: 0.2,
-        );
-      case serifFontFamily:
-        textStyle = GoogleFonts.merriweather(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-        );
-      case defaultFontFamily:
-      default:
-        textStyle = GoogleFonts.poppins(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-          letterSpacing: 0.2,
-        );
-    }
-
-    return textStyle;
+    final letterSpacing =
+        (fontFamily == FontConfiguration.neumorphismTheme.defaultFontFamily ||
+                fontFamily ==
+                    FontConfiguration.neumorphismTheme.alternateFontFamily)
+            ? 0.2
+            : null;
+    return _typography.getTextStyle(
+      fontFamily: fontFamily,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+      letterSpacing: letterSpacing,
+    );
   }
 
   // Helper method to get text theme

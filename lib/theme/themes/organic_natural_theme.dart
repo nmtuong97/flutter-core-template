@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import '../base/app_theme.dart';
+import '../typography/font_configuration.dart';
+import '../typography/font_sizes.dart';
+import '../typography/theme_typography.dart';
 
 /// Organic/Natural Theme with a natural style
 class OrganicNaturalTheme extends AppTheme {
+  @override
+  bool get supportsLightMode => true;
+
+  @override
+  bool get supportsDarkMode => true;
   @override
   String get id => 'organic_natural';
 
@@ -15,12 +23,12 @@ class OrganicNaturalTheme extends AppTheme {
   String get description =>
       'Phong cách tự nhiên với màu sắc và hình dạng hữu cơ';
 
-  // Font sizes
-  static const double smallFontSize = 12;
-  static const double normalFontSize = 14;
-  static const double mediumFontSize = 16;
-  static const double largeFontSize = 18;
-  static const double extraLargeFontSize = 22;
+  // Font sizes - using centralized configuration
+  double get smallFontSize => FontSizeConfiguration.small;
+  double get normalFontSize => FontSizeConfiguration.normal;
+  double get mediumFontSize => FontSizeConfiguration.medium;
+  double get largeFontSize => FontSizeConfiguration.large;
+  double get extraLargeFontSize => FontSizeConfiguration.extraLarge;
 
   // Font families - sử dụng font chữ tự nhiên
   static const String defaultFontFamily = 'Comfortaa';
@@ -378,46 +386,39 @@ class OrganicNaturalTheme extends AppTheme {
   }
 
   // Helper method to get text style with Google Fonts
+  static const ThemeTypography _typography =
+      ThemeTypography(FontConfiguration.organicNaturalTheme);
+
   static TextStyle _getTextStyle({
     required String fontFamily,
     required double fontSize,
     FontWeight fontWeight = FontWeight.normal,
     Color? color,
   }) {
-    // Use ScreenUtil for responsive font sizing
-    final responsiveFontSize = fontSize.sp;
-    TextStyle textStyle;
+    var adjustedSize = fontSize;
+    double? letterSpacing;
 
-    switch (fontFamily) {
-      case alternateFontFamily:
-        textStyle = GoogleFonts.caveat(
-          fontSize: responsiveFontSize + 4, // Handwriting font is usually smaller
-          fontWeight: fontWeight,
-          color: color,
-          letterSpacing: 0.5,
-        );
-      case serifFontFamily:
-        textStyle = GoogleFonts.cormorant(
-          fontSize: responsiveFontSize + 2, // Serif font is usually smaller
-          fontWeight: fontWeight,
-          color: color,
-          letterSpacing: 0.2,
-        );
-      case defaultFontFamily:
-      default:
-        textStyle = GoogleFonts.comfortaa(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-          letterSpacing: 0.2,
-        );
+    if (fontFamily == alternateFontFamily) {
+      adjustedSize = fontSize + 4; // Handwriting font is usually smaller
+      letterSpacing = 0.5;
+    } else if (fontFamily == serifFontFamily) {
+      adjustedSize = fontSize + 2; // Serif font is usually smaller
+      letterSpacing = 0.2;
+    } else {
+      letterSpacing = 0.2; // default
     }
 
-    return textStyle;
+    return _typography.getTextStyle(
+      fontFamily: fontFamily,
+      fontSize: adjustedSize,
+      fontWeight: fontWeight,
+      color: color,
+      letterSpacing: letterSpacing,
+    );
   }
 
   // Helper method to get text theme
-  static TextTheme _getTextTheme(
+  TextTheme _getTextTheme(
     String fontFamily,
     double fontSize,
     Color primaryTextColor,

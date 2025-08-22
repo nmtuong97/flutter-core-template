@@ -41,15 +41,15 @@ class ButtonComponentPage extends StatelessWidget {
           DropdownButton<String>(
             value: 'Option 1',
             items: [
-               DropdownMenuItem(
-                 value: 'Option 1', 
-                 child: Text(context.l10n.option1),
-               ),
-               DropdownMenuItem(
-                 value: 'Option 2', 
-                 child: Text(context.l10n.option2),
-               ),
-             ],
+              DropdownMenuItem(
+                value: 'Option 1',
+                child: Text(context.l10n.option1),
+              ),
+              DropdownMenuItem(
+                value: 'Option 2',
+                child: Text(context.l10n.option2),
+              ),
+            ],
             onChanged: (value) {},
           ),
           const SizedBox(height: 16),

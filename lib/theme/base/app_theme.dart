@@ -1,31 +1,39 @@
 import 'package:flutter/material.dart';
 
-/// Abstract class defining the basic structure for all themes
-@immutable
-abstract class AppTheme {
-  /// Unique ID of the theme, used for storage and identification
-  String get id;
+import 'theme_interfaces.dart';
 
-  /// Display name of the theme
-  String get name;
-
-  /// Short description of the theme
-  String get description;
-
+/// Abstract base class for all application themes
+/// Provides a consistent interface for theme implementation
+/// Now extends BaseTheme and implements required interfaces
+abstract class AppTheme extends BaseTheme
+    implements LightThemeProvider, DarkThemeProvider {
   /// Light theme data
+  @override
   ThemeData get lightThemeData;
 
   /// Dark theme data
+  @override
   ThemeData get darkThemeData;
 
-  /// Check if this theme is the default theme
-  bool get isDefault => false;
+  /// Get theme data based on brightness
+  ThemeData getThemeData(Brightness brightness) {
+    return brightness == Brightness.light ? lightThemeData : darkThemeData;
+  }
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AppTheme && runtimeType == other.runtimeType && id == other.id;
+  /// Validate theme consistency
+  bool validateTheme() {
+    try {
+      // Basic validation - ensure themes can be created
+      lightThemeData;
+      final dark = darkThemeData;
 
-  @override
-  int get hashCode => id.hashCode;
+      // Check if themes have required properties
+      return dark.colorScheme.primary != Colors.transparent;
+    } on Exception catch (_) {
+      return false;
+    }
+  }
+
+  /// Get theme capabilities
+  ThemeCapabilities get capabilities => ThemeCapabilities(this);
 }

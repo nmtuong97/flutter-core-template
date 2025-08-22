@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import '../base/app_theme.dart';
+import '../typography/font_configuration.dart';
+import '../typography/font_sizes.dart';
+import '../typography/theme_typography.dart';
 
 /// Cyberpunk Theme with neon colors and special effects
 class CyberpunkTheme extends AppTheme {
+  @override
+  bool get supportsLightMode => true;
+
+  @override
+  bool get supportsDarkMode => true;
   @override
   String get id => 'cyberpunk';
 
@@ -14,17 +22,7 @@ class CyberpunkTheme extends AppTheme {
   @override
   String get description => 'Futuristic neon style';
 
-  // Font sizes
-  static const double smallFontSize = 12;
-  static const double normalFontSize = 14;
-  static const double mediumFontSize = 16;
-  static const double largeFontSize = 18;
-  static const double extraLargeFontSize = 22;
-
-  // Font families
-  static const String defaultFontFamily = 'Roboto';
-  static const String alternateFontFamily = 'Poppins';
-  static const String serifFontFamily = 'Merriweather';
+  // Font configuration - using centralized configuration directly
 
   // Base Colors - Dark Mode
   static const Color backgroundDarkColor = Color(0xFF0F0F13); // Space gray
@@ -36,7 +34,7 @@ class CyberpunkTheme extends AppTheme {
 
   // Base Colors - Light Mode
   static const Color backgroundLightColor = Color(0xFFF8F9FF); // Cosmic white
-  static const Color primaryLightColor = Color(0xFF00F0FF); // Electric neon blue
+  static const Color primaryLightColor = Color(0xFF00F0FF); // Neon blue
   static const Color secondaryLightColor = Color(0xFFFF3BFF); // Light pink
   static const Color accentLightColor = Color(0xFFFF6B35); // Neon orange
   static const Color surfaceLightColor = Color(0xFFFFFFFF); // Pure white
@@ -82,8 +80,8 @@ class CyberpunkTheme extends AppTheme {
         foregroundColor: textPrimaryLightColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: (normalFontSize + 4).sp,
+          fontFamily: FontConfiguration.cyberpunkTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryLightColor,
           hasShadow: true,
@@ -94,8 +92,8 @@ class CyberpunkTheme extends AppTheme {
 
       // Text Theme
       textTheme: _getTextTheme(
-        defaultFontFamily,
-        normalFontSize,
+        FontConfiguration.cyberpunkTheme.defaultFontFamily,
+        FontSizeConfiguration.normal,
         textPrimaryLightColor,
         textSecondaryLightColor,
         primaryLightColor,
@@ -108,8 +106,8 @@ class CyberpunkTheme extends AppTheme {
           backgroundColor: primaryLightColor,
           foregroundColor: Colors.white,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.cyberpunkTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
             hasShadow: true,
             shadowColor: primaryLightColor,
@@ -179,8 +177,8 @@ class CyberpunkTheme extends AppTheme {
         foregroundColor: textPrimaryDarkColor,
         elevation: 0,
         titleTextStyle: _getTextStyle(
-          fontFamily: defaultFontFamily,
-          fontSize: (normalFontSize + 4).sp,
+          fontFamily: FontConfiguration.cyberpunkTheme.defaultFontFamily,
+          fontSize: FontSizeConfiguration.normal + 4,
           fontWeight: FontWeight.bold,
           color: textPrimaryDarkColor,
           hasShadow: true,
@@ -191,8 +189,8 @@ class CyberpunkTheme extends AppTheme {
 
       // Text Theme
       textTheme: _getTextTheme(
-        defaultFontFamily,
-        normalFontSize,
+        FontConfiguration.cyberpunkTheme.defaultFontFamily,
+        FontSizeConfiguration.normal,
         textPrimaryDarkColor,
         textSecondaryDarkColor,
         primaryDarkColor,
@@ -205,8 +203,8 @@ class CyberpunkTheme extends AppTheme {
           backgroundColor: primaryDarkColor,
           foregroundColor: backgroundDarkColor,
           textStyle: _getTextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: normalFontSize,
+            fontFamily: FontConfiguration.cyberpunkTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
             fontWeight: FontWeight.bold,
             color: backgroundDarkColor,
             hasShadow: true,
@@ -253,6 +251,10 @@ class CyberpunkTheme extends AppTheme {
     );
   }
 
+  // Typography helper for this theme
+  static const ThemeTypography _typography =
+      ThemeTypography(FontConfiguration.cyberpunkTheme);
+
   // Helper method to get text style with Google Fonts
   static TextStyle _getTextStyle({
     required String fontFamily,
@@ -262,44 +264,14 @@ class CyberpunkTheme extends AppTheme {
     bool hasShadow = false,
     Color? shadowColor,
   }) {
-    // Sử dụng ScreenUtil để responsive font size
-    final responsiveFontSize = fontSize.sp;
-    TextStyle textStyle;
-
-    switch (fontFamily) {
-      case alternateFontFamily:
-        textStyle = GoogleFonts.poppins(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-        );
-      case serifFontFamily:
-        textStyle = GoogleFonts.merriweather(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-        );
-      case defaultFontFamily:
-      default:
-        textStyle = GoogleFonts.roboto(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-        );
-    }
-
-    if (hasShadow && shadowColor != null) {
-      textStyle = textStyle.copyWith(
-        shadows: [
-          Shadow(
-            color: shadowColor.withAlpha((255 * 0.7).round()),
-            blurRadius: 4,
-          ),
-        ],
-      );
-    }
-
-    return textStyle;
+    return _typography.getTextStyle(
+      fontFamily: fontFamily,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+      hasShadow: hasShadow,
+      shadowColor: shadowColor,
+    );
   }
 
   // Helper method to get text theme

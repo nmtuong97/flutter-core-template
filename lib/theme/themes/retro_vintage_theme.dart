@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import '../base/app_theme.dart';
+import '../typography/font_configuration.dart';
+import '../typography/font_sizes.dart';
+import '../typography/theme_typography.dart';
 
 /// Retro/Vintage Theme with a nostalgic style
 class RetroVintageTheme extends AppTheme {
+  @override
+  bool get supportsLightMode => true;
+
+  @override
+  bool get supportsDarkMode => true;
+  static const ThemeTypography _typography =
+      ThemeTypography(FontConfiguration.retroVintageTheme);
+
   @override
   String get id => 'retro_vintage';
 
@@ -15,12 +26,12 @@ class RetroVintageTheme extends AppTheme {
   String get description =>
       'Phong cách hoài cổ với màu sắc và font chữ cổ điển';
 
-  // Font sizes
-  static const double smallFontSize = 12;
-  static const double normalFontSize = 14;
-  static const double mediumFontSize = 16;
-  static const double largeFontSize = 18;
-  static const double extraLargeFontSize = 22;
+  // Font sizes - using centralized configuration
+  double get smallFontSize => FontSizeConfiguration.small;
+  double get normalFontSize => FontSizeConfiguration.normal;
+  double get mediumFontSize => FontSizeConfiguration.medium;
+  double get largeFontSize => FontSizeConfiguration.large;
+  double get extraLargeFontSize => FontSizeConfiguration.extraLarge;
 
   // Font families - sử dụng font chữ cổ điển
   static const String defaultFontFamily = 'Playfair Display';
@@ -28,7 +39,7 @@ class RetroVintageTheme extends AppTheme {
   static const String serifFontFamily = 'Lora';
 
   // Base Colors - Light Mode (màu vintage)
-  static const Color backgroundLightColor = Color(0xFFF8F3E6); // Old paper color
+  static const Color backgroundLightColor = Color(0xFFF8F3E6); // Old paper
   static const Color primaryLightColor = Color(0xFF8B4513); // Reddish brown
   static const Color secondaryLightColor = Color(0xFF5F9EA0); // Vintage teal
   static const Color accentLightColor = Color(0xFFCD5C5C); // Brick red
@@ -387,47 +398,8 @@ class RetroVintageTheme extends AppTheme {
     );
   }
 
-  // Helper method to get text style with Google Fonts
-  static TextStyle _getTextStyle({
-    required String fontFamily,
-    required double fontSize,
-    FontWeight fontWeight = FontWeight.normal,
-    Color? color,
-  }) {
-    // Use ScreenUtil for responsive font sizing
-    final responsiveFontSize = fontSize.sp;
-    TextStyle textStyle;
-
-    switch (fontFamily) {
-      case alternateFontFamily:
-        textStyle = GoogleFonts.abrilFatface(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-          letterSpacing: 0.5,
-        );
-      case serifFontFamily:
-        textStyle = GoogleFonts.lora(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-          letterSpacing: 0.2,
-        );
-      case defaultFontFamily:
-      default:
-        textStyle = GoogleFonts.playfairDisplay(
-          fontSize: responsiveFontSize,
-          fontWeight: fontWeight,
-          color: color,
-          letterSpacing: 0.3,
-        );
-    }
-
-    return textStyle;
-  }
-
   // Helper method to get text theme
-  static TextTheme _getTextTheme(
+  TextTheme _getTextTheme(
     String fontFamily,
     double fontSize,
     Color primaryTextColor,
@@ -521,6 +493,31 @@ class RetroVintageTheme extends AppTheme {
         fontWeight: FontWeight.w500,
         color: secondaryTextColor,
       ),
+    );
+  }
+
+  // Helper method to get text style with Google Fonts
+  static TextStyle _getTextStyle({
+    required String fontFamily,
+    required double fontSize,
+    FontWeight fontWeight = FontWeight.normal,
+    Color? color,
+  }) {
+    double? letterSpacing;
+    if (fontFamily == alternateFontFamily) {
+      letterSpacing = 0.5;
+    } else if (fontFamily == serifFontFamily) {
+      letterSpacing = 0.2;
+    } else if (fontFamily == defaultFontFamily) {
+      letterSpacing = 0.3;
+    }
+
+    return _typography.getTextStyle(
+      fontFamily: fontFamily,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+      letterSpacing: letterSpacing,
     );
   }
 }
