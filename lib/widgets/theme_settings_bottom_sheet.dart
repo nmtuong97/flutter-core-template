@@ -74,15 +74,11 @@ class RadioListTile<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final radioGroup = RadioGroup.of<T>(context);
-
     return Material(
       type: MaterialType.transparency,
       child: ListTile(
         leading: Radio<T>(
           value: value,
-          groupValue: radioGroup?.groupValue,
-          onChanged: radioGroup?.onChanged,
           activeColor: activeColor,
           focusNode: focusNode,
           autofocus: autofocus,
@@ -93,7 +89,10 @@ class RadioListTile<T> extends StatelessWidget {
         isThreeLine: isThreeLine,
         dense: dense,
         contentPadding: contentPadding,
-        onTap: () => radioGroup?.onChanged?.call(value),
+        onTap: () {
+          final radioGroup = RadioGroup.of<T>(context);
+          radioGroup?.onChanged?.call(value);
+        },
         shape: shape,
         tileColor: tileColor,
         selectedTileColor: selectedTileColor,
@@ -452,7 +451,7 @@ class _LanguageSectionState extends State<_LanguageSection> {
   @override
   void initState() {
     super.initState();
-    _loadCurrentLanguage();
+    unawaited(_loadCurrentLanguage());
   }
 
   Future<void> _loadCurrentLanguage() async {
@@ -475,13 +474,13 @@ class _LanguageSectionState extends State<_LanguageSection> {
       });
       // Show restart dialog
       if (context.mounted) {
-        _showRestartDialog();
+        await _showRestartDialog();
       }
     }
   }
 
-  void _showRestartDialog() {
-    showDialog<void>(
+  Future<void> _showRestartDialog() {
+    return showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Language Changed'),
@@ -515,9 +514,9 @@ class _LanguageSectionState extends State<_LanguageSection> {
             const SizedBox(height: 16),
             RadioGroup<String>(
               groupValue: _currentLanguage,
-              onChanged: (value) {
+              onChanged: (value) async {
                 if (value != null) {
-                  _setLanguage(value);
+                  await _setLanguage(value);
                 }
               },
               child: Column(
