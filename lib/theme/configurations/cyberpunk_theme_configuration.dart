@@ -56,10 +56,6 @@ class CyberpunkThemeConfiguration extends ThemeConfiguration {
       const AnimationConfiguration.cyberpunkConfig();
 }
 
-
-
-
-
 /// Cyberpunk dark theme configuration (alternative variant)
 class CyberpunkDarkThemeConfiguration extends ThemeConfiguration {
   CyberpunkDarkThemeConfiguration();

@@ -1,52 +1,252 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../l10n/app_localizations.dart';
-import '../providers/language_provider.dart';
-import '../theme/base/app_theme.dart';
-import '../theme/base/theme_factory.dart';
-import '../theme/theme_provider.dart';
+import '../presentation/blocs/theme/theme_bloc.dart';
+import '../presentation/blocs/theme/theme_event.dart';
+import '../presentation/blocs/theme/theme_state.dart';
+import '../theme/theme_preferences.dart';
+
+/// A simple RadioGroup widget that manages radio button states
+class RadioGroup<T> extends InheritedWidget {
+  const RadioGroup({
+    required this.groupValue,
+    required this.onChanged,
+    required super.child,
+    super.key,
+  });
+
+  final T? groupValue;
+  final ValueChanged<T?>? onChanged;
+
+  @override
+  bool updateShouldNotify(RadioGroup<T> oldWidget) {
+    return groupValue != oldWidget.groupValue ||
+        onChanged != oldWidget.onChanged;
+  }
+
+  static RadioGroup<T>? of<T>(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<RadioGroup<T>>();
+  }
+}
+
+/// Enhanced RadioListTile that works with RadioGroup
+class RadioListTile<T> extends StatelessWidget {
+  const RadioListTile({
+    required this.value,
+    required this.title,
+    this.subtitle,
+    this.isThreeLine = false,
+    this.dense,
+    this.activeColor,
+    this.controlAffinity = ListTileControlAffinity.platform,
+    this.autofocus = false,
+    this.contentPadding,
+    this.shape,
+    this.tileColor,
+    this.selectedTileColor,
+    this.visualDensity,
+    this.focusNode,
+    this.onFocusChange,
+    this.enableFeedback,
+    super.key,
+  });
+
+  final T value;
+  final Widget title;
+  final Widget? subtitle;
+  final bool isThreeLine;
+  final bool? dense;
+  final Color? activeColor;
+  final ListTileControlAffinity controlAffinity;
+  final bool autofocus;
+  final EdgeInsetsGeometry? contentPadding;
+  final ShapeBorder? shape;
+  final Color? tileColor;
+  final Color? selectedTileColor;
+  final VisualDensity? visualDensity;
+  final FocusNode? focusNode;
+  final ValueChanged<bool>? onFocusChange;
+  final bool? enableFeedback;
+
+  @override
+  Widget build(BuildContext context) {
+    final radioGroup = RadioGroup.of<T>(context);
+
+    return Material(
+      type: MaterialType.transparency,
+      child: ListTile(
+        leading: Radio<T>(
+          value: value,
+          groupValue: radioGroup?.groupValue,
+          onChanged: radioGroup?.onChanged,
+          activeColor: activeColor,
+          focusNode: focusNode,
+          autofocus: autofocus,
+          visualDensity: visualDensity,
+        ),
+        title: title,
+        subtitle: subtitle,
+        isThreeLine: isThreeLine,
+        dense: dense,
+        contentPadding: contentPadding,
+        onTap: () => radioGroup?.onChanged?.call(value),
+        shape: shape,
+        tileColor: tileColor,
+        selectedTileColor: selectedTileColor,
+        onFocusChange: onFocusChange,
+        enableFeedback: enableFeedback,
+      ),
+    );
+  }
+}
 
 class ThemeSettingsBottomSheet extends StatelessWidget {
   const ThemeSettingsBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _ThemeModeSection(),
-          SizedBox(height: 16),
-          _FontSizeSection(),
-          SizedBox(height: 16),
-          _FontFamilySection(),
-          SizedBox(height: 16),
-          _AppThemeSection(),
-          SizedBox(height: 16),
-          _LanguageSection(),
-          SizedBox(height: 16),
-          _PreviewSection(),
-        ],
-      ),
+    return BlocConsumer<ThemeBloc, ThemeState>(
+      listener: (context, state) {
+        // Show snackbar on successful operations
+        if (state is ThemeOperationSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.message),
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              duration: const Duration(seconds: 2),
+            ),
+          );
+        }
+
+        // Show error snackbar on failed operations
+        if (state is ThemeError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.message),
+              backgroundColor: Theme.of(context).colorScheme.error,
+              duration: const Duration(seconds: 3),
+            ),
+          );
+        }
+      },
+      builder: (context, state) {
+        if (state is! ThemeLoaded &&
+            state is! ThemeOperationInProgress &&
+            state is! ThemeOperationSuccess) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.4,
+            child: const Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator(),
+                  SizedBox(height: 16),
+                  Text('Loading theme settings...'),
+                ],
+              ),
+            ),
+          );
+        }
+
+        late ThemeLoaded themeState;
+        if (state is ThemeLoaded) {
+          themeState = state;
+        } else if (state is ThemeOperationInProgress &&
+            state.previousState != null) {
+          themeState = state.previousState!;
+        } else if (state is ThemeOperationSuccess) {
+          themeState = state.updatedState;
+        } else {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.3,
+            child: const Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.error_outline, size: 48),
+                  SizedBox(height: 16),
+                  Text('Unable to load theme settings'),
+                ],
+              ),
+            ),
+          );
+        }
+
+        final isLoading = state is ThemeOperationInProgress;
+
+        return Container(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.8,
+          ),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Header
+                Row(
+                  children: [
+                    Icon(
+                      Icons.settings,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Theme Settings',
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    const Spacer(),
+                    if (isLoading)
+                      const SizedBox(
+                        height: 16,
+                        width: 16,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                _ThemeModeSection(themeState: themeState, isLoading: isLoading),
+                const SizedBox(height: 16),
+                _FontSizeSection(themeState: themeState, isLoading: isLoading),
+                const SizedBox(height: 16),
+                _FontFamilySection(
+                  themeState: themeState,
+                  isLoading: isLoading,
+                ),
+                const SizedBox(height: 16),
+                _AppThemeSection(themeState: themeState, isLoading: isLoading),
+                const SizedBox(height: 16),
+                const _LanguageSection(),
+                const SizedBox(height: 16),
+                const _PreviewSection(),
+                // Bottom padding for better scrolling
+                SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
 
 class _ThemeModeSection extends StatelessWidget {
-  const _ThemeModeSection();
+  const _ThemeModeSection({
+    required this.themeState,
+    required this.isLoading,
+  });
+
+  final ThemeLoaded themeState;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final themeMode = context.select<ThemeProvider, ThemeMode>(
-      (p) => p.themeMode,
-    );
-    final isLoading = context.select<ThemeProvider, bool>((p) => p.isLoading);
 
     return Card(
       child: Padding(
@@ -60,14 +260,12 @@ class _ThemeModeSection extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             RadioGroup<ThemeMode>(
-              groupValue: themeMode,
+              groupValue: themeState.themeMode,
               onChanged: (value) {
-                if (isLoading) return;
-                if (value != null) {
-                  unawaited(
-                    context.read<ThemeProvider>().setThemeMode(value),
-                  );
-                }
+                if (isLoading || value == null) return;
+                context.read<ThemeBloc>().add(
+                      ThemeChangeModeEvent(themeMode: value),
+                    );
               },
               child: Column(
                 children: [
@@ -94,13 +292,17 @@ class _ThemeModeSection extends StatelessWidget {
 }
 
 class _FontSizeSection extends StatelessWidget {
-  const _FontSizeSection();
+  const _FontSizeSection({
+    required this.themeState,
+    required this.isLoading,
+  });
+
+  final ThemeLoaded themeState;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final fontSize = context.select<ThemeProvider, double>((p) => p.fontSize);
-    final isLoading = context.select<ThemeProvider, bool>((p) => p.isLoading);
 
     return Card(
       child: Padding(
@@ -114,24 +316,16 @@ class _FontSizeSection extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Slider(
-              value: fontSize,
+              value: themeState.fontSize,
               min: 12,
               max: 24,
               divisions: 12,
-              label: '${fontSize.round()}',
+              label: '${themeState.fontSize.round()}',
               onChanged: (value) {
                 if (isLoading) return;
-                String fontSizeString;
-                if (value <= 14) {
-                  fontSizeString = 'small';
-                } else if (value <= 18) {
-                  fontSizeString = 'normal';
-                } else {
-                  fontSizeString = 'large';
-                }
-                unawaited(
-                  context.read<ThemeProvider>().setFontSize(fontSizeString),
-                );
+                context.read<ThemeBloc>().add(
+                      ThemeChangeFontSizeEvent(fontSize: value),
+                    );
               },
             ),
           ],
@@ -142,15 +336,17 @@ class _FontSizeSection extends StatelessWidget {
 }
 
 class _FontFamilySection extends StatelessWidget {
-  const _FontFamilySection();
+  const _FontFamilySection({
+    required this.themeState,
+    required this.isLoading,
+  });
+
+  final ThemeLoaded themeState;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final fontFamily = context.select<ThemeProvider, String>(
-      (p) => p.fontFamily,
-    );
-    final isLoading = context.select<ThemeProvider, bool>((p) => p.isLoading);
 
     return Card(
       child: Padding(
@@ -164,14 +360,12 @@ class _FontFamilySection extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             RadioGroup<String>(
-              groupValue: fontFamily,
+              groupValue: themeState.fontFamily,
               onChanged: (value) {
-                if (isLoading) return;
-                if (value != null) {
-                  unawaited(
-                    context.read<ThemeProvider>().setFontFamily(value),
-                  );
-                }
+                if (isLoading || value == null) return;
+                context.read<ThemeBloc>().add(
+                      ThemeChangeFontFamilyEvent(fontFamily: value),
+                    );
               },
               child: const Column(
                 children: [
@@ -198,15 +392,17 @@ class _FontFamilySection extends StatelessWidget {
 }
 
 class _AppThemeSection extends StatelessWidget {
-  const _AppThemeSection();
+  const _AppThemeSection({
+    required this.themeState,
+    required this.isLoading,
+  });
+
+  final ThemeLoaded themeState;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final currentTheme = context.select<ThemeProvider, AppTheme>(
-      (p) => p.currentTheme,
-    );
-    final isLoading = context.select<ThemeProvider, bool>((p) => p.isLoading);
 
     return Card(
       child: Padding(
@@ -219,21 +415,19 @@ class _AppThemeSection extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 16),
-            RadioGroup<AppTheme>(
-              groupValue: currentTheme,
+            RadioGroup<String>(
+              groupValue: themeState.currentTheme.id,
               onChanged: (value) {
-                if (isLoading) return;
-                if (value != null) {
-                  unawaited(
-                    context.read<ThemeProvider>().setThemeStyle(value.id),
-                  );
-                }
+                if (isLoading || value == null) return;
+                context.read<ThemeBloc>().add(
+                      ThemeSwitchEvent(themeId: value),
+                    );
               },
               child: Column(
-                children: ThemeFactory.availableThemes.map((AppTheme theme) {
-                  return RadioListTile<AppTheme>(
+                children: themeState.availableThemes.map((theme) {
+                  return RadioListTile<String>(
                     title: Text(theme.name),
-                    value: theme,
+                    value: theme.id,
                   );
                 }).toList(),
               ),
@@ -245,15 +439,68 @@ class _AppThemeSection extends StatelessWidget {
   }
 }
 
-class _LanguageSection extends StatelessWidget {
+class _LanguageSection extends StatefulWidget {
   const _LanguageSection();
+
+  @override
+  State<_LanguageSection> createState() => _LanguageSectionState();
+}
+
+class _LanguageSectionState extends State<_LanguageSection> {
+  String _currentLanguage = 'en';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadCurrentLanguage();
+  }
+
+  Future<void> _loadCurrentLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final language = prefs.getString(ThemePreferences.languageKey) ??
+        ThemePreferences.englishLanguage;
+    if (mounted) {
+      setState(() {
+        _currentLanguage = language;
+      });
+    }
+  }
+
+  Future<void> _setLanguage(String languageCode) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(ThemePreferences.languageKey, languageCode);
+    if (mounted) {
+      setState(() {
+        _currentLanguage = languageCode;
+      });
+      // Show restart dialog
+      if (context.mounted) {
+        _showRestartDialog();
+      }
+    }
+  }
+
+  void _showRestartDialog() {
+    showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Language Changed'),
+        content: const Text(
+          'Please restart the app for the language change to take effect.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final languageCode = context.select<LanguageProvider, String>(
-      (p) => p.locale.languageCode,
-    );
 
     return Card(
       child: Padding(
@@ -266,29 +513,25 @@ class _LanguageSection extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 16),
-            Column(
-              children: [
-                RadioGroup<String>(
-                  groupValue: languageCode,
-                  onChanged: (value) {
-                    if (value != null) {
-                      context.read<LanguageProvider>().setLocale(Locale(value));
-                    }
-                  },
-                  child: Column(
-                    children: [
-                      RadioListTile<String>(
-                        title: Text(l10n.english),
-                        value: 'en',
-                      ),
-                      RadioListTile<String>(
-                        title: Text(l10n.vietnamese),
-                        value: 'vi',
-                      ),
-                    ],
+            RadioGroup<String>(
+              groupValue: _currentLanguage,
+              onChanged: (value) {
+                if (value != null) {
+                  _setLanguage(value);
+                }
+              },
+              child: Column(
+                children: [
+                  RadioListTile<String>(
+                    title: Text(l10n.english),
+                    value: 'en',
                   ),
-                ),
-              ],
+                  RadioListTile<String>(
+                    title: Text(l10n.vietnamese),
+                    value: 'vi',
+                  ),
+                ],
+              ),
             ),
           ],
         ),

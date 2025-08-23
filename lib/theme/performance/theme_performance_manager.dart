@@ -163,11 +163,13 @@ class ThemePerformanceManager {
 
       // Use a completer to get cached theme synchronously
       AppTheme? cachedTheme;
-      unawaited(_cacheManager.getTheme(themeId, factory).then((theme) {
-        cachedTheme = theme;
-      }).catchError((_) {
-        // Ignore errors for sync access
-      }),);
+      unawaited(
+        _cacheManager.getTheme(themeId, factory).then((theme) {
+          cachedTheme = theme;
+        }).catchError((_) {
+          // Ignore errors for sync access
+        }),
+      );
 
       return cachedTheme;
     } on Exception catch (_) {

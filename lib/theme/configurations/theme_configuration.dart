@@ -60,36 +60,40 @@ class FontFamilyConfiguration {
   });
 
   /// Default font family configuration
-  const FontFamilyConfiguration.defaultConfig() : this(
-    primary: 'Inter',
-    secondary: 'Inter',
-    display: 'Inter',
-    monospace: 'JetBrains Mono',
-  );
+  const FontFamilyConfiguration.defaultConfig()
+      : this(
+          primary: 'Inter',
+          secondary: 'Inter',
+          display: 'Inter',
+          monospace: 'JetBrains Mono',
+        );
 
   /// Cyberpunk theme font configuration
-  const FontFamilyConfiguration.cyberpunkConfig() : this(
-    primary: 'Orbitron',
-    secondary: 'Orbitron',
-    display: 'Orbitron',
-    monospace: 'JetBrains Mono',
-  );
+  const FontFamilyConfiguration.cyberpunkConfig()
+      : this(
+          primary: 'Orbitron',
+          secondary: 'Orbitron',
+          display: 'Orbitron',
+          monospace: 'JetBrains Mono',
+        );
 
   /// Glassmorphism theme font configuration
-  const FontFamilyConfiguration.glassmorphismConfig() : this(
-    primary: 'SF Pro Display',
-    secondary: 'SF Pro Display',
-    display: 'SF Pro Display',
-    monospace: 'SF Mono',
-  );
+  const FontFamilyConfiguration.glassmorphismConfig()
+      : this(
+          primary: 'SF Pro Display',
+          secondary: 'SF Pro Display',
+          display: 'SF Pro Display',
+          monospace: 'SF Mono',
+        );
 
   /// Neumorphism theme font configuration
-  const FontFamilyConfiguration.neumorphismConfig() : this(
-    primary: 'Nunito',
-    secondary: 'Nunito',
-    display: 'Nunito',
-    monospace: 'JetBrains Mono',
-  );
+  const FontFamilyConfiguration.neumorphismConfig()
+      : this(
+          primary: 'Nunito',
+          secondary: 'Nunito',
+          display: 'Nunito',
+          monospace: 'JetBrains Mono',
+        );
 
   /// Primary font family for body text
   final String primary;
@@ -117,38 +121,42 @@ class TypographyConfiguration {
   });
 
   /// Default typography configuration
-  const TypographyConfiguration.defaultConfig() : this(
-    baseFontSize: 16,
-    fontSizeScale: 1,
-    lineHeightScale: 1.4,
-    letterSpacingScale: 0,
-  );
+  const TypographyConfiguration.defaultConfig()
+      : this(
+          baseFontSize: 16,
+          fontSizeScale: 1,
+          lineHeightScale: 1.4,
+          letterSpacingScale: 0,
+        );
 
   /// Cyberpunk typography configuration with glow effects
-  const TypographyConfiguration.cyberpunkConfig() : this(
-    baseFontSize: 16,
-    fontSizeScale: 1,
-    lineHeightScale: 1.3,
-    letterSpacingScale: 0.5,
-    hasTextShadow: true,
-    shadowColor: const Color(0xFF00FFFF),
-  );
+  const TypographyConfiguration.cyberpunkConfig()
+      : this(
+          baseFontSize: 16,
+          fontSizeScale: 1,
+          lineHeightScale: 1.3,
+          letterSpacingScale: 0.5,
+          hasTextShadow: true,
+          shadowColor: const Color(0xFF00FFFF),
+        );
 
   /// Glassmorphism typography configuration
-  const TypographyConfiguration.glassmorphismConfig() : this(
-    baseFontSize: 16,
-    fontSizeScale: 1,
-    lineHeightScale: 1.5,
-    letterSpacingScale: 0.2,
-  );
+  const TypographyConfiguration.glassmorphismConfig()
+      : this(
+          baseFontSize: 16,
+          fontSizeScale: 1,
+          lineHeightScale: 1.5,
+          letterSpacingScale: 0.2,
+        );
 
   /// Neumorphism typography configuration
-  const TypographyConfiguration.neumorphismConfig() : this(
-    baseFontSize: 16,
-    fontSizeScale: 1,
-    lineHeightScale: 1.4,
-    letterSpacingScale: 0.1,
-  );
+  const TypographyConfiguration.neumorphismConfig()
+      : this(
+          baseFontSize: 16,
+          fontSizeScale: 1,
+          lineHeightScale: 1.4,
+          letterSpacingScale: 0.1,
+        );
 
   /// Base font size for body text
   final double baseFontSize;

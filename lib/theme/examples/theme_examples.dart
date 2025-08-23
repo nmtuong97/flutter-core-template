@@ -266,7 +266,7 @@ class ThemeProviderExample {
     // Lấy danh sách themes có sẵn
     final availableThemes = themeProvider.availableThemes;
     debugPrint(
-        'Available themes: ${availableThemes.map((t) => t.name).join(', ')}',
+      'Available themes: ${availableThemes.map((t) => t.name).join(', ')}',
     );
 
     // Thay đổi theme
@@ -393,7 +393,7 @@ class ThemeConstantsExample {
     // Validation constants
     debugPrint('\nValidation limits:');
     debugPrint(
-        'Max theme creation time: ${ThemeConstants.maxThemeCreationTime}ms',
+      'Max theme creation time: ${ThemeConstants.maxThemeCreationTime}ms',
     );
     debugPrint('Min contrast ratio: ${ThemeConstants.minContrastRatio}');
     debugPrint('Max cache size: ${ThemeConstants.maxCacheSize}');
