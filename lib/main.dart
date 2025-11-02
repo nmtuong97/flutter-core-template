@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/di/dependency_injection.dart';
 import 'core/errors/error_handler.dart';
 import 'core/utilities/logger.dart';
+import 'presentation/blocs/localization/localization_bloc.dart';
+import 'presentation/blocs/localization/localization_event.dart';
 import 'presentation/blocs/theme/theme_bloc.dart';
 import 'presentation/blocs/theme/theme_event.dart';
 import 'presentation/pages/clean_app.dart';
@@ -74,13 +76,22 @@ class CleanArchitectureApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) {
-        AppLogger.info('Creating ThemeBloc from DI...');
-
-        // Get ThemeBloc from DI and add initial event
-        return getIt<ThemeBloc>()..add(const ThemeLoadCurrentEvent());
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) {
+            AppLogger.info('Creating ThemeBloc from DI...');
+            return getIt<ThemeBloc>()..add(const ThemeLoadCurrentEvent());
+          },
+        ),
+        BlocProvider(
+          create: (context) {
+            AppLogger.info('Creating LocalizationBloc from DI...');
+            return getIt<LocalizationBloc>()
+              ..add(const LocalizationLoadCurrentEvent());
+          },
+        ),
+      ],
       child: const CleanApp(),
     );
   }

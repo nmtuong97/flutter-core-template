@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../pages/theme_showcase_page.dart';
+import '../blocs/localization/localization_bloc.dart';
+import '../blocs/localization/localization_state.dart';
 import '../blocs/theme/theme_bloc.dart';
 import '../blocs/theme/theme_event.dart';
 import '../blocs/theme/theme_state.dart';
@@ -108,21 +110,33 @@ class CleanApp extends StatelessWidget {
                 );
               }
 
-              return MaterialApp(
-                onGenerateTitle: (context) =>
-                    AppLocalizations.of(context).appTitle,
-                theme: themeState.lightTheme,
-                darkTheme: themeState.darkTheme,
-                themeMode: themeState.themeMode,
-                debugShowCheckedModeBanner: false,
-                localizationsDelegates: const [
-                  AppLocalizations.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: AppLocalizations.supportedLocales,
-                home: const ThemeShowcasePage(),
+              // Wrap with LocalizationBloc builder
+              return BlocBuilder<LocalizationBloc, LocalizationState>(
+                builder: (context, localizationState) {
+                  // Use current locale from LocalizationBloc if loaded
+                  Locale? currentLocale;
+                  if (localizationState is LocalizationLoaded) {
+                    currentLocale = localizationState.currentLocalization.locale;
+                  }
+
+                  return MaterialApp(
+                    onGenerateTitle: (context) =>
+                        AppLocalizations.of(context).appTitle,
+                    theme: themeState.lightTheme,
+                    darkTheme: themeState.darkTheme,
+                    themeMode: themeState.themeMode,
+                    debugShowCheckedModeBanner: false,
+                    locale: currentLocale, // Use locale from LocalizationBloc
+                    localizationsDelegates: const [
+                      AppLocalizations.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                    ],
+                    supportedLocales: AppLocalizations.supportedLocales,
+                    home: const ThemeShowcasePage(),
+                  );
+                },
               );
             }
 
