@@ -11,7 +11,11 @@ import '../../domain/use_cases/localization/get_supported_localizations_use_case
 import '../../domain/use_cases/localization/switch_localization_use_case.dart';
 import '../../domain/use_cases/theme/get_available_themes_use_case.dart';
 import '../../domain/use_cases/theme/get_current_theme_use_case.dart';
+import '../../domain/use_cases/theme/get_font_family_use_case.dart';
+import '../../domain/use_cases/theme/get_font_size_use_case.dart';
 import '../../domain/use_cases/theme/manage_theme_mode_use_case.dart';
+import '../../domain/use_cases/theme/save_font_family_use_case.dart';
+import '../../domain/use_cases/theme/save_font_size_use_case.dart';
 import '../../domain/use_cases/theme/switch_theme_use_case.dart';
 import '../utilities/theme_preferences_helper.dart';
 import '../../presentation/blocs/localization/localization_bloc.dart';
@@ -58,6 +62,18 @@ Future<void> initializeDependencies() async {
     ..registerLazySingleton<ManageThemeModeUseCase>(
       () => ManageThemeModeUseCase(repository: getIt()),
     )
+    ..registerLazySingleton<GetFontSizeUseCase>(
+      () => GetFontSizeUseCase(repository: getIt()),
+    )
+    ..registerLazySingleton<SaveFontSizeUseCase>(
+      () => SaveFontSizeUseCase(repository: getIt()),
+    )
+    ..registerLazySingleton<GetFontFamilyUseCase>(
+      () => GetFontFamilyUseCase(repository: getIt()),
+    )
+    ..registerLazySingleton<SaveFontFamilyUseCase>(
+      () => SaveFontFamilyUseCase(repository: getIt()),
+    )
 
     // Register Localization Use Cases
     ..registerLazySingleton<GetCurrentLocalizationUseCase>(
@@ -77,6 +93,10 @@ Future<void> initializeDependencies() async {
         getAvailableThemesUseCase: getIt(),
         switchThemeUseCase: getIt(),
         manageThemeModeUseCase: getIt(),
+        getFontSizeUseCase: getIt(),
+        saveFontSizeUseCase: getIt(),
+        getFontFamilyUseCase: getIt(),
+        saveFontFamilyUseCase: getIt(),
       ),
     )
     ..registerFactory<LocalizationBloc>(

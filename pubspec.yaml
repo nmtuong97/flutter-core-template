@@ -25,13 +25,9 @@ dependencies:
 
 dev_dependencies:
   # Code generation dependencies (only json_serializable - used by data models)
-  bloc_test: ^9.1.5
   build_runner: ^2.4.7
   flutter_lints: ^6.0.0
-  flutter_test:
-    sdk: flutter
   json_serializable: ^6.7.1
-  mockito: ^5.4.4
   very_good_analysis: ^9.0.0
 
 flutter:

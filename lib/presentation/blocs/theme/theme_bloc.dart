@@ -3,7 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/utilities/logger.dart';
 import '../../../domain/use_cases/theme/get_available_themes_use_case.dart';
 import '../../../domain/use_cases/theme/get_current_theme_use_case.dart';
+import '../../../domain/use_cases/theme/get_font_family_use_case.dart';
+import '../../../domain/use_cases/theme/get_font_size_use_case.dart';
 import '../../../domain/use_cases/theme/manage_theme_mode_use_case.dart';
+import '../../../domain/use_cases/theme/save_font_family_use_case.dart';
+import '../../../domain/use_cases/theme/save_font_size_use_case.dart';
 import '../../../domain/use_cases/theme/switch_theme_use_case.dart';
 import 'theme_event.dart';
 import 'theme_state.dart';
@@ -15,6 +19,10 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     required this.getAvailableThemesUseCase,
     required this.switchThemeUseCase,
     required this.manageThemeModeUseCase,
+    required this.getFontSizeUseCase,
+    required this.saveFontSizeUseCase,
+    required this.getFontFamilyUseCase,
+    required this.saveFontFamilyUseCase,
   }) : super(const ThemeInitial()) {
     on<ThemeLoadCurrentEvent>(_onLoadCurrent);
     on<ThemeLoadAvailableEvent>(_onLoadAvailable);
@@ -30,6 +38,10 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   final GetAvailableThemesUseCase getAvailableThemesUseCase;
   final SwitchThemeUseCase switchThemeUseCase;
   final ManageThemeModeUseCase manageThemeModeUseCase;
+  final GetFontSizeUseCase getFontSizeUseCase;
+  final SaveFontSizeUseCase saveFontSizeUseCase;
+  final GetFontFamilyUseCase getFontFamilyUseCase;
+  final SaveFontFamilyUseCase saveFontFamilyUseCase;
 
   /// Load current theme and initial data
   Future<void> _onLoadCurrent(
@@ -94,6 +106,40 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       );
       if (themeMode == null) return;
 
+      // Load font size - early return on failure
+      final fontSizeResult = await getFontSizeUseCase();
+      final fontSize = fontSizeResult.fold(
+        (failure) {
+          AppLogger.error('Failed to load font size: ${failure.message}');
+          emit(
+            ThemeError(
+              message: failure.message,
+              code: failure.code ?? 'FONT_SIZE_LOAD_ERROR',
+            ),
+          );
+          return null;
+        },
+        (size) => size,
+      );
+      if (fontSize == null) return;
+
+      // Load font family - early return on failure
+      final fontFamilyResult = await getFontFamilyUseCase();
+      final fontFamily = fontFamilyResult.fold(
+        (failure) {
+          AppLogger.error('Failed to load font family: ${failure.message}');
+          emit(
+            ThemeError(
+              message: failure.message,
+              code: failure.code ?? 'FONT_FAMILY_LOAD_ERROR',
+            ),
+          );
+          return null;
+        },
+        (family) => family,
+      );
+      if (fontFamily == null) return;
+
       // All data loaded successfully
       AppLogger.theme('Theme data loaded successfully');
       emit(
@@ -101,8 +147,8 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
           currentTheme: currentTheme,
           availableThemes: availableThemes,
           themeMode: themeMode,
-          fontSize: 14, // Default, should load from repository
-          fontFamily: 'Roboto', // Default, should load from repository
+          fontSize: fontSize,
+          fontFamily: fontFamily,
         ),
       );
     } on Exception catch (e) {
@@ -348,13 +394,31 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     final currentState = state as ThemeLoaded;
 
     try {
-      // TODO(font-size): Implement font size change through repository
-      AppLogger.theme('Font size changed to ${event.fontSize}');
-      emit(
-        ThemeOperationSuccess(
-          message: 'Font size changed successfully',
-          updatedState: currentState.copyWith(fontSize: event.fontSize),
-        ),
+      AppLogger.theme('Changing font size to ${event.fontSize}');
+
+      // Save font size through use case (validates)
+      final result = await saveFontSizeUseCase(event.fontSize);
+
+      await result.fold(
+        (failure) async {
+          AppLogger.error('Failed to save font size: ${failure.message}');
+          emit(
+            ThemeError(
+              message: failure.message,
+              code: failure.code ?? 'FONT_SIZE_SAVE_ERROR',
+              previousState: currentState,
+            ),
+          );
+        },
+        (_) async {
+          AppLogger.theme('Font size changed to ${event.fontSize}');
+          emit(
+            ThemeOperationSuccess(
+              message: 'Font size changed successfully',
+              updatedState: currentState.copyWith(fontSize: event.fontSize),
+            ),
+          );
+        },
       );
     } on Exception catch (e) {
       AppLogger.error('Unexpected error changing font size', error: e);
@@ -381,13 +445,32 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     final currentState = state as ThemeLoaded;
 
     try {
-      // TODO(font-family): Implement font family change through repository
-      AppLogger.theme('Font family changed to ${event.fontFamily}');
-      emit(
-        ThemeOperationSuccess(
-          message: 'Font family changed successfully',
-          updatedState: currentState.copyWith(fontFamily: event.fontFamily),
-        ),
+      AppLogger.theme('Changing font family to ${event.fontFamily}');
+
+      // Save font family through use case (validates)
+      final result = await saveFontFamilyUseCase(event.fontFamily);
+
+      await result.fold(
+        (failure) async {
+          AppLogger.error('Failed to save font family: ${failure.message}');
+          emit(
+            ThemeError(
+              message: failure.message,
+              code: failure.code ?? 'FONT_FAMILY_SAVE_ERROR',
+              previousState: currentState,
+            ),
+          );
+        },
+        (_) async {
+          AppLogger.theme('Font family changed to ${event.fontFamily}');
+          emit(
+            ThemeOperationSuccess(
+              message: 'Font family changed successfully',
+              updatedState:
+                  currentState.copyWith(fontFamily: event.fontFamily),
+            ),
+          );
+        },
       );
     } on Exception catch (e) {
       AppLogger.error('Unexpected error changing font family', error: e);
