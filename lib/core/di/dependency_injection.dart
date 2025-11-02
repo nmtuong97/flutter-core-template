@@ -14,6 +14,7 @@ import '../../domain/use_cases/theme/get_current_theme_use_case.dart';
 import '../../domain/use_cases/theme/manage_theme_mode_use_case.dart';
 import '../../domain/use_cases/theme/switch_theme_use_case.dart';
 import '../utilities/theme_preferences_helper.dart';
+import '../../presentation/blocs/localization/localization_bloc.dart';
 import '../../presentation/blocs/theme/theme_bloc.dart';
 
 /// Global instance of GetIt service locator
@@ -76,6 +77,13 @@ Future<void> initializeDependencies() async {
         getAvailableThemesUseCase: getIt(),
         switchThemeUseCase: getIt(),
         manageThemeModeUseCase: getIt(),
+      ),
+    )
+    ..registerFactory<LocalizationBloc>(
+      () => LocalizationBloc(
+        getCurrentLocalizationUseCase: getIt(),
+        getSupportedLocalizationsUseCase: getIt(),
+        switchLocalizationUseCase: getIt(),
       ),
     );
 }
