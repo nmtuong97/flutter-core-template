@@ -4,10 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/di/dependency_injection.dart';
 import 'core/errors/error_handler.dart';
 import 'core/utilities/logger.dart';
-import 'domain/use_cases/theme/get_available_themes_use_case.dart';
-import 'domain/use_cases/theme/get_current_theme_use_case.dart';
-import 'domain/use_cases/theme/manage_theme_mode_use_case.dart';
-import 'domain/use_cases/theme/switch_theme_use_case.dart';
 import 'presentation/blocs/theme/theme_bloc.dart';
 import 'presentation/blocs/theme/theme_event.dart';
 import 'presentation/pages/clean_app.dart';
@@ -80,16 +76,10 @@ class CleanArchitectureApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        AppLogger.info('Creating ThemeBloc...');
+        AppLogger.info('Creating ThemeBloc from DI...');
 
-        final themeBloc = ThemeBloc(
-          getCurrentThemeUseCase: getIt<GetCurrentThemeUseCase>(),
-          getAvailableThemesUseCase: getIt<GetAvailableThemesUseCase>(),
-          switchThemeUseCase: getIt<SwitchThemeUseCase>(),
-          manageThemeModeUseCase: getIt<ManageThemeModeUseCase>(),
-        )..add(const ThemeLoadCurrentEvent());
-
-        return themeBloc;
+        // Get ThemeBloc from DI and add initial event
+        return getIt<ThemeBloc>()..add(const ThemeLoadCurrentEvent());
       },
       child: const CleanApp(),
     );

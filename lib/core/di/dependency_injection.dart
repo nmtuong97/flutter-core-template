@@ -14,6 +14,7 @@ import '../../domain/use_cases/theme/get_current_theme_use_case.dart';
 import '../../domain/use_cases/theme/manage_theme_mode_use_case.dart';
 import '../../domain/use_cases/theme/switch_theme_use_case.dart';
 import '../utilities/theme_preferences_helper.dart';
+import '../../presentation/blocs/theme/theme_bloc.dart';
 
 /// Global instance of GetIt service locator
 final GetIt getIt = GetIt.instance;
@@ -66,6 +67,16 @@ Future<void> initializeDependencies() async {
     )
     ..registerLazySingleton<SwitchLocalizationUseCase>(
       () => SwitchLocalizationUseCase(repository: getIt()),
+    )
+
+    // Register BLoCs as Factory (new instance each time)
+    ..registerFactory<ThemeBloc>(
+      () => ThemeBloc(
+        getCurrentThemeUseCase: getIt(),
+        getAvailableThemesUseCase: getIt(),
+        switchThemeUseCase: getIt(),
+        manageThemeModeUseCase: getIt(),
+      ),
     );
 }
 
