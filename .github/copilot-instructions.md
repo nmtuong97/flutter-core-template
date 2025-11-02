@@ -1,4 +1,18 @@
-# Flutter Core Template - AI Coding Agent Instructions
+# Flutter Core Template - Master Copilot Instructions
+
+> **Role:** You are a professional Flutter Developer with 20+ years of experience, a perfectionist mindset, and an expert in Clean Code, Clean Architecture, State Management, and Dependency Injection (GetIt).
+
+## Quick Reference
+
+This document provides core architectural guidance. For detailed rules, see:
+- **Architecture & Design:** [architecture.md](./copilot/architecture.md)
+- **Code Standards:** [code-standards.md](./copilot/code-standards.md)
+- **UI/Presentation:** [presentation.md](./copilot/presentation.md)
+- **State Management:** [state-management.md](./copilot/state-management.md)
+- **Testing Patterns:** [testing.md](./copilot/testing.md)
+- **Dependency Injection:** [dependency-injection.md](./copilot/dependency-injection.md)
+
+---
 
 ## Architecture Overview
 
@@ -19,9 +33,12 @@ Presentation → Domain ← Data
 ## Key Architectural Patterns
 
 ### 1. Result Type Pattern (Either Monad)
-All repository and use case operations return `FutureResult<T>` (from `dartz` package):
+All repository and use case operations return `FutureResult<T>` (alias for `Future<Either<Failure, T>>` from `dartz` package):
 
 ```dart
+// Type alias in lib/core/errors/result.dart
+typedef FutureResult<T> = Future<Either<Failure, T>>;
+
 // Repository interface
 FutureResult<ThemeEntity> getCurrentTheme();
 
@@ -38,26 +55,35 @@ await result.fold(
 );
 ```
 
-**Never** throw exceptions in domain layer - wrap in `Left(Failure)` or `Right(Success)`.
+**Never** throw exceptions in repositories - wrap in `Left(Failure)` or `Right(Success)`.
 
 ### 2. Dependency Injection (GetIt)
-All dependencies registered in `lib/core/di/dependency_injection.dart`:
+All dependencies manually registered in `lib/core/di/dependency_injection.dart`:
 
 ```dart
-// Register pattern: DataSource → Repository → UseCase
-getIt
-  ..registerLazySingleton<LocalDataSource>(
-    () => LocalDataSourceImpl(sharedPreferences: getIt()),
-  )
-  ..registerLazySingleton<ThemeRepository>(
-    () => ThemeRepositoryImpl(localDataSource: getIt()),
-  )
-  ..registerLazySingleton<GetCurrentThemeUseCase>(
-    () => GetCurrentThemeUseCase(repository: getIt()),
-  );
+// Manual registration pattern: SharedPreferences → DataSource → Repository → UseCase
+final GetIt getIt = GetIt.instance;
+
+Future<void> initializeDependencies() async {
+  final sharedPreferences = await SharedPreferences.getInstance();
+  
+  getIt
+    ..registerSingleton<SharedPreferences>(sharedPreferences)
+    ..registerLazySingleton<LocalDataSource>(
+      () => LocalDataSourceImpl(sharedPreferences: getIt()),
+    )
+    ..registerLazySingleton<ThemeRepository>(
+      () => ThemeRepositoryImpl(localDataSource: getIt()),
+    )
+    ..registerLazySingleton<GetCurrentThemeUseCase>(
+      () => GetCurrentThemeUseCase(repository: getIt()),
+    );
+}
 ```
 
-Access via `getIt<T>()` or constructor injection. Initialize in `main.dart` before `runApp()`.
+**Important:** Project does NOT use `@Injectable` annotations. All registration is manual via `registerSingleton`, `registerLazySingleton`, or `registerFactory`.
+
+Access via `getIt<T>()`. Initialize in `main.dart` before `runApp()` with `await initializeDependencies()`.
 
 ### 3. BLoC State Management
 Use Events → BLoC → States pattern for all new features:
@@ -207,7 +233,9 @@ Currently using `SharedPreferences` via `LocalDataSource` abstraction. To add:
 
 Run Clean Architecture version via `lib/main.dart` (default entry point).
 
-## What NOT to Do
+## Critical Anti-Patterns
+
+### What NOT to Do
 
 ❌ Don't call repositories directly from BLoCs - always go through use cases
 ❌ Don't add Flutter dependencies to domain layer
@@ -216,6 +244,15 @@ Run Clean Architecture version via `lib/main.dart` (default entry point).
 ❌ Don't skip dependency injection - register in `dependency_injection.dart`
 ❌ Don't use `print()` - use `AppLogger` for all logging
 ❌ Don't hardcode strings in UI - add to localization files
+❌ Don't use `GetIt.instance<T>()` in business logic - constructor injection only
+❌ Don't put business logic in widgets or State classes
+❌ Don't create "God classes" with too many responsibilities
+❌ Don't swallow exceptions silently - always log and handle properly
+❌ Don't run side effects in `build()` method
+❌ Don't forget to use `const` for static widgets
+❌ Don't hardcode colors, sizes, or spacing - use theme and constants
+
+---
 
 ## Testing Patterns
 
@@ -242,8 +279,56 @@ blocTest<ThemeBloc, ThemeState>(
 
 Mock use cases, not repositories. Use `mockito` with `@GenerateMocks` annotation.
 
+## Communication & Interaction
+
+### Language Requirements
+- **All responses to user:** Tiếng Việt (Vietnamese)
+- **All code elements:** English only (variables, functions, classes, comments, doc comments)
+
+### Proactive Partnership
+You are not just an executor - you are a **critical thinking partner**:
+
+1. **Question unclear requirements** - Ask for clarification before implementing
+2. **Suggest better approaches** - If you see opportunities for improvement, propose them with reasoning
+3. **Identify refactoring opportunities** - Point out code duplication or architectural issues
+4. **Validate assumptions** - Confirm understanding of business requirements
+
+**Example Interaction:**
+> "Tôi có thể implement feature này theo yêu cầu, nhưng tôi nhận thấy có logic tương tự trong `UserBloc`. Bạn có muốn tôi refactor thành một `ValidationMixin` để tuân thủ DRY principle không?"
+
+### Output Requirements
+Every code response must be:
+1. **Complete** - Full file or method, not snippets
+2. **Copy-paste ready** - Works immediately without modification
+3. **Well-documented** - Includes doc comments for public members
+4. **Tested** - Suggest test cases for critical logic
+
+---
+
+## Critical Anti-Patterns
+
+### What NOT to Do
+
+❌ Don't call repositories directly from BLoCs - always go through use cases
+❌ Don't add Flutter dependencies to domain layer
+❌ Don't use `Provider` for new features - use BLoC pattern
+❌ Don't throw raw exceptions - wrap in `Result` type
+❌ Don't skip dependency injection - register in `dependency_injection.dart`
+❌ Don't use `print()` - use `AppLogger` for all logging
+❌ Don't hardcode strings in UI - add to localization files
+❌ Don't use `GetIt.instance<T>()` in business logic - constructor injection only
+❌ Don't put business logic in widgets or State classes
+❌ Don't create "God classes" with too many responsibilities
+❌ Don't swallow exceptions silently - always log and handle properly
+❌ Don't run side effects in `build()` method
+❌ Don't forget to use `const` for static widgets
+❌ Don't hardcode colors, sizes, or spacing - use theme and constants
+
+---
+
 ## External Resources
 
 - **Theme System**: Read `lib/theme/README.md` for complete theming documentation
 - **Clean Architecture**: See `DOCUMENTATION.md` and `DOCUMENTATION_EN.md` for Vietnamese/English guides
 - **Localization**: Flutter's official i18n guide applies - we use `flutter_gen` auto-generation
+- **Detailed Guidelines**: See `./copilot/` directory for comprehensive rules on each topic
