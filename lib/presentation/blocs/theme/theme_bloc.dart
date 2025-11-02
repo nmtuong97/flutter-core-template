@@ -41,15 +41,10 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
 
       AppLogger.theme('Loading current theme and settings');
 
-      // Load current theme
+      // Load current theme - early return on failure
       final currentThemeResult = await getCurrentThemeUseCase();
-      final availableThemesResult = await getAvailableThemesUseCase();
-      final themeModeResult =
-          await manageThemeModeUseCase.getCurrentThemeMode();
-
-      // Handle results
-      await currentThemeResult.fold(
-        (failure) async {
+      final currentTheme = currentThemeResult.fold(
+        (failure) {
           AppLogger.error('Failed to load current theme: ${failure.message}');
           emit(
             ThemeError(
@@ -57,50 +52,58 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
               code: failure.code ?? 'THEME_LOAD_ERROR',
             ),
           );
+          return null;
         },
-        (currentTheme) async {
-          await availableThemesResult.fold(
-            (failure) async {
-              AppLogger.error(
-                'Failed to load available themes: ${failure.message}',
-              );
-              emit(
-                ThemeError(
-                  message: failure.message,
-                  code: failure.code ?? 'THEMES_LOAD_ERROR',
-                ),
-              );
-            },
-            (availableThemes) async {
-              await themeModeResult.fold(
-                (failure) async {
-                  AppLogger.error(
-                    'Failed to load theme mode: ${failure.message}',
-                  );
-                  emit(
-                    ThemeError(
-                      message: failure.message,
-                      code: failure.code ?? 'THEME_MODE_LOAD_ERROR',
-                    ),
-                  );
-                },
-                (themeMode) async {
-                  AppLogger.theme('Theme data loaded successfully');
-                  emit(
-                    ThemeLoaded(
-                      currentTheme: currentTheme,
-                      availableThemes: availableThemes,
-                      themeMode: themeMode,
-                      fontSize: 14, // Default, should load from repository
-                      fontFamily:
-                          'Roboto', // Default, should load from repository
-                    ),
-                  );
-                },
-              );
-            },
+        (theme) => theme,
+      );
+      if (currentTheme == null) return;
+
+      // Load available themes - early return on failure
+      final availableThemesResult = await getAvailableThemesUseCase();
+      final availableThemes = availableThemesResult.fold(
+        (failure) {
+          AppLogger.error(
+            'Failed to load available themes: ${failure.message}',
           );
+          emit(
+            ThemeError(
+              message: failure.message,
+              code: failure.code ?? 'THEMES_LOAD_ERROR',
+            ),
+          );
+          return null;
         },
+        (themes) => themes,
+      );
+      if (availableThemes == null) return;
+
+      // Load theme mode - early return on failure
+      final themeModeResult = await manageThemeModeUseCase.getCurrentThemeMode();
+      final themeMode = themeModeResult.fold(
+        (failure) {
+          AppLogger.error('Failed to load theme mode: ${failure.message}');
+          emit(
+            ThemeError(
+              message: failure.message,
+              code: failure.code ?? 'THEME_MODE_LOAD_ERROR',
+            ),
+          );
+          return null;
+        },
+        (mode) => mode,
+      );
+      if (themeMode == null) return;
+
+      // All data loaded successfully
+      AppLogger.theme('Theme data loaded successfully');
+      emit(
+        ThemeLoaded(
+          currentTheme: currentTheme,
+          availableThemes: availableThemes,
+          themeMode: themeMode,
+          fontSize: 14, // Default, should load from repository
+          fontFamily: 'Roboto', // Default, should load from repository
+        ),
       );
     } on Exception catch (e) {
       AppLogger.error('Unexpected error loading theme', error: e);
