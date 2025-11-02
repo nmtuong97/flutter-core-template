@@ -13,6 +13,7 @@ import '../../domain/use_cases/theme/get_available_themes_use_case.dart';
 import '../../domain/use_cases/theme/get_current_theme_use_case.dart';
 import '../../domain/use_cases/theme/manage_theme_mode_use_case.dart';
 import '../../domain/use_cases/theme/switch_theme_use_case.dart';
+import '../utilities/theme_preferences_helper.dart';
 
 /// Global instance of GetIt service locator
 final GetIt getIt = GetIt.instance;
@@ -23,6 +24,11 @@ Future<void> initializeDependencies() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   getIt
     ..registerSingleton<SharedPreferences>(sharedPreferences)
+
+    // Register Utilities
+    ..registerLazySingleton<ThemePreferencesHelper>(
+      () => ThemePreferencesHelper(getIt()),
+    )
 
     // Register Data Sources
     ..registerLazySingleton<LocalDataSource>(
