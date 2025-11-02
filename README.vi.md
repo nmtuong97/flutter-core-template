@@ -1,9 +1,8 @@
 # Flutter Theme Showcase
 
-![coverage][coverage_badge]
 [![License: MIT][license_badge]][license_link]
 
-A Flutter theme showcase app
+Template Flutter với Clean Architecture và BLoC pattern cho quản lý state
 
 ---
 
@@ -24,23 +23,26 @@ _\*Flutter Theme Showcase works on iOS, Android, Web, and Windows._
 
 ---
 
-## Running Tests 🧪
+## Kiến trúc 🏗️
 
-To run all unit and widget tests use the following command:
+Dự án tuân theo **Clean Architecture** với **BLoC Pattern** cho quản lý state:
 
-```sh
-$ flutter test --coverage --test-randomize-ordering-seed random
-```
+- **Domain Layer**: Logic nghiệp vụ thuần túy (entities, use cases, repository interfaces)
+- **Data Layer**: Chi tiết triển khai (repository implementations, data sources)
+- **Presentation Layer**: Logic UI sử dụng BLoC pattern với `flutter_bloc`
 
-To view the generated coverage report you can use [lcov](https://github.com/linux-test-project/lcov).
+### Quản lý State
 
-```sh
-# Generate Coverage Report
-$ genhtml coverage/lcov.info -o coverage/
+Ứng dụng sử dụng **BLoC (Business Logic Component)** pattern:
+- `ThemeBloc`: Quản lý chuyển theme, thay đổi mode, và tùy chỉnh font
+- `LocalizationBloc`: Xử lý chuyển đổi ngôn ngữ và localization
 
-# Open Coverage Report
-$ open coverage/index.html
-```
+### Dependency Injection
+
+Dependency injection thủ công sử dụng **GetIt**:
+- Tất cả dependencies đăng ký trong `lib/core/di/dependency_injection.dart`
+- Singleton pattern cho repositories và use cases
+- Factory pattern cho BLoCs
 
 ---
 

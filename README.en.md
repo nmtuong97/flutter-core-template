@@ -1,9 +1,8 @@
 # Flutter Theme Showcase
 
-![coverage][coverage_badge]
 [![License: MIT][license_badge]][license_link]
 
-A Flutter theme showcase app
+A Flutter template with Clean Architecture and BLoC pattern for state management
 
 ---
 
@@ -24,23 +23,26 @@ _*Flutter Theme Showcase works on iOS, Android, Web, and Windows._
 
 ---
 
-## Running Tests 🧪
+## Architecture 🏗️
 
-To run all unit and widget tests use the following command:
+This project follows **Clean Architecture** with **BLoC Pattern** for state management:
 
-```sh
-$ flutter test --coverage --test-randomize-ordering-seed random
-```
+- **Domain Layer**: Pure business logic (entities, use cases, repository interfaces)
+- **Data Layer**: Implementation details (repository implementations, data sources)
+- **Presentation Layer**: UI logic using BLoC pattern with `flutter_bloc`
 
-To view the generated coverage report you can use [lcov](https://github.com/linux-test-project/lcov).
+### State Management
 
-```sh
-# Generate Coverage Report
-$ genhtml coverage/lcov.info -o coverage/
+The app uses **BLoC (Business Logic Component)** pattern:
+- `ThemeBloc`: Manages theme switching, mode changes, and font customization
+- `LocalizationBloc`: Handles language switching and localization
 
-# Open Coverage Report
-$ open coverage/index.html
-```
+### Dependency Injection
+
+Manual dependency injection using **GetIt**:
+- All dependencies registered in `lib/core/di/dependency_injection.dart`
+- Singleton pattern for repositories and use cases
+- Factory pattern for BLoCs
 
 ---
 
