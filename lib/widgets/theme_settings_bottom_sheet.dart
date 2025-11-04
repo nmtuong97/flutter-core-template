@@ -1,14 +1,13 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../l10n/app_localizations.dart';
+import '../presentation/blocs/localization/localization_bloc.dart';
+import '../presentation/blocs/localization/localization_event.dart';
+import '../presentation/blocs/localization/localization_state.dart';
 import '../presentation/blocs/theme/theme_bloc.dart';
 import '../presentation/blocs/theme/theme_event.dart';
 import '../presentation/blocs/theme/theme_state.dart';
-import '../theme/theme_preferences.dart';
 
 /// A simple RadioGroup widget that manages radio button states
 class RadioGroup<T> extends InheritedWidget {
@@ -438,103 +437,102 @@ class _AppThemeSection extends StatelessWidget {
   }
 }
 
-class _LanguageSection extends StatefulWidget {
+class _LanguageSection extends StatelessWidget {
   const _LanguageSection();
-
-  @override
-  State<_LanguageSection> createState() => _LanguageSectionState();
-}
-
-class _LanguageSectionState extends State<_LanguageSection> {
-  String _currentLanguage = 'en';
-
-  @override
-  void initState() {
-    super.initState();
-    unawaited(_loadCurrentLanguage());
-  }
-
-  Future<void> _loadCurrentLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
-    final language = prefs.getString(ThemePreferences.languageKey) ??
-        ThemePreferences.englishLanguage;
-    if (mounted) {
-      setState(() {
-        _currentLanguage = language;
-      });
-    }
-  }
-
-  Future<void> _setLanguage(String languageCode) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(ThemePreferences.languageKey, languageCode);
-    if (mounted) {
-      setState(() {
-        _currentLanguage = languageCode;
-      });
-      // Show restart dialog
-      if (context.mounted) {
-        await _showRestartDialog();
-      }
-    }
-  }
-
-  Future<void> _showRestartDialog() {
-    return showDialog<void>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Language Changed'),
-        content: const Text(
-          'Please restart the app for the language change to take effect.',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text('OK'),
-          ),
-        ],
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              l10n.language,
-              style: Theme.of(context).textTheme.titleLarge,
+    return BlocConsumer<LocalizationBloc, LocalizationState>(
+      listener: (context, state) {
+        // Show success message when language is switched
+        if (state is LocalizationOperationSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.message),
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              duration: const Duration(seconds: 2),
             ),
-            const SizedBox(height: 16),
-            RadioGroup<String>(
-              groupValue: _currentLanguage,
-              onChanged: (value) async {
-                if (value != null) {
-                  await _setLanguage(value);
-                }
-              },
-              child: Column(
-                children: [
-                  RadioListTile<String>(
-                    title: Text(l10n.english),
-                    value: 'en',
-                  ),
-                  RadioListTile<String>(
-                    title: Text(l10n.vietnamese),
-                    value: 'vi',
-                  ),
-                ],
-              ),
+          );
+        }
+
+        // Show error message on failure
+        if (state is LocalizationError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.message),
+              backgroundColor: Theme.of(context).colorScheme.error,
+              duration: const Duration(seconds: 3),
             ),
-          ],
-        ),
-      ),
+          );
+        }
+      },
+      builder: (context, state) {
+        String? currentLanguage;
+        var isLoading = false;
+
+        if (state is LocalizationLoaded) {
+          currentLanguage = state.currentLocalization.languageCode;
+        } else if (state is LocalizationOperationInProgress &&
+            state.previousState != null) {
+          currentLanguage =
+              state.previousState!.currentLocalization.languageCode;
+          isLoading = true;
+        } else if (state is LocalizationOperationSuccess) {
+          currentLanguage = state.updatedState.currentLocalization.languageCode;
+        } else if (state is LocalizationLoading) {
+          isLoading = true;
+        }
+
+        return Card(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      l10n.language,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const Spacer(),
+                    if (isLoading)
+                      const SizedBox(
+                        height: 16,
+                        width: 16,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                RadioGroup<String>(
+                  groupValue: currentLanguage,
+                  onChanged: (value) {
+                    if (isLoading || value == null) return;
+                    context.read<LocalizationBloc>().add(
+                          LocalizationSwitchEvent(languageCode: value),
+                        );
+                  },
+                  child: Column(
+                    children: [
+                      RadioListTile<String>(
+                        title: Text(l10n.english),
+                        value: 'en',
+                      ),
+                      RadioListTile<String>(
+                        title: Text(l10n.vietnamese),
+                        value: 'vi',
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

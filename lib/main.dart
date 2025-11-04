@@ -4,10 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/di/dependency_injection.dart';
 import 'core/errors/error_handler.dart';
 import 'core/utilities/logger.dart';
+import 'domain/use_cases/localization/get_current_localization_use_case.dart';
+import 'domain/use_cases/localization/get_supported_localizations_use_case.dart';
+import 'domain/use_cases/localization/switch_localization_use_case.dart';
 import 'domain/use_cases/theme/get_available_themes_use_case.dart';
 import 'domain/use_cases/theme/get_current_theme_use_case.dart';
 import 'domain/use_cases/theme/manage_theme_mode_use_case.dart';
 import 'domain/use_cases/theme/switch_theme_use_case.dart';
+import 'presentation/blocs/localization/localization_bloc.dart';
+import 'presentation/blocs/localization/localization_event.dart';
 import 'presentation/blocs/theme/theme_bloc.dart';
 import 'presentation/blocs/theme/theme_event.dart';
 import 'presentation/pages/clean_app.dart';
@@ -78,19 +83,38 @@ class CleanArchitectureApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) {
-        AppLogger.info('Creating ThemeBloc...');
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) {
+            AppLogger.info('Creating ThemeBloc...');
 
-        final themeBloc = ThemeBloc(
-          getCurrentThemeUseCase: getIt<GetCurrentThemeUseCase>(),
-          getAvailableThemesUseCase: getIt<GetAvailableThemesUseCase>(),
-          switchThemeUseCase: getIt<SwitchThemeUseCase>(),
-          manageThemeModeUseCase: getIt<ManageThemeModeUseCase>(),
-        )..add(const ThemeLoadCurrentEvent());
+            final themeBloc = ThemeBloc(
+              getCurrentThemeUseCase: getIt<GetCurrentThemeUseCase>(),
+              getAvailableThemesUseCase: getIt<GetAvailableThemesUseCase>(),
+              switchThemeUseCase: getIt<SwitchThemeUseCase>(),
+              manageThemeModeUseCase: getIt<ManageThemeModeUseCase>(),
+            )..add(const ThemeLoadCurrentEvent());
 
-        return themeBloc;
-      },
+            return themeBloc;
+          },
+        ),
+        BlocProvider(
+          create: (context) {
+            AppLogger.info('Creating LocalizationBloc...');
+
+            final localizationBloc = LocalizationBloc(
+              getCurrentLocalizationUseCase:
+                  getIt<GetCurrentLocalizationUseCase>(),
+              getSupportedLocalizationsUseCase:
+                  getIt<GetSupportedLocalizationsUseCase>(),
+              switchLocalizationUseCase: getIt<SwitchLocalizationUseCase>(),
+            )..add(const LocalizationLoadCurrentEvent());
+
+            return localizationBloc;
+          },
+        ),
+      ],
       child: const CleanApp(),
     );
   }
