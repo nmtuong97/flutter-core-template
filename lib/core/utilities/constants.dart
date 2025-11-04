@@ -59,6 +59,7 @@ class AppConstants {
     'default',
     'cyberpunk',
     'glassmorphism',
+    'liquid_glass',
     'neumorphism',
     'night_sky',
     'organic_natural',

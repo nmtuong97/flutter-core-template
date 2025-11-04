@@ -2,6 +2,7 @@ import '../themes/cyberpunk_theme.dart';
 import '../themes/default_theme.dart';
 import '../themes/exaggerated_minimalism_theme.dart';
 import '../themes/glassmorphism_theme.dart';
+import '../themes/liquid_glass_theme.dart';
 import '../themes/neumorphism_theme.dart';
 import '../themes/night_sky_theme.dart';
 import '../themes/organic_natural_theme.dart';
@@ -18,6 +19,7 @@ class ThemeFactory {
     ExaggeratedMinimalismTheme(),
     NeumorphismTheme(),
     GlassmorphismTheme(),
+    LiquidGlassTheme(),
     RetroVintageTheme(),
     OrganicNaturalTheme(),
     // Thêm các theme mới ở đây

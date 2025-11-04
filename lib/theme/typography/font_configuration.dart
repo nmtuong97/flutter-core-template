@@ -65,6 +65,12 @@ class FontConfiguration {
     serifFontFamily: 'Cormorant',
   );
 
+  static const FontConfiguration liquidGlassTheme = FontConfiguration(
+    defaultFontFamily: 'Inter',
+    alternateFontFamily: 'Outfit',
+    serifFontFamily: 'Lora',
+  );
+
   /// Get GoogleFonts TextStyle based on font type and configuration
   static TextStyle getGoogleFontStyle({
     required FontConfiguration config,

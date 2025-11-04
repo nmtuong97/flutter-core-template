@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../theme/base/theme_factory.dart' as legacy;
+import '../../theme/base/theme_interfaces.dart' as interfaces;
 import '../entities/theme_entity.dart';
 import '../value_objects/theme_colors.dart';
 import '../value_objects/theme_typography.dart';
@@ -93,14 +94,33 @@ class DomainThemeFactory {
     // Type-safe extraction using getters or known interfaces
     var id = 'unknown';
     var name = 'Unknown Theme';
+    var description = 'Legacy theme';
     ThemeData? lightTheme;
     ThemeData? darkTheme;
 
     try {
-      // Check if it's a Map first (safest approach)
-      if (legacyTheme is Map<String, dynamic>) {
+      // Check if it's an AppTheme (legacy.ThemeFactory returns AppTheme instances)
+      if (legacyTheme is interfaces.BaseTheme) {
+        id = legacyTheme.id;
+        name = legacyTheme.name;
+        description = legacyTheme.description;
+
+        // Check if it has light theme
+        if (legacyTheme is interfaces.LightThemeProvider) {
+          final provider = legacyTheme as interfaces.LightThemeProvider;
+          lightTheme = provider.lightThemeData;
+        }
+
+        // Check if it has dark theme
+        if (legacyTheme is interfaces.DarkThemeProvider) {
+          final provider = legacyTheme as interfaces.DarkThemeProvider;
+          darkTheme = provider.darkThemeData;
+        }
+      } else if (legacyTheme is Map<String, dynamic>) {
+        // Fallback for Map types
         id = legacyTheme['id']?.toString() ?? 'unknown';
         name = legacyTheme['name']?.toString() ?? 'Unknown Theme';
+        description = legacyTheme['description']?.toString() ?? 'Legacy theme';
         lightTheme = legacyTheme['lightThemeData'] as ThemeData?;
         darkTheme = legacyTheme['darkThemeData'] as ThemeData?;
       } else {
@@ -120,7 +140,7 @@ class DomainThemeFactory {
     return ThemeEntity(
       id: id,
       name: name,
-      description: 'Legacy theme: $name',
+      description: description,
       lightColors: lightTheme != null
           ? _extractColorsFromThemeData(lightTheme)
           : const ThemeColors.defaultLight(),

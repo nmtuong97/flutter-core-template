@@ -370,7 +370,10 @@ class ThemeRepositoryImpl implements ThemeRepository {
 
   /// Get built-in themes
   List<ThemeEntity> _getBuiltInThemes() {
-    return DomainThemeFactory.getAllBuiltInThemes();
+    // Use getAvailableThemes() to get all themes from legacy ThemeFactory
+    // This includes all 9 themes: Default, Cyberpunk, Glassmorphism, Neumorphism,
+    // Night Sky, Exaggerated Minimalism, Liquid Glass, Retro Vintage, Organic Natural
+    return DomainThemeFactory.getAvailableThemes();
   }
 
   /// Parse theme mode from string
