@@ -73,11 +73,15 @@ class RadioListTile<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final radioGroup = RadioGroup.of<T>(context);
+    
     return Material(
       type: MaterialType.transparency,
       child: ListTile(
         leading: Radio<T>(
           value: value,
+          groupValue: radioGroup?.groupValue, // 🔧 FIX: Connect to RadioGroup
+          onChanged: radioGroup?.onChanged, // 🔧 FIX: Connect to RadioGroup
           activeColor: activeColor,
           focusNode: focusNode,
           autofocus: autofocus,
@@ -89,7 +93,6 @@ class RadioListTile<T> extends StatelessWidget {
         dense: dense,
         contentPadding: contentPadding,
         onTap: () {
-          final radioGroup = RadioGroup.of<T>(context);
           radioGroup?.onChanged?.call(value);
         },
         shape: shape,
