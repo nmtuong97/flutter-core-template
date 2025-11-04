@@ -74,7 +74,7 @@ class RadioListTile<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final radioGroup = RadioGroup.of<T>(context);
-    
+
     return Material(
       type: MaterialType.transparency,
       child: ListTile(

@@ -6,6 +6,8 @@ import 'package:flutter_theme_showcase/core/errors/result.dart';
 import 'package:flutter_theme_showcase/domain/entities/theme_entity.dart';
 import 'package:flutter_theme_showcase/domain/use_cases/theme/get_available_themes_use_case.dart';
 import 'package:flutter_theme_showcase/domain/use_cases/theme/get_current_theme_use_case.dart';
+import 'package:flutter_theme_showcase/domain/use_cases/theme/manage_font_family_use_case.dart';
+import 'package:flutter_theme_showcase/domain/use_cases/theme/manage_font_size_use_case.dart';
 import 'package:flutter_theme_showcase/domain/use_cases/theme/manage_theme_mode_use_case.dart';
 import 'package:flutter_theme_showcase/domain/use_cases/theme/switch_theme_use_case.dart';
 import 'package:flutter_theme_showcase/presentation/blocs/theme/theme_bloc.dart';
@@ -21,6 +23,8 @@ import 'theme_bloc_test.mocks.dart';
   GetAvailableThemesUseCase,
   SwitchThemeUseCase,
   ManageThemeModeUseCase,
+  ManageFontSizeUseCase,
+  ManageFontFamilyUseCase,
 ])
 void main() {
   group('ThemeBloc', () {
@@ -29,6 +33,8 @@ void main() {
     late MockGetAvailableThemesUseCase mockGetAvailableThemesUseCase;
     late MockSwitchThemeUseCase mockSwitchThemeUseCase;
     late MockManageThemeModeUseCase mockManageThemeModeUseCase;
+    late MockManageFontSizeUseCase mockManageFontSizeUseCase;
+    late MockManageFontFamilyUseCase mockManageFontFamilyUseCase;
 
     late ThemeEntity testTheme;
     late List<ThemeEntity> testThemes;
@@ -38,12 +44,16 @@ void main() {
       mockGetAvailableThemesUseCase = MockGetAvailableThemesUseCase();
       mockSwitchThemeUseCase = MockSwitchThemeUseCase();
       mockManageThemeModeUseCase = MockManageThemeModeUseCase();
+      mockManageFontSizeUseCase = MockManageFontSizeUseCase();
+      mockManageFontFamilyUseCase = MockManageFontFamilyUseCase();
 
       bloc = ThemeBloc(
         getCurrentThemeUseCase: mockGetCurrentThemeUseCase,
         getAvailableThemesUseCase: mockGetAvailableThemesUseCase,
         switchThemeUseCase: mockSwitchThemeUseCase,
         manageThemeModeUseCase: mockManageThemeModeUseCase,
+        manageFontSizeUseCase: mockManageFontSizeUseCase,
+        manageFontFamilyUseCase: mockManageFontFamilyUseCase,
       );
 
       testTheme = const ThemeEntity.createDefault();

@@ -238,12 +238,15 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
         },
         (newTheme) {
           AppLogger.theme('Theme switched successfully to ${event.themeId}');
+          final updatedState = currentState.copyWith(currentTheme: newTheme);
           emit(
             ThemeOperationSuccess(
               message: 'Theme changed successfully',
-              updatedState: currentState.copyWith(currentTheme: newTheme),
+              updatedState: updatedState,
             ),
           );
+          // Immediately transition to ThemeLoaded for continued interactions
+          emit(updatedState);
         },
       );
     } on Exception catch (e) {
@@ -295,12 +298,16 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
           AppLogger.theme(
             'Theme mode changed successfully to ${event.themeMode}',
           );
+          final updatedState =
+              currentState.copyWith(themeMode: event.themeMode);
           emit(
             ThemeOperationSuccess(
               message: 'Theme mode changed successfully',
-              updatedState: currentState.copyWith(themeMode: event.themeMode),
+              updatedState: updatedState,
             ),
           );
+          // Immediately transition to ThemeLoaded for continued interactions
+          emit(updatedState);
         },
       );
     } on Exception catch (e) {
@@ -350,12 +357,15 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
         },
         (newThemeMode) {
           AppLogger.theme('Theme mode toggled successfully to $newThemeMode');
+          final updatedState = currentState.copyWith(themeMode: newThemeMode);
           emit(
             ThemeOperationSuccess(
               message: 'Theme mode toggled successfully',
-              updatedState: currentState.copyWith(themeMode: newThemeMode),
+              updatedState: updatedState,
             ),
           );
+          // Immediately transition to ThemeLoaded for continued interactions
+          emit(updatedState);
         },
       );
     } on Exception catch (e) {
@@ -404,13 +414,17 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
           );
         },
         (_) {
-          AppLogger.theme('Font size changed successfully to ${event.fontSize}');
+          AppLogger.theme(
+              'Font size changed successfully to ${event.fontSize}');
+          final updatedState = currentState.copyWith(fontSize: event.fontSize);
           emit(
             ThemeOperationSuccess(
               message: 'Font size changed successfully',
-              updatedState: currentState.copyWith(fontSize: event.fontSize),
+              updatedState: updatedState,
             ),
           );
+          // Immediately transition to ThemeLoaded for continued interactions
+          emit(updatedState);
         },
       );
     } on Exception catch (e) {
@@ -463,12 +477,16 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
           AppLogger.theme(
             'Font family changed successfully to ${event.fontFamily}',
           );
+          final updatedState =
+              currentState.copyWith(fontFamily: event.fontFamily);
           emit(
             ThemeOperationSuccess(
               message: 'Font family changed successfully',
-              updatedState: currentState.copyWith(fontFamily: event.fontFamily),
+              updatedState: updatedState,
             ),
           );
+          // Immediately transition to ThemeLoaded for continued interactions
+          emit(updatedState);
         },
       );
     } on Exception catch (e) {
