@@ -1,8 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_liquid_glass/liquid_glass.dart' as lg;
 
 /// Liquid Glass Widget - Base component for glassmorphism effect
+///
+/// **PRODUCTION VERSION**: Now uses flutter_liquid_glass package for enhanced features
 ///
 /// Implements the Liquid Glass UI design specification with:
 /// - Multi-layer transparency and depth
@@ -79,53 +80,35 @@ class LiquidGlass extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    // Context-adaptive tint colors per spec
+    // Context-adaptive tint colors per spec (same as V1 for compatibility)
     final effectiveTint = tint ??
         (isDark
             ? const Color(0x40000000) // rgba(black, 0.25)
             : const Color(0x26FFFFFF)); // rgba(white, 0.15)
 
-    // Context-adaptive border color
-    final effectiveBorderColor =
-        borderColor ?? const Color(0x33FFFFFF); // rgba(white, 0.2)
-
-    // Base container with decoration
-    final container = Container(
-      padding: padding,
-      decoration: BoxDecoration(
-        color: effectiveTint,
-        gradient: gradient,
-        border: borderWidth > 0
-            ? Border.all(
-                color: effectiveBorderColor,
-                width: borderWidth,
-              )
-            : null,
-        borderRadius: BorderRadius.circular(borderRadius),
-        boxShadow: shadows,
-      ),
-      child: child,
+    // Map V1 API to package config for enhanced features
+    final config = lg.LiquidGlassConfig(
+      baseColor: effectiveTint,
+      opacity: effectiveTint.opacity,
+      blurAmount: enableBlur ? blur : 0.0,
+      borderRadius: BorderRadius.circular(borderRadius),
+      border: borderWidth > 0
+          ? Border.all(
+              color: borderColor ?? const Color(0x33FFFFFF),
+              width: borderWidth,
+            )
+          : null,
+      gradient: gradient,
+      shadows: shadows,
+      // Enhanced features from package (optional, can be toggled)
+      refractionIntensity: 0.5,
+      enableSpecularHighlight: true,
     );
 
-    // Apply blur effect if enabled (GPU-intensive)
-    if (enableBlur && blur > 0) {
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(borderRadius),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: blur,
-            sigmaY: blur,
-            tileMode: TileMode.clamp,
-          ),
-          child: container,
-        ),
-      );
-    }
-
-    // Fallback: No blur (performance mode)
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(borderRadius),
-      child: container,
+    return lg.LiquidGlassContainer(
+      config: config,
+      padding: padding,
+      child: child,
     );
   }
 }

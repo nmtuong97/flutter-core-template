@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../widgets/glass_demo_background.dart';
 import '../../widgets/liquid_glass.dart';
+import 'liquid_glass_components_page.dart';
+import 'liquid_glass_v2_demo_page.dart';
 
 /// Liquid Glass Demo Page
 ///
@@ -24,49 +27,45 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // Demo: Liquid Glass App Bar
-      appBar: LiquidGlassAppBar(
-        title: Text(
-          'Liquid Glass Demo',
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(_enableBlur ? Icons.blur_on : Icons.blur_off),
-            onPressed: () {
-              setState(() => _enableBlur = !_enableBlur);
-            },
+    return AnimatedGlassDemoBackground(
+      child: Scaffold(
+        backgroundColor: Colors.transparent, // Let background show through
+        // Demo: Liquid Glass App Bar
+        appBar: LiquidGlassAppBar(
+          title: Text(
+            'Liquid Glass Demo',
+            style: Theme.of(context).textTheme.titleLarge,
           ),
-        ],
-        blur: _blurIntensity,
-        elevation: true,
-      ),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () => Navigator.pop(context),
+          ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.auto_awesome),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (context) => const LiquidGlassV2DemoPage(),
+                  ),
+                );
+              },
+              tooltip: 'See V2 (Package-based)',
+            ),
+            IconButton(
+              icon: Icon(_enableBlur ? Icons.blur_on : Icons.blur_off),
+              onPressed: () {
+                setState(() => _enableBlur = !_enableBlur);
+              },
+            ),
+          ],
+          blur: _blurIntensity,
+          elevation: true,
+        ),
 
-      // Background gradient for glass effect visibility
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: Theme.of(context).brightness == Brightness.light
-                ? [
-                    const Color(0xFFF5F7FA),
-                    const Color(0xFFE8EDF5),
-                    const Color(0xFFD4E3F7),
-                  ]
-                : [
-                    const Color(0xFF121212),
-                    const Color(0xFF1E1E1E),
-                    const Color(0xFF2A2A2A),
-                  ],
-          ),
-        ),
-        child: ListView(
+        // Main content with ListView
+        body: ListView(
           padding: EdgeInsets.all(16.w),
           children: [
             // Performance Controls
@@ -109,25 +108,25 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
             _buildPerformanceTips(),
           ],
         ),
-      ),
 
-      // Demo: Floating Action Button with glass effect
-      floatingActionButton: AnimatedLiquidGlass(
-        blur: _blurIntensity,
-        enableBlur: _enableBlur,
-        borderRadius: 28.r,
-        hoverScale: 1.05,
-        onTap: () {
-          _showLiquidGlassBottomSheet();
-        },
-        child: Container(
-          width: 56.w,
-          height: 56.h,
-          alignment: Alignment.center,
-          child: const Icon(Icons.info_outline, color: Colors.white),
+        // Demo: Floating Action Button with glass effect
+        floatingActionButton: AnimatedLiquidGlass(
+          blur: _blurIntensity,
+          enableBlur: _enableBlur,
+          borderRadius: 28.r,
+          hoverScale: 1.05,
+          onTap: () {
+            _showLiquidGlassBottomSheet();
+          },
+          child: Container(
+            width: 56.w,
+            height: 56.h,
+            alignment: Alignment.center,
+            child: const Icon(Icons.info_outline, color: Colors.white),
+          ),
         ),
-      ),
-    );
+      ), // Close Scaffold
+    ); // Close AnimatedGlassDemoBackground
   }
 
   Widget _buildSectionTitle(String title) {
@@ -337,6 +336,48 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
   Widget _buildPreConfiguredVariants() {
     return Column(
       children: [
+        // Navigation to Components Page
+        LiquidGlassCard(
+          blur: _blurIntensity,
+          enableBlur: _enableBlur,
+          onTap: () {
+            // Import at top of file
+            Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (context) => const LiquidGlassComponentsPage(),
+              ),
+            );
+          },
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Complete UI Components',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    SizedBox(height: 4.h),
+                    Text(
+                      'TextField, Button, Dialog, Navigation & more',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ],
+                ),
+              ),
+              Icon(
+                Icons.arrow_forward_ios,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ],
+          ),
+        ),
+        SizedBox(height: 16.h),
+
         // LiquidGlassCard
         LiquidGlassCard(
           blur: _blurIntensity,

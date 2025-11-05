@@ -39,10 +39,12 @@ class LiquidGlassTheme extends AppTheme {
   // LIGHT MODE COLOR PALETTE
   // ============================================================================
 
-  // Background: Soft gradient base for light diffusion
-  static const Color _backgroundLightColor1 = Color(0xFFF5F7FA);
+  // Background: Soft light gradient for glass effect backdrop
+  static const Color _backgroundLightColor1 =
+      Color(0xFFEFF6FF); // Slightly brighter
   // ignore: unused_field
-  static const Color _backgroundLightColor2 = Color(0xFFE8EDF5);
+  static const Color _backgroundLightColor2 =
+      Color(0xFFF8FBFF); // Near white (for gradients)
 
   // Primary: Vibrant blue with glass-like properties
   static const Color _primaryLightColor = Color(0xFF2196F3);
@@ -52,13 +54,15 @@ class LiquidGlassTheme extends AppTheme {
   static const Color _secondaryLightColor = Color(0xFF03DAC6);
   static const Color _secondaryLightVariant = Color(0xFF018786);
 
-  // Surface: Semi-transparent glass effect
-  // rgba(white, 0.15) = 0x26FFFFFF per spec
-  static const Color _surfaceLightColor = Color(0x26FFFFFF);
+  // Surface: Frosted glass effect with iOS 16-like translucency
+  // Using 80% opacity for glass effect (similar to iOS 16 materials)
+  // Text contrast maintained via darker text colors
+  static const Color _surfaceLightColor =
+      Color(0xCCFFFFFF); // rgba(white, 0.80)
 
-  // Border: Subtle edge definition
-  // rgba(white, 0.2) = 0x33FFFFFF per spec
-  static const Color _borderLightColor = Color(0x33FFFFFF);
+  // Border: Subtle dark edge for definition on light backgrounds
+  // Using semi-transparent black for visible borders
+  static const Color _borderLightColor = Color(0x40000000); // rgba(black, 0.25)
 
   // Tint overlay for glass effect
   // ignore: unused_field
@@ -81,10 +85,11 @@ class LiquidGlassTheme extends AppTheme {
   // DARK MODE COLOR PALETTE
   // ============================================================================
 
-  // Background: Deep gradient for contrast
-  static const Color _backgroundDarkColor1 = Color(0xFF121212);
+  // Background: Dark gradient for depth and glass backdrop
+  static const Color _backgroundDarkColor1 = Color(0xFF0D1117); // Deep dark
   // ignore: unused_field
-  static const Color _backgroundDarkColor2 = Color(0xFF1E1E1E);
+  static const Color _backgroundDarkColor2 =
+      Color(0xFF161B22); // Slightly lighter
 
   // Primary: Lighter blue for dark backgrounds
   static const Color _primaryDarkColor = Color(0xFF64B5F6);
@@ -94,20 +99,23 @@ class LiquidGlassTheme extends AppTheme {
   static const Color _secondaryDarkColor = Color(0xFF80CBC4);
   static const Color _secondaryDarkVariant = Color(0xFF4DB6AC);
 
-  // Surface: Semi-transparent dark glass
-  // rgba(black, 0.25) = 0x40000000 per spec
-  static const Color _surfaceDarkColor = Color(0x40000000);
+  // Surface: Dark frosted glass with iOS 16-like translucency
+  // Using 75% opacity for glass effect (similar to iOS 16 dark materials)
+  // Lighter gray-blue for better text contrast
+  static const Color _surfaceDarkColor =
+      Color(0xBF3A4A5C); // rgba(58, 74, 92, 0.75)
 
-  // Border: Subtle edge definition for dark mode
-  static const Color _borderDarkColor = Color(0x33FFFFFF);
+  // Border: Subtle light edge for definition on dark backgrounds
+  static const Color _borderDarkColor = Color(0x40FFFFFF); // rgba(white, 0.25)
 
   // Tint overlay for dark glass
   // ignore: unused_field
   static const Color _tintDarkColor = Color(0x40000000);
 
-  // Text colors optimized for dark mode
-  static const Color _textPrimaryDarkColor = Color(0xFFE0E0E0);
-  static const Color _textSecondaryDarkColor = Color(0xFFB0B0B0);
+  // Text colors optimized for dark mode with higher contrast
+  // Using near-white for primary text (better contrast on translucent surface)
+  static const Color _textPrimaryDarkColor = Color(0xFFF5F5F5);
+  static const Color _textSecondaryDarkColor = Color(0xFFCCCCCC);
   // ignore: unused_field
   static const Color _textDisabledDarkColor = Color(0xFF666666);
 
@@ -184,16 +192,16 @@ class LiquidGlassTheme extends AppTheme {
         ),
       ),
 
-      // Card: Glass effect container
+      // Card: Glass effect container (iOS 16 style)
       cardTheme: CardThemeData(
         color: _surfaceLightColor,
         shadowColor: _shadowLightColor,
-        elevation: 0,
+        elevation: 1, // Subtle shadow for depth (iOS 16 style)
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(glassCornerRadius),
           side: BorderSide(
             color: _borderLightColor,
-            width: glassBorderWidth,
+            width: 0.75, // Slightly thicker than ultra-thin for visibility
           ),
         ),
         margin: EdgeInsets.all(8.w),
@@ -505,16 +513,16 @@ class LiquidGlassTheme extends AppTheme {
         ),
       ),
 
-      // Card: Dark glass container
+      // Card: Dark glass container (iOS 16 style)
       cardTheme: CardThemeData(
         color: _surfaceDarkColor,
         shadowColor: _shadowDarkColor,
-        elevation: 0,
+        elevation: 1, // Subtle shadow for depth (iOS 16 style)
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(glassCornerRadius),
           side: BorderSide(
             color: _borderDarkColor,
-            width: glassBorderWidth,
+            width: 0.75, // Slightly thicker for better visibility in dark mode
           ),
         ),
         margin: EdgeInsets.all(8.w),

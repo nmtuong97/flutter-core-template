@@ -39,10 +39,23 @@ class ListComponentPage extends StatelessWidget {
               ),
               itemCount: 6,
               itemBuilder: (context, index) {
+                final theme = Theme.of(context);
+                final isDark = theme.brightness == Brightness.dark;
+
                 return Card(
-                  color: Colors.teal.shade100,
+                  // Use theme surface color for consistency
+                  color: theme.colorScheme.surface,
                   child: Center(
-                    child: Text('${context.l10n.gridItem} ${index + 1}'),
+                    child: Text(
+                      '${context.l10n.gridItem} ${index + 1}',
+                      style: TextStyle(
+                        // Ensure high contrast text color
+                        color: isDark
+                            ? theme.colorScheme.onSurface
+                            : theme.colorScheme.onSurface,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                 );
               },

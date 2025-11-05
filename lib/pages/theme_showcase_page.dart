@@ -3,6 +3,8 @@ import 'dart:async' show unawaited;
 import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
+import '../presentation/pages/liquid_glass_components_page.dart';
+import '../presentation/pages/liquid_glass_demo_page.dart';
 import '../widgets/theme_settings_bottom_sheet.dart';
 import 'component_showcase/button_component_page.dart';
 import 'component_showcase/input_component_page.dart';
@@ -24,6 +26,30 @@ class ThemeShowcasePage extends StatelessWidget {
           title: Text(l10n.appTitle),
           centerTitle: true,
           actions: [
+            IconButton(
+              icon: const Icon(Icons.auto_awesome),
+              tooltip: 'Liquid Glass Components',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (context) => const LiquidGlassComponentsPage(),
+                  ),
+                );
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.blur_on),
+              tooltip: 'Liquid Glass Demo',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (context) => const LiquidGlassDemoPage(),
+                  ),
+                );
+              },
+            ),
             IconButton(
               icon: const Icon(Icons.settings),
               onPressed: () {
