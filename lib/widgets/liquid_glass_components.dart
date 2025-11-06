@@ -6,7 +6,8 @@ import 'liquid_glass.dart'; // Now uses package-based implementation
 
 /// Liquid Glass Components - Extended UI components for Liquid Glass theme
 ///
-/// **PRODUCTION VERSION**: All components now use package-based LiquidGlass for enhanced features
+/// **PRODUCTION VERSION**: All components now use package-based LiquidGlass for
+/// enhanced features
 ///
 /// This file provides a complete set of UI components with glass effect:
 /// - Input components (TextField, Button, Switch)
@@ -159,9 +160,9 @@ class _LiquidGlassTextFieldState extends State<LiquidGlassTextField> {
 /// - Customizable colors
 class LiquidGlassButton extends StatelessWidget {
   const LiquidGlassButton({
-    super.key,
     required this.onPressed,
     required this.child,
+    super.key,
     this.blur = 20.0,
     this.tint,
     this.borderRadius = 16.0,
@@ -188,14 +189,13 @@ class LiquidGlassButton extends StatelessWidget {
 
     final effectiveTint = tint ??
         (isPrimary
-            ? theme.colorScheme.primary.withOpacity(0.9)
+            ? theme.colorScheme.primary.withValues(alpha: 0.9)
             : (isDark ? const Color(0x40000000) : const Color(0x26FFFFFF)));
 
     return AnimatedLiquidGlass(
       blur: blur,
       tint: effectiveTint,
       borderRadius: borderRadius,
-      enableBlur: true,
       padding: padding,
       hoverScale: 1.03,
       animationDuration: const Duration(milliseconds: 200),
@@ -221,9 +221,9 @@ class LiquidGlassButton extends StatelessWidget {
 /// Liquid Glass Icon Button - Icon button with glass effect
 class LiquidGlassIconButton extends StatelessWidget {
   const LiquidGlassIconButton({
-    super.key,
     required this.icon,
     required this.onPressed,
+    super.key,
     this.blur = 20.0,
     this.tint,
     this.size = 48.0,
@@ -247,7 +247,6 @@ class LiquidGlassIconButton extends StatelessWidget {
       blur: blur,
       tint: tint,
       borderRadius: size / 2,
-      enableBlur: true,
       hoverScale: 1.05,
       onTap: onPressed,
       child: SizedBox(
@@ -263,7 +262,7 @@ class LiquidGlassIconButton extends StatelessWidget {
 
     if (tooltip != null) {
       return Tooltip(
-        message: tooltip!,
+        message: tooltip,
         child: button,
       );
     }
@@ -275,9 +274,9 @@ class LiquidGlassIconButton extends StatelessWidget {
 /// Liquid Glass Switch - Toggle switch with glass effect
 class LiquidGlassSwitch extends StatelessWidget {
   const LiquidGlassSwitch({
-    super.key,
     required this.value,
     required this.onChanged,
+    super.key,
     this.blur = 16.0,
     this.activeColor,
     this.inactiveColor,
@@ -304,11 +303,11 @@ class LiquidGlassSwitch extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-            child: Container(
+            child: DecoratedBox(
               decoration: BoxDecoration(
                 color: value
                     ? (activeColor ?? theme.colorScheme.primary)
-                        .withOpacity(0.3)
+                        .withValues(alpha: 0.3)
                     : (inactiveColor ??
                         (isDark
                             ? const Color(0x40000000)
@@ -337,11 +336,12 @@ class LiquidGlassSwitch extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: value
                             ? (activeColor ?? theme.colorScheme.primary)
-                            : theme.colorScheme.onSurface.withOpacity(0.5),
+                            : theme.colorScheme.onSurface
+                                .withValues(alpha: 0.5),
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
+                            color: Colors.black.withValues(alpha: 0.1),
                             blurRadius: 4,
                             offset: const Offset(0, 2),
                           ),
@@ -366,9 +366,9 @@ class LiquidGlassSwitch extends StatelessWidget {
 /// Liquid Glass Dialog - Dialog with glass effect
 class LiquidGlassDialog extends StatelessWidget {
   const LiquidGlassDialog({
+    required this.content,
     super.key,
     this.title,
-    required this.content,
     this.actions,
     this.blur = 30.0,
     this.tint,
@@ -393,12 +393,11 @@ class LiquidGlassDialog extends StatelessWidget {
         blur: blur,
         tint: tint,
         borderRadius: borderRadius,
-        enableBlur: true,
-        borderWidth: 1.0,
+        borderWidth: 1,
         padding: const EdgeInsets.all(24),
         shadows: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.15),
+            color: Colors.black.withValues(alpha: 0.15),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -420,7 +419,7 @@ class LiquidGlassDialog extends StatelessWidget {
             ],
             DefaultTextStyle(
               style: theme.textTheme.bodyLarge?.copyWith(
-                    color: theme.colorScheme.onSurface.withOpacity(0.8),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
                   ) ??
                   const TextStyle(),
               child: content,
@@ -430,10 +429,12 @@ class LiquidGlassDialog extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: actions!
-                    .map((action) => Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: action,
-                        ))
+                    .map(
+                      (action) => Padding(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: action,
+                      ),
+                    )
                     .toList(),
               ),
             ],
@@ -446,8 +447,8 @@ class LiquidGlassDialog extends StatelessWidget {
   /// Show the dialog
   static Future<T?> show<T>({
     required BuildContext context,
-    Widget? title,
     required Widget content,
+    Widget? title,
     List<Widget>? actions,
     double blur = 30.0,
     Color? tint,
@@ -457,7 +458,7 @@ class LiquidGlassDialog extends StatelessWidget {
     return showDialog<T>(
       context: context,
       barrierDismissible: barrierDismissible,
-      barrierColor: Colors.black.withOpacity(0.5),
+      barrierColor: Colors.black.withValues(alpha: 0.5),
       builder: (context) => LiquidGlassDialog(
         title: title,
         content: content,
@@ -505,7 +506,6 @@ class LiquidGlassListTile extends StatelessWidget {
         blur: blur,
         tint: tint,
         borderRadius: borderRadius,
-        enableBlur: true,
         hoverScale: 1.01,
         onTap: onTap,
         padding: const EdgeInsets.all(12),
@@ -533,7 +533,7 @@ class LiquidGlassListTile extends StatelessWidget {
                     const SizedBox(height: 4),
                     DefaultTextStyle(
                       style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.onSurface.withOpacity(0.7),
+                            color: theme.colorScheme.onSurface.withAlpha(178),
                           ) ??
                           const TextStyle(),
                       child: subtitle!,
@@ -556,8 +556,8 @@ class LiquidGlassListTile extends StatelessWidget {
 /// Liquid Glass Grid Tile - Grid item with glass effect
 class LiquidGlassGridTile extends StatelessWidget {
   const LiquidGlassGridTile({
-    super.key,
     required this.child,
+    super.key,
     this.onTap,
     this.blur = 20.0,
     this.tint,
@@ -576,13 +576,11 @@ class LiquidGlassGridTile extends StatelessWidget {
       blur: blur,
       tint: tint,
       borderRadius: borderRadius,
-      enableBlur: true,
-      hoverScale: 1.02,
       onTap: onTap,
       padding: const EdgeInsets.all(16),
       shadows: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.08),
+          color: Colors.black.withValues(alpha: 0.08),
           blurRadius: 10,
           offset: const Offset(0, 4),
         ),
@@ -599,10 +597,10 @@ class LiquidGlassGridTile extends StatelessWidget {
 /// Liquid Glass Bottom Navigation Bar - Bottom nav with glass effect
 class LiquidGlassBottomNavBar extends StatelessWidget {
   const LiquidGlassBottomNavBar({
-    super.key,
     required this.items,
     required this.currentIndex,
     required this.onTap,
+    super.key,
     this.blur = 30.0,
     this.tint,
     this.height = 70.0,
@@ -624,11 +622,10 @@ class LiquidGlassBottomNavBar extends StatelessWidget {
       blur: blur,
       tint: tint,
       borderRadius: 0,
-      enableBlur: true,
       borderWidth: 0,
       shadows: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.1),
+          color: Colors.black.withValues(alpha: 0.1),
           blurRadius: 10,
           offset: const Offset(0, -2),
         ),
@@ -687,14 +684,14 @@ class _NavBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = isSelected
         ? theme.colorScheme.primary
-        : theme.colorScheme.onSurface.withOpacity(0.6);
+        : theme.colorScheme.onSurface.withAlpha(153);
 
     return Expanded(
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 8),
+          padding: const EdgeInsets.symmetric(vertical: 4),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -706,11 +703,16 @@ class _NavBarItem extends StatelessWidget {
                 size: 24,
               ),
               const SizedBox(height: 4),
-              Text(
-                item.label,
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: color,
-                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+              Flexible(
+                child: Text(
+                  item.label,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: color,
+                    fontWeight:
+                        isSelected ? FontWeight.w600 : FontWeight.normal,
+                  ),
                 ),
               ),
             ],
@@ -724,9 +726,9 @@ class _NavBarItem extends StatelessWidget {
 /// Liquid Glass Tab Bar - Tab bar with glass effect
 class LiquidGlassTabBar extends StatelessWidget {
   const LiquidGlassTabBar({
-    super.key,
     required this.tabs,
     required this.controller,
+    super.key,
     this.blur = 20.0,
     this.tint,
     this.borderRadius = 16.0,
@@ -750,18 +752,17 @@ class LiquidGlassTabBar extends StatelessWidget {
       blur: blur,
       tint: tint,
       borderRadius: borderRadius,
-      enableBlur: true,
       padding: padding,
       child: TabBar(
         controller: controller,
         tabs: tabs,
         indicator: BoxDecoration(
-          color: theme.colorScheme.primary.withOpacity(0.2),
+          color: theme.colorScheme.primary.withAlpha(51),
           borderRadius: BorderRadius.circular(borderRadius - 4),
         ),
         indicatorPadding: indicatorPadding,
         labelColor: theme.colorScheme.primary,
-        unselectedLabelColor: theme.colorScheme.onSurface.withOpacity(0.6),
+        unselectedLabelColor: theme.colorScheme.onSurface.withAlpha(153),
         labelStyle: theme.textTheme.labelLarge?.copyWith(
           fontWeight: FontWeight.w600,
         ),

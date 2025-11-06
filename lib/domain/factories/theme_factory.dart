@@ -99,7 +99,8 @@ class DomainThemeFactory {
     ThemeData? darkTheme;
 
     try {
-      // Check if it's an AppTheme (legacy.ThemeFactory returns AppTheme instances)
+      // Check if it's an AppTheme
+      // (legacy.ThemeFactory returns AppTheme instances)
       if (legacyTheme is interfaces.BaseTheme) {
         id = legacyTheme.id;
         name = legacyTheme.name;

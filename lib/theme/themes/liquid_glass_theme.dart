@@ -30,66 +30,67 @@ class LiquidGlassTheme extends AppTheme {
 
   @override
   String get description =>
-      'Modern glassmorphism with layered transparency and dynamic light diffusion';
+      'Modern glassmorphism with layered transparency and '
+      'dynamic light diffusion';
 
   @override
   bool get isDefault => false;
 
-  // ============================================================================
+  // ========================================================================
   // LIGHT MODE COLOR PALETTE
-  // ============================================================================
+  // ========================================================================
 
-  // Background: Soft light gradient for glass effect backdrop
-  static const Color _backgroundLightColor1 =
-      Color(0xFFEFF6FF); // Slightly brighter
+  static const Color _backgroundLightColor1 = Color(0xFFEFF6FF);
+  // Kept for potential gradient backgrounds
   // ignore: unused_field
-  static const Color _backgroundLightColor2 =
-      Color(0xFFF8FBFF); // Near white (for gradients)
+  static const Color _backgroundLightColor2 = Color(0xFFF8FBFF);
 
   // Primary: Vibrant blue with glass-like properties
   static const Color _primaryLightColor = Color(0xFF2196F3);
   static const Color _primaryLightVariant = Color(0xFF1976D2);
 
   // Secondary: Complementary teal
+  // Reserved for future secondary actions/components
+  // ignore: unused_field
   static const Color _secondaryLightColor = Color(0xFF03DAC6);
   static const Color _secondaryLightVariant = Color(0xFF018786);
 
   // Surface: Frosted glass effect with iOS 16-like translucency
   // Using 80% opacity for glass effect (similar to iOS 16 materials)
   // Text contrast maintained via darker text colors
-  static const Color _surfaceLightColor =
-      Color(0xCCFFFFFF); // rgba(white, 0.80)
+  static const Color _surfaceLightColor = Color(0xCCFFFFFF);
 
   // Border: Subtle dark edge for definition on light backgrounds
   // Using semi-transparent black for visible borders
-  static const Color _borderLightColor = Color(0x40000000); // rgba(black, 0.25)
+  static const Color _borderLightColor = Color(0x40000000);
 
   // Tint overlay for glass effect
-  // ignore: unused_field
+  // ignore: unused_field, for consistency with dark theme
   static const Color _tintLightColor = Color(0x26FFFFFF);
 
   // Text colors with optimal contrast (>4.5:1 per spec)
   static const Color _textPrimaryLightColor = Color(0xFF1A1A1A);
   static const Color _textSecondaryLightColor = Color(0xFF666666);
+  // Reserved for disabled text states
   // ignore: unused_field
   static const Color _textDisabledLightColor = Color(0xFFAAAAAA);
 
   // Specular highlight for light diffusion simulation
+  // Reserved for advanced glass effects
   // ignore: unused_field
   static const Color _specularHighlightLight = Color(0x40FFFFFF);
 
   // Shadow color for elevation (opacity: 0.05-0.1 per spec)
   static const Color _shadowLightColor = Color(0x1A000000);
 
-  // ============================================================================
+  // ========================================================================
   // DARK MODE COLOR PALETTE
-  // ============================================================================
+  // ========================================================================
 
-  // Background: Dark gradient for depth and glass backdrop
-  static const Color _backgroundDarkColor1 = Color(0xFF0D1117); // Deep dark
+  static const Color _backgroundDarkColor1 = Color(0xFF0D1117);
+  // Kept for potential gradient backgrounds
   // ignore: unused_field
-  static const Color _backgroundDarkColor2 =
-      Color(0xFF161B22); // Slightly lighter
+  static const Color _backgroundDarkColor2 = Color(0xFF161B22);
 
   // Primary: Lighter blue for dark backgrounds
   static const Color _primaryDarkColor = Color(0xFF64B5F6);
@@ -102,39 +103,41 @@ class LiquidGlassTheme extends AppTheme {
   // Surface: Dark frosted glass with iOS 16-like translucency
   // Using 75% opacity for glass effect (similar to iOS 16 dark materials)
   // Lighter gray-blue for better text contrast
-  static const Color _surfaceDarkColor =
-      Color(0xBF3A4A5C); // rgba(58, 74, 92, 0.75)
+  static const Color _surfaceDarkColor = Color(0xBF3A4A5C);
 
   // Border: Subtle light edge for definition on dark backgrounds
-  static const Color _borderDarkColor = Color(0x40FFFFFF); // rgba(white, 0.25)
+  static const Color _borderDarkColor = Color(0x40FFFFFF);
 
   // Tint overlay for dark glass
-  // ignore: unused_field
+  // ignore: unused_field, for consistency with light theme
   static const Color _tintDarkColor = Color(0x40000000);
 
   // Text colors optimized for dark mode with higher contrast
-  // Using near-white for primary text (better contrast on translucent surface)
+  // Using near-white for primary text
+  // (better contrast on translucent surface)
   static const Color _textPrimaryDarkColor = Color(0xFFF5F5F5);
   static const Color _textSecondaryDarkColor = Color(0xFFCCCCCC);
+  // Reserved for disabled text states
   // ignore: unused_field
   static const Color _textDisabledDarkColor = Color(0xFF666666);
 
   // Specular highlight for dark mode
+  // Reserved for advanced glass effects
   // ignore: unused_field
   static const Color _specularHighlightDark = Color(0x26FFFFFF);
 
   // Shadow color for dark mode
   static const Color _shadowDarkColor = Color(0x33000000);
 
-  // ============================================================================
+  // ======================================================================
   // GLASS EFFECT CONSTANTS (from design spec)
-  // ============================================================================
+  // ======================================================================
 
   /// Blur sigma: 16-30 per spec (we use 24 as optimal)
-  static const double glassBlurSigma = 24.0;
+  static const double glassBlurSigma = 24;
 
   /// Corner radius: 12-24px per spec (we use 20 as default)
-  static const double glassCornerRadius = 20.0;
+  static const double glassCornerRadius = 20;
 
   /// Border width: 1px per spec (using 0.5 for ultra-thin effect)
   static const double glassBorderWidth = 0.5;
@@ -146,29 +149,22 @@ class LiquidGlassTheme extends AppTheme {
   static const Curve glassAnimationCurve = Curves.easeOutCubic;
 
   /// Elevation blur range: 8-12 per spec
-  static const double glassShadowBlurRadius = 10.0;
+  static const double glassShadowBlurRadius = 10;
 
-  // ============================================================================
+  // ========================================================================
   // LIGHT THEME DATA
-  // ============================================================================
+  // ========================================================================
 
   @override
   ThemeData get lightThemeData {
     return ThemeData(
-      useMaterial3: true,
-      brightness: Brightness.light,
-      primaryColor: _primaryLightColor,
       colorScheme: const ColorScheme.light(
         primary: _primaryLightColor,
         primaryContainer: _primaryLightVariant,
-        secondary: _secondaryLightColor,
         secondaryContainer: _secondaryLightVariant,
         surface: _surfaceLightColor,
         error: Color(0xFFE53935),
-        onPrimary: Colors.white,
-        onSecondary: Colors.white,
         onSurface: _textPrimaryLightColor,
-        onError: Colors.white,
         outline: _borderLightColor,
       ),
       scaffoldBackgroundColor: _backgroundLightColor1,
@@ -177,8 +173,6 @@ class LiquidGlassTheme extends AppTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: _surfaceLightColor,
         foregroundColor: _textPrimaryLightColor,
-        elevation: 0,
-        scrolledUnderElevation: 0,
         centerTitle: true,
         titleTextStyle: _getTextStyle(
           fontFamily: FontConfiguration.liquidGlassTheme.defaultFontFamily,
@@ -199,9 +193,9 @@ class LiquidGlassTheme extends AppTheme {
         elevation: 1, // Subtle shadow for depth (iOS 16 style)
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(glassCornerRadius),
-          side: BorderSide(
+          side: const BorderSide(
             color: _borderLightColor,
-            width: 0.75, // Slightly thicker than ultra-thin for visibility
+            width: 0.75, // Slightly thicker for visibility
           ),
         ),
         margin: EdgeInsets.all(8.w),
@@ -213,7 +207,7 @@ class LiquidGlassTheme extends AppTheme {
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(glassCornerRadius),
-          side: BorderSide(
+          side: const BorderSide(
             color: _borderLightColor,
             width: glassBorderWidth,
           ),
@@ -233,7 +227,7 @@ class LiquidGlassTheme extends AppTheme {
       ),
 
       // Bottom Sheet: Glass modal
-      bottomSheetTheme: BottomSheetThemeData(
+      bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: _surfaceLightColor,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -268,7 +262,7 @@ class LiquidGlassTheme extends AppTheme {
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.r),
-            side: BorderSide(
+            side: const BorderSide(
               color: _borderLightColor,
               width: glassBorderWidth,
             ),
@@ -282,7 +276,7 @@ class LiquidGlassTheme extends AppTheme {
         style: OutlinedButton.styleFrom(
           foregroundColor: _primaryLightColor,
           backgroundColor: _surfaceLightColor,
-          side: BorderSide(
+          side: const BorderSide(
             color: _primaryLightColor,
             width: 1.5,
           ),
@@ -332,28 +326,28 @@ class LiquidGlassTheme extends AppTheme {
         fillColor: _surfaceLightColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: _borderLightColor,
             width: glassBorderWidth,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: _borderLightColor,
             width: glassBorderWidth,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: _primaryLightColor,
-            width: 2.0,
+            width: 2,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Color(0xFFE53935),
             width: 1.5,
           ),
@@ -378,7 +372,7 @@ class LiquidGlassTheme extends AppTheme {
         highlightElevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.r),
-          side: BorderSide(
+          side: const BorderSide(
             color: _borderLightColor,
             width: glassBorderWidth,
           ),
@@ -406,7 +400,7 @@ class LiquidGlassTheme extends AppTheme {
         padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.r),
-          side: BorderSide(
+          side: const BorderSide(
             color: _borderLightColor,
             width: glassBorderWidth,
           ),
@@ -428,7 +422,7 @@ class LiquidGlassTheme extends AppTheme {
       ),
 
       // Divider Theme
-      dividerTheme: DividerThemeData(
+      dividerTheme: const DividerThemeData(
         color: _borderLightColor,
         thickness: glassBorderWidth,
         space: 1,
@@ -469,9 +463,9 @@ class LiquidGlassTheme extends AppTheme {
     );
   }
 
-  // ============================================================================
+  // ========================================================================
   // DARK THEME DATA
-  // ============================================================================
+  // ========================================================================
 
   @override
   ThemeData get darkThemeData {
@@ -520,9 +514,9 @@ class LiquidGlassTheme extends AppTheme {
         elevation: 1, // Subtle shadow for depth (iOS 16 style)
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(glassCornerRadius),
-          side: BorderSide(
+          side: const BorderSide(
             color: _borderDarkColor,
-            width: 0.75, // Slightly thicker for better visibility in dark mode
+            width: 0.75, // Thicker for visibility in dark mode
           ),
         ),
         margin: EdgeInsets.all(8.w),
@@ -534,7 +528,7 @@ class LiquidGlassTheme extends AppTheme {
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(glassCornerRadius),
-          side: BorderSide(
+          side: const BorderSide(
             color: _borderDarkColor,
             width: glassBorderWidth,
           ),
@@ -554,7 +548,7 @@ class LiquidGlassTheme extends AppTheme {
       ),
 
       // Bottom Sheet: Dark glass modal
-      bottomSheetTheme: BottomSheetThemeData(
+      bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: _surfaceDarkColor,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -589,7 +583,7 @@ class LiquidGlassTheme extends AppTheme {
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.r),
-            side: BorderSide(
+            side: const BorderSide(
               color: _borderDarkColor,
               width: glassBorderWidth,
             ),
@@ -603,7 +597,7 @@ class LiquidGlassTheme extends AppTheme {
         style: OutlinedButton.styleFrom(
           foregroundColor: _primaryDarkColor,
           backgroundColor: _surfaceDarkColor,
-          side: BorderSide(
+          side: const BorderSide(
             color: _primaryDarkColor,
             width: 1.5,
           ),
@@ -653,28 +647,28 @@ class LiquidGlassTheme extends AppTheme {
         fillColor: _surfaceDarkColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: _borderDarkColor,
             width: glassBorderWidth,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: _borderDarkColor,
             width: glassBorderWidth,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: _primaryDarkColor,
-            width: 2.0,
+            width: 2,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Color(0xFFEF5350),
             width: 1.5,
           ),
@@ -699,7 +693,7 @@ class LiquidGlassTheme extends AppTheme {
         highlightElevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.r),
-          side: BorderSide(
+          side: const BorderSide(
             color: _borderDarkColor,
             width: glassBorderWidth,
           ),
@@ -727,7 +721,7 @@ class LiquidGlassTheme extends AppTheme {
         padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.r),
-          side: BorderSide(
+          side: const BorderSide(
             color: _borderDarkColor,
             width: glassBorderWidth,
           ),
@@ -749,7 +743,7 @@ class LiquidGlassTheme extends AppTheme {
       ),
 
       // Divider Theme
-      dividerTheme: DividerThemeData(
+      dividerTheme: const DividerThemeData(
         color: _borderDarkColor,
         thickness: glassBorderWidth,
         space: 1,
@@ -790,9 +784,9 @@ class LiquidGlassTheme extends AppTheme {
     );
   }
 
-  // ============================================================================
+  // ========================================================================
   // HELPER METHODS
-  // ============================================================================
+  // ========================================================================
 
   /// Creates a text style with the given parameters
   static TextStyle _getTextStyle({

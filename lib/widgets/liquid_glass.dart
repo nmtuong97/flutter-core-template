@@ -1,9 +1,12 @@
+import 'dart:async' show unawaited;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_liquid_glass/liquid_glass.dart' as lg;
 
 /// Liquid Glass Widget - Base component for glassmorphism effect
 ///
-/// **PRODUCTION VERSION**: Now uses flutter_liquid_glass package for enhanced features
+/// **PRODUCTION VERSION**: Now uses flutter_liquid_glass package for enhanced
+/// features
 ///
 /// Implements the Liquid Glass UI design specification with:
 /// - Multi-layer transparency and depth
@@ -26,8 +29,8 @@ import 'package:flutter_liquid_glass/liquid_glass.dart' as lg;
 /// - Not recommended for dense text areas
 class LiquidGlass extends StatelessWidget {
   const LiquidGlass({
-    super.key,
     required this.child,
+    super.key,
     this.blur = 24.0,
     this.tint,
     this.borderRadius = 20.0,
@@ -89,7 +92,7 @@ class LiquidGlass extends StatelessWidget {
     // Map V1 API to package config for enhanced features
     final config = lg.LiquidGlassConfig(
       baseColor: effectiveTint,
-      opacity: effectiveTint.opacity,
+      opacity: effectiveTint.a,
       blurAmount: enableBlur ? blur : 0.0,
       borderRadius: BorderRadius.circular(borderRadius),
       border: borderWidth > 0
@@ -100,9 +103,6 @@ class LiquidGlass extends StatelessWidget {
           : null,
       gradient: gradient,
       shadows: shadows,
-      // Enhanced features from package (optional, can be toggled)
-      refractionIntensity: 0.5,
-      enableSpecularHighlight: true,
     );
 
     return lg.LiquidGlassContainer(
@@ -127,8 +127,8 @@ class LiquidGlass extends StatelessWidget {
 /// - Blur intensity changes
 class AnimatedLiquidGlass extends StatefulWidget {
   const AnimatedLiquidGlass({
-    super.key,
     required this.child,
+    super.key,
     this.blur = 24.0,
     this.tint,
     this.borderRadius = 20.0,
@@ -200,7 +200,7 @@ class _AnimatedLiquidGlassState extends State<AnimatedLiquidGlass>
     );
 
     _scaleAnimation = Tween<double>(
-      begin: 1.0,
+      begin: 1,
       end: widget.hoverScale,
     ).animate(
       CurvedAnimation(
@@ -228,12 +228,12 @@ class _AnimatedLiquidGlassState extends State<AnimatedLiquidGlass>
 
   void _onEnter() {
     setState(() => _isHovered = true);
-    _controller.forward();
+    unawaited(_controller.forward());
   }
 
   void _onExit() {
     setState(() => _isHovered = false);
-    _controller.reverse();
+    unawaited(_controller.reverse());
   }
 
   @override
@@ -279,13 +279,13 @@ class _AnimatedLiquidGlassState extends State<AnimatedLiquidGlass>
 /// Convenient wrapper for common card use cases.
 class LiquidGlassCard extends StatelessWidget {
   const LiquidGlassCard({
-    super.key,
     required this.child,
+    super.key,
     this.blur = 24.0,
     this.tint,
     this.borderRadius = 20.0,
-    this.padding = const EdgeInsets.all(16.0),
-    this.margin = const EdgeInsets.all(8.0),
+    this.padding = const EdgeInsets.all(16),
+    this.margin = const EdgeInsets.all(8),
     this.enableBlur = true,
     this.elevation = true,
     this.onTap,
@@ -312,7 +312,7 @@ class LiquidGlassCard extends StatelessWidget {
       shadows: elevation
           ? [
               BoxShadow(
-                color: Colors.black.withOpacity(0.08),
+                color: Colors.black.withValues(alpha: 0.08),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
@@ -366,12 +366,11 @@ class LiquidGlassAppBar extends StatelessWidget implements PreferredSizeWidget {
       blur: blur,
       tint: tint,
       borderRadius: 0,
-      enableBlur: true,
       borderWidth: 0,
       shadows: elevation
           ? [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withValues(alpha: 0.05),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
               ),
@@ -380,7 +379,7 @@ class LiquidGlassAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: SafeArea(
         child: Container(
           height: height,
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Row(
             children: [
               if (leading != null) leading!,
@@ -403,12 +402,12 @@ class LiquidGlassAppBar extends StatelessWidget implements PreferredSizeWidget {
 /// Pre-configured bottom sheet with optimal glass parameters.
 class LiquidGlassBottomSheet extends StatelessWidget {
   const LiquidGlassBottomSheet({
-    super.key,
     required this.child,
+    super.key,
     this.blur = 30.0,
     this.tint,
     this.borderRadius = 24.0,
-    this.padding = const EdgeInsets.all(24.0),
+    this.padding = const EdgeInsets.all(24),
     this.enableBlur = true,
   });
 
@@ -426,7 +425,7 @@ class LiquidGlassBottomSheet extends StatelessWidget {
       tint: tint,
       borderRadius: borderRadius,
       enableBlur: enableBlur,
-      borderWidth: 1.0,
+      borderWidth: 1,
       padding: padding,
       child: child,
     );
@@ -439,7 +438,7 @@ class LiquidGlassBottomSheet extends StatelessWidget {
     double blur = 30.0,
     Color? tint,
     double borderRadius = 24.0,
-    EdgeInsetsGeometry padding = const EdgeInsets.all(24.0),
+    EdgeInsetsGeometry padding = const EdgeInsets.all(24),
     bool enableBlur = true,
     bool isDismissible = true,
     bool enableDrag = true,

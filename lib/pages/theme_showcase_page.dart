@@ -30,10 +30,12 @@ class ThemeShowcasePage extends StatelessWidget {
               icon: const Icon(Icons.auto_awesome),
               tooltip: 'Liquid Glass Components',
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (context) => const LiquidGlassComponentsPage(),
+                unawaited(
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (context) => const LiquidGlassComponentsPage(),
+                    ),
                   ),
                 );
               },
@@ -42,10 +44,12 @@ class ThemeShowcasePage extends StatelessWidget {
               icon: const Icon(Icons.blur_on),
               tooltip: 'Liquid Glass Demo',
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (context) => const LiquidGlassDemoPage(),
+                unawaited(
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (context) => const LiquidGlassDemoPage(),
+                    ),
                   ),
                 );
               },

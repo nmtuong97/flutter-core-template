@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_theme_showcase/widgets/glass_demo_background.dart';
-import 'package:flutter_theme_showcase/widgets/liquid_glass_v2.dart';
+import '../../widgets/glass_demo_background.dart';
+import '../../widgets/liquid_glass_v2.dart';
 
 /// Liquid Glass V2 Demo Page - Enhanced with flutter_liquid_glass package
 ///
@@ -29,12 +29,11 @@ class LiquidGlassV2DemoPage extends StatelessWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      title: LiquidGlassV2(
+      title: const LiquidGlassV2(
         blur: 20,
         borderRadius: 12,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        enableParallax: true,
-        child: const Text(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Text(
           'Liquid Glass V2',
           style: TextStyle(
             fontWeight: FontWeight.w600,
@@ -54,7 +53,6 @@ class LiquidGlassV2DemoPage extends StatelessWidget {
                 const SnackBar(content: Text('Settings tapped')),
               );
             },
-            enableHapticFeedback: true,
             child: const Icon(Icons.settings, size: 20),
           ),
         ),
@@ -93,7 +91,7 @@ class LiquidGlassV2DemoPage extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: theme.colorScheme.primary.withOpacity(0.2),
+                  color: theme.colorScheme.primary.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(
@@ -157,7 +155,7 @@ class LiquidGlassV2DemoPage extends StatelessWidget {
         Icon(
           icon,
           size: 20,
-          color: theme.colorScheme.primary.withOpacity(0.8),
+          color: theme.colorScheme.primary.withValues(alpha: 0.8),
         ),
         const SizedBox(width: 12),
         Expanded(
@@ -174,7 +172,7 @@ class LiquidGlassV2DemoPage extends StatelessWidget {
               Text(
                 description,
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: theme.colorScheme.onSurface.withOpacity(0.6),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                 ),
               ),
             ],
@@ -256,7 +254,6 @@ class LiquidGlassV2DemoPage extends StatelessWidget {
             Expanded(
               child: LiquidGlassCardV2(
                 elevation: 1,
-                padding: const EdgeInsets.all(16),
                 onTap: () {},
                 child: Column(
                   children: [
@@ -278,7 +275,6 @@ class LiquidGlassV2DemoPage extends StatelessWidget {
             Expanded(
               child: LiquidGlassCardV2(
                 elevation: 3,
-                padding: const EdgeInsets.all(16),
                 onTap: () {},
                 child: Column(
                   children: [
@@ -328,7 +324,6 @@ class LiquidGlassV2DemoPage extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           AnimatedLiquidGlassV2(
-            blur: 24,
             borderRadius: 16,
             padding: const EdgeInsets.all(20),
             onTap: () {
@@ -347,13 +342,12 @@ class LiquidGlassV2DemoPage extends StatelessWidget {
                 ),
               );
             },
-            enableMorphing: true,
             child: Column(
               children: [
                 Icon(
                   Icons.touch_app,
                   size: 48,
-                  color: theme.colorScheme.primary.withOpacity(0.8),
+                  color: theme.colorScheme.primary.withValues(alpha: 0.8),
                 ),
                 const SizedBox(height: 12),
                 Text(
@@ -366,7 +360,7 @@ class LiquidGlassV2DemoPage extends StatelessWidget {
                 Text(
                   'Notice the press animation and haptic feedback',
                   style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurface.withOpacity(0.6),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -480,7 +474,6 @@ class LiquidGlassV2DemoPage extends StatelessWidget {
       onTap: () {
         Navigator.pop(context);
       },
-      enableMorphing: true,
       child: const Icon(Icons.arrow_back, size: 24),
     );
   }

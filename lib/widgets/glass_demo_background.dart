@@ -1,3 +1,5 @@
+import 'dart:async' show unawaited;
+
 import 'package:flutter/material.dart';
 
 /// Background widget for Liquid Glass demo pages
@@ -18,7 +20,7 @@ class GlassDemoBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(
         // Gradient background for glass effect visibility
         gradient: LinearGradient(
@@ -202,7 +204,8 @@ class _AnimatedGlassDemoBackgroundState
     _controller = AnimationController(
       duration: const Duration(seconds: 20),
       vsync: this,
-    )..repeat();
+    );
+    unawaited(_controller.repeat());
   }
 
   @override
@@ -218,7 +221,7 @@ class _AnimatedGlassDemoBackgroundState
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
-        return Container(
+        return DecoratedBox(
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,

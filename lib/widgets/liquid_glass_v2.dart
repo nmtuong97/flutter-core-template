@@ -21,8 +21,8 @@ import 'package:flutter_liquid_glass/liquid_glass.dart' as lg;
 /// ```
 class LiquidGlassV2 extends StatelessWidget {
   const LiquidGlassV2({
-    super.key,
     required this.child,
+    super.key,
     this.blur = 24.0,
     this.tint,
     this.borderRadius = 20.0,
@@ -95,7 +95,7 @@ class LiquidGlassV2 extends StatelessWidget {
     // Map our API to package config
     final config = lg.LiquidGlassConfig(
       baseColor: effectiveTint,
-      opacity: effectiveTint.opacity,
+      opacity: effectiveTint.a,
       blurAmount: enableBlur ? blur : 0.0,
       borderRadius: BorderRadius.circular(borderRadius),
       border: borderWidth > 0
@@ -108,8 +108,6 @@ class LiquidGlassV2 extends StatelessWidget {
       shadows: shadows,
       enableParallax: enableParallax,
       enableDynamicLight: enableDynamicLight,
-      refractionIntensity: 0.5,
-      enableSpecularHighlight: true,
     );
 
     return lg.LiquidGlassContainer(
@@ -128,8 +126,8 @@ class LiquidGlassV2 extends StatelessWidget {
 /// Wraps flutter_liquid_glass package with custom API.
 class AnimatedLiquidGlassV2 extends StatelessWidget {
   const AnimatedLiquidGlassV2({
-    super.key,
     required this.child,
+    super.key,
     this.blur = 24.0,
     this.tint,
     this.borderRadius = 20.0,
@@ -176,7 +174,7 @@ class AnimatedLiquidGlassV2 extends StatelessWidget {
     // Enhanced config with morphing animations
     final config = lg.LiquidGlassConfig(
       baseColor: effectiveTint,
-      opacity: effectiveTint.opacity,
+      opacity: effectiveTint.a,
       blurAmount: enableBlur ? blur : 0.0,
       borderRadius: BorderRadius.circular(borderRadius),
       border: borderWidth > 0
@@ -191,7 +189,6 @@ class AnimatedLiquidGlassV2 extends StatelessWidget {
       enableDynamicLight: enableDynamicLight,
       enableMorphing: enableMorphing,
       refractionIntensity: 0.6,
-      enableSpecularHighlight: true,
       animationDuration: const Duration(milliseconds: 200),
       animationCurve: Curves.easeOutCubic,
     );
@@ -212,8 +209,8 @@ class AnimatedLiquidGlassV2 extends StatelessWidget {
 /// Wraps flutter_liquid_glass's LiquidGlassCard with custom defaults.
 class LiquidGlassCardV2 extends StatelessWidget {
   const LiquidGlassCardV2({
-    super.key,
     required this.child,
+    super.key,
     this.width,
     this.height,
     this.padding = const EdgeInsets.all(16),
@@ -242,19 +239,16 @@ class LiquidGlassCardV2 extends StatelessWidget {
 
     final config = lg.LiquidGlassConfig(
       baseColor: effectiveTint,
-      opacity: effectiveTint.opacity,
+      opacity: effectiveTint.a,
       blurAmount: blur,
       borderRadius: BorderRadius.circular(borderRadius),
       shadows: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.05 * elevation),
+          color: Colors.black.withValues(alpha: 0.05 * elevation),
           blurRadius: 8 * elevation,
           offset: Offset(0, 4 * elevation),
         ),
       ],
-      enableParallax: true,
-      enableDynamicLight: true,
-      refractionIntensity: 0.5,
     );
 
     return SizedBox(
@@ -277,9 +271,9 @@ class LiquidGlassCardV2 extends StatelessWidget {
 /// Enhanced button with package's interactive effects.
 class LiquidGlassButtonV2 extends StatelessWidget {
   const LiquidGlassButtonV2({
-    super.key,
     required this.child,
     required this.onPressed,
+    super.key,
     this.onLongPress,
     this.width,
     this.height = 48,
@@ -307,23 +301,19 @@ class LiquidGlassButtonV2 extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
 
     final baseColor = isPrimary
-        ? theme.colorScheme.primary.withOpacity(0.3)
+        ? theme.colorScheme.primary.withValues(alpha: 0.3)
         : (isDark ? const Color(0x33000000) : const Color(0x1AFFFFFF));
 
     final config = lg.LiquidGlassConfig(
       baseColor: baseColor,
-      opacity: baseColor.opacity,
+      opacity: baseColor.a,
       blurAmount: blur,
       borderRadius: BorderRadius.circular(borderRadius),
       border: Border.all(
         color: isPrimary
-            ? theme.colorScheme.primary.withOpacity(0.5)
-            : Colors.white.withOpacity(0.2),
-        width: 1,
+            ? theme.colorScheme.primary.withValues(alpha: 0.5)
+            : Colors.white.withValues(alpha: 0.2),
       ),
-      enableParallax: true,
-      enableDynamicLight: true,
-      enableMorphing: true,
       refractionIntensity: 0.6,
     );
 

@@ -1,9 +1,11 @@
+import 'dart:async' show unawaited;
+
 import 'package:flutter/material.dart';
 
 import '../../widgets/glass_demo_background.dart';
 import '../../widgets/liquid_glass_components.dart';
 
-// TODO: Integrate flutter_liquid_glass package
+// TODO(integration): Integrate flutter_liquid_glass package
 // import 'package:flutter_liquid_glass/flutter_liquid_glass.dart' as liquid;
 
 /// Liquid Glass Components Showcase
@@ -72,7 +74,7 @@ class _LiquidGlassComponentsPageState extends State<LiquidGlassComponentsPage>
                     color: Theme.of(context)
                         .colorScheme
                         .onSurface
-                        .withOpacity(0.5),
+                        .withValues(alpha: 0.5),
                   ),
                 ),
               ),
@@ -174,27 +176,29 @@ class _LiquidGlassComponentsPageState extends State<LiquidGlassComponentsPage>
               const SizedBox(height: 8),
               LiquidGlassButton(
                 onPressed: () {
-                  LiquidGlassDialog.show<void>(
-                    context: context,
-                    title: const Text('Glass Dialog'),
-                    content: const Text(
-                      'This is a beautiful dialog with glass effect. '
-                      'It features blur backdrop and smooth animations.',
+                  unawaited(
+                    LiquidGlassDialog.show<void>(
+                      context: context,
+                      title: const Text('Glass Dialog'),
+                      content: const Text(
+                        'This is a beautiful dialog with glass effect. '
+                        'It features blur backdrop and smooth animations.',
+                      ),
+                      actions: [
+                        LiquidGlassButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: const Text('Cancel'),
+                        ),
+                        LiquidGlassButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            _showSnackBar(context, 'Confirmed');
+                          },
+                          isPrimary: true,
+                          child: const Text('OK'),
+                        ),
+                      ],
                     ),
-                    actions: [
-                      LiquidGlassButton(
-                        onPressed: () => Navigator.pop(context),
-                        child: const Text('Cancel'),
-                      ),
-                      LiquidGlassButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          _showSnackBar(context, 'Confirmed');
-                        },
-                        isPrimary: true,
-                        child: const Text('OK'),
-                      ),
-                    ],
                   );
                 },
                 child: const Text('Show Dialog'),
@@ -379,8 +383,10 @@ class _LiquidGlassComponentsPageState extends State<LiquidGlassComponentsPage>
           Text(
             'Tab content goes here',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color:
-                      Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onSurface
+                      .withValues(alpha: 0.7),
                 ),
           ),
         ],

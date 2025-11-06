@@ -37,7 +37,8 @@ class LocalizationLoaded extends LocalizationState {
   List<Object?> get props => [currentLocalization, supportedLocalizations];
 }
 
-/// State when a localization operation is in progress (e.g., switching language)
+/// State when a localization operation is in progress
+/// (e.g., switching language)
 class LocalizationOperationInProgress extends LocalizationState {
   const LocalizationOperationInProgress({this.previousState});
 

@@ -80,8 +80,10 @@ class RadioListTile<T> extends StatelessWidget {
       child: ListTile(
         leading: Radio<T>(
           value: value,
-          groupValue: radioGroup?.groupValue, // 🔧 FIX: Connect to RadioGroup
-          onChanged: radioGroup?.onChanged, // 🔧 FIX: Connect to RadioGroup
+          // ignore: deprecated_member_use, for backward compatibility
+          groupValue: radioGroup?.groupValue,
+          // ignore: deprecated_member_use, for backward compatibility
+          onChanged: radioGroup?.onChanged,
           activeColor: activeColor,
           focusNode: focusNode,
           autofocus: autofocus,

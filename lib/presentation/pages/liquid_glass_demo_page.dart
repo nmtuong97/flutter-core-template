@@ -1,3 +1,5 @@
+import 'dart:async' show unawaited;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,7 +25,7 @@ class LiquidGlassDemoPage extends StatefulWidget {
 
 class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
   bool _enableBlur = true;
-  double _blurIntensity = 24.0;
+  double _blurIntensity = 24;
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +46,12 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
             IconButton(
               icon: const Icon(Icons.auto_awesome),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (context) => const LiquidGlassV2DemoPage(),
+                unawaited(
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (context) => const LiquidGlassV2DemoPage(),
+                    ),
                   ),
                 );
               },
@@ -61,7 +65,6 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
             ),
           ],
           blur: _blurIntensity,
-          elevation: true,
         ),
 
         // Main content with ListView
@@ -115,9 +118,7 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
           enableBlur: _enableBlur,
           borderRadius: 28.r,
           hoverScale: 1.05,
-          onTap: () {
-            _showLiquidGlassBottomSheet();
-          },
+          onTap: _showLiquidGlassBottomSheet,
           child: Container(
             width: 56.w,
             height: 56.h,
@@ -170,7 +171,6 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
           Text('Blur Intensity: ${_blurIntensity.toStringAsFixed(1)}'),
           Slider(
             value: _blurIntensity,
-            min: 0,
             max: 30,
             divisions: 30,
             onChanged: (value) {
@@ -188,7 +188,7 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
         // Low blur
         Expanded(
           child: LiquidGlass(
-            blur: 16.0,
+            blur: 16,
             enableBlur: _enableBlur,
             padding: EdgeInsets.all(16.w),
             child: Column(
@@ -211,7 +211,6 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
         // Medium blur
         Expanded(
           child: LiquidGlass(
-            blur: 24.0,
             enableBlur: _enableBlur,
             padding: EdgeInsets.all(16.w),
             child: Column(
@@ -234,7 +233,7 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
         // High blur
         Expanded(
           child: LiquidGlass(
-            blur: 30.0,
+            blur: 30,
             enableBlur: _enableBlur,
             padding: EdgeInsets.all(16.w),
             child: Column(
@@ -299,7 +298,6 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
         AnimatedLiquidGlass(
           blur: _blurIntensity,
           enableBlur: _enableBlur,
-          hoverScale: 1.02,
           padding: EdgeInsets.all(16.w),
           onLongPress: () {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -342,10 +340,12 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
           enableBlur: _enableBlur,
           onTap: () {
             // Import at top of file
-            Navigator.push(
-              context,
-              MaterialPageRoute<void>(
-                builder: (context) => const LiquidGlassComponentsPage(),
+            unawaited(
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (context) => const LiquidGlassComponentsPage(),
+                ),
               ),
             );
           },
@@ -414,8 +414,8 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Colors.white.withOpacity(0.3),
-              Colors.white.withOpacity(0.1),
+              Colors.white.withValues(alpha: 0.3),
+              Colors.white.withValues(alpha: 0.1),
             ],
           ),
           child: Row(
@@ -449,7 +449,7 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
           padding: EdgeInsets.all(16.w),
           shadows: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -517,16 +517,16 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
             padding: EdgeInsets.all(12.w),
             child: Column(
               children: [
-                Icon(useCase['icon'] as IconData, size: 32),
+                Icon(useCase['icon']! as IconData, size: 32),
                 SizedBox(height: 8.h),
                 Text(
-                  useCase['title'] as String,
+                  useCase['title']! as String,
                   style: Theme.of(context).textTheme.titleSmall,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 4.h),
                 Text(
-                  useCase['desc'] as String,
+                  useCase['desc']! as String,
                   style: Theme.of(context).textTheme.bodySmall,
                   textAlign: TextAlign.center,
                 ),
@@ -567,19 +567,19 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
             padding: EdgeInsets.all(12.w),
             child: Row(
               children: [
-                Icon(tip['icon'] as IconData, size: 32),
+                Icon(tip['icon']! as IconData, size: 32),
                 SizedBox(width: 16.w),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        tip['title'] as String,
+                        tip['title']! as String,
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       SizedBox(height: 4.h),
                       Text(
-                        tip['desc'] as String,
+                        tip['desc']! as String,
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
@@ -594,33 +594,36 @@ class _LiquidGlassDemoPageState extends State<LiquidGlassDemoPage> {
   }
 
   void _showLiquidGlassBottomSheet() {
-    LiquidGlassBottomSheet.show<void>(
-      context: context,
-      blur: _blurIntensity,
-      enableBlur: _enableBlur,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Liquid Glass Bottom Sheet',
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          SizedBox(height: 16.h),
-          Text(
-            'This is a modal bottom sheet with glass effect. '
-            'It uses stronger blur (sigma: 30) to separate from background content.',
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-          SizedBox(height: 24.h),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Close'),
+    unawaited(
+      LiquidGlassBottomSheet.show<void>(
+        context: context,
+        blur: _blurIntensity,
+        enableBlur: _enableBlur,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Liquid Glass Bottom Sheet',
+              style: Theme.of(context).textTheme.titleLarge,
             ),
-          ),
-        ],
+            SizedBox(height: 16.h),
+            Text(
+              'This is a modal bottom sheet with glass effect. '
+              'It uses stronger blur (sigma: 30) to separate from '
+              'background content.',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            SizedBox(height: 24.h),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Close'),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
