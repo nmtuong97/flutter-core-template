@@ -17,7 +17,7 @@ import 'presentation/blocs/localization/localization_bloc.dart';
 import 'presentation/blocs/localization/localization_event.dart';
 import 'presentation/blocs/theme/theme_bloc.dart';
 import 'presentation/blocs/theme/theme_event.dart';
-import 'presentation/pages/clean_app.dart';
+import 'presentation/pages/app.dart';
 
 /// Main entry point for the Clean Architecture version
 void main() async {
@@ -34,7 +34,7 @@ void main() async {
     AppLogger.info('Dependencies initialized successfully');
 
     // Run the app
-    runApp(const CleanArchitectureApp());
+    runApp(const AppRoot());
   } on Exception catch (e, stackTrace) {
     AppLogger.error(
       'Failed to initialize application',
@@ -80,8 +80,8 @@ void main() async {
 }
 
 /// Main app widget using Clean Architecture
-class CleanArchitectureApp extends StatelessWidget {
-  const CleanArchitectureApp({super.key});
+class AppRoot extends StatelessWidget {
+  const AppRoot({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +119,7 @@ class CleanArchitectureApp extends StatelessWidget {
           },
         ),
       ],
-      child: const CleanApp(),
+      child: const App(),
     );
   }
 }

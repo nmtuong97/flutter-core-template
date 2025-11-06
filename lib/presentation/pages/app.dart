@@ -11,9 +11,9 @@ import '../blocs/theme/theme_bloc.dart';
 import '../blocs/theme/theme_event.dart';
 import '../blocs/theme/theme_state.dart';
 
-/// Clean Architecture version of the main app widget
-class CleanApp extends StatelessWidget {
-  const CleanApp({super.key});
+/// Main app widget
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {

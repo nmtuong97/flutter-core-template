@@ -136,7 +136,6 @@ class UserOperationSuccess extends UserState {
 ```dart
 // lib/presentation/blocs/user/user_bloc.dart
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
 
 import '../../../core/utilities/logger.dart';
 import '../../../domain/use_cases/user/get_user_use_case.dart';

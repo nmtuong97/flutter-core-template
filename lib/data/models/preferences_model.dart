@@ -1,11 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:json_annotation/json_annotation.dart';
-
-part 'preferences_model.g.dart';
 
 /// Data model for user preferences
-@JsonSerializable()
 class PreferencesModel extends Equatable {
   const PreferencesModel({
     required this.themeId,
@@ -29,11 +25,20 @@ class PreferencesModel extends Equatable {
   }
 
   /// JSON serialization
-  factory PreferencesModel.fromJson(Map<String, dynamic> json) =>
-      _$PreferencesModelFromJson(json);
+  factory PreferencesModel.fromJson(Map<String, dynamic> json) {
+    return PreferencesModel(
+      themeId: json['themeId'] as String? ?? 'default',
+      themeMode: _themeModeFromJson(json['themeMode'] as String? ?? 'system'),
+      fontSize: (json['fontSize'] as num?)?.toDouble() ?? 14.0,
+      fontFamily: json['fontFamily'] as String? ?? 'Roboto',
+      locale: json['locale'] as String? ?? 'en',
+      lastUpdated: json['lastUpdated'] != null
+          ? DateTime.parse(json['lastUpdated'] as String)
+          : null,
+    );
+  }
 
   final String themeId;
-  @JsonKey(fromJson: _themeModeFromJson, toJson: _themeModeToJson)
   final ThemeMode themeMode;
   final double fontSize;
   final String fontFamily;
@@ -64,7 +69,16 @@ class PreferencesModel extends Equatable {
     return copyWith(lastUpdated: DateTime.now());
   }
 
-  Map<String, dynamic> toJson() => _$PreferencesModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'themeId': themeId,
+      'themeMode': _themeModeToJson(themeMode),
+      'fontSize': fontSize,
+      'fontFamily': fontFamily,
+      'locale': locale,
+      if (lastUpdated != null) 'lastUpdated': lastUpdated!.toIso8601String(),
+    };
+  }
 
   @override
   List<Object?> get props => [

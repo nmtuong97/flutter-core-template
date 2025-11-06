@@ -1,13 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 import '../../domain/entities/localization_entity.dart';
 
-part 'localization_model.g.dart';
-
 /// Data model for localization with JSON serialization
-@JsonSerializable()
 class LocalizationModel extends Equatable {
   const LocalizationModel({
     required this.languageCode,
@@ -31,8 +27,16 @@ class LocalizationModel extends Equatable {
   }
 
   /// JSON serialization
-  factory LocalizationModel.fromJson(Map<String, dynamic> json) =>
-      _$LocalizationModelFromJson(json);
+  factory LocalizationModel.fromJson(Map<String, dynamic> json) {
+    return LocalizationModel(
+      languageCode: json['languageCode'] as String,
+      countryCode: json['countryCode'] as String?,
+      languageName: json['languageName'] as String,
+      countryName: json['countryName'] as String,
+      isDefault: json['isDefault'] as bool? ?? false,
+      isRtl: json['isRtl'] as bool? ?? false,
+    );
+  }
 
   final String languageCode;
   final String? countryCode;
@@ -59,7 +63,16 @@ class LocalizationModel extends Equatable {
     return countryCode != null ? '${languageCode}_$countryCode' : languageCode;
   }
 
-  Map<String, dynamic> toJson() => _$LocalizationModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'languageCode': languageCode,
+      if (countryCode != null) 'countryCode': countryCode,
+      'languageName': languageName,
+      'countryName': countryName,
+      'isDefault': isDefault,
+      'isRtl': isRtl,
+    };
+  }
 
   @override
   List<Object?> get props => [

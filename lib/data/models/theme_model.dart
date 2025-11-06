@@ -1,15 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 import '../../domain/entities/theme_entity.dart';
 import '../../domain/value_objects/theme_colors.dart';
 import '../../domain/value_objects/theme_typography.dart';
 
-part 'theme_model.g.dart';
-
 /// Data model for theme with JSON serialization
-@JsonSerializable()
 class ThemeModel extends Equatable {
   const ThemeModel({
     required this.id,
@@ -41,8 +37,26 @@ class ThemeModel extends Equatable {
   }
 
   /// JSON serialization
-  factory ThemeModel.fromJson(Map<String, dynamic> json) =>
-      _$ThemeModelFromJson(json);
+  factory ThemeModel.fromJson(Map<String, dynamic> json) {
+    return ThemeModel(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      description: json['description'] as String,
+      lightColors: ThemeColorsModel.fromJson(
+        json['lightColors'] as Map<String, dynamic>,
+      ),
+      darkColors: ThemeColorsModel.fromJson(
+        json['darkColors'] as Map<String, dynamic>,
+      ),
+      typography: ThemeTypographyModel.fromJson(
+        json['typography'] as Map<String, dynamic>,
+      ),
+      isDefault: json['isDefault'] as bool? ?? false,
+      isCustom: json['isCustom'] as bool? ?? false,
+      previewImagePath: json['previewImagePath'] as String?,
+      tags: (json['tags'] as List<dynamic>?)?.cast<String>() ?? const [],
+    );
+  }
 
   final String id;
   final String name;
@@ -71,7 +85,20 @@ class ThemeModel extends Equatable {
     );
   }
 
-  Map<String, dynamic> toJson() => _$ThemeModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'lightColors': lightColors.toJson(),
+      'darkColors': darkColors.toJson(),
+      'typography': typography.toJson(),
+      'isDefault': isDefault,
+      'isCustom': isCustom,
+      if (previewImagePath != null) 'previewImagePath': previewImagePath,
+      'tags': tags,
+    };
+  }
 
   @override
   List<Object?> get props => [
@@ -89,7 +116,6 @@ class ThemeModel extends Equatable {
 }
 
 /// Data model for theme colors
-@JsonSerializable()
 class ThemeColorsModel extends Equatable {
   const ThemeColorsModel({
     required this.primary,
@@ -151,59 +177,68 @@ class ThemeColorsModel extends Equatable {
   }
 
   /// JSON serialization
-  factory ThemeColorsModel.fromJson(Map<String, dynamic> json) =>
-      _$ThemeColorsModelFromJson(json);
+  factory ThemeColorsModel.fromJson(Map<String, dynamic> json) {
+    return ThemeColorsModel(
+      primary: _colorFromJson(json['primary'] as int),
+      onPrimary: _colorFromJson(json['onPrimary'] as int),
+      secondary: _colorFromJson(json['secondary'] as int),
+      onSecondary: _colorFromJson(json['onSecondary'] as int),
+      surface: _colorFromJson(json['surface'] as int),
+      onSurface: _colorFromJson(json['onSurface'] as int),
+      background: _colorFromJson(json['background'] as int),
+      onBackground: _colorFromJson(json['onBackground'] as int),
+      error: _colorFromJson(json['error'] as int),
+      onError: _colorFromJson(json['onError'] as int),
+      primaryContainer:
+          _colorFromJsonNullable(json['primaryContainer'] as int?),
+      onPrimaryContainer:
+          _colorFromJsonNullable(json['onPrimaryContainer'] as int?),
+      secondaryContainer:
+          _colorFromJsonNullable(json['secondaryContainer'] as int?),
+      onSecondaryContainer:
+          _colorFromJsonNullable(json['onSecondaryContainer'] as int?),
+      tertiary: _colorFromJsonNullable(json['tertiary'] as int?),
+      onTertiary: _colorFromJsonNullable(json['onTertiary'] as int?),
+      tertiaryContainer:
+          _colorFromJsonNullable(json['tertiaryContainer'] as int?),
+      onTertiaryContainer:
+          _colorFromJsonNullable(json['onTertiaryContainer'] as int?),
+      surfaceVariant: _colorFromJsonNullable(json['surfaceVariant'] as int?),
+      onSurfaceVariant:
+          _colorFromJsonNullable(json['onSurfaceVariant'] as int?),
+      outline: _colorFromJsonNullable(json['outline'] as int?),
+      shadow: _colorFromJsonNullable(json['shadow'] as int?),
+      inverseSurface: _colorFromJsonNullable(json['inverseSurface'] as int?),
+      onInverseSurface:
+          _colorFromJsonNullable(json['onInverseSurface'] as int?),
+      inversePrimary: _colorFromJsonNullable(json['inversePrimary'] as int?),
+    );
+  }
 
-  @JsonKey(fromJson: _colorFromJson, toJson: _colorToJson)
   final Color primary;
-  @JsonKey(fromJson: _colorFromJson, toJson: _colorToJson)
   final Color onPrimary;
-  @JsonKey(fromJson: _colorFromJson, toJson: _colorToJson)
   final Color secondary;
-  @JsonKey(fromJson: _colorFromJson, toJson: _colorToJson)
   final Color onSecondary;
-  @JsonKey(fromJson: _colorFromJson, toJson: _colorToJson)
   final Color surface;
-  @JsonKey(fromJson: _colorFromJson, toJson: _colorToJson)
   final Color onSurface;
-  @JsonKey(fromJson: _colorFromJson, toJson: _colorToJson)
   final Color background;
-  @JsonKey(fromJson: _colorFromJson, toJson: _colorToJson)
   final Color onBackground;
-  @JsonKey(fromJson: _colorFromJson, toJson: _colorToJson)
   final Color error;
-  @JsonKey(fromJson: _colorFromJson, toJson: _colorToJson)
   final Color onError;
-
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? primaryContainer;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? onPrimaryContainer;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? secondaryContainer;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? onSecondaryContainer;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? tertiary;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? onTertiary;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? tertiaryContainer;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? onTertiaryContainer;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? surfaceVariant;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? onSurfaceVariant;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? outline;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? shadow;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? inverseSurface;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? onInverseSurface;
-  @JsonKey(fromJson: _colorFromJsonNullable, toJson: _colorToJsonNullable)
   final Color? inversePrimary;
 
   /// Convert to value object
@@ -237,7 +272,46 @@ class ThemeColorsModel extends Equatable {
     );
   }
 
-  Map<String, dynamic> toJson() => _$ThemeColorsModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'primary': _colorToJson(primary),
+      'onPrimary': _colorToJson(onPrimary),
+      'secondary': _colorToJson(secondary),
+      'onSecondary': _colorToJson(onSecondary),
+      'surface': _colorToJson(surface),
+      'onSurface': _colorToJson(onSurface),
+      'background': _colorToJson(background),
+      'onBackground': _colorToJson(onBackground),
+      'error': _colorToJson(error),
+      'onError': _colorToJson(onError),
+      if (primaryContainer != null)
+        'primaryContainer': _colorToJsonNullable(primaryContainer),
+      if (onPrimaryContainer != null)
+        'onPrimaryContainer': _colorToJsonNullable(onPrimaryContainer),
+      if (secondaryContainer != null)
+        'secondaryContainer': _colorToJsonNullable(secondaryContainer),
+      if (onSecondaryContainer != null)
+        'onSecondaryContainer': _colorToJsonNullable(onSecondaryContainer),
+      if (tertiary != null) 'tertiary': _colorToJsonNullable(tertiary),
+      if (onTertiary != null) 'onTertiary': _colorToJsonNullable(onTertiary),
+      if (tertiaryContainer != null)
+        'tertiaryContainer': _colorToJsonNullable(tertiaryContainer),
+      if (onTertiaryContainer != null)
+        'onTertiaryContainer': _colorToJsonNullable(onTertiaryContainer),
+      if (surfaceVariant != null)
+        'surfaceVariant': _colorToJsonNullable(surfaceVariant),
+      if (onSurfaceVariant != null)
+        'onSurfaceVariant': _colorToJsonNullable(onSurfaceVariant),
+      if (outline != null) 'outline': _colorToJsonNullable(outline),
+      if (shadow != null) 'shadow': _colorToJsonNullable(shadow),
+      if (inverseSurface != null)
+        'inverseSurface': _colorToJsonNullable(inverseSurface),
+      if (onInverseSurface != null)
+        'onInverseSurface': _colorToJsonNullable(onInverseSurface),
+      if (inversePrimary != null)
+        'inversePrimary': _colorToJsonNullable(inversePrimary),
+    };
+  }
 
   @override
   List<Object?> get props => [
@@ -270,7 +344,6 @@ class ThemeColorsModel extends Equatable {
 }
 
 /// Data model for theme typography
-@JsonSerializable()
 class ThemeTypographyModel extends Equatable {
   const ThemeTypographyModel({
     required this.fontFamily,
@@ -314,39 +387,72 @@ class ThemeTypographyModel extends Equatable {
   }
 
   /// JSON serialization
-  factory ThemeTypographyModel.fromJson(Map<String, dynamic> json) =>
-      _$ThemeTypographyModelFromJson(json);
+  factory ThemeTypographyModel.fromJson(Map<String, dynamic> json) {
+    return ThemeTypographyModel(
+      fontFamily: json['fontFamily'] as String,
+      displayLarge: _textStyleFromJson(
+        json['displayLarge'] as Map<String, dynamic>,
+      ),
+      displayMedium: _textStyleFromJson(
+        json['displayMedium'] as Map<String, dynamic>,
+      ),
+      displaySmall: _textStyleFromJson(
+        json['displaySmall'] as Map<String, dynamic>,
+      ),
+      headlineLarge: _textStyleFromJson(
+        json['headlineLarge'] as Map<String, dynamic>,
+      ),
+      headlineMedium: _textStyleFromJson(
+        json['headlineMedium'] as Map<String, dynamic>,
+      ),
+      headlineSmall: _textStyleFromJson(
+        json['headlineSmall'] as Map<String, dynamic>,
+      ),
+      titleLarge: _textStyleFromJson(
+        json['titleLarge'] as Map<String, dynamic>,
+      ),
+      titleMedium: _textStyleFromJson(
+        json['titleMedium'] as Map<String, dynamic>,
+      ),
+      titleSmall: _textStyleFromJson(
+        json['titleSmall'] as Map<String, dynamic>,
+      ),
+      bodyLarge: _textStyleFromJson(
+        json['bodyLarge'] as Map<String, dynamic>,
+      ),
+      bodyMedium: _textStyleFromJson(
+        json['bodyMedium'] as Map<String, dynamic>,
+      ),
+      bodySmall: _textStyleFromJson(
+        json['bodySmall'] as Map<String, dynamic>,
+      ),
+      labelLarge: _textStyleFromJson(
+        json['labelLarge'] as Map<String, dynamic>,
+      ),
+      labelMedium: _textStyleFromJson(
+        json['labelMedium'] as Map<String, dynamic>,
+      ),
+      labelSmall: _textStyleFromJson(
+        json['labelSmall'] as Map<String, dynamic>,
+      ),
+    );
+  }
 
   final String fontFamily;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle displayLarge;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle displayMedium;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle displaySmall;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle headlineLarge;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle headlineMedium;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle headlineSmall;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle titleLarge;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle titleMedium;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle titleSmall;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle bodyLarge;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle bodyMedium;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle bodySmall;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle labelLarge;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle labelMedium;
-  @JsonKey(fromJson: _textStyleFromJson, toJson: _textStyleToJson)
   final TextStyle labelSmall;
 
   /// Convert to value object
@@ -371,7 +477,26 @@ class ThemeTypographyModel extends Equatable {
     );
   }
 
-  Map<String, dynamic> toJson() => _$ThemeTypographyModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'fontFamily': fontFamily,
+      'displayLarge': _textStyleToJson(displayLarge),
+      'displayMedium': _textStyleToJson(displayMedium),
+      'displaySmall': _textStyleToJson(displaySmall),
+      'headlineLarge': _textStyleToJson(headlineLarge),
+      'headlineMedium': _textStyleToJson(headlineMedium),
+      'headlineSmall': _textStyleToJson(headlineSmall),
+      'titleLarge': _textStyleToJson(titleLarge),
+      'titleMedium': _textStyleToJson(titleMedium),
+      'titleSmall': _textStyleToJson(titleSmall),
+      'bodyLarge': _textStyleToJson(bodyLarge),
+      'bodyMedium': _textStyleToJson(bodyMedium),
+      'bodySmall': _textStyleToJson(bodySmall),
+      'labelLarge': _textStyleToJson(labelLarge),
+      'labelMedium': _textStyleToJson(labelMedium),
+      'labelSmall': _textStyleToJson(labelSmall),
+    };
+  }
 
   @override
   List<Object?> get props => [
@@ -416,9 +541,9 @@ TextStyle _textStyleFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _textStyleToJson(TextStyle style) {
   return {
-    'fontFamily': style.fontFamily,
-    'fontSize': style.fontSize,
-    'fontWeight': style.fontWeight?.index,
-    'height': style.height,
+    if (style.fontFamily != null) 'fontFamily': style.fontFamily,
+    if (style.fontSize != null) 'fontSize': style.fontSize,
+    if (style.fontWeight != null) 'fontWeight': style.fontWeight!.index,
+    if (style.height != null) 'height': style.height,
   };
 }
