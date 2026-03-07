@@ -189,8 +189,9 @@ class FluentThemeBuilder {
   /// Build the final theme data
   ThemeData build({bool isDark = false}) {
     // Use standardized theme creation
-    final colorScheme =
-        isDark ? _buildDarkColorScheme() : _buildLightColorScheme();
+    final colorScheme = isDark
+        ? _buildDarkColorScheme()
+        : _buildLightColorScheme();
 
     return ThemeData(
       colorScheme: colorScheme,
@@ -201,7 +202,8 @@ class FluentThemeBuilder {
         baseFontSize: _baseFontSize ?? 14.0,
         primaryTextColor:
             _primaryTextColor ?? (isDark ? Colors.white : Colors.black),
-        secondaryTextColor: _secondaryTextColor ??
+        secondaryTextColor:
+            _secondaryTextColor ??
             (isDark ? Colors.grey[300]! : Colors.grey[600]!),
       ),
       appBarTheme: AppBarTheme(
@@ -219,7 +221,8 @@ class FluentThemeBuilder {
         style: ElevatedButton.styleFrom(
           backgroundColor: colorScheme.primary,
           foregroundColor: colorScheme.onPrimary,
-          padding: _buttonPadding ??
+          padding:
+              _buttonPadding ??
               const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(_borderRadius ?? 8),
@@ -294,11 +297,11 @@ class CustomFluentTheme extends AppTheme {
     required bool supportsLightMode,
     required bool supportsDarkMode,
     required this.builder,
-  })  : _id = id,
-        _name = name,
-        _description = description,
-        _supportsLightMode = supportsLightMode,
-        _supportsDarkMode = supportsDarkMode;
+  }) : _id = id,
+       _name = name,
+       _description = description,
+       _supportsLightMode = supportsLightMode,
+       _supportsDarkMode = supportsDarkMode;
   final FluentThemeBuilder builder;
   final String _id;
   final String _name;

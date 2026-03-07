@@ -415,7 +415,8 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
         },
         (_) {
           AppLogger.theme(
-              'Font size changed successfully to ${event.fontSize}',);
+            'Font size changed successfully to ${event.fontSize}',
+          );
           final updatedState = currentState.copyWith(fontSize: event.fontSize);
           emit(
             ThemeOperationSuccess(

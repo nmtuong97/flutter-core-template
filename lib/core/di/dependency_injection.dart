@@ -25,12 +25,10 @@ Future<void> initializeDependencies() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   getIt
     ..registerSingleton<SharedPreferences>(sharedPreferences)
-
     // Register Data Sources
     ..registerLazySingleton<LocalDataSource>(
       () => LocalDataSourceImpl(sharedPreferences: getIt()),
     )
-
     // Register Repositories
     ..registerLazySingleton<ThemeRepository>(
       () => ThemeRepositoryImpl(localDataSource: getIt()),
@@ -38,7 +36,6 @@ Future<void> initializeDependencies() async {
     ..registerLazySingleton<LocalizationRepository>(
       () => LocalizationRepositoryImpl(localDataSource: getIt()),
     )
-
     // Register Theme Use Cases
     ..registerLazySingleton<GetCurrentThemeUseCase>(
       () => GetCurrentThemeUseCase(repository: getIt()),
@@ -58,7 +55,6 @@ Future<void> initializeDependencies() async {
     ..registerLazySingleton<ManageFontFamilyUseCase>(
       () => ManageFontFamilyUseCase(repository: getIt()),
     )
-
     // Register Localization Use Cases
     ..registerLazySingleton<GetCurrentLocalizationUseCase>(
       () => GetCurrentLocalizationUseCase(repository: getIt()),

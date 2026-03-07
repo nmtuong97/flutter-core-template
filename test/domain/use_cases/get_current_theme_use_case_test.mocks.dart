@@ -27,15 +27,11 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
+// ignore_for_file: invalid_use_of_internal_member
 
 class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
-  _FakeEither_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeEither_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [ThemeRepository].
@@ -49,311 +45,251 @@ class MockThemeRepository extends _i1.Mock implements _i3.ThemeRepository {
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i6.ThemeEntity>> getCurrentTheme() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getCurrentTheme,
-          [],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.ThemeEntity>>.value(
-            _FakeEither_0<_i5.Failure, _i6.ThemeEntity>(
-          this,
-          Invocation.method(
-            #getCurrentTheme,
-            [],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, _i6.ThemeEntity>>);
+            Invocation.method(#getCurrentTheme, []),
+            returnValue:
+                _i4.Future<_i2.Either<_i5.Failure, _i6.ThemeEntity>>.value(
+                  _FakeEither_0<_i5.Failure, _i6.ThemeEntity>(
+                    this,
+                    Invocation.method(#getCurrentTheme, []),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, _i6.ThemeEntity>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, List<_i6.ThemeEntity>>>
-      getAvailableThemes() => (super.noSuchMethod(
-            Invocation.method(
-              #getAvailableThemes,
-              [],
-            ),
-            returnValue: _i4
-                .Future<_i2.Either<_i5.Failure, List<_i6.ThemeEntity>>>.value(
-                _FakeEither_0<_i5.Failure, List<_i6.ThemeEntity>>(
-              this,
-              Invocation.method(
-                #getAvailableThemes,
-                [],
-              ),
-            )),
-          ) as _i4.Future<_i2.Either<_i5.Failure, List<_i6.ThemeEntity>>>);
+  getAvailableThemes() =>
+      (super.noSuchMethod(
+            Invocation.method(#getAvailableThemes, []),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i5.Failure, List<_i6.ThemeEntity>>
+                >.value(
+                  _FakeEither_0<_i5.Failure, List<_i6.ThemeEntity>>(
+                    this,
+                    Invocation.method(#getAvailableThemes, []),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, List<_i6.ThemeEntity>>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i6.ThemeEntity>> getThemeById(
-          String? themeId) =>
+    String? themeId,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getThemeById,
-          [themeId],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.ThemeEntity>>.value(
-            _FakeEither_0<_i5.Failure, _i6.ThemeEntity>(
-          this,
-          Invocation.method(
-            #getThemeById,
-            [themeId],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, _i6.ThemeEntity>>);
+            Invocation.method(#getThemeById, [themeId]),
+            returnValue:
+                _i4.Future<_i2.Either<_i5.Failure, _i6.ThemeEntity>>.value(
+                  _FakeEither_0<_i5.Failure, _i6.ThemeEntity>(
+                    this,
+                    Invocation.method(#getThemeById, [themeId]),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, _i6.ThemeEntity>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, void>> saveTheme(_i6.ThemeEntity? theme) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #saveTheme,
-          [theme],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
-            _FakeEither_0<_i5.Failure, void>(
-          this,
-          Invocation.method(
-            #saveTheme,
-            [theme],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, void>>);
+            Invocation.method(#saveTheme, [theme]),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
+              _FakeEither_0<_i5.Failure, void>(
+                this,
+                Invocation.method(#saveTheme, [theme]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, void>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, void>> deleteTheme(String? themeId) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #deleteTheme,
-          [themeId],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
-            _FakeEither_0<_i5.Failure, void>(
-          this,
-          Invocation.method(
-            #deleteTheme,
-            [themeId],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, void>>);
+            Invocation.method(#deleteTheme, [themeId]),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
+              _FakeEither_0<_i5.Failure, void>(
+                this,
+                Invocation.method(#deleteTheme, [themeId]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, void>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, void>> setCurrentTheme(String? themeId) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setCurrentTheme,
-          [themeId],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
-            _FakeEither_0<_i5.Failure, void>(
-          this,
-          Invocation.method(
-            #setCurrentTheme,
-            [themeId],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, void>>);
+            Invocation.method(#setCurrentTheme, [themeId]),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
+              _FakeEither_0<_i5.Failure, void>(
+                this,
+                Invocation.method(#setCurrentTheme, [themeId]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, void>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i7.ThemeMode>> getCurrentThemeMode() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getCurrentThemeMode,
-          [],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i7.ThemeMode>>.value(
-            _FakeEither_0<_i5.Failure, _i7.ThemeMode>(
-          this,
-          Invocation.method(
-            #getCurrentThemeMode,
-            [],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, _i7.ThemeMode>>);
+            Invocation.method(#getCurrentThemeMode, []),
+            returnValue:
+                _i4.Future<_i2.Either<_i5.Failure, _i7.ThemeMode>>.value(
+                  _FakeEither_0<_i5.Failure, _i7.ThemeMode>(
+                    this,
+                    Invocation.method(#getCurrentThemeMode, []),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, _i7.ThemeMode>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, void>> setThemeMode(
-          _i7.ThemeMode? themeMode) =>
+    _i7.ThemeMode? themeMode,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setThemeMode,
-          [themeMode],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
-            _FakeEither_0<_i5.Failure, void>(
-          this,
-          Invocation.method(
-            #setThemeMode,
-            [themeMode],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, void>>);
+            Invocation.method(#setThemeMode, [themeMode]),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
+              _FakeEither_0<_i5.Failure, void>(
+                this,
+                Invocation.method(#setThemeMode, [themeMode]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, void>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, double>> getCurrentFontSize() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getCurrentFontSize,
-          [],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, double>>.value(
-            _FakeEither_0<_i5.Failure, double>(
-          this,
-          Invocation.method(
-            #getCurrentFontSize,
-            [],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, double>>);
+            Invocation.method(#getCurrentFontSize, []),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, double>>.value(
+              _FakeEither_0<_i5.Failure, double>(
+                this,
+                Invocation.method(#getCurrentFontSize, []),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, double>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, void>> setFontSize(double? fontSize) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setFontSize,
-          [fontSize],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
-            _FakeEither_0<_i5.Failure, void>(
-          this,
-          Invocation.method(
-            #setFontSize,
-            [fontSize],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, void>>);
+            Invocation.method(#setFontSize, [fontSize]),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
+              _FakeEither_0<_i5.Failure, void>(
+                this,
+                Invocation.method(#setFontSize, [fontSize]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, void>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, String>> getCurrentFontFamily() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getCurrentFontFamily,
-          [],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, String>>.value(
-            _FakeEither_0<_i5.Failure, String>(
-          this,
-          Invocation.method(
-            #getCurrentFontFamily,
-            [],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, String>>);
+            Invocation.method(#getCurrentFontFamily, []),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, String>>.value(
+              _FakeEither_0<_i5.Failure, String>(
+                this,
+                Invocation.method(#getCurrentFontFamily, []),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, String>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, void>> setFontFamily(String? fontFamily) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setFontFamily,
-          [fontFamily],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
-            _FakeEither_0<_i5.Failure, void>(
-          this,
-          Invocation.method(
-            #setFontFamily,
-            [fontFamily],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, void>>);
+            Invocation.method(#setFontFamily, [fontFamily]),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
+              _FakeEither_0<_i5.Failure, void>(
+                this,
+                Invocation.method(#setFontFamily, [fontFamily]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, void>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, bool>> themeExists(String? themeId) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #themeExists,
-          [themeId],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, bool>>.value(
-            _FakeEither_0<_i5.Failure, bool>(
-          this,
-          Invocation.method(
-            #themeExists,
-            [themeId],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, bool>>);
+            Invocation.method(#themeExists, [themeId]),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, bool>>.value(
+              _FakeEither_0<_i5.Failure, bool>(
+                this,
+                Invocation.method(#themeExists, [themeId]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, bool>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, Map<String, dynamic>>>
-      getThemePreferences() => (super.noSuchMethod(
-            Invocation.method(
-              #getThemePreferences,
-              [],
-            ),
+  getThemePreferences() =>
+      (super.noSuchMethod(
+            Invocation.method(#getThemePreferences, []),
             returnValue:
                 _i4.Future<_i2.Either<_i5.Failure, Map<String, dynamic>>>.value(
-                    _FakeEither_0<_i5.Failure, Map<String, dynamic>>(
-              this,
-              Invocation.method(
-                #getThemePreferences,
-                [],
-              ),
-            )),
-          ) as _i4.Future<_i2.Either<_i5.Failure, Map<String, dynamic>>>);
+                  _FakeEither_0<_i5.Failure, Map<String, dynamic>>(
+                    this,
+                    Invocation.method(#getThemePreferences, []),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, Map<String, dynamic>>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, void>> saveThemePreferences(
-          Map<String, dynamic>? preferences) =>
+    Map<String, dynamic>? preferences,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #saveThemePreferences,
-          [preferences],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
-            _FakeEither_0<_i5.Failure, void>(
-          this,
-          Invocation.method(
-            #saveThemePreferences,
-            [preferences],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, void>>);
+            Invocation.method(#saveThemePreferences, [preferences]),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
+              _FakeEither_0<_i5.Failure, void>(
+                this,
+                Invocation.method(#saveThemePreferences, [preferences]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, void>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, void>> resetToDefault() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #resetToDefault,
-          [],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
-            _FakeEither_0<_i5.Failure, void>(
-          this,
-          Invocation.method(
-            #resetToDefault,
-            [],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, void>>);
+            Invocation.method(#resetToDefault, []),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
+              _FakeEither_0<_i5.Failure, void>(
+                this,
+                Invocation.method(#resetToDefault, []),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, void>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, void>> cacheTheme(
-          _i6.ThemeEntity? theme) =>
+    _i6.ThemeEntity? theme,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #cacheTheme,
-          [theme],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
-            _FakeEither_0<_i5.Failure, void>(
-          this,
-          Invocation.method(
-            #cacheTheme,
-            [theme],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, void>>);
+            Invocation.method(#cacheTheme, [theme]),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
+              _FakeEither_0<_i5.Failure, void>(
+                this,
+                Invocation.method(#cacheTheme, [theme]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, void>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, void>> clearCache() => (super.noSuchMethod(
-        Invocation.method(
-          #clearCache,
-          [],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
-            _FakeEither_0<_i5.Failure, void>(
-          this,
-          Invocation.method(
-            #clearCache,
-            [],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, void>>);
+  _i4.Future<_i2.Either<_i5.Failure, void>> clearCache() =>
+      (super.noSuchMethod(
+            Invocation.method(#clearCache, []),
+            returnValue: _i4.Future<_i2.Either<_i5.Failure, void>>.value(
+              _FakeEither_0<_i5.Failure, void>(
+                this,
+                Invocation.method(#clearCache, []),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.Failure, void>>);
 }

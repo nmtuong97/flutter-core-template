@@ -533,7 +533,10 @@ TextStyle _textStyleFromJson(Map<String, dynamic> json) {
     fontFamily: json['fontFamily'] as String?,
     fontSize: (json['fontSize'] as num?)?.toDouble(),
     fontWeight: json['fontWeight'] != null
-        ? FontWeight.values[json['fontWeight'] as int]
+        ? FontWeight.values.firstWhere(
+            (fw) => fw.value == json['fontWeight'] as int,
+            orElse: () => FontWeight.normal,
+          )
         : null,
     height: (json['height'] as num?)?.toDouble(),
   );
@@ -543,7 +546,7 @@ Map<String, dynamic> _textStyleToJson(TextStyle style) {
   return {
     if (style.fontFamily != null) 'fontFamily': style.fontFamily,
     if (style.fontSize != null) 'fontSize': style.fontSize,
-    if (style.fontWeight != null) 'fontWeight': style.fontWeight!.index,
+    if (style.fontWeight != null) 'fontWeight': style.fontWeight!.value,
     if (style.height != null) 'height': style.height,
   };
 }

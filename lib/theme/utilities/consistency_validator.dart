@@ -231,7 +231,8 @@ class ConsistencyValidator {
 
       if (content.contains('$themeProperty:')) {
         // Check if using standardized creation
-        final standardMethod = 'ThemeStandardization.standard'
+        final standardMethod =
+            'ThemeStandardization.standard'
             '${themeType.replaceAll('Data', '').replaceAll('Theme', '')}'
             'Theme';
 
@@ -426,11 +427,15 @@ class ConsistencyValidatorCLI {
     );
 
     if (report.consistencyScore < 80) {
-      debugPrint('⚠️  Consistency score is below 80%. '
-          'Consider running migration.');
+      debugPrint(
+        '⚠️  Consistency score is below 80%. '
+        'Consider running migration.',
+      );
     } else if (report.consistencyScore >= 95) {
-      debugPrint('🎉 Excellent consistency! '
-          'Themes are well standardized.');
+      debugPrint(
+        '🎉 Excellent consistency! '
+        'Themes are well standardized.',
+      );
     }
   }
 }

@@ -13,19 +13,19 @@ class LocalizationEntity extends Equatable {
 
   /// Create English localization
   const LocalizationEntity.english()
-      : locale = const Locale('en'),
-        languageName = 'English',
-        countryName = 'United States',
-        isDefault = true,
-        isRtl = false;
+    : locale = const Locale('en'),
+      languageName = 'English',
+      countryName = 'United States',
+      isDefault = true,
+      isRtl = false;
 
   /// Create Vietnamese localization
   const LocalizationEntity.vietnamese()
-      : locale = const Locale('vi'),
-        languageName = 'Tiếng Việt',
-        countryName = 'Việt Nam',
-        isDefault = false,
-        isRtl = false;
+    : locale = const Locale('vi'),
+      languageName = 'Tiếng Việt',
+      countryName = 'Việt Nam',
+      isDefault = false,
+      isRtl = false;
 
   /// The locale identifier (e.g., 'en', 'vi', 'en_US')
   final Locale locale;
@@ -75,12 +75,12 @@ class LocalizationEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-        locale,
-        languageName,
-        countryName,
-        isDefault,
-        isRtl,
-      ];
+    locale,
+    languageName,
+    countryName,
+    isDefault,
+    isRtl,
+  ];
 
   @override
   String toString() {

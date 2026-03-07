@@ -31,10 +31,12 @@ class ThemeUtilities {
 
     return {
       'primary': baseColor,
-      'primaryLight':
-          hsl.withLightness((hsl.lightness + 0.2).clamp(0.0, 1.0)).toColor(),
-      'primaryDark':
-          hsl.withLightness((hsl.lightness - 0.2).clamp(0.0, 1.0)).toColor(),
+      'primaryLight': hsl
+          .withLightness((hsl.lightness + 0.2).clamp(0.0, 1.0))
+          .toColor(),
+      'primaryDark': hsl
+          .withLightness((hsl.lightness - 0.2).clamp(0.0, 1.0))
+          .toColor(),
       'accent': hsl.withHue((hsl.hue + 30) % 360).toColor(),
       'complement': hsl.withHue((hsl.hue + 180) % 360).toColor(),
       'analogous1': hsl.withHue((hsl.hue + 30) % 360).toColor(),

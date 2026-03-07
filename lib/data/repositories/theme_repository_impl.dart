@@ -166,10 +166,12 @@ class ThemeRepositoryImpl implements ThemeRepository {
   @override
   FutureResult<ThemeMode> getCurrentThemeMode() async {
     try {
-      final themeModeString =
-          await localDataSource.loadString(AppConstants.themeModeKey);
-      final themeMode =
-          _parseThemeMode(themeModeString ?? AppConstants.systemThemeMode);
+      final themeModeString = await localDataSource.loadString(
+        AppConstants.themeModeKey,
+      );
+      final themeMode = _parseThemeMode(
+        themeModeString ?? AppConstants.systemThemeMode,
+      );
 
       AppLogger.theme('Current theme mode: $themeMode');
       return ResultHelper.success(themeMode);
@@ -201,8 +203,9 @@ class ThemeRepositoryImpl implements ThemeRepository {
   @override
   FutureResult<double> getCurrentFontSize() async {
     try {
-      final fontSize =
-          await localDataSource.loadDouble(AppConstants.fontSizeKey);
+      final fontSize = await localDataSource.loadDouble(
+        AppConstants.fontSizeKey,
+      );
       final currentFontSize = fontSize ?? AppConstants.defaultFontSize;
 
       AppLogger.theme('Current font size: $currentFontSize');
@@ -231,8 +234,9 @@ class ThemeRepositoryImpl implements ThemeRepository {
   @override
   FutureResult<String> getCurrentFontFamily() async {
     try {
-      final fontFamily =
-          await localDataSource.loadString(AppConstants.fontFamilyKey);
+      final fontFamily = await localDataSource.loadString(
+        AppConstants.fontFamilyKey,
+      );
       final currentFontFamily = fontFamily ?? AppConstants.defaultFontFamily;
 
       AppLogger.theme('Current font family: $currentFontFamily');

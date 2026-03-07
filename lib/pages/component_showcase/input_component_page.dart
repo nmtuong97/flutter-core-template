@@ -37,7 +37,7 @@ class _InputComponentPageState extends State<InputComponentPage> {
           CheckboxListTile(
             title: Text(context.l10n.checkbox),
             value: _checkboxValue,
-            onChanged: (bool? value) {
+            onChanged: (value) {
               setState(() {
                 _checkboxValue = value ?? false;
               });
@@ -46,7 +46,7 @@ class _InputComponentPageState extends State<InputComponentPage> {
           const SizedBox(height: 16),
           RadioGroup<int>(
             groupValue: _radioValue,
-            onChanged: (int? value) {
+            onChanged: (value) {
               setState(() {
                 _radioValue = value;
               });
@@ -68,7 +68,7 @@ class _InputComponentPageState extends State<InputComponentPage> {
           SwitchListTile(
             title: Text(context.l10n.switchWidget),
             value: _switchValue,
-            onChanged: (bool value) {
+            onChanged: (value) {
               setState(() {
                 _switchValue = value;
               });

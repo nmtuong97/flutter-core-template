@@ -132,14 +132,16 @@ class ThemePerformanceManager {
           unawaited(
             _lazyLoader
                 .getTheme(
-              themeId,
-              factory,
-              priority: ThemeLoadPriority.background,
-            )
+                  themeId,
+                  factory,
+                  priority: ThemeLoadPriority.background,
+                )
                 .catchError((dynamic error) {
-              debugPrint('Failed to preload theme $themeId: $error');
-              return Future<AppTheme>.error(error as Object); // Return error
-            }),
+                  debugPrint('Failed to preload theme $themeId: $error');
+                  return Future<AppTheme>.error(
+                    error as Object,
+                  ); // Return error
+                }),
           );
         }
       }
@@ -164,11 +166,14 @@ class ThemePerformanceManager {
       // Use a completer to get cached theme synchronously
       AppTheme? cachedTheme;
       unawaited(
-        _cacheManager.getTheme(themeId, factory).then((theme) {
-          cachedTheme = theme;
-        }).catchError((_) {
-          // Ignore errors for sync access
-        }),
+        _cacheManager
+            .getTheme(themeId, factory)
+            .then((theme) {
+              cachedTheme = theme;
+            })
+            .catchError((_) {
+              // Ignore errors for sync access
+            }),
       );
 
       return cachedTheme;
@@ -343,8 +348,9 @@ class ThemePerformanceManager {
   /// Clean old performance data
   void _cleanOldPerformanceData() {
     final cutoff = DateTime.now().subtract(_config.metricsRetentionPeriod);
-    _performanceHistory
-        .removeWhere((metric) => metric.timestamp.isBefore(cutoff));
+    _performanceHistory.removeWhere(
+      (metric) => metric.timestamp.isBefore(cutoff),
+    );
   }
 
   /// Update performance configuration

@@ -229,8 +229,9 @@ class NightSkyTheme extends AppTheme {
   }
 
   // Helper method to get text style with Google Fonts
-  static const ThemeTypography _typography =
-      ThemeTypography(FontConfiguration.nightSkyTheme);
+  static const ThemeTypography _typography = ThemeTypography(
+    FontConfiguration.nightSkyTheme,
+  );
   TextStyle _getTextStyle({
     required String fontFamily,
     required double fontSize,

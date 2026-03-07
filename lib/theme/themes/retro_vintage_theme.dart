@@ -13,8 +13,9 @@ class RetroVintageTheme extends AppTheme {
 
   @override
   bool get supportsDarkMode => true;
-  static const ThemeTypography _typography =
-      ThemeTypography(FontConfiguration.retroVintageTheme);
+  static const ThemeTypography _typography = ThemeTypography(
+    FontConfiguration.retroVintageTheme,
+  );
 
   @override
   String get id => 'retro_vintage';

@@ -18,15 +18,15 @@ extension ResultExtension<T> on Result<T> {
 
   /// Returns the success value or null if it's a failure
   T? get successValue => fold<T?>(
-        (failure) => null,
-        (success) => success,
-      );
+    (failure) => null,
+    (success) => success,
+  );
 
   /// Returns the failure or null if it's a success
   Failure? get failureValue => fold<Failure?>(
-        (failure) => failure,
-        (success) => null,
-      );
+    (failure) => failure,
+    (success) => null,
+  );
 
   /// Executes onSuccess callback if result is success
   Result<T> onSuccess(void Function(T value) onSuccess) {

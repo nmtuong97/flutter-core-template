@@ -387,8 +387,9 @@ class GlassmorphismTheme extends AppTheme {
     );
   }
 
-  static const ThemeTypography _typography =
-      ThemeTypography(FontConfiguration.glassmorphismTheme);
+  static const ThemeTypography _typography = ThemeTypography(
+    FontConfiguration.glassmorphismTheme,
+  );
 
   // Helper method to get text style with Google Fonts
   static TextStyle _getTextStyle({
@@ -398,8 +399,8 @@ class GlassmorphismTheme extends AppTheme {
     Color? color,
   }) {
     // Preserve letterSpacing nuance: 0.2 for default/alternate
-    final isDefaultOrAlt = fontFamily ==
-            FontConfiguration.glassmorphismTheme.defaultFontFamily ||
+    final isDefaultOrAlt =
+        fontFamily == FontConfiguration.glassmorphismTheme.defaultFontFamily ||
         fontFamily == FontConfiguration.glassmorphismTheme.alternateFontFamily;
     return _typography.getTextStyle(
       fontFamily: fontFamily,

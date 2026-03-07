@@ -9,9 +9,9 @@ extension StringExtension on String {
   /// Convert string to title case (first letter of each word capitalized)
   String get titleCase {
     if (isEmpty) return this;
-    return split(' ')
-        .map((word) => word.isEmpty ? word : word.capitalized)
-        .join(' ');
+    return split(
+      ' ',
+    ).map((word) => word.isEmpty ? word : word.capitalized).join(' ');
   }
 
   /// Convert camelCase or PascalCase to snake_case

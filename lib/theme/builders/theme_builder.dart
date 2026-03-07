@@ -166,8 +166,9 @@ class ThemeBuilder {
     return _typography.getTextTheme(
       fontFamily: _fontFamily,
       primaryColor: _colorScheme.onSurface,
-      secondaryColor: _colorScheme.onSurface
-          .withValues(alpha: ThemeConstants.secondaryTextOpacity),
+      secondaryColor: _colorScheme.onSurface.withValues(
+        alpha: ThemeConstants.secondaryTextOpacity,
+      ),
     );
   }
 
@@ -203,8 +204,9 @@ class ThemeBuilder {
           vertical: ThemeConstants.buttonPaddingVertical,
         ),
         shape: RoundedRectangleBorder(
-          borderRadius:
-              BorderRadius.circular(ThemeConstants.buttonBorderRadius),
+          borderRadius: BorderRadius.circular(
+            ThemeConstants.buttonBorderRadius,
+          ),
         ),
         textStyle: _typography.getTextStyle(
           fontFamily: _fontFamily,
@@ -229,8 +231,9 @@ class ThemeBuilder {
           vertical: ThemeConstants.buttonPaddingVertical,
         ),
         shape: RoundedRectangleBorder(
-          borderRadius:
-              BorderRadius.circular(ThemeConstants.buttonBorderRadius),
+          borderRadius: BorderRadius.circular(
+            ThemeConstants.buttonBorderRadius,
+          ),
         ),
         textStyle: _typography.getTextStyle(
           fontFamily: _fontFamily,
@@ -252,8 +255,9 @@ class ThemeBuilder {
           vertical: ThemeConstants.buttonPaddingVertical,
         ),
         shape: RoundedRectangleBorder(
-          borderRadius:
-              BorderRadius.circular(ThemeConstants.buttonBorderRadius),
+          borderRadius: BorderRadius.circular(
+            ThemeConstants.buttonBorderRadius,
+          ),
         ),
         textStyle: _typography.getTextStyle(
           fontFamily: _fontFamily,
@@ -296,8 +300,9 @@ class ThemeBuilder {
   /// Build default divider theme
   DividerThemeData _buildDividerTheme() {
     return DividerThemeData(
-      color:
-          _colorScheme.outline.withValues(alpha: ThemeConstants.dividerOpacity),
+      color: _colorScheme.outline.withValues(
+        alpha: ThemeConstants.dividerOpacity,
+      ),
       thickness: ThemeConstants.dividerThickness,
       space: ThemeConstants.dividerSpace,
     );

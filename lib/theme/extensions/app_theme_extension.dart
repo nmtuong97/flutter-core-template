@@ -223,15 +223,21 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
     }
 
     return AppThemeExtension(
-      cardBackgroundColor:
-          Color.lerp(cardBackgroundColor, other.cardBackgroundColor, t)!,
+      cardBackgroundColor: Color.lerp(
+        cardBackgroundColor,
+        other.cardBackgroundColor,
+        t,
+      )!,
       videoControlsBackground: Color.lerp(
         videoControlsBackground,
         other.videoControlsBackground,
         t,
       )!,
-      bottomNavBarBackground:
-          Color.lerp(bottomNavBarBackground, other.bottomNavBarBackground, t)!,
+      bottomNavBarBackground: Color.lerp(
+        bottomNavBarBackground,
+        other.bottomNavBarBackground,
+        t,
+      )!,
       bottomNavBarInactiveColor: Color.lerp(
         bottomNavBarInactiveColor,
         other.bottomNavBarInactiveColor,
@@ -242,26 +248,50 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
         other.bottomNavBarActiveColor,
         t,
       )!,
-      defaultBorderRadius:
-          BorderRadius.lerp(defaultBorderRadius, other.defaultBorderRadius, t)!,
-      cardBorderRadius:
-          BorderRadius.lerp(cardBorderRadius, other.cardBorderRadius, t)!,
-      buttonBorderRadius:
-          BorderRadius.lerp(buttonBorderRadius, other.buttonBorderRadius, t)!,
-      dialogBorderRadius:
-          BorderRadius.lerp(dialogBorderRadius, other.dialogBorderRadius, t)!,
+      defaultBorderRadius: BorderRadius.lerp(
+        defaultBorderRadius,
+        other.defaultBorderRadius,
+        t,
+      )!,
+      cardBorderRadius: BorderRadius.lerp(
+        cardBorderRadius,
+        other.cardBorderRadius,
+        t,
+      )!,
+      buttonBorderRadius: BorderRadius.lerp(
+        buttonBorderRadius,
+        other.buttonBorderRadius,
+        t,
+      )!,
+      dialogBorderRadius: BorderRadius.lerp(
+        dialogBorderRadius,
+        other.dialogBorderRadius,
+        t,
+      )!,
       cardShadow: t < 0.5 ? cardShadow : other.cardShadow,
       buttonShadow: t < 0.5 ? buttonShadow : other.buttonShadow,
       dialogShadow: t < 0.5 ? dialogShadow : other.dialogShadow,
-      defaultPadding:
-          EdgeInsetsGeometry.lerp(defaultPadding, other.defaultPadding, t)!,
+      defaultPadding: EdgeInsetsGeometry.lerp(
+        defaultPadding,
+        other.defaultPadding,
+        t,
+      )!,
       cardPadding: EdgeInsetsGeometry.lerp(cardPadding, other.cardPadding, t)!,
-      buttonPadding:
-          EdgeInsetsGeometry.lerp(buttonPadding, other.buttonPadding, t)!,
-      dialogPadding:
-          EdgeInsetsGeometry.lerp(dialogPadding, other.dialogPadding, t)!,
-      videoOverlayColor:
-          Color.lerp(videoOverlayColor, other.videoOverlayColor, t)!,
+      buttonPadding: EdgeInsetsGeometry.lerp(
+        buttonPadding,
+        other.buttonPadding,
+        t,
+      )!,
+      dialogPadding: EdgeInsetsGeometry.lerp(
+        dialogPadding,
+        other.dialogPadding,
+        t,
+      )!,
+      videoOverlayColor: Color.lerp(
+        videoOverlayColor,
+        other.videoOverlayColor,
+        t,
+      )!,
       buttonGradient: Gradient.lerp(buttonGradient, other.buttonGradient, t),
       cardGradient: Gradient.lerp(cardGradient, other.cardGradient, t),
     );

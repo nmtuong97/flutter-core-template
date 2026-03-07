@@ -110,8 +110,9 @@ class ThemeValidator {
         'Theme creation took ${creationTime}ms, '
         'exceeds recommended ${ThemeConstants.maxThemeCreationTime}ms',
       );
-      suggestions
-          .add('Consider caching theme data or optimizing creation logic');
+      suggestions.add(
+        'Consider caching theme data or optimizing creation logic',
+      );
     }
 
     return ThemePerformanceResult(

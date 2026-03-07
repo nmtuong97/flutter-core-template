@@ -24,97 +24,97 @@ class ThemeTypography extends Equatable {
 
   /// Create default typography
   const ThemeTypography.defaultTypography()
-      : fontFamily = 'Roboto',
-        displayLarge = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 57,
-          fontWeight: FontWeight.w400,
-          height: 1.12,
-        ),
-        displayMedium = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 45,
-          fontWeight: FontWeight.w400,
-          height: 1.16,
-        ),
-        displaySmall = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 36,
-          fontWeight: FontWeight.w400,
-          height: 1.22,
-        ),
-        headlineLarge = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 32,
-          fontWeight: FontWeight.w400,
-          height: 1.25,
-        ),
-        headlineMedium = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 28,
-          fontWeight: FontWeight.w400,
-          height: 1.29,
-        ),
-        headlineSmall = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 24,
-          fontWeight: FontWeight.w400,
-          height: 1.33,
-        ),
-        titleLarge = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 22,
-          fontWeight: FontWeight.w400,
-          height: 1.27,
-        ),
-        titleMedium = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-          height: 1.50,
-        ),
-        titleSmall = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          height: 1.43,
-        ),
-        bodyLarge = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 16,
-          fontWeight: FontWeight.w400,
-          height: 1.50,
-        ),
-        bodyMedium = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-          height: 1.43,
-        ),
-        bodySmall = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 12,
-          fontWeight: FontWeight.w400,
-          height: 1.33,
-        ),
-        labelLarge = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          height: 1.43,
-        ),
-        labelMedium = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 12,
-          fontWeight: FontWeight.w500,
-          height: 1.33,
-        ),
-        labelSmall = const TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 11,
-          fontWeight: FontWeight.w500,
-          height: 1.45,
-        );
+    : fontFamily = 'Roboto',
+      displayLarge = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 57,
+        fontWeight: FontWeight.w400,
+        height: 1.12,
+      ),
+      displayMedium = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 45,
+        fontWeight: FontWeight.w400,
+        height: 1.16,
+      ),
+      displaySmall = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 36,
+        fontWeight: FontWeight.w400,
+        height: 1.22,
+      ),
+      headlineLarge = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+        height: 1.25,
+      ),
+      headlineMedium = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 28,
+        fontWeight: FontWeight.w400,
+        height: 1.29,
+      ),
+      headlineSmall = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 24,
+        fontWeight: FontWeight.w400,
+        height: 1.33,
+      ),
+      titleLarge = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 22,
+        fontWeight: FontWeight.w400,
+        height: 1.27,
+      ),
+      titleMedium = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        height: 1.50,
+      ),
+      titleSmall = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        height: 1.43,
+      ),
+      bodyLarge = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        height: 1.50,
+      ),
+      bodyMedium = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        height: 1.43,
+      ),
+      bodySmall = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        height: 1.33,
+      ),
+      labelLarge = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        height: 1.43,
+      ),
+      labelMedium = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        height: 1.33,
+      ),
+      labelSmall = const TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 11,
+        fontWeight: FontWeight.w500,
+        height: 1.45,
+      );
 
   /// Create typography with custom font family
   factory ThemeTypography.withFontFamily(String fontFamily) {
@@ -286,21 +286,21 @@ class ThemeTypography extends Equatable {
 
   @override
   List<Object?> get props => [
-        fontFamily,
-        displayLarge,
-        displayMedium,
-        displaySmall,
-        headlineLarge,
-        headlineMedium,
-        headlineSmall,
-        titleLarge,
-        titleMedium,
-        titleSmall,
-        bodyLarge,
-        bodyMedium,
-        bodySmall,
-        labelLarge,
-        labelMedium,
-        labelSmall,
-      ];
+    fontFamily,
+    displayLarge,
+    displayMedium,
+    displaySmall,
+    headlineLarge,
+    headlineMedium,
+    headlineSmall,
+    titleLarge,
+    titleMedium,
+    titleSmall,
+    bodyLarge,
+    bodyMedium,
+    bodySmall,
+    labelLarge,
+    labelMedium,
+    labelSmall,
+  ];
 }

@@ -178,8 +178,9 @@ class ThemeFactory {
 
     if (config == null) return null;
 
-    final brightness =
-        themeId.contains('dark') ? Brightness.dark : Brightness.light;
+    final brightness = themeId.contains('dark')
+        ? Brightness.dark
+        : Brightness.light;
 
     return createTheme(
       config: config,
@@ -208,8 +209,9 @@ class ThemeFactory {
 
     return {
       'creationTime': stopwatch.elapsedMilliseconds,
-      'isPerformant':
-          ThemeUtilities.validateThemePerformance(stopwatch.elapsed),
+      'isPerformant': ThemeUtilities.validateThemePerformance(
+        stopwatch.elapsed,
+      ),
       'themeData': theme,
       'analysis': ThemeHelper.analyzeThemePerformance(theme),
     };

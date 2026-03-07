@@ -36,8 +36,9 @@ class OrganicNaturalTheme extends AppTheme {
   static const String serifFontFamily = 'Cormorant';
 
   // Base Colors - Light Mode (màu tự nhiên)
-  static const Color backgroundLightColor =
-      Color(0xFFF7F9F4); // Pale greenish white
+  static const Color backgroundLightColor = Color(
+    0xFFF7F9F4,
+  ); // Pale greenish white
   static const Color primaryLightColor = Color(0xFF4CAF50); // Green
   static const Color secondaryLightColor = Color(0xFF8BC34A); // Light green
   static const Color accentLightColor = Color(0xFFFF9800); // Cam
@@ -386,8 +387,9 @@ class OrganicNaturalTheme extends AppTheme {
   }
 
   // Helper method to get text style with Google Fonts
-  static const ThemeTypography _typography =
-      ThemeTypography(FontConfiguration.organicNaturalTheme);
+  static const ThemeTypography _typography = ThemeTypography(
+    FontConfiguration.organicNaturalTheme,
+  );
 
   static TextStyle _getTextStyle({
     required String fontFamily,

@@ -213,8 +213,8 @@ class LightColorPalette extends ColorPalette {
     this.customWarning,
     this.customInfo,
   }) : _colorScheme = ColorScheme.fromSeed(
-          seedColor: seedColor,
-        );
+         seedColor: seedColor,
+       );
 
   final Color seedColor;
   final Color? customSuccess;
@@ -318,9 +318,9 @@ class DarkColorPalette extends ColorPalette {
     this.customWarning,
     this.customInfo,
   }) : _colorScheme = ColorScheme.fromSeed(
-          seedColor: seedColor,
-          brightness: Brightness.dark,
-        );
+         seedColor: seedColor,
+         brightness: Brightness.dark,
+       );
 
   final Color seedColor;
   final Color? customSuccess;
@@ -496,41 +496,41 @@ class PredefinedPalettes {
 
   /// Material Design default palette
   static ColorPalettePair get material => ColorPaletteFactory.pair(
-        seedColor: const Color(0xFF6750A4),
-      );
+    seedColor: const Color(0xFF6750A4),
+  );
 
   /// Blue palette
   static ColorPalettePair get blue => ColorPaletteFactory.pair(
-        seedColor: Colors.blue,
-      );
+    seedColor: Colors.blue,
+  );
 
   /// Green palette
   static ColorPalettePair get green => ColorPaletteFactory.pair(
-        seedColor: Colors.green,
-      );
+    seedColor: Colors.green,
+  );
 
   /// Purple palette
   static ColorPalettePair get purple => ColorPaletteFactory.pair(
-        seedColor: Colors.purple,
-      );
+    seedColor: Colors.purple,
+  );
 
   /// Orange palette
   static ColorPalettePair get orange => ColorPaletteFactory.pair(
-        seedColor: Colors.orange,
-      );
+    seedColor: Colors.orange,
+  );
 
   /// Red palette
   static ColorPalettePair get red => ColorPaletteFactory.pair(
-        seedColor: Colors.red,
-      );
+    seedColor: Colors.red,
+  );
 
   /// Teal palette
   static ColorPalettePair get teal => ColorPaletteFactory.pair(
-        seedColor: Colors.teal,
-      );
+    seedColor: Colors.teal,
+  );
 
   /// Indigo palette
   static ColorPalettePair get indigo => ColorPaletteFactory.pair(
-        seedColor: Colors.indigo,
-      );
+    seedColor: Colors.indigo,
+  );
 }

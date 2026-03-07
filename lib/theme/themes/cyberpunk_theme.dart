@@ -252,8 +252,9 @@ class CyberpunkTheme extends AppTheme {
   }
 
   // Typography helper for this theme
-  static const ThemeTypography _typography =
-      ThemeTypography(FontConfiguration.cyberpunkTheme);
+  static const ThemeTypography _typography = ThemeTypography(
+    FontConfiguration.cyberpunkTheme,
+  );
 
   // Helper method to get text style with Google Fonts
   static TextStyle _getTextStyle({

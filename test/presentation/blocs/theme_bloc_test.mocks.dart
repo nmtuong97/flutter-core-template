@@ -39,26 +39,17 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
+// ignore_for_file: invalid_use_of_internal_member
 
 class _FakeThemeRepository_0 extends _i1.SmartFake
     implements _i2.ThemeRepository {
-  _FakeThemeRepository_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeThemeRepository_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeEither_1<L, R> extends _i1.SmartFake implements _i3.Either<L, R> {
-  _FakeEither_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeEither_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [GetCurrentThemeUseCase].
@@ -71,30 +62,29 @@ class MockGetCurrentThemeUseCase extends _i1.Mock
   }
 
   @override
-  _i2.ThemeRepository get repository => (super.noSuchMethod(
-        Invocation.getter(#repository),
-        returnValue: _FakeThemeRepository_0(
-          this,
-          Invocation.getter(#repository),
-        ),
-      ) as _i2.ThemeRepository);
+  _i2.ThemeRepository get repository =>
+      (super.noSuchMethod(
+            Invocation.getter(#repository),
+            returnValue: _FakeThemeRepository_0(
+              this,
+              Invocation.getter(#repository),
+            ),
+          )
+          as _i2.ThemeRepository);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>> call() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #call,
-          [],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>.value(
-            _FakeEither_1<_i6.Failure, _i7.ThemeEntity>(
-          this,
-          Invocation.method(
-            #call,
-            [],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>);
+            Invocation.method(#call, []),
+            returnValue:
+                _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>.value(
+                  _FakeEither_1<_i6.Failure, _i7.ThemeEntity>(
+                    this,
+                    Invocation.method(#call, []),
+                  ),
+                ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>);
 }
 
 /// A class which mocks [GetAvailableThemesUseCase].
@@ -107,68 +97,66 @@ class MockGetAvailableThemesUseCase extends _i1.Mock
   }
 
   @override
-  _i2.ThemeRepository get repository => (super.noSuchMethod(
-        Invocation.getter(#repository),
-        returnValue: _FakeThemeRepository_0(
-          this,
-          Invocation.getter(#repository),
-        ),
-      ) as _i2.ThemeRepository);
+  _i2.ThemeRepository get repository =>
+      (super.noSuchMethod(
+            Invocation.getter(#repository),
+            returnValue: _FakeThemeRepository_0(
+              this,
+              Invocation.getter(#repository),
+            ),
+          )
+          as _i2.ThemeRepository);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.ThemeEntity>>> call() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #call,
-          [],
-        ),
-        returnValue:
-            _i5.Future<_i3.Either<_i6.Failure, List<_i7.ThemeEntity>>>.value(
-                _FakeEither_1<_i6.Failure, List<_i7.ThemeEntity>>(
-          this,
-          Invocation.method(
-            #call,
-            [],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, List<_i7.ThemeEntity>>>);
+            Invocation.method(#call, []),
+            returnValue:
+                _i5.Future<
+                  _i3.Either<_i6.Failure, List<_i7.ThemeEntity>>
+                >.value(
+                  _FakeEither_1<_i6.Failure, List<_i7.ThemeEntity>>(
+                    this,
+                    Invocation.method(#call, []),
+                  ),
+                ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, List<_i7.ThemeEntity>>>);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.ThemeEntity>>> getThemesByTags(
-          List<String>? tags) =>
+    List<String>? tags,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getThemesByTags,
-          [tags],
-        ),
-        returnValue:
-            _i5.Future<_i3.Either<_i6.Failure, List<_i7.ThemeEntity>>>.value(
-                _FakeEither_1<_i6.Failure, List<_i7.ThemeEntity>>(
-          this,
-          Invocation.method(
-            #getThemesByTags,
-            [tags],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, List<_i7.ThemeEntity>>>);
+            Invocation.method(#getThemesByTags, [tags]),
+            returnValue:
+                _i5.Future<
+                  _i3.Either<_i6.Failure, List<_i7.ThemeEntity>>
+                >.value(
+                  _FakeEither_1<_i6.Failure, List<_i7.ThemeEntity>>(
+                    this,
+                    Invocation.method(#getThemesByTags, [tags]),
+                  ),
+                ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, List<_i7.ThemeEntity>>>);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.ThemeEntity>>>
-      getCustomThemes() => (super.noSuchMethod(
-            Invocation.method(
-              #getCustomThemes,
-              [],
-            ),
-            returnValue: _i5
-                .Future<_i3.Either<_i6.Failure, List<_i7.ThemeEntity>>>.value(
-                _FakeEither_1<_i6.Failure, List<_i7.ThemeEntity>>(
-              this,
-              Invocation.method(
-                #getCustomThemes,
-                [],
-              ),
-            )),
-          ) as _i5.Future<_i3.Either<_i6.Failure, List<_i7.ThemeEntity>>>);
+  getCustomThemes() =>
+      (super.noSuchMethod(
+            Invocation.method(#getCustomThemes, []),
+            returnValue:
+                _i5.Future<
+                  _i3.Either<_i6.Failure, List<_i7.ThemeEntity>>
+                >.value(
+                  _FakeEither_1<_i6.Failure, List<_i7.ThemeEntity>>(
+                    this,
+                    Invocation.method(#getCustomThemes, []),
+                  ),
+                ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, List<_i7.ThemeEntity>>>);
 }
 
 /// A class which mocks [SwitchThemeUseCase].
@@ -181,64 +169,57 @@ class MockSwitchThemeUseCase extends _i1.Mock
   }
 
   @override
-  _i2.ThemeRepository get repository => (super.noSuchMethod(
-        Invocation.getter(#repository),
-        returnValue: _FakeThemeRepository_0(
-          this,
-          Invocation.getter(#repository),
-        ),
-      ) as _i2.ThemeRepository);
+  _i2.ThemeRepository get repository =>
+      (super.noSuchMethod(
+            Invocation.getter(#repository),
+            returnValue: _FakeThemeRepository_0(
+              this,
+              Invocation.getter(#repository),
+            ),
+          )
+          as _i2.ThemeRepository);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>> call(String? themeId) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #call,
-          [themeId],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>.value(
-            _FakeEither_1<_i6.Failure, _i7.ThemeEntity>(
-          this,
-          Invocation.method(
-            #call,
-            [themeId],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>);
+            Invocation.method(#call, [themeId]),
+            returnValue:
+                _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>.value(
+                  _FakeEither_1<_i6.Failure, _i7.ThemeEntity>(
+                    this,
+                    Invocation.method(#call, [themeId]),
+                  ),
+                ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>> switchToDefault() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #switchToDefault,
-          [],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>.value(
-            _FakeEither_1<_i6.Failure, _i7.ThemeEntity>(
-          this,
-          Invocation.method(
-            #switchToDefault,
-            [],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>);
+            Invocation.method(#switchToDefault, []),
+            returnValue:
+                _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>.value(
+                  _FakeEither_1<_i6.Failure, _i7.ThemeEntity>(
+                    this,
+                    Invocation.method(#switchToDefault, []),
+                  ),
+                ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>> switchToPrevious() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #switchToPrevious,
-          [],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>.value(
-            _FakeEither_1<_i6.Failure, _i7.ThemeEntity>(
-          this,
-          Invocation.method(
-            #switchToPrevious,
-            [],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>);
+            Invocation.method(#switchToPrevious, []),
+            returnValue:
+                _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>.value(
+                  _FakeEither_1<_i6.Failure, _i7.ThemeEntity>(
+                    this,
+                    Invocation.method(#switchToPrevious, []),
+                  ),
+                ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, _i7.ThemeEntity>>);
 }
 
 /// A class which mocks [ManageThemeModeUseCase].
@@ -251,134 +232,112 @@ class MockManageThemeModeUseCase extends _i1.Mock
   }
 
   @override
-  _i2.ThemeRepository get repository => (super.noSuchMethod(
-        Invocation.getter(#repository),
-        returnValue: _FakeThemeRepository_0(
-          this,
-          Invocation.getter(#repository),
-        ),
-      ) as _i2.ThemeRepository);
+  _i2.ThemeRepository get repository =>
+      (super.noSuchMethod(
+            Invocation.getter(#repository),
+            returnValue: _FakeThemeRepository_0(
+              this,
+              Invocation.getter(#repository),
+            ),
+          )
+          as _i2.ThemeRepository);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, _i11.ThemeMode>> getCurrentThemeMode() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getCurrentThemeMode,
-          [],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, _i11.ThemeMode>>.value(
-            _FakeEither_1<_i6.Failure, _i11.ThemeMode>(
-          this,
-          Invocation.method(
-            #getCurrentThemeMode,
-            [],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, _i11.ThemeMode>>);
+            Invocation.method(#getCurrentThemeMode, []),
+            returnValue:
+                _i5.Future<_i3.Either<_i6.Failure, _i11.ThemeMode>>.value(
+                  _FakeEither_1<_i6.Failure, _i11.ThemeMode>(
+                    this,
+                    Invocation.method(#getCurrentThemeMode, []),
+                  ),
+                ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, _i11.ThemeMode>>);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, void>> setThemeMode(
-          _i11.ThemeMode? themeMode) =>
+    _i11.ThemeMode? themeMode,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setThemeMode,
-          [themeMode],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, void>>.value(
-            _FakeEither_1<_i6.Failure, void>(
-          this,
-          Invocation.method(
-            #setThemeMode,
-            [themeMode],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, void>>);
+            Invocation.method(#setThemeMode, [themeMode]),
+            returnValue: _i5.Future<_i3.Either<_i6.Failure, void>>.value(
+              _FakeEither_1<_i6.Failure, void>(
+                this,
+                Invocation.method(#setThemeMode, [themeMode]),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, void>>);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, _i11.ThemeMode>> toggleThemeMode() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #toggleThemeMode,
-          [],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, _i11.ThemeMode>>.value(
-            _FakeEither_1<_i6.Failure, _i11.ThemeMode>(
-          this,
-          Invocation.method(
-            #toggleThemeMode,
-            [],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, _i11.ThemeMode>>);
+            Invocation.method(#toggleThemeMode, []),
+            returnValue:
+                _i5.Future<_i3.Either<_i6.Failure, _i11.ThemeMode>>.value(
+                  _FakeEither_1<_i6.Failure, _i11.ThemeMode>(
+                    this,
+                    Invocation.method(#toggleThemeMode, []),
+                  ),
+                ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, _i11.ThemeMode>>);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, void>> setLightMode() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setLightMode,
-          [],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, void>>.value(
-            _FakeEither_1<_i6.Failure, void>(
-          this,
-          Invocation.method(
-            #setLightMode,
-            [],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, void>>);
+            Invocation.method(#setLightMode, []),
+            returnValue: _i5.Future<_i3.Either<_i6.Failure, void>>.value(
+              _FakeEither_1<_i6.Failure, void>(
+                this,
+                Invocation.method(#setLightMode, []),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, void>>);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, void>> setDarkMode() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setDarkMode,
-          [],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, void>>.value(
-            _FakeEither_1<_i6.Failure, void>(
-          this,
-          Invocation.method(
-            #setDarkMode,
-            [],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, void>>);
+            Invocation.method(#setDarkMode, []),
+            returnValue: _i5.Future<_i3.Either<_i6.Failure, void>>.value(
+              _FakeEither_1<_i6.Failure, void>(
+                this,
+                Invocation.method(#setDarkMode, []),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, void>>);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, void>> setSystemMode() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setSystemMode,
-          [],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, void>>.value(
-            _FakeEither_1<_i6.Failure, void>(
-          this,
-          Invocation.method(
-            #setSystemMode,
-            [],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, void>>);
+            Invocation.method(#setSystemMode, []),
+            returnValue: _i5.Future<_i3.Either<_i6.Failure, void>>.value(
+              _FakeEither_1<_i6.Failure, void>(
+                this,
+                Invocation.method(#setSystemMode, []),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, void>>);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, bool>> isCurrentMode(
-          _i11.ThemeMode? mode) =>
+    _i11.ThemeMode? mode,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #isCurrentMode,
-          [mode],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, bool>>.value(
-            _FakeEither_1<_i6.Failure, bool>(
-          this,
-          Invocation.method(
-            #isCurrentMode,
-            [mode],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, bool>>);
+            Invocation.method(#isCurrentMode, [mode]),
+            returnValue: _i5.Future<_i3.Either<_i6.Failure, bool>>.value(
+              _FakeEither_1<_i6.Failure, bool>(
+                this,
+                Invocation.method(#isCurrentMode, [mode]),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, bool>>);
 }
 
 /// A class which mocks [ManageFontSizeUseCase].

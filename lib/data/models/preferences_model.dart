@@ -82,13 +82,13 @@ class PreferencesModel extends Equatable {
 
   @override
   List<Object?> get props => [
-        themeId,
-        themeMode,
-        fontSize,
-        fontFamily,
-        locale,
-        lastUpdated,
-      ];
+    themeId,
+    themeMode,
+    fontSize,
+    fontFamily,
+    locale,
+    lastUpdated,
+  ];
 }
 
 // ThemeMode JSON converters

@@ -108,8 +108,9 @@ class DefaultTheme extends AppTheme {
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.r),
+          ),
           elevation: 2,
           shadowColor: primaryLightColor.withAlpha((255 * 0.2).round()),
         ),
@@ -124,8 +125,9 @@ class DefaultTheme extends AppTheme {
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.r),
+          ),
         ),
       ),
       textButtonTheme: TextButtonThemeData(
@@ -222,8 +224,9 @@ class DefaultTheme extends AppTheme {
             color: Colors.black,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.r),
+          ),
           elevation: 2,
           shadowColor: primaryDarkColor.withAlpha((255 * 0.3).round()),
         ),
@@ -238,8 +241,9 @@ class DefaultTheme extends AppTheme {
             fontWeight: FontWeight.bold,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.r),
+          ),
         ),
       ),
       textButtonTheme: TextButtonThemeData(

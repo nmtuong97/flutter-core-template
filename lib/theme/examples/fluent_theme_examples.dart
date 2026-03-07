@@ -49,8 +49,10 @@ class FluentThemeExamples {
         .withComponentStyling(
           borderRadius: 2,
           elevation: 8,
-          buttonPadding:
-              const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          buttonPadding: const EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: 12,
+          ),
         )
         .withModeSupport(light: false)
         .buildCustomTheme();
@@ -89,8 +91,10 @@ class FluentThemeExamples {
         .withComponentStyling(
           borderRadius: 16,
           elevation: 2,
-          buttonPadding:
-              const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          buttonPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 14,
+          ),
         )
         .buildCustomTheme();
   }
@@ -117,9 +121,9 @@ class FluentThemeExamples {
   /// Create a high-contrast accessibility theme
   static CustomFluentTheme createAccessibilityTheme() {
     return FluentThemeBuilder.create(
-      'accessibility_theme',
-      'High Contrast Theme',
-    )
+          'accessibility_theme',
+          'High Contrast Theme',
+        )
         .withDescription('High contrast theme for better accessibility')
         .withPrimaryColors(
           primary: Colors.black,
@@ -137,8 +141,10 @@ class FluentThemeExamples {
         .withComponentStyling(
           borderRadius: 4,
           elevation: 0, // Flat design for clarity
-          buttonPadding:
-              const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          buttonPadding: const EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: 16,
+          ),
         )
         .buildCustomTheme();
   }
@@ -160,8 +166,10 @@ class FluentThemeExamples {
         .withComponentStyling(
           borderRadius: 20, // Very rounded for playful look
           elevation: 3,
-          buttonPadding:
-              const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          buttonPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 12,
+          ),
         )
         .buildCustomTheme();
   }
@@ -243,8 +251,10 @@ class FluentThemeUsageExamples {
           .withTypography(baseFontSize: 16)
           .withComponentStyling(
             borderRadius: 12,
-            buttonPadding:
-                const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+            buttonPadding: const EdgeInsets.symmetric(
+              horizontal: 32,
+              vertical: 16,
+            ),
           )
           .buildCustomTheme();
     } else {
@@ -253,8 +263,10 @@ class FluentThemeUsageExamples {
           .withTypography(baseFontSize: 14)
           .withComponentStyling(
             borderRadius: 8,
-            buttonPadding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            buttonPadding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 12,
+            ),
           )
           .buildCustomTheme();
     }
@@ -264,9 +276,9 @@ class FluentThemeUsageExamples {
   static CustomFluentTheme createDerivedTheme(CustomFluentTheme baseTheme) {
     // Create a new theme based on an existing one with modifications
     return FluentThemeBuilder.create(
-      '${baseTheme.id}_derived',
-      '${baseTheme.name} (Modified)',
-    )
+          '${baseTheme.id}_derived',
+          '${baseTheme.name} (Modified)',
+        )
         .withDescription('Derived from ${baseTheme.name}')
         .withColorPalette(ThemeColorPalette.material)
         .withTypographyStyle(TypographyStyle.modern)

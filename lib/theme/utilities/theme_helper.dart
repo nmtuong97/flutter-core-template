@@ -155,15 +155,23 @@ class ThemeHelper {
 
     return TextTheme(
       displayLarge: createVariantStyle('displayLarge', weight: FontWeight.w900),
-      displayMedium:
-          createVariantStyle('displayMedium', weight: FontWeight.w800),
+      displayMedium: createVariantStyle(
+        'displayMedium',
+        weight: FontWeight.w800,
+      ),
       displaySmall: createVariantStyle('displaySmall', weight: FontWeight.w700),
-      headlineLarge:
-          createVariantStyle('headlineLarge', weight: FontWeight.w700),
-      headlineMedium:
-          createVariantStyle('headlineMedium', weight: FontWeight.w600),
-      headlineSmall:
-          createVariantStyle('headlineSmall', weight: FontWeight.w600),
+      headlineLarge: createVariantStyle(
+        'headlineLarge',
+        weight: FontWeight.w700,
+      ),
+      headlineMedium: createVariantStyle(
+        'headlineMedium',
+        weight: FontWeight.w600,
+      ),
+      headlineSmall: createVariantStyle(
+        'headlineSmall',
+        weight: FontWeight.w600,
+      ),
       titleLarge: createVariantStyle('titleLarge', weight: FontWeight.w600),
       titleMedium: createVariantStyle('titleMedium', weight: FontWeight.w500),
       titleSmall: createVariantStyle('titleSmall', weight: FontWeight.w500),
@@ -254,8 +262,9 @@ class ThemeHelper {
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: config.components.borderRadius,
-        borderSide:
-            BorderSide(color: config.primaryColor.withValues(alpha: 0.5)),
+        borderSide: BorderSide(
+          color: config.primaryColor.withValues(alpha: 0.5),
+        ),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: config.components.borderRadius,
@@ -302,8 +311,9 @@ class ThemeHelper {
     );
 
     if (contrastRatio < 4.5) {
-      errors
-          .add('Primary color contrast ratio is below accessibility standards');
+      errors.add(
+        'Primary color contrast ratio is below accessibility standards',
+      );
     }
 
     return errors;
@@ -326,7 +336,8 @@ class ThemeHelper {
       'textThemeSize': themeData.textTheme.toString().length,
       'colorSchemeSize': themeData.colorScheme.toString().length,
       'bodyMedium': bodyMedium?.fontSize ?? 0,
-      'primaryColor': primaryColor.r.toInt() << 16 |
+      'primaryColor':
+          primaryColor.r.toInt() << 16 |
           primaryColor.g.toInt() << 8 |
           primaryColor.b.toInt(),
       'appBarColor': appBarColor?.toString() ?? 'null',

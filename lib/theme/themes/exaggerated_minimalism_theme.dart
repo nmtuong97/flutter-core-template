@@ -14,8 +14,9 @@ class ExaggeratedMinimalismTheme extends AppTheme {
 
   @override
   bool get supportsDarkMode => true;
-  static const ThemeTypography _typography =
-      ThemeTypography(FontConfiguration.exaggeratedMinimalismTheme);
+  static const ThemeTypography _typography = ThemeTypography(
+    FontConfiguration.exaggeratedMinimalismTheme,
+  );
   @override
   String get id => 'exaggerated_minimalism';
 

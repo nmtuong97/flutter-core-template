@@ -22,8 +22,9 @@ class GetSupportedLocalizationsUseCase {
     return result.fold(
       ResultHelper.failure,
       (localizations) {
-        final defaultLoc =
-            localizations.where((loc) => loc.isDefault).firstOrNull;
+        final defaultLoc = localizations
+            .where((loc) => loc.isDefault)
+            .firstOrNull;
         return ResultHelper.success(defaultLoc);
       },
     );
@@ -36,8 +37,9 @@ class GetSupportedLocalizationsUseCase {
     return result.fold(
       ResultHelper.failure,
       (localizations) {
-        final rtlLocalizations =
-            localizations.where((loc) => loc.isRtl).toList();
+        final rtlLocalizations = localizations
+            .where((loc) => loc.isRtl)
+            .toList();
         return ResultHelper.success(rtlLocalizations);
       },
     );
@@ -50,8 +52,10 @@ class GetSupportedLocalizationsUseCase {
     return result.fold(
       ResultHelper.failure,
       (localizations) {
-        final languageCodes =
-            localizations.map((loc) => loc.languageCode).toSet().toList();
+        final languageCodes = localizations
+            .map((loc) => loc.languageCode)
+            .toSet()
+            .toList();
         return ResultHelper.success(languageCodes);
       },
     );

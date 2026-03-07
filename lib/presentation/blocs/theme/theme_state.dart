@@ -98,12 +98,12 @@ class ThemeLoaded extends ThemeState {
 
   @override
   List<Object?> get props => [
-        currentTheme,
-        availableThemes,
-        themeMode,
-        fontSize,
-        fontFamily,
-      ];
+    currentTheme,
+    availableThemes,
+    themeMode,
+    fontSize,
+    fontFamily,
+  ];
 }
 
 /// State when theme operation is in progress

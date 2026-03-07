@@ -105,6 +105,10 @@ void main() {
               const ThemeFailure(message: 'Theme not found', code: 'NOT_FOUND'),
             ),
           );
+          when(mockGetAvailableThemesUseCase())
+              .thenAnswer((_) async => ResultHelper.success([]));
+          when(mockManageThemeModeUseCase.getCurrentThemeMode())
+              .thenAnswer((_) async => ResultHelper.success(ThemeMode.system));
           return bloc;
         },
         act: (bloc) => bloc.add(const ThemeLoadCurrentEvent()),

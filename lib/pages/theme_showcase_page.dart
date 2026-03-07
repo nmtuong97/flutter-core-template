@@ -1,11 +1,8 @@
-import 'dart:async' show unawaited;
-
-import 'package:flutter/material.dart';
-
-import '../l10n/app_localizations.dart';
+import 'dart:async';
+import 'package:flutter/material.dart';import '../l10n/app_localizations.dart';
 import '../presentation/pages/liquid_glass_components_page.dart';
 import '../presentation/pages/liquid_glass_demo_page.dart';
-import '../widgets/theme_settings_bottom_sheet.dart';
+import '../presentation/pages/theme_settings/theme_settings_page.dart';
 import 'component_showcase/button_component_page.dart';
 import 'component_showcase/input_component_page.dart';
 import 'component_showcase/layout_component_page.dart';
@@ -56,15 +53,9 @@ class ThemeShowcasePage extends StatelessWidget {
             ),
             IconButton(
               icon: const Icon(Icons.settings),
-              onPressed: () {
-                unawaited(
-                  showModalBottomSheet<void>(
-                    context: context,
-                    isScrollControlled: true,
-                    builder: (BuildContext context) {
-                      return const ThemeSettingsBottomSheet();
-                    },
-                  ),
+              onPressed: () async {
+                await Navigator.of(context).pushNamed(
+                  ThemeSettingsPage.routeName,
                 );
               },
             ),

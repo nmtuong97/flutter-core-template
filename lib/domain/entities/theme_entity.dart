@@ -21,16 +21,16 @@ class ThemeEntity extends Equatable {
 
   /// Create default theme entity
   const ThemeEntity.createDefault()
-      : id = 'default',
-        name = 'Default',
-        description = 'Default application theme',
-        lightColors = const ThemeColors.defaultLight(),
-        darkColors = const ThemeColors.defaultDark(),
-        typography = const ThemeTypography.defaultTypography(),
-        isDefault = true,
-        isCustom = false,
-        previewImagePath = null,
-        tags = const [];
+    : id = 'default',
+      name = 'Default',
+      description = 'Default application theme',
+      lightColors = const ThemeColors.defaultLight(),
+      darkColors = const ThemeColors.defaultDark(),
+      typography = const ThemeTypography.defaultTypography(),
+      isDefault = true,
+      isCustom = false,
+      previewImagePath = null,
+      tags = const [];
 
   /// Unique identifier for the theme
   final String id;
@@ -113,17 +113,17 @@ class ThemeEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        name,
-        description,
-        lightColors,
-        darkColors,
-        typography,
-        isDefault,
-        isCustom,
-        previewImagePath,
-        tags,
-      ];
+    id,
+    name,
+    description,
+    lightColors,
+    darkColors,
+    typography,
+    isDefault,
+    isCustom,
+    previewImagePath,
+    tags,
+  ];
 
   @override
   String toString() {

@@ -23,8 +23,9 @@ class LocalizationRepositoryImpl implements LocalizationRepository {
       AppLogger.localization('Getting current localization');
 
       // Load current locale from preferences
-      final localeString =
-          await localDataSource.loadString(AppConstants.localeKey);
+      final localeString = await localDataSource.loadString(
+        AppConstants.localeKey,
+      );
       final currentLocaleString = localeString ?? AppConstants.defaultLocale;
 
       // Parse locale and find matching localization
@@ -95,8 +96,9 @@ class LocalizationRepositoryImpl implements LocalizationRepository {
       AppLogger.localization('Getting localization by locale: $locale');
 
       final localizations = _getSupportedLocalizations();
-      final localization =
-          localizations.where((l) => l.locale == locale).firstOrNull;
+      final localization = localizations
+          .where((l) => l.locale == locale)
+          .firstOrNull;
 
       if (localization == null) {
         // Try to find by language code only
@@ -182,8 +184,9 @@ class LocalizationRepositoryImpl implements LocalizationRepository {
     try {
       AppLogger.localization('Getting saved locale');
 
-      final localeString =
-          await localDataSource.loadString(AppConstants.localeKey);
+      final localeString = await localDataSource.loadString(
+        AppConstants.localeKey,
+      );
 
       if (localeString == null) {
         return ResultHelper.success(null);

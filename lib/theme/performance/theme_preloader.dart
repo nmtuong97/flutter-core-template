@@ -119,14 +119,16 @@ class ThemePreloader {
         unawaited(
           _lazyLoader
               .getTheme(
-            prediction.themeId,
-            factory,
-            priority: ThemeLoadPriority.background,
-          )
+                prediction.themeId,
+                factory,
+                priority: ThemeLoadPriority.background,
+              )
               .catchError((dynamic error) {
-            debugPrint('Failed to preload theme ${prediction.themeId}: $error');
-            return Future<AppTheme>.error(error as Object); // Return error
-          }),
+                debugPrint(
+                  'Failed to preload theme ${prediction.themeId}: $error',
+                );
+                return Future<AppTheme>.error(error as Object); // Return error
+              }),
         );
       }
     }
@@ -224,8 +226,9 @@ class ThemePreloader {
   /// Get preloader statistics
   PreloaderStatistics get statistics {
     final totalThemes = _usageStats.length;
-    final activeThemes =
-        _usageStats.values.where((stats) => stats.totalUsages > 0).length;
+    final activeThemes = _usageStats.values
+        .where((stats) => stats.totalUsages > 0)
+        .length;
     final predictedThemes = predictNextThemes().length;
 
     return PreloaderStatistics(
@@ -259,10 +262,12 @@ class ThemePreloader {
   /// Export usage data for analysis
   Map<String, dynamic> exportUsageData() {
     return {
-      'usageStats':
-          _usageStats.map((id, stats) => MapEntry(id, stats.toJson())),
-      'lastUsed':
-          _lastUsed.map((id, time) => MapEntry(id, time.toIso8601String())),
+      'usageStats': _usageStats.map(
+        (id, stats) => MapEntry(id, stats.toJson()),
+      ),
+      'lastUsed': _lastUsed.map(
+        (id, time) => MapEntry(id, time.toIso8601String()),
+      ),
       'recentThemes': _recentThemes,
       'statistics': statistics.toJson(),
     };
@@ -319,7 +324,8 @@ enum ThemeUsageContext {
   seasonal('Seasonal Theme'),
   timeOfDay('Time-based Theme'),
   userPreference('User Preference'),
-  unknown('Unknown Context');
+  unknown('Unknown Context')
+  ;
 
   const ThemeUsageContext(this.displayName);
   final String displayName;
@@ -365,8 +371,9 @@ class ThemeUsageStats {
   double getContextMatchScore(ThemeUsageContext context) {
     if (_usageRecords.isEmpty) return 0;
 
-    final contextUsages =
-        _usageRecords.where((record) => record.context == context).length;
+    final contextUsages = _usageRecords
+        .where((record) => record.context == context)
+        .length;
     return contextUsages / _usageRecords.length;
   }
 
@@ -394,8 +401,9 @@ class ThemeUsageStats {
 
   /// Clean usage records older than cutoff time
   void cleanOldData(DateTime cutoffTime) {
-    _usageRecords
-        .removeWhere((record) => record.timestamp.isBefore(cutoffTime));
+    _usageRecords.removeWhere(
+      (record) => record.timestamp.isBefore(cutoffTime),
+    );
   }
 
   /// Convert to JSON for persistence

@@ -142,4 +142,259 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get option2 => 'Tùy chọn 2';
+
+  @override
+  String get themeSettings => 'Cài đặt giao diện';
+
+  @override
+  String get themeModeDescription =>
+      'Chọn giữa chế độ sáng, tối hoặc theo hệ thống';
+
+  @override
+  String get lightThemeDescription => 'Giao diện sáng cho môi trường ánh sáng';
+
+  @override
+  String get darkThemeDescription => 'Giao diện tối cho môi trường ít ánh sáng';
+
+  @override
+  String get systemThemeDescription => 'Theo cài đặt giao diện hệ thống';
+
+  @override
+  String get fontSettings => 'Cài đặt phông chữ';
+
+  @override
+  String get fontSettingsDescription =>
+      'Tùy chỉnh kích thước và kiểu phông chữ';
+
+  @override
+  String get appThemeDescription => 'Chọn từ các chủ đề có sẵn';
+
+  @override
+  String get languageDescription => 'Chọn ngôn ngữ yêu thích';
+
+  @override
+  String get englishDescription => 'Giao diện tiếng Anh';
+
+  @override
+  String get vietnameseDescription => 'Giao diện tiếng Việt';
+
+  @override
+  String get previewDescription => 'Xem trước giao diện của bạn';
+
+  @override
+  String get fontPreview => 'Xem trước phông chữ';
+
+  @override
+  String get fontPreviewHeadline => 'Mẫu tiêu đề';
+
+  @override
+  String get fontPreviewBody =>
+      'Đây là văn bản nội dung cho thấy kiểu phông chữ và kích thước bạn chọn sẽ xuất hiện trong ứng dụng.';
+
+  @override
+  String get fontPreviewCaption => 'Chú thích và xem trước văn bản nhỏ';
+
+  @override
+  String get robotoDescription => 'Phông chữ sans-serif sạch và hiện đại';
+
+  @override
+  String get poppinsDescription =>
+      'Phông chữ sans-serif hình học với cạnh bo tròn';
+
+  @override
+  String get merriweatherDescription => 'Phông chữ serif thanh lịch dễ đọc';
+
+  @override
+  String get interDescription => 'Tối ưu hóa cho giao diện số';
+
+  @override
+  String get components => 'Thành phần';
+
+  @override
+  String get typography => 'Kiểu chữ';
+
+  @override
+  String get colors => 'Màu sắc';
+
+  @override
+  String get buttons => 'Nút bấm';
+
+  @override
+  String get primary => 'Chính';
+
+  @override
+  String get filled => 'Đầy';
+
+  @override
+  String get outlined => 'Viền';
+
+  @override
+  String get text => 'Văn bản';
+
+  @override
+  String get inputFields => 'Trường nhập liệu';
+
+  @override
+  String get sampleTextField => 'Trường văn bản mẫu';
+
+  @override
+  String get cardsAndLists => 'Thẻ và danh sách';
+
+  @override
+  String get progressIndicators => 'Chỉ báo tiến độ';
+
+  @override
+  String get loadingIndicator => 'Chỉ báo tải';
+
+  @override
+  String get displayLarge => 'Hiển thị lớn';
+
+  @override
+  String get headlineMedium => 'Tiêu đề trung bình';
+
+  @override
+  String get titleLarge => 'Tiêu đề lớn';
+
+  @override
+  String get bodyLarge => 'Nội dung lớn';
+
+  @override
+  String get bodyMedium => 'Nội dung trung bình';
+
+  @override
+  String get bodySmall => 'Nội dung nhỏ';
+
+  @override
+  String get labelMedium => 'Nhãn trung bình';
+
+  @override
+  String get primaryColors => 'Màu chính';
+
+  @override
+  String get secondaryColors => 'Màu phụ';
+
+  @override
+  String get surfaceColors => 'Màu bề mặt';
+
+  @override
+  String get actions => 'Hành động';
+
+  @override
+  String get actionsDescription => 'Quản lý cài đặt giao diện';
+
+  @override
+  String get resetToDefault => 'Khôi phục mặc định';
+
+  @override
+  String get export => 'Xuất';
+
+  @override
+  String get import => 'Nhập';
+
+  @override
+  String get share => 'Chia sẻ';
+
+  @override
+  String get exportSettings => 'Xuất cài đặt';
+
+  @override
+  String get importSettings => 'Nhập cài đặt';
+
+  @override
+  String get shareTheme => 'Chia sẻ giao diện';
+
+  @override
+  String get exportSettingsDescription =>
+      'Xuất cài đặt giao diện hiện tại vào clipboard';
+
+  @override
+  String get importSettingsDescription => 'Nhập cài đặt giao diện từ clipboard';
+
+  @override
+  String get shareThemeDescription =>
+      'Chia sẻ cấu hình giao diện với người khác';
+
+  @override
+  String get cancel => 'Hủy';
+
+  @override
+  String get retry => 'Thử lại';
+
+  @override
+  String get languageChanged => 'Đã thay đổi ngôn ngữ';
+
+  @override
+  String get languageChangedDescription =>
+      'Ngôn ngữ đã được thay đổi thành công.';
+
+  @override
+  String get restartNote =>
+      'Lưu ý: Cần khởi động lại ứng dụng để thay đổi ngôn ngữ';
+
+  @override
+  String get restartLater => 'Sau';
+
+  @override
+  String get restartNow => 'Khởi động ngay';
+
+  @override
+  String get restartAppManually =>
+      'Vui lòng khởi động lại ứng dụng thủ công để áp dụng thay đổi ngôn ngữ';
+
+  @override
+  String get languageChangeError => 'Không thể thay đổi ngôn ngữ';
+
+  @override
+  String get resetConfirmationTitle => 'Khôi phục mặc định';
+
+  @override
+  String get resetConfirmationDescription =>
+      'Việc này sẽ khôi phục tất cả cài đặt giao diện về giá trị mặc định. Hành động này không thể hoàn tác.';
+
+  @override
+  String get reset => 'Khôi phục';
+
+  @override
+  String get exportSuccess => 'Xuất thành công';
+
+  @override
+  String get exportSuccessDescription =>
+      'Cài đặt giao diện đã được sao chép vào clipboard';
+
+  @override
+  String get exportError => 'Xuất thất bại';
+
+  @override
+  String get importSuccess => 'Nhập thành công';
+
+  @override
+  String get importSuccessDescription =>
+      'Cài đặt giao diện đã được nhập thành công';
+
+  @override
+  String get importError => 'Nhập thất bại';
+
+  @override
+  String get shareError => 'Chia sẻ thất bại';
+
+  @override
+  String get noClipboardData => 'Không tìm thấy dữ liệu trong clipboard';
+
+  @override
+  String get invalidThemeData => 'Định dạng dữ liệu giao diện không hợp lệ';
+
+  @override
+  String get invalidThemeFormat => 'Định dạng giao diện không hợp lệ';
+
+  @override
+  String get shareThemeText => 'Hãy xem cấu hình giao diện tuyệt vời của tôi!';
+
+  @override
+  String get themeName => 'Tên giao diện';
+
+  @override
+  String get themeConfiguration => 'Cấu hình giao diện';
+
+  @override
+  String get shareThemeSubject => 'Cấu hình giao diện của tôi';
 }
