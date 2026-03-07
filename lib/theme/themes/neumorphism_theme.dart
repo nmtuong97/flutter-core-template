@@ -138,64 +138,60 @@ class NeumorphismTheme extends AppTheme {
 
       // Button Themes - with neumorphic effect
       elevatedButtonTheme: ElevatedButtonThemeData(
-        style:
-            ElevatedButton.styleFrom(
-              backgroundColor: surfaceLightColor,
-              foregroundColor: primaryLightColor,
-              textStyle: _getTextStyle(
-                fontFamily:
-                    FontConfiguration.neumorphismTheme.defaultFontFamily,
-                fontSize: FontSizeConfiguration.normal,
-                fontWeight: FontWeight.bold,
-              ),
-              padding: EdgeInsets.symmetric(
-                horizontal: 24.w,
-                vertical: 16.h,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.r),
-              ),
-              elevation: 0,
-              shadowColor: Colors.transparent,
-            ).copyWith(
-              // Neumorphic effect with BoxDecoration
-              backgroundColor: WidgetStateProperty.resolveWith<Color>(
-                (states) {
-                  if (states.contains(WidgetState.pressed)) {
-                    return surfaceLightColor;
-                  }
-                  return surfaceLightColor;
-                },
-              ),
-              overlayColor: WidgetStateProperty.all(Colors.transparent),
-              shadowColor: WidgetStateProperty.all(Colors.transparent),
-              surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
-            ),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: surfaceLightColor,
+          foregroundColor: primaryLightColor,
+          textStyle: _getTextStyle(
+            fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
+            fontWeight: FontWeight.bold,
+          ),
+          padding: EdgeInsets.symmetric(
+            horizontal: 24.w,
+            vertical: 16.h,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.r),
+          ),
+          elevation: 0,
+          shadowColor: Colors.transparent,
+        ).copyWith(
+          // Neumorphic effect with BoxDecoration
+          backgroundColor: WidgetStateProperty.resolveWith<Color>(
+            (states) {
+              if (states.contains(WidgetState.pressed)) {
+                return surfaceLightColor;
+              }
+              return surfaceLightColor;
+            },
+          ),
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          shadowColor: WidgetStateProperty.all(Colors.transparent),
+          surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
+        ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
-        style:
-            OutlinedButton.styleFrom(
-              foregroundColor: primaryLightColor,
-              side: BorderSide.none,
-              textStyle: _getTextStyle(
-                fontFamily:
-                    FontConfiguration.neumorphismTheme.defaultFontFamily,
-                fontSize: FontSizeConfiguration.normal,
-                fontWeight: FontWeight.bold,
-              ),
-              padding: EdgeInsets.symmetric(
-                horizontal: 24.w,
-                vertical: 16.h,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.r),
-              ),
-            ).copyWith(
-              backgroundColor: WidgetStateProperty.all(surfaceLightColor),
-              overlayColor: WidgetStateProperty.all(Colors.transparent),
-              shadowColor: WidgetStateProperty.all(Colors.transparent),
-              surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
-            ),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: primaryLightColor,
+          side: BorderSide.none,
+          textStyle: _getTextStyle(
+            fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
+            fontWeight: FontWeight.bold,
+          ),
+          padding: EdgeInsets.symmetric(
+            horizontal: 24.w,
+            vertical: 16.h,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.r),
+          ),
+        ).copyWith(
+          backgroundColor: WidgetStateProperty.all(surfaceLightColor),
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          shadowColor: WidgetStateProperty.all(Colors.transparent),
+          surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
+        ),
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
@@ -313,64 +309,60 @@ class NeumorphismTheme extends AppTheme {
 
       // Button Themes - Dark Mode
       elevatedButtonTheme: ElevatedButtonThemeData(
-        style:
-            ElevatedButton.styleFrom(
-              backgroundColor: surfaceDarkColor,
-              foregroundColor: primaryDarkColor,
-              textStyle: _getTextStyle(
-                fontFamily:
-                    FontConfiguration.neumorphismTheme.defaultFontFamily,
-                fontSize: FontSizeConfiguration.normal,
-                fontWeight: FontWeight.bold,
-              ),
-              padding: EdgeInsets.symmetric(
-                horizontal: 24.w,
-                vertical: 16.h,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.r),
-              ),
-              elevation: 0,
-              shadowColor: Colors.transparent,
-            ).copyWith(
-              // Neumorphic effect with BoxDecoration
-              backgroundColor: WidgetStateProperty.resolveWith<Color>(
-                (states) {
-                  if (states.contains(WidgetState.pressed)) {
-                    return surfaceDarkColor;
-                  }
-                  return surfaceDarkColor;
-                },
-              ),
-              overlayColor: WidgetStateProperty.all(Colors.transparent),
-              shadowColor: WidgetStateProperty.all(Colors.transparent),
-              surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
-            ),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: surfaceDarkColor,
+          foregroundColor: primaryDarkColor,
+          textStyle: _getTextStyle(
+            fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
+            fontWeight: FontWeight.bold,
+          ),
+          padding: EdgeInsets.symmetric(
+            horizontal: 24.w,
+            vertical: 16.h,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.r),
+          ),
+          elevation: 0,
+          shadowColor: Colors.transparent,
+        ).copyWith(
+          // Neumorphic effect with BoxDecoration
+          backgroundColor: WidgetStateProperty.resolveWith<Color>(
+            (states) {
+              if (states.contains(WidgetState.pressed)) {
+                return surfaceDarkColor;
+              }
+              return surfaceDarkColor;
+            },
+          ),
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          shadowColor: WidgetStateProperty.all(Colors.transparent),
+          surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
+        ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
-        style:
-            OutlinedButton.styleFrom(
-              foregroundColor: primaryDarkColor,
-              side: BorderSide.none,
-              textStyle: _getTextStyle(
-                fontFamily:
-                    FontConfiguration.neumorphismTheme.defaultFontFamily,
-                fontSize: FontSizeConfiguration.normal,
-                fontWeight: FontWeight.bold,
-              ),
-              padding: EdgeInsets.symmetric(
-                horizontal: 24.w,
-                vertical: 16.h,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.r),
-              ),
-            ).copyWith(
-              backgroundColor: WidgetStateProperty.all(surfaceDarkColor),
-              overlayColor: WidgetStateProperty.all(Colors.transparent),
-              shadowColor: WidgetStateProperty.all(Colors.transparent),
-              surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
-            ),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: primaryDarkColor,
+          side: BorderSide.none,
+          textStyle: _getTextStyle(
+            fontFamily: FontConfiguration.neumorphismTheme.defaultFontFamily,
+            fontSize: FontSizeConfiguration.normal,
+            fontWeight: FontWeight.bold,
+          ),
+          padding: EdgeInsets.symmetric(
+            horizontal: 24.w,
+            vertical: 16.h,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.r),
+          ),
+        ).copyWith(
+          backgroundColor: WidgetStateProperty.all(surfaceDarkColor),
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          shadowColor: WidgetStateProperty.all(Colors.transparent),
+          surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
+        ),
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
@@ -453,10 +445,10 @@ class NeumorphismTheme extends AppTheme {
   }) {
     final letterSpacing =
         (fontFamily == FontConfiguration.neumorphismTheme.defaultFontFamily ||
-            fontFamily ==
-                FontConfiguration.neumorphismTheme.alternateFontFamily)
-        ? 0.2
-        : null;
+                fontFamily ==
+                    FontConfiguration.neumorphismTheme.alternateFontFamily)
+            ? 0.2
+            : null;
     return _typography.getTextStyle(
       fontFamily: fontFamily,
       fontSize: fontSize,

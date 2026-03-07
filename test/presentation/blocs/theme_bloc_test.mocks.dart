@@ -350,47 +350,41 @@ class MockManageFontSizeUseCase extends _i1.Mock
   }
 
   @override
-  _i2.ThemeRepository get repository => (super.noSuchMethod(
-        Invocation.getter(#repository),
-        returnValue: _FakeThemeRepository_0(
-          this,
-          Invocation.getter(#repository),
-        ),
-      ) as _i2.ThemeRepository);
+  _i2.ThemeRepository get repository =>
+      (super.noSuchMethod(
+            Invocation.getter(#repository),
+            returnValue: _FakeThemeRepository_0(
+              this,
+              Invocation.getter(#repository),
+            ),
+          )
+          as _i2.ThemeRepository);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, double>> getCurrentFontSize() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getCurrentFontSize,
-          [],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, double>>.value(
-            _FakeEither_1<_i6.Failure, double>(
-          this,
-          Invocation.method(
-            #getCurrentFontSize,
-            [],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, double>>);
+            Invocation.method(#getCurrentFontSize, []),
+            returnValue: _i5.Future<_i3.Either<_i6.Failure, double>>.value(
+              _FakeEither_1<_i6.Failure, double>(
+                this,
+                Invocation.method(#getCurrentFontSize, []),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, double>>);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, void>> setFontSize(double? fontSize) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setFontSize,
-          [fontSize],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, void>>.value(
-            _FakeEither_1<_i6.Failure, void>(
-          this,
-          Invocation.method(
-            #setFontSize,
-            [fontSize],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, void>>);
+            Invocation.method(#setFontSize, [fontSize]),
+            returnValue: _i5.Future<_i3.Either<_i6.Failure, void>>.value(
+              _FakeEither_1<_i6.Failure, void>(
+                this,
+                Invocation.method(#setFontSize, [fontSize]),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, void>>);
 }
 
 /// A class which mocks [ManageFontFamilyUseCase].
@@ -403,45 +397,39 @@ class MockManageFontFamilyUseCase extends _i1.Mock
   }
 
   @override
-  _i2.ThemeRepository get repository => (super.noSuchMethod(
-        Invocation.getter(#repository),
-        returnValue: _FakeThemeRepository_0(
-          this,
-          Invocation.getter(#repository),
-        ),
-      ) as _i2.ThemeRepository);
+  _i2.ThemeRepository get repository =>
+      (super.noSuchMethod(
+            Invocation.getter(#repository),
+            returnValue: _FakeThemeRepository_0(
+              this,
+              Invocation.getter(#repository),
+            ),
+          )
+          as _i2.ThemeRepository);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, String>> getCurrentFontFamily() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getCurrentFontFamily,
-          [],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, String>>.value(
-            _FakeEither_1<_i6.Failure, String>(
-          this,
-          Invocation.method(
-            #getCurrentFontFamily,
-            [],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, String>>);
+            Invocation.method(#getCurrentFontFamily, []),
+            returnValue: _i5.Future<_i3.Either<_i6.Failure, String>>.value(
+              _FakeEither_1<_i6.Failure, String>(
+                this,
+                Invocation.method(#getCurrentFontFamily, []),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, String>>);
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, void>> setFontFamily(String? fontFamily) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setFontFamily,
-          [fontFamily],
-        ),
-        returnValue: _i5.Future<_i3.Either<_i6.Failure, void>>.value(
-            _FakeEither_1<_i6.Failure, void>(
-          this,
-          Invocation.method(
-            #setFontFamily,
-            [fontFamily],
-          ),
-        )),
-      ) as _i5.Future<_i3.Either<_i6.Failure, void>>);
+            Invocation.method(#setFontFamily, [fontFamily]),
+            returnValue: _i5.Future<_i3.Either<_i6.Failure, void>>.value(
+              _FakeEither_1<_i6.Failure, void>(
+                this,
+                Invocation.method(#setFontFamily, [fontFamily]),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.Either<_i6.Failure, void>>);
 }

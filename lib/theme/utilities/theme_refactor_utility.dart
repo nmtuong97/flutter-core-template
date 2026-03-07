@@ -139,12 +139,11 @@ class ThemeRefactorUtility {
       'improvement': {
         'timeReduction':
             oldStopwatch.elapsedMicroseconds - newStopwatch.elapsedMicroseconds,
-        'percentageImprovement':
-            ((oldStopwatch.elapsedMicroseconds -
-                        newStopwatch.elapsedMicroseconds) /
-                    oldStopwatch.elapsedMicroseconds *
-                    100)
-                .toStringAsFixed(2),
+        'percentageImprovement': ((oldStopwatch.elapsedMicroseconds -
+                    newStopwatch.elapsedMicroseconds) /
+                oldStopwatch.elapsedMicroseconds *
+                100)
+            .toStringAsFixed(2),
         'isImproved':
             newStopwatch.elapsedMicroseconds < oldStopwatch.elapsedMicroseconds,
       },
@@ -206,8 +205,7 @@ class ThemeRefactorUtility {
         'title': 'Replace Theme Builder',
         'description':
             'Replace existing builder with ThemeFactory.createTheme()',
-        'code':
-            'ThemeFactory.createTheme('
+        'code': 'ThemeFactory.createTheme('
             'config: MyThemeConfiguration(), brightness: brightness)',
         'files': ['lib/theme/builders/my_theme_builder.dart'],
       },
@@ -249,8 +247,8 @@ class ThemeRefactorUtility {
   }) {
     const baseEffort = 2; // hours per theme
     final complexityMultiplier = linesOfThemeCode > 500 ? 1.5 : 1.0;
-    final totalEffort = (numberOfThemes * baseEffort * complexityMultiplier)
-        .ceil();
+    final totalEffort =
+        (numberOfThemes * baseEffort * complexityMultiplier).ceil();
 
     return {
       'estimatedHours': totalEffort,

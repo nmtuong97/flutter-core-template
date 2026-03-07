@@ -43,7 +43,8 @@ class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
       await result.fold(
         (failure) async {
           AppLogger.error(
-              'Failed to load current localization: ${failure.message}',);
+            'Failed to load current localization: ${failure.message}',
+          );
           emit(LocalizationError(message: failure.message));
         },
         (localization) async {

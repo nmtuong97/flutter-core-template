@@ -259,8 +259,7 @@ class ThemeStandardization {
         backgroundColor: backgroundColor,
         foregroundColor: foregroundColor,
         elevation: elevation,
-        padding:
-            padding ??
+        padding: padding ??
             const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 12,
@@ -290,8 +289,7 @@ class ThemeStandardization {
           color: borderColor,
           width: borderWidth,
         ),
-        padding:
-            padding ??
+        padding: padding ??
             const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 12,
@@ -314,8 +312,7 @@ class ThemeStandardization {
     return TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: foregroundColor,
-        padding:
-            padding ??
+        padding: padding ??
             const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 12,
@@ -367,8 +364,7 @@ class ThemeStandardization {
       fillColor: fillColor,
       hintStyle: hintStyle,
       labelStyle: labelStyle,
-      contentPadding:
-          contentPadding ??
+      contentPadding: contentPadding ??
           const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 12,

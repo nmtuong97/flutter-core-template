@@ -62,13 +62,13 @@ class ThemeConsistencyChecker {
       // Check method signatures
       final hasStandardTextStyleSignature =
           content.contains('bool hasShadow = false') &&
-          content.contains('Color? shadowColor') &&
-          content.contains('double? letterSpacing');
+              content.contains('Color? shadowColor') &&
+              content.contains('double? letterSpacing');
 
       final hasStandardTextThemeSignature =
           content.contains('required double baseFontSize') &&
-          content.contains('Color? accentColor') &&
-          content.contains('bool hasTextShadow = false');
+              content.contains('Color? accentColor') &&
+              content.contains('bool hasTextShadow = false');
 
       if (!hasStandardTextStyleSignature) {
         debugPrint('    - _getTextStyle signature needs updating');
@@ -92,8 +92,8 @@ class ThemeConsistencyChecker {
     );
     debugPrint('Total issues found: $issuesCount');
 
-    final consistencyScore = ((standardizedCount / themeFiles.length) * 100)
-        .round();
+    final consistencyScore =
+        ((standardizedCount / themeFiles.length) * 100).round();
     debugPrint('Consistency score: $consistencyScore%');
 
     if (consistencyScore >= 80) {

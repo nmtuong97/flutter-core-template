@@ -186,15 +186,15 @@ class ThemeCacheManager {
 
   /// Get cache statistics
   CacheStatistics get statistics => CacheStatistics(
-    cacheHits: _cacheHits,
-    cacheMisses: _cacheMisses,
-    evictions: _evictions,
-    themesCached: _themeCache.length,
-    themeDataCached: _themeDataCache.length,
-    hitRatio: _cacheHits + _cacheMisses > 0
-        ? _cacheHits / (_cacheHits + _cacheMisses)
-        : 0.0,
-  );
+        cacheHits: _cacheHits,
+        cacheMisses: _cacheMisses,
+        evictions: _evictions,
+        themesCached: _themeCache.length,
+        themeDataCached: _themeDataCache.length,
+        hitRatio: _cacheHits + _cacheMisses > 0
+            ? _cacheHits / (_cacheHits + _cacheMisses)
+            : 0.0,
+      );
 
   /// Reset performance metrics
   void _resetMetrics() {
@@ -239,8 +239,8 @@ class _CachedTheme {
 /// Cached theme data wrapper with expiry
 class _CachedThemeData {
   _CachedThemeData(this.themeData)
-    : createdAt = DateTime.now(),
-      lastAccessed = DateTime.now();
+      : createdAt = DateTime.now(),
+        lastAccessed = DateTime.now();
   final ThemeData themeData;
   final DateTime createdAt;
   DateTime lastAccessed;

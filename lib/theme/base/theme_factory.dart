@@ -30,9 +30,9 @@ class ThemeFactory {
 
   /// Get default theme
   static AppTheme get defaultTheme => _availableThemes.firstWhere(
-    (theme) => theme.isDefault,
-    orElse: () => _availableThemes.first,
-  );
+        (theme) => theme.isDefault,
+        orElse: () => _availableThemes.first,
+      );
 
   /// Get theme by ID
   static AppTheme getThemeById(String id) {

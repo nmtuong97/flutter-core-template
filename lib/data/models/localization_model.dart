@@ -76,11 +76,11 @@ class LocalizationModel extends Equatable {
 
   @override
   List<Object?> get props => [
-    languageCode,
-    countryCode,
-    languageName,
-    countryName,
-    isDefault,
-    isRtl,
-  ];
+        languageCode,
+        countryCode,
+        languageName,
+        countryName,
+        isDefault,
+        isRtl,
+      ];
 }

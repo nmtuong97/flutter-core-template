@@ -231,8 +231,7 @@ class ConsistencyValidator {
 
       if (content.contains('$themeProperty:')) {
         // Check if using standardized creation
-        final standardMethod =
-            'ThemeStandardization.standard'
+        final standardMethod = 'ThemeStandardization.standard'
             '${themeType.replaceAll('Data', '').replaceAll('Theme', '')}'
             'Theme';
 

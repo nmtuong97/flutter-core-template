@@ -121,9 +121,9 @@ class FluentThemeExamples {
   /// Create a high-contrast accessibility theme
   static CustomFluentTheme createAccessibilityTheme() {
     return FluentThemeBuilder.create(
-          'accessibility_theme',
-          'High Contrast Theme',
-        )
+      'accessibility_theme',
+      'High Contrast Theme',
+    )
         .withDescription('High contrast theme for better accessibility')
         .withPrimaryColors(
           primary: Colors.black,
@@ -276,9 +276,9 @@ class FluentThemeUsageExamples {
   static CustomFluentTheme createDerivedTheme(CustomFluentTheme baseTheme) {
     // Create a new theme based on an existing one with modifications
     return FluentThemeBuilder.create(
-          '${baseTheme.id}_derived',
-          '${baseTheme.name} (Modified)',
-        )
+      '${baseTheme.id}_derived',
+      '${baseTheme.name} (Modified)',
+    )
         .withDescription('Derived from ${baseTheme.name}')
         .withColorPalette(ThemeColorPalette.material)
         .withTypographyStyle(TypographyStyle.modern)

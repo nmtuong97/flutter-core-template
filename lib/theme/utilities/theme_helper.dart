@@ -336,8 +336,7 @@ class ThemeHelper {
       'textThemeSize': themeData.textTheme.toString().length,
       'colorSchemeSize': themeData.colorScheme.toString().length,
       'bodyMedium': bodyMedium?.fontSize ?? 0,
-      'primaryColor':
-          primaryColor.r.toInt() << 16 |
+      'primaryColor': primaryColor.r.toInt() << 16 |
           primaryColor.g.toInt() << 8 |
           primaryColor.b.toInt(),
       'appBarColor': appBarColor?.toString() ?? 'null',

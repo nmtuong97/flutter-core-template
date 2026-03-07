@@ -178,9 +178,8 @@ class ThemeFactory {
 
     if (config == null) return null;
 
-    final brightness = themeId.contains('dark')
-        ? Brightness.dark
-        : Brightness.light;
+    final brightness =
+        themeId.contains('dark') ? Brightness.dark : Brightness.light;
 
     return createTheme(
       config: config,

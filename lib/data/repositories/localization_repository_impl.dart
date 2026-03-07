@@ -96,9 +96,8 @@ class LocalizationRepositoryImpl implements LocalizationRepository {
       AppLogger.localization('Getting localization by locale: $locale');
 
       final localizations = _getSupportedLocalizations();
-      final localization = localizations
-          .where((l) => l.locale == locale)
-          .firstOrNull;
+      final localization =
+          localizations.where((l) => l.locale == locale).firstOrNull;
 
       if (localization == null) {
         // Try to find by language code only

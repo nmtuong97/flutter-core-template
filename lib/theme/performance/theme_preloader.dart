@@ -119,16 +119,16 @@ class ThemePreloader {
         unawaited(
           _lazyLoader
               .getTheme(
-                prediction.themeId,
-                factory,
-                priority: ThemeLoadPriority.background,
-              )
+            prediction.themeId,
+            factory,
+            priority: ThemeLoadPriority.background,
+          )
               .catchError((dynamic error) {
-                debugPrint(
-                  'Failed to preload theme ${prediction.themeId}: $error',
-                );
-                return Future<AppTheme>.error(error as Object); // Return error
-              }),
+            debugPrint(
+              'Failed to preload theme ${prediction.themeId}: $error',
+            );
+            return Future<AppTheme>.error(error as Object); // Return error
+          }),
         );
       }
     }
@@ -226,9 +226,8 @@ class ThemePreloader {
   /// Get preloader statistics
   PreloaderStatistics get statistics {
     final totalThemes = _usageStats.length;
-    final activeThemes = _usageStats.values
-        .where((stats) => stats.totalUsages > 0)
-        .length;
+    final activeThemes =
+        _usageStats.values.where((stats) => stats.totalUsages > 0).length;
     final predictedThemes = predictNextThemes().length;
 
     return PreloaderStatistics(
@@ -324,8 +323,7 @@ enum ThemeUsageContext {
   seasonal('Seasonal Theme'),
   timeOfDay('Time-based Theme'),
   userPreference('User Preference'),
-  unknown('Unknown Context')
-  ;
+  unknown('Unknown Context');
 
   const ThemeUsageContext(this.displayName);
   final String displayName;
@@ -371,9 +369,8 @@ class ThemeUsageStats {
   double getContextMatchScore(ThemeUsageContext context) {
     if (_usageRecords.isEmpty) return 0;
 
-    final contextUsages = _usageRecords
-        .where((record) => record.context == context)
-        .length;
+    final contextUsages =
+        _usageRecords.where((record) => record.context == context).length;
     return contextUsages / _usageRecords.length;
   }
 

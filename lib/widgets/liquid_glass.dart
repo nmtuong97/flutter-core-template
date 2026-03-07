@@ -382,7 +382,7 @@ class LiquidGlassAppBar extends StatelessWidget implements PreferredSizeWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Row(
             children: [
-              if (leading != null) leading!,
+              ?leading,
               if (leading == null) const SizedBox(width: 16),
               Expanded(
                 child: title ?? const SizedBox.shrink(),

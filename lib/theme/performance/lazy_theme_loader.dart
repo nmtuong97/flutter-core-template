@@ -284,9 +284,8 @@ class LazyThemeLoader {
   /// Get loading statistics
   LoadingStatistics get statistics {
     final activeTasks = _loadTasks.values.toList();
-    final completedTasks = activeTasks
-        .where((task) => task.completer.isCompleted)
-        .length;
+    final completedTasks =
+        activeTasks.where((task) => task.completer.isCompleted).length;
 
     return LoadingStatistics(
       activeTasks: activeTasks.length,
@@ -303,9 +302,8 @@ class LazyThemeLoader {
 
   /// Calculate average load time for completed tasks
   Duration _calculateAverageLoadTime(List<_ThemeLoadTask> tasks) {
-    final completedTasks = tasks
-        .where((task) => task.completer.isCompleted)
-        .toList();
+    final completedTasks =
+        tasks.where((task) => task.completer.isCompleted).toList();
 
     if (completedTasks.isEmpty) return Duration.zero;
 

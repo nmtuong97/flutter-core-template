@@ -25,17 +25,15 @@ class ThemeTypography {
   static void _cleanupCache() {
     if (_textStyleCache.length >= ThemeConstants.maxCacheSize) {
       // Remove oldest 25% of entries
-      final keysToRemove = _textStyleCache.keys
-          .take(_textStyleCache.length ~/ 4)
-          .toSet();
+      final keysToRemove =
+          _textStyleCache.keys.take(_textStyleCache.length ~/ 4).toSet();
       _textStyleCache.removeWhere((key, _) => keysToRemove.contains(key));
     }
 
     if (_textThemeCache.length >= (ThemeConstants.maxCacheSize ~/ 2)) {
       // Remove oldest 25% of entries
-      final keysToRemove = _textThemeCache.keys
-          .take(_textThemeCache.length ~/ 4)
-          .toSet();
+      final keysToRemove =
+          _textThemeCache.keys.take(_textThemeCache.length ~/ 4).toSet();
       _textThemeCache.removeWhere((key, _) => keysToRemove.contains(key));
     }
   }
@@ -45,10 +43,10 @@ class ThemeTypography {
 
   /// Get cache statistics for debugging
   static Map<String, int> get cacheStats => {
-    'textStyles': _textStyleCache.length,
-    'textThemes': _textThemeCache.length,
-    'total': cacheSize,
-  };
+        'textStyles': _textStyleCache.length,
+        'textThemes': _textThemeCache.length,
+        'total': cacheSize,
+      };
 
   /// Generate cache key for TextStyle
   static String _generateStyleCacheKey({

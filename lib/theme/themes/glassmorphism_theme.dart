@@ -399,8 +399,8 @@ class GlassmorphismTheme extends AppTheme {
     Color? color,
   }) {
     // Preserve letterSpacing nuance: 0.2 for default/alternate
-    final isDefaultOrAlt =
-        fontFamily == FontConfiguration.glassmorphismTheme.defaultFontFamily ||
+    final isDefaultOrAlt = fontFamily ==
+            FontConfiguration.glassmorphismTheme.defaultFontFamily ||
         fontFamily == FontConfiguration.glassmorphismTheme.alternateFontFamily;
     return _typography.getTextStyle(
       fontFamily: fontFamily,

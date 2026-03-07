@@ -78,6 +78,10 @@ void main() {
               .thenAnswer((_) async => ResultHelper.success(testThemes));
           when(mockManageThemeModeUseCase.getCurrentThemeMode())
               .thenAnswer((_) async => ResultHelper.success(ThemeMode.system));
+          when(mockManageFontSizeUseCase.getCurrentFontSize())
+              .thenAnswer((_) async => ResultHelper.success(14));
+          when(mockManageFontFamilyUseCase.getCurrentFontFamily())
+              .thenAnswer((_) async => ResultHelper.success('Roboto'));
           return bloc;
         },
         act: (bloc) => bloc.add(const ThemeLoadCurrentEvent()),
@@ -109,6 +113,10 @@ void main() {
               .thenAnswer((_) async => ResultHelper.success([]));
           when(mockManageThemeModeUseCase.getCurrentThemeMode())
               .thenAnswer((_) async => ResultHelper.success(ThemeMode.system));
+          when(mockManageFontSizeUseCase.getCurrentFontSize())
+              .thenAnswer((_) async => ResultHelper.success(14));
+          when(mockManageFontFamilyUseCase.getCurrentFontFamily())
+              .thenAnswer((_) async => ResultHelper.success('Roboto'));
           return bloc;
         },
         act: (bloc) => bloc.add(const ThemeLoadCurrentEvent()),
@@ -151,6 +159,7 @@ void main() {
             'message',
             equals('Theme changed successfully'),
           ),
+          isA<ThemeLoaded>(),
         ],
         verify: (_) {
           verify(mockSwitchThemeUseCase('cyberpunk')).called(1);
@@ -216,6 +225,7 @@ void main() {
             'themeMode',
             equals(ThemeMode.dark),
           ),
+          isA<ThemeLoaded>(),
         ],
         verify: (_) {
           verify(mockManageThemeModeUseCase.setThemeMode(ThemeMode.dark))
@@ -252,6 +262,7 @@ void main() {
             'themeMode',
             equals(ThemeMode.dark),
           ),
+          isA<ThemeLoaded>(),
         ],
         verify: (_) {
           verify(mockManageThemeModeUseCase.toggleThemeMode()).called(1);
@@ -263,7 +274,11 @@ void main() {
       blocTest<ThemeBloc, ThemeState>(
         'should emit [ThemeOperationSuccess] when font size change is '
         'successful',
-        build: () => bloc,
+        build: () {
+          when(mockManageFontSizeUseCase.setFontSize(16))
+              .thenAnswer((_) async => ResultHelper.success(null));
+          return bloc;
+        },
         seed: () => ThemeLoaded(
           currentTheme: testTheme,
           availableThemes: testThemes,
@@ -273,11 +288,13 @@ void main() {
         ),
         act: (bloc) => bloc.add(const ThemeChangeFontSizeEvent(fontSize: 16)),
         expect: () => [
+          isA<ThemeOperationInProgress>(),
           isA<ThemeOperationSuccess>().having(
             (state) => state.updatedState.fontSize,
             'fontSize',
             equals(16.0),
           ),
+          isA<ThemeLoaded>(),
         ],
       );
     });
@@ -286,7 +303,11 @@ void main() {
       blocTest<ThemeBloc, ThemeState>(
         'should emit [ThemeOperationSuccess] when font family change is '
         'successful',
-        build: () => bloc,
+        build: () {
+          when(mockManageFontFamilyUseCase.setFontFamily('Inter'))
+              .thenAnswer((_) async => ResultHelper.success(null));
+          return bloc;
+        },
         seed: () => ThemeLoaded(
           currentTheme: testTheme,
           availableThemes: testThemes,
@@ -297,11 +318,13 @@ void main() {
         act: (bloc) =>
             bloc.add(const ThemeChangeFontFamilyEvent(fontFamily: 'Inter')),
         expect: () => [
+          isA<ThemeOperationInProgress>(),
           isA<ThemeOperationSuccess>().having(
             (state) => state.updatedState.fontFamily,
             'fontFamily',
             equals('Inter'),
           ),
+          isA<ThemeLoaded>(),
         ],
       );
     });

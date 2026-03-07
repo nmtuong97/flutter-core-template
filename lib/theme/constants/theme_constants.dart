@@ -100,9 +100,9 @@ class ThemeConstants {
 
   /// Button specific padding
   static EdgeInsets get buttonPadding => EdgeInsets.symmetric(
-    horizontal: 16.w,
-    vertical: 12.h,
-  );
+        horizontal: 16.w,
+        vertical: 12.h,
+      );
 
   /// Card specific padding
   static EdgeInsets get cardPadding => EdgeInsets.all(16.r);
@@ -157,91 +157,92 @@ class ThemeConstants {
   // ==================== SHADOW CONFIGURATIONS ====================
   /// Pre-configured shadow styles
   static List<BoxShadow> get cardShadow => [
-    BoxShadow(
-      color: Colors.black.withValues(alpha: opacityCardShadow),
-      blurRadius: 8,
-      offset: const Offset(0, 2),
-    ),
-  ];
+        BoxShadow(
+          color: Colors.black.withValues(alpha: opacityCardShadow),
+          blurRadius: 8,
+          offset: const Offset(0, 2),
+        ),
+      ];
 
   static List<BoxShadow> get buttonShadow => [
-    BoxShadow(
-      color: Colors.black.withValues(alpha: opacityButtonShadow),
-      blurRadius: 4,
-      offset: const Offset(0, 2),
-    ),
-  ];
+        BoxShadow(
+          color: Colors.black.withValues(alpha: opacityButtonShadow),
+          blurRadius: 4,
+          offset: const Offset(0, 2),
+        ),
+      ];
 
   static List<BoxShadow> get dialogShadow => [
-    BoxShadow(
-      color: Colors.black.withValues(alpha: opacityDialogShadow),
-      blurRadius: 16,
-      offset: const Offset(0, 4),
-    ),
-  ];
+        BoxShadow(
+          color: Colors.black.withValues(alpha: opacityDialogShadow),
+          blurRadius: 16,
+          offset: const Offset(0, 4),
+        ),
+      ];
 
   /// Neon glow effect for cyberpunk theme
   static List<BoxShadow> neonGlow(Color color) => [
-    BoxShadow(
-      color: color.withValues(alpha: 0.5),
-      blurRadius: 8,
-      spreadRadius: 2,
-    ),
-    BoxShadow(
-      color: color.withValues(alpha: 0.3),
-      blurRadius: 16,
-      spreadRadius: 4,
-    ),
-  ];
+        BoxShadow(
+          color: color.withValues(alpha: 0.5),
+          blurRadius: 8,
+          spreadRadius: 2,
+        ),
+        BoxShadow(
+          color: color.withValues(alpha: 0.3),
+          blurRadius: 16,
+          spreadRadius: 4,
+        ),
+      ];
 
   /// Neumorphism shadow effect
   static List<BoxShadow> neumorphismShadow({
     required Color lightShadow,
     required Color darkShadow,
-  }) => [
-    BoxShadow(
-      color: darkShadow,
-      offset: const Offset(4, 4),
-      blurRadius: 8,
-    ),
-    BoxShadow(
-      color: lightShadow,
-      offset: const Offset(-4, -4),
-      blurRadius: 8,
-    ),
-  ];
+  }) =>
+      [
+        BoxShadow(
+          color: darkShadow,
+          offset: const Offset(4, 4),
+          blurRadius: 8,
+        ),
+        BoxShadow(
+          color: lightShadow,
+          offset: const Offset(-4, -4),
+          blurRadius: 8,
+        ),
+      ];
 
   // ==================== TEXT SHADOW CONFIGURATIONS ====================
   /// Pre-configured text shadows
   static List<Shadow> get defaultTextShadow => [
-    Shadow(
-      color: Colors.black.withValues(alpha: 0.25),
-      blurRadius: 2,
-      offset: const Offset(1, 1),
-    ),
-  ];
+        Shadow(
+          color: Colors.black.withValues(alpha: 0.25),
+          blurRadius: 2,
+          offset: const Offset(1, 1),
+        ),
+      ];
 
   static List<Shadow> neonTextGlow(Color color) => [
-    Shadow(
-      color: color.withValues(alpha: 0.7),
-      blurRadius: 4,
-    ),
-    Shadow(
-      color: color.withValues(alpha: 0.5),
-      blurRadius: 8,
-    ),
-  ];
+        Shadow(
+          color: color.withValues(alpha: 0.7),
+          blurRadius: 4,
+        ),
+        Shadow(
+          color: color.withValues(alpha: 0.5),
+          blurRadius: 8,
+        ),
+      ];
 
   // ==================== BORDER CONFIGURATIONS ====================
   /// Standard border styles
   static BorderSide get defaultBorder => const BorderSide(
-    color: Colors.grey,
-  );
+        color: Colors.grey,
+      );
 
   static BorderSide get thickBorder => const BorderSide(
-    color: Colors.grey,
-    width: 2,
-  );
+        color: Colors.grey,
+        width: 2,
+      );
 
   /// Standard border width
   static const double borderWidth = 1;
@@ -262,8 +263,8 @@ class ThemeConstants {
   static double get dividerSpace => 16.h;
 
   static BorderSide frostedBorder(Color color) => BorderSide(
-    color: color.withValues(alpha: opacityFrostedBorder),
-  );
+        color: color.withValues(alpha: opacityFrostedBorder),
+      );
 
   // ==================== VALIDATION CONSTANTS ====================
   /// Constants for theme validation
